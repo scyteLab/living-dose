@@ -1,0 +1,102 @@
+.intro {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  padding: clamp(2rem, 4vw, 3.5rem) clamp(1.25rem, 4vw, 3.5rem);
+  border-radius: var(--band-radius);
+  background: var(--cream);
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-3);
+  max-width: 44rem;
+  justify-items: start;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+.leaf  { color: var(--leaf-deep); }
+.ember { color: var(--ember-deep); }
+.sky   { color: var(--sky-deep); }
+.plum  { color: var(--plum); }
+
+.title {
+  font-size: clamp(2rem, 2vw + 1.3rem, 3.25rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.text {
+  font-size: clamp(1rem, 0.25vw + 0.95rem, 1.1875rem);
+  line-height: 1.6;
+  color: var(--moss);
+  text-wrap: pretty;
+}
+
+.extra {
+  width: 100%;
+  margin-top: var(--space-3);
+}
+
+/* Logo-echo shapes, only where there is room */
+.shapes {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .intro {
+    grid-template-columns: minmax(0, 1fr) 200px;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .shapes {
+    position: relative;
+    display: block;
+    width: 170px;
+    height: 200px;
+    justify-self: end;
+  }
+
+  .shapes span {
+    position: absolute;
+  }
+
+  .shapes .leaf {
+    left: 0;
+    bottom: 0;
+    width: 78px;
+    height: 136px;
+    border-radius: 0 0 0 64px;
+    background: var(--leaf);
+    opacity: 0.9;
+  }
+
+  .shapes .ember {
+    right: 0;
+    top: 0;
+    width: 82px;
+    height: 150px;
+    border-radius: 0 64px 0 0;
+    background: var(--ember);
+    opacity: 0.9;
+  }
+
+  .shapes .sky {
+    right: 0;
+    bottom: 0;
+    width: 82px;
+    height: 40px;
+    border-radius: 0 0 32px 0;
+    background: var(--sky);
+    opacity: 0.9;
+  }
+}

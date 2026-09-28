@@ -1,0 +1,129 @@
+.page {
+  display: grid;
+  gap: var(--space-5);
+  padding-bottom: var(--section-y);
+}
+
+/* ---------- Search ---------- */
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 34rem;
+}
+
+.search input {
+  width: 100%;
+  height: 54px;
+  padding: 0 var(--space-7) 0 3rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  font-size: 1rem;
+  box-shadow: 0 8px 24px rgba(30, 51, 24, 0.06);
+}
+
+.search input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search input:hover {
+  border-color: #d3ccbc;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1.1rem;
+  color: var(--moss);
+  pointer-events: none;
+}
+
+.clear {
+  position: absolute;
+  right: 6px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--moss);
+}
+.clear:hover {
+  background: var(--cream);
+}
+
+/* ---------- Topic filters ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.chip:hover {
+  background: var(--cream);
+}
+
+.chipOn,
+.chipOn:hover {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--oat);
+}
+
+.count {
+  font-size: var(--text-sm);
+  color: var(--moss);
+}
+
+/* ---------- Groups ---------- */
+.groups {
+  display: grid;
+  gap: var(--space-6);
+  max-width: 52rem;
+}
+
+.group {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.groupTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* ---------- Still need help ---------- */
+.more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  max-width: 52rem;
+  margin-top: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--leaf-tint);
+}
+
+.moreTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.moreBody {
+  color: var(--moss);
+}

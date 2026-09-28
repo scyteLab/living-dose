@@ -1,0 +1,31 @@
+.ring {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.ring svg {
+  position: absolute;
+  inset: 0;
+}
+
+.track {
+  fill: none;
+  stroke: var(--ring-track, var(--leaf-tint));
+}
+
+.fill {
+  fill: none;
+  stroke: var(--ring-fill, var(--leaf));
+  stroke-linecap: round;
+}
+
+.value {
+  position: relative;
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ring-text, var(--ink));
+  font-variant-numeric: tabular-nums;
+}

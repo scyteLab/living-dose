@@ -1,0 +1,56 @@
+.band {
+  display: grid;
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  margin-block: calc(var(--section-y) * 0.5) var(--section-y);
+  padding: var(--band-pad);
+  border-radius: var(--band-radius);
+  background: var(--cream);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: var(--space-2);
+  border-radius: 14px;
+  background: var(--leaf-tint);
+  color: var(--leaf-deep);
+}
+
+.cardTitle {
+  font-size: 1.1875rem;
+  font-weight: 700;
+}
+
+.cardBody {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--moss);
+}

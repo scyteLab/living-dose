@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 44rem;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.leaf  { color: var(--leaf-deep); }
+.ember { color: var(--ember-deep); }
+.sky   { color: var(--sky-deep); }
+.plum  { color: var(--plum); }
+
+.title {
+  font-size: clamp(1.875rem, 1.6vw + 1.2rem, 2.75rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.intro {
+  font-size: clamp(1rem, 0.2vw + 0.95rem, 1.125rem);
+  line-height: 1.6;
+  color: var(--moss);
+  text-wrap: pretty;
+}
+
+/* Dark bands */
+.inverse .title { color: var(--oat); }
+.inverse .intro { color: #d8dccf; }
+.inverse .leaf  { color: #a9cf7f; }
+.inverse .ember { color: #f8a865; }
+.inverse .sky   { color: #7dc0f7; }

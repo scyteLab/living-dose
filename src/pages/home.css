@@ -1,0 +1,69 @@
+.ld-hero {
+  padding: 100px 0 80px;
+}
+
+.ld-hero-inner {
+  max-width: 760px;
+}
+
+.ld-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+}
+
+.ld-highlight {
+  color: var(--ld-green);
+}
+
+.ld-hero-sub {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: var(--ld-ink-soft);
+  max-width: 560px;
+}
+
+.ld-hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.ld-btn-lg {
+  padding: 0.85rem 1.6rem;
+  font-size: 0.95rem;
+}
+
+.ld-pillars {
+  padding: 60px 0 100px;
+  border-top: 1px solid var(--ld-border);
+}
+
+.ld-pillars h2 {
+  font-size: 1.6rem;
+  margin-bottom: 32px;
+}
+
+.ld-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.ld-pillar-card {
+  background: var(--ld-white);
+  border: 1px solid var(--ld-border);
+  border-radius: var(--ld-radius-md);
+  padding: 24px;
+  box-shadow: var(--ld-shadow-soft);
+}
+
+.ld-pillar-card h3 {
+  font-size: 1.05rem;
+  color: var(--ld-green-dark);
+  margin-bottom: 8px;
+}
+
+.ld-pillar-card p {
+  font-size: 0.9rem;
+  color: var(--ld-ink-soft);
+}

@@ -1,0 +1,126 @@
+.page {
+  display: grid;
+  gap: var(--space-6);
+  padding-bottom: var(--section-y);
+}
+
+/* ---------- Three partner tracks ---------- */
+.tracks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--track-colour);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: var(--track-tint);
+  color: var(--track-deep);
+}
+
+.trackTitle {
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.for {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--moss);
+}
+
+.points {
+  display: grid;
+  gap: var(--space-2);
+  flex: 1;
+  margin: var(--space-2) 0 var(--space-3);
+  padding: 0;
+  list-style: none;
+}
+
+.points li {
+  display: flex;
+  gap: var(--space-2);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.points svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--track-deep);
+}
+
+.cta {
+  width: 100%;
+}
+
+.sky   { --track-colour: var(--sky);   --track-tint: var(--sky-tint);   --track-deep: var(--sky-deep); }
+.leaf  { --track-colour: var(--leaf);  --track-tint: var(--leaf-tint);  --track-deep: var(--leaf-deep); }
+.ember { --track-colour: var(--ember); --track-tint: var(--ember-tint); --track-deep: var(--ember-deep); }
+
+/* ---------- How it works ---------- */
+.how {
+  display: grid;
+  gap: var(--space-5);
+  padding-top: calc(var(--section-y) * 0.6);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--cream);
+}
+
+.stepNum {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--oat);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.stepTitle {
+  font-size: 1.1875rem;
+  font-weight: 700;
+}
+
+.stepBody {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--moss);
+}

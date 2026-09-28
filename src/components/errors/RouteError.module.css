@@ -1,0 +1,65 @@
+.page {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: var(--space-5) var(--space-4);
+  background: var(--oat);
+}
+
+.card {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 440px;
+}
+
+.title {
+  margin-top: var(--space-2);
+  font-size: clamp(1.625rem, 1vw + 1.25rem, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.body {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--moss);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.help {
+  font-size: var(--text-sm);
+  color: var(--moss);
+}
+.help a {
+  font-weight: 700;
+}
+
+.details {
+  width: 100%;
+  margin-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--moss);
+}
+.details summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.details pre {
+  max-height: 240px;
+  margin-top: var(--space-2);
+  padding: var(--space-3);
+  overflow: auto;
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  white-space: pre-wrap;
+  word-break: break-word;
+}

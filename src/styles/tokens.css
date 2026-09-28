@@ -1,0 +1,93 @@
+/*
+ * Living Dose design tokens
+ * Source of truth for colour, type, spacing, radius and motion.
+ * Rule: brand colours are FILLS. Text on a brand fill uses --ink.
+ * Coloured text uses the -deep shades (they pass WCAG AA on oat/paper).
+ */
+:root {
+  /* Ground and ink */
+  --oat: #faf8f3;        /* page background */
+  --paper: #ffffff;      /* cards */
+  --cream: #f3efe6;      /* sections, inputs */
+  --line: #e6e1d6;       /* borders */
+  --moss: #5b6655;       /* secondary text */
+  --ink: #1e3318;        /* primary text (Forest) */
+
+  /* Leaf: food, farm, growth, progress */
+  --leaf: #7caf42;
+  --leaf-deep: #4c7a1f;
+  --leaf-tint: #eaf3dd;
+
+  /* Ember: nutrition, energy, action, rewards */
+  --ember: #f57f17;
+  --ember-deep: #b4530a;
+  --ember-tint: #fdebdb;
+
+  /* Sky: care, clinical trust, records */
+  --sky: #369ff3;
+  --sky-deep: #1565b8;
+  --sky-tint: #e3f1fd;
+
+  /* Extended */
+  --plum: #6b4fa0;       /* mind and wellbeing */
+  --plum-tint: #efeaf7;
+  --berry: #c2334d;      /* alerts, errors */
+  --berry-tint: #fbe7eb;
+  --sun: #f2c14e;        /* highlights, streaks */
+
+  /* Typography */
+  --font-display: 'Outfit', 'Figtree', system-ui, sans-serif;
+  --font-body: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-accent: 'Fraunces', Georgia, serif;
+
+  --text-xs: 0.8125rem;   /* 13 */
+  --text-sm: 0.875rem;    /* 14 */
+  --text-base: 1.0625rem; /* 17 */
+  --text-lg: 1.25rem;     /* 20 */
+  --text-xl: 1.5rem;      /* 24 */
+  --text-2xl: 2rem;       /* 32 */
+  --text-3xl: 2.5rem;     /* 40 */
+  --text-display: clamp(2.5rem, 5vw + 1rem, 5rem);
+
+  /* Spacing (8-point) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Radius: soft shapes taken from the logo */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --radius-pill: 999px;
+
+  /* Elevation: used sparingly, for floating things only */
+  --shadow-float: 0 18px 40px rgba(30, 51, 24, 0.1);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+
+  /* Layout */
+  --content-max: 1200px;
+  --nav-height: 60px;       /* top bar height (64px on desktop, below) */
+  --page-gap-y: 1.25rem;    /* space between the nav and the first section (24px on desktop) */
+  --section-y: clamp(3.5rem, 6vw, 6rem);                 /* space above and below each section */
+  --band-radius: clamp(28px, 3.5vw, 48px);               /* rounded coloured panels */
+  --band-pad: clamp(2rem, 4.5vw, 4.5rem) clamp(1.25rem, 4vw, 3.5rem);
+  --tabbar-height: 72px;
+  --touch-min: 44px;
+}
+
+@media (min-width: 1100px) {
+  :root {
+    --nav-height: 64px;
+    --page-gap-y: 1.5rem;
+  }
+}

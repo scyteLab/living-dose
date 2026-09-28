@@ -1,0 +1,68 @@
+.band {
+  display: grid;
+  gap: clamp(2rem, 3.5vw, 3.5rem);
+  margin-block: calc(var(--section-y) * 0.5);
+  padding: var(--band-pad);
+  border-radius: var(--band-radius);
+  background: var(--ink);
+  color: var(--oat);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-7);
+}
+
+.lead {
+  max-width: 26rem;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(1.0625rem, 0.3vw + 1rem, 1.25rem);
+  line-height: 1.5;
+  color: #d8dccf;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+  gap: var(--space-5) var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 3px solid var(--step-colour);
+}
+
+.number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--step-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--oat);
+}
+
+.stepBody {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #d8dccf;
+}
+
+.leaf  { --step-colour: var(--leaf);  --step-text: #a9cf7f; }
+.ember { --step-colour: var(--ember); --step-text: #f8a865; }
+.sky   { --step-colour: var(--sky);   --step-text: #7dc0f7; }
+.sun   { --step-colour: var(--sun);   --step-text: var(--sun); }

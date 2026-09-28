@@ -1,0 +1,136 @@
+/*
+ * Hero type scale (Outfit / Figtree / Fraunces)
+ *   Headline   Outfit 800   36px phone → ~44px laptop → 56px max   line-height 1.04
+ *   Body       Figtree 400  16–17px                                line-height 1.55
+ *   Tagline    Fraunces italic, 16–18px
+ *   Badge      Figtree 600, 13px   ·   Trust line  Figtree 600, 14px
+ *
+ * Desktop sizes follow the smaller of screen width and screen height,
+ * so shorter laptop screens get a proportionally smaller hero.
+ * On desktop the hero sits 24px under the nav and is only as tall as the
+ * visual, so there is no extra space above it on tall screens. The copy is
+ * inset from the page edge so it has room to breathe.
+ */
+
+.hero {
+  --flow: clamp(1.125rem, 2.4vh, 1.625rem); /* vertical rhythm between lines of copy */
+
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+  padding-bottom: var(--space-6);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--flow);
+  min-width: 0;
+}
+
+/* ---------- Badge ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 5px 12px 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.dots {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+}
+.dotLeaf  { background: var(--leaf); }
+.dotEmber { background: var(--ember); }
+.dotSky   { background: var(--sky); }
+
+/* ---------- Headline and copy ---------- */
+.title {
+  font-size: clamp(2.25rem, min(1.9vw + 1.1rem, 5.2vh + 0.6rem), 3.5rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  max-width: 10em; /* keeps the two-line break: "Your health starts / on your plate." */
+  margin-top: calc(var(--flow) * 0.25);
+  text-wrap: balance;
+}
+
+.body {
+  max-width: 32rem;
+  font-size: clamp(1rem, 0.15vw + 0.95rem, 1.0625rem);
+  line-height: 1.55;
+  color: var(--moss);
+  text-wrap: pretty;
+}
+
+.tagline {
+  margin-top: calc(var(--flow) * -0.25);
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(1rem, 0.2vw + 0.95rem, 1.125rem);
+  color: var(--ink);
+}
+
+/* ---------- Calls to action ---------- */
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: calc(var(--flow) * 0.75);
+}
+
+/* ---------- Trust line ---------- */
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-6);
+  margin: calc(var(--flow) * 0.25) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--moss);
+}
+
+.trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.trustIconLeaf { color: var(--leaf-deep); }
+.trustIconSky  { color: var(--sky-deep); }
+
+/* Phones: full-width buttons are easier to hit */
+@media (max-width: 559px) {
+  .ctas {
+    flex-direction: column;
+    align-self: stretch;
+  }
+}
+
+/* Desktop: copy left, visual right */
+@media (min-width: 1200px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--space-7);
+    padding-bottom: var(--page-gap-y);
+  }
+
+  .copy {
+    padding-inline: clamp(1.5rem, 4vw - 1rem, 4.5rem) var(--space-5);
+  }
+}

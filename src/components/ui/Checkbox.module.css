@@ -1,0 +1,47 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: 10px var(--space-3);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.card:hover {
+  border-color: #d3ccbc;
+}
+
+.checked,
+.checked:hover {
+  border-color: var(--leaf);
+}
+
+.error,
+.error:hover {
+  border-color: var(--berry);
+  background: var(--berry-tint);
+}
+
+.input {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--leaf-deep);
+  cursor: pointer;
+}
+
+.text {
+  flex: 1;
+}
+
+.text a {
+  font-weight: 700;
+}

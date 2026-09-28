@@ -1,0 +1,24 @@
+.ld-footer {
+  border-top: 1px solid var(--ld-border);
+  margin-top: 80px;
+  padding: 28px 0;
+}
+
+.ld-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--ld-ink-soft);
+}
+
+.ld-footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.ld-footer-links a:hover {
+  color: var(--ld-green-dark);
+}

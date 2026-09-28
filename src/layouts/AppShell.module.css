@@ -1,0 +1,52 @@
+.shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.skip {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  background: var(--ink);
+  color: var(--oat);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+}
+.skip:focus {
+  top: var(--space-4);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: var(--page-gap-y) var(--space-4) var(--space-7);
+}
+
+.loading {
+  color: var(--moss);
+  padding: var(--space-6) 0;
+}
+
+@media (min-width: 900px) {
+  .main {
+    padding-bottom: var(--space-8);
+  }
+}
+
+@media (min-width: 1100px) {
+  .main {
+    padding: var(--page-gap-y) var(--space-7) var(--space-8);
+  }
+}
+
+/* Wide desktop: sections set their own bottom spacing, so the hero fills exactly one screen */
+@media (min-width: 1200px) {
+  .main {
+    padding-bottom: 0;
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "homeLink": "Living Dose home",
+  "backHome": "Back to home",
+  "back": "Back",
+  "help": "Need help?",
+  "sending": "Sending your code…",
+  "saving": "Saving…",
+  "optional": "(optional)",
+  "legalLine": "By continuing, you agree to our <terms>Terms of use</terms> and <privacy>Privacy policy</privacy>.",
+  "demo": "Demo mode: Supabase isn't connected yet, so no real code is sent. Enter any 6 digits to continue.",
+  "phone": {
+    "label": "Phone number",
+    "countryLabel": "Country code",
+    "looksGood": "Looks good. Your code will arrive by text message."
+  },
+  "email": {
+    "label": "Email address",
+    "placeholder": "you@example.com"
+  },
+  "steps": {
+    "label": "Sign-up progress",
+    "account": "Account",
+    "verify": "Verify",
+    "about": "About you",
+    "done": "Done",
+    "completed": "(completed)"
+  },
+  "panel": {
+    "trustPrivate": "Private and secure",
+    "trustExperts": "Registered experts",
+    "trustFree": "Free to join",
+    "scoreTitle": "Your Living Score",
+    "scoreNote": "Up 4 points since your last visit",
+    "mealTime": "Today's lunch, 1:00 PM",
+    "mealName": "Ofada rice and vegetable stew",
+    "streak": "6-day healthy streak",
+    "free": "Free to join. No card needed.",
+    "benefits": {
+      "check": {
+        "title": "A free health check and Living Score",
+        "body": "Know where you stand in five minutes."
+      },
+      "plans": {
+        "title": "Meal plans for your body and budget",
+        "body": "Built from foods you know, checked by dietitians."
+      },
+      "experts": {
+        "title": "Experts a tap away",
+        "body": "Dietitians, doctors and psychologists by video, voice or chat."
+      },
+      "family": {
+        "title": "Care for your whole family",
+        "body": "One account for everyone at home, and loved ones abroad."
+      }
+    },
+    "security": {
+      "encrypted": "Your health records are encrypted.",
+      "private": "Only you and the experts you choose can see them.",
+      "neverAsk": "We'll never ask for your code by phone or message."
+    },
+    "summaryTitle": "Your plan so far",
+    "summaryBadge": "Updates as you choose",
+    "summaryFor": "For",
+    "summaryForEmpty": "Choose who it's for",
+    "summaryGoals": "Focusing on",
+    "summaryGoalsEmpty": "Pick one or more goals"
+  },
+  "signIn": {
+    "docTitle": "Sign in",
+    "title": "Sign in",
+    "lead": "Welcome back. We'll send a one-time code to confirm it's you, so there's no password to remember.",
+    "panelTitle": "Welcome back.",
+    "panelSub": "Your plan, your Living Score and your care team are right where you left them.",
+    "mobileStreak": "Keep your healthy streak going",
+    "methodLabel": "Sign in with",
+    "phoneTab": "Phone number",
+    "emailTab": "Email",
+    "phoneHint": "We'll text you a 6-digit code. Standard SMS rates may apply.",
+    "emailHint": "We'll email you a 6-digit code.",
+    "submit": "Send my code",
+    "newHere": "New to Living Dose?",
+    "createAccount": "Create a free account",
+    "createInstead": "Create a free account instead"
+  },
+  "signUp": {
+    "docTitle": "Create your account",
+    "title": "Create your free account",
+    "lead": "It takes about a minute. You'll confirm your number with a one-time code.",
+    "panelTitle": "Your healthier week starts here.",
+    "panelSub": "Everything you need to eat well and stay well, in one free account.",
+    "nameLabel": "What should we call you?",
+    "namePlaceholder": "Your first name",
+    "phoneHint": "We'll text you a code to confirm it's yours.",
+    "consentsLegend": "Your agreements",
+    "consentTerms": "I agree to the <terms>Terms of use</terms> and <privacy>Privacy policy</privacy>.",
+    "consentHealth": "I allow Living Dose to use the health information I share to personalise my plans.",
+    "consentHealthNote": "You can change this any time.",
+    "consentNews": "Send me healthy recipes and tips.",
+    "submit": "Create free account",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "secure": "Your information is encrypted and never sold."
+  },
+  "verify": {
+    "docTitle": "Enter your code",
+    "title": "Enter your code",
+    "sentTo": "We sent a 6-digit code to",
+    "panelTitle": "Your data stays private.",
+    "panelSub": "Confirming it's you keeps your account, and your health information, safe.",
+    "changeNumber": "Change number",
+    "changeEmail": "Change email",
+    "codeLabel": "6-digit code",
+    "demoHint": "Demo tip: any 6 digits work. Enter 000000 to see the wrong-code message.",
+    "checking": "Checking your code…",
+    "success": "Verified. Taking you in…",
+    "submit": "Verify and continue",
+    "resendIn": "Didn't get it? You can resend in",
+    "resendSms": "Resend code",
+    "resendEmail": "Resend email",
+    "whatsapp": "Send by WhatsApp instead",
+    "sentAgain": "A new code is on its way.",
+    "sentWhatsapp": "We've sent your code on WhatsApp.",
+    "neverShare": "We'll never ask for your code by phone or message. Don't share it with anyone.",
+    "trouble": "Having trouble?",
+    "contact": "Contact support"
+  },
+  "about": {
+    "docTitle": "About you",
+    "title": "Who is Living Dose for?",
+    "lead": "You can add more people later.",
+    "panelTitle": "Tell us a little about you.",
+    "panelSub": "This shapes your meal plan, your reminders and the experts we suggest.",
+    "who": {
+      "me": {
+        "title": "Just me",
+        "body": "Plans and tracking for yourself."
+      },
+      "family": {
+        "title": "My family",
+        "body": "Profiles for everyone at home."
+      },
+      "abroad": {
+        "title": "A loved one",
+        "body": "Care for someone at home, from abroad."
+      }
+    },
+    "goalsTitle": "What would you like help with?",
+    "goals": {
+      "eat": "Eat healthier",
+      "weight": "Lose weight",
+      "sugar": "Manage blood sugar",
+      "heart": "Heart health",
+      "pregnancy": "Healthy pregnancy",
+      "kids": "Feed my children well",
+      "energy": "More energy"
+    },
+    "submit": "Continue",
+    "skip": "Skip for now",
+    "footer": "Your choices shape your plan. Change them any time in Settings."
+  },
+  "welcome": {
+    "docTitle": "Welcome",
+    "title": "You're in.",
+    "titleNamed": "You're in, {{name}}.",
+    "sub": "Welcome to Living Dose. Here's where to start.",
+    "goHome": "Go to my home",
+    "startHere": "Start here",
+    "next": {
+      "check": {
+        "title": "Take your free health check",
+        "body": "About 5 minutes. Unlocks your Living Score and plan."
+      },
+      "shop": {
+        "title": "Browse healthy food",
+        "body": "Fresh, traceable food and meal packs."
+      },
+      "care": {
+        "title": "Meet a dietitian",
+        "body": "Book a video, voice or chat consultation."
+      }
+    }
+  },
+  "errors": {
+    "phoneInvalid": "Please enter a complete phone number.",
+    "emailInvalid": "Please enter a valid email address.",
+    "nameMissing": "Please tell us your first name.",
+    "consentsMissing": "Please tick the two required boxes to continue.",
+    "whoMissing": "Please choose who Living Dose is for.",
+    "codeIncomplete": "Please enter all 6 digits.",
+    "invalid_code": "That code isn't right. Check the message and try again.",
+    "expired": "This code has expired. Send yourself a new one below.",
+    "rate_limited": "Too many attempts. Please wait a minute, then try again.",
+    "no_account": "We couldn't find an account with those details.",
+    "network": "We couldn't connect. Check your internet connection and try again.",
+    "generic": "Something went wrong. Please try again."
+  }
+}

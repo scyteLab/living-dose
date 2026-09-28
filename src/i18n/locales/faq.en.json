@@ -1,0 +1,132 @@
+{
+  "categories": {
+    "general": {
+      "label": "Getting started",
+      "items": [
+        {
+          "id": "is-it-free",
+          "q": "Is Living Dose free?",
+          "a": [
+            "Yes. Creating an account, the health check, your Living Score, meal plan suggestions and our learning content are free.",
+            "You only pay when you choose to buy food or book a paid consultation, and you'll always see the price before you confirm."
+          ]
+        },
+        {
+          "id": "need-card",
+          "q": "Do I need a card to sign up?",
+          "a": "No. You can join with just your phone number."
+        },
+        {
+          "id": "where-available",
+          "q": "Where is Living Dose available?",
+          "a": "We're launching city by city, starting in Nigeria. Choose your country at the top of the page to see what's available where you live."
+        },
+        {
+          "id": "languages",
+          "q": "Which languages can I use?",
+          "a": "English today. French, Yorùbá, Hausa, Igbo and Kiswahili are on the way."
+        }
+      ]
+    },
+    "food": {
+      "label": "Food and delivery",
+      "items": [
+        {
+          "id": "delivery-areas",
+          "q": "Where do you deliver?",
+          "a": "We deliver in our launch cities and are adding more. Enter your address when you order to check delivery to your area."
+        },
+        {
+          "id": "pay-on-delivery",
+          "q": "Can I pay on delivery?",
+          "a": "Yes, in cities where it's available. You can also pay by card, bank transfer or USSD."
+        },
+        {
+          "id": "freshness",
+          "q": "How do I know the food is fresh?",
+          "a": "Every Living Dose product has a code you can scan to see the farm, the harvest date and each step to your door. Every batch is checked at our hub before delivery."
+        },
+        {
+          "id": "order-problem",
+          "q": "What if my order arrives damaged or wrong?",
+          "a": "Tell us in the app with a photo and we'll replace it or refund you."
+        }
+      ]
+    },
+    "nutrition": {
+      "label": "Nutrition and plans",
+      "items": [
+        {
+          "id": "who-makes-plans",
+          "q": "Who creates my meal plan?",
+          "a": "Your plan is built from your health check, your goals and your budget, using foods you know. Plans for health conditions such as diabetes, high blood pressure or pregnancy are reviewed by a registered dietitian."
+        },
+        {
+          "id": "snap-accuracy",
+          "q": "How accurate is Snap your plate?",
+          "a": "It estimates calories and nutrients from a photo. It's a helpful guide for tracking, not an exact measurement, and you can adjust the portion if it looks off."
+        },
+        {
+          "id": "living-score",
+          "q": "What is the Living Score?",
+          "a": "A number from 0 to 100 that sums up your eating, activity, water, sleep and health readings. It moves week by week so you can see your progress. It's a guide, not a diagnosis."
+        }
+      ]
+    },
+    "care": {
+      "label": "Care and consultations",
+      "items": [
+        {
+          "id": "professionals",
+          "q": "Who are the professionals on Living Dose?",
+          "a": "Registered doctors, dietitians, psychologists and fitness coaches. We check every professional's registration before they join and regularly afterwards."
+        },
+        {
+          "id": "consultations",
+          "q": "How do consultations work?",
+          "a": "Choose a professional, pick a time and meet by video, voice or chat. Your notes and any documents they share are saved to your records."
+        },
+        {
+          "id": "emergencies",
+          "q": "Can I use Living Dose in an emergency?",
+          "a": "No. If you or someone else needs urgent help, call 112 in Nigeria or your local emergency number, or go to the nearest hospital."
+        }
+      ]
+    },
+    "privacy": {
+      "label": "Privacy and safety",
+      "items": [
+        {
+          "id": "who-sees-data",
+          "q": "Who can see my health information?",
+          "a": "Only you and the professionals you choose to consult. We never sell your personal information."
+        },
+        {
+          "id": "delete-data",
+          "q": "Can I delete my information?",
+          "a": "Yes. You can download or delete your information at any time from your settings, or by contacting us."
+        }
+      ]
+    },
+    "family": {
+      "label": "Family and organisations",
+      "items": [
+        {
+          "id": "household",
+          "q": "Can I manage my family's health in one account?",
+          "a": "Yes. Add your spouse, children or parents as household profiles. Each person has their own plan and records."
+        },
+        {
+          "id": "diaspora-care",
+          "q": "How does Diaspora Care work?",
+          "a": "From abroad, you can look after meals, check-ups and consultations for a loved one at home and get a monthly update. The person you care for decides what you can see."
+        },
+        {
+          "id": "organisations",
+          "q": "Can my company or school use Living Dose?",
+          "a": "Yes. We work with companies on staff wellness, schools on feeding programmes and NGOs on community nutrition. Contact our team to get started."
+        }
+      ]
+    }
+  }
+}

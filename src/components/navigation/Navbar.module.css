@@ -1,0 +1,222 @@
+/*
+ * Nav type scale (one size for every text item in the bar):
+ *   Wordmark      Outfit 800   18px mobile / 20px desktop
+ *   Links         Figtree 600  14px
+ *   Region, Sign in  Figtree 600  14px
+ *   Join button   Outfit 600   14px
+ */
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: var(--oat);
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.scrolled {
+  background: rgba(250, 248, 243, 0.86);
+  backdrop-filter: saturate(1.4) blur(14px);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom-color: var(--line);
+  box-shadow: 0 6px 24px rgba(30, 51, 24, 0.05);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 1320px;
+  height: var(--nav-height);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  margin-right: auto;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- Links (desktop) ---------- */
+.links {
+  display: none;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 0.875rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.link:hover {
+  background: var(--cream);
+}
+
+/* Active page takes the colour of its area */
+.active_leaf,
+.active_leaf:hover {
+  background: var(--leaf-tint);
+  color: var(--leaf-deep);
+}
+.active_ember,
+.active_ember:hover {
+  background: var(--ember-tint);
+  color: var(--ember-deep);
+}
+.active_sky,
+.active_sky:hover {
+  background: var(--sky-tint);
+  color: var(--sky-deep);
+}
+.active_plum,
+.active_plum:hover {
+  background: var(--plum-tint);
+  color: var(--plum);
+}
+
+/* ---------- Actions ---------- */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.desktopOnly {
+  display: none;
+}
+
+.signIn {
+  align-items: center;
+  height: 36px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+.signIn:hover {
+  background: var(--cream);
+}
+
+.menuButton {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* ---------- Signed in ---------- */
+.account {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 40px;
+  padding: 0 var(--space-3) 0 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.account:hover {
+  border-color: #d3ccbc;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  background: var(--ember-tint);
+  color: var(--ember-deep);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.accountName {
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.signOut {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+@media (max-width: 479px) {
+  .accountName {
+    display: none;
+  }
+  .account {
+    padding-right: 4px;
+  }
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 1100px) {
+  .inner {
+    gap: var(--space-4);
+    padding: 0 var(--space-7);
+  }
+
+  .brand {
+    margin-right: 0;
+  }
+
+  .links {
+    display: block;
+    margin-inline: auto;
+  }
+
+  .desktopOnly {
+    display: inline-flex;
+  }
+
+  .actions {
+    gap: var(--space-2);
+  }
+
+  .menuButton {
+    display: none;
+  }
+}

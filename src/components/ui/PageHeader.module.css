@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 40rem;
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+}
+
+.leaf  { background: var(--leaf-tint);  color: var(--leaf-deep); }
+.ember { background: var(--ember-tint); color: var(--ember-deep); }
+.sky   { background: var(--sky-tint);   color: var(--sky-deep); }
+.plum  { background: var(--plum-tint);  color: var(--plum); }
+
+.title {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+}
+
+.intro {
+  color: var(--moss);
+  max-width: 34rem;
+}

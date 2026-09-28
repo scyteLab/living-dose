@@ -1,0 +1,54 @@
+/*
+ * Shared motion. Apply as plain class names alongside module classes:
+ *   className={clsx(styles.card, 'motion-pop-in')}  style={{ '--delay': '200ms' }}
+ * One element runs one animation; to combine an entrance with a loop,
+ * wrap: outer = entrance, inner = loop.
+ * All of this is switched off by the reduced-motion rule in global.css.
+ */
+
+@keyframes ld-rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes ld-pop-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes ld-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@keyframes ld-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.07); }
+}
+
+@keyframes ld-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.35); }
+}
+
+/* Entrances (run once) */
+.motion-rise {
+  animation: ld-rise 800ms var(--ease-out) var(--delay, 0ms) both;
+}
+
+.motion-pop-in {
+  animation: ld-pop-in 700ms var(--ease-out) var(--delay, 0ms) both;
+}
+
+/* Loops (run forever, gently) */
+.motion-float {
+  animation: ld-float var(--float-duration, 6s) ease-in-out var(--float-delay, 0s) infinite;
+}
+
+.motion-breathe {
+  animation: ld-breathe var(--breathe-duration, 10s) ease-in-out var(--breathe-delay, 0s) infinite;
+}
+
+.motion-pulse {
+  animation: ld-pulse 2.4s ease-in-out var(--pulse-delay, 0s) infinite;
+}

@@ -1,0 +1,185 @@
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* lets content shrink on narrow screens */
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  padding-block: var(--section-y);
+}
+
+.copy {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.note {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--leaf-deep);
+}
+
+/* ---------- Planner card ---------- */
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--paper);
+  box-shadow: 0 24px 60px rgba(30, 51, 24, 0.08);
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: var(--space-4);
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2);
+}
+
+.field label {
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.optional {
+  font-weight: 500;
+  color: var(--moss);
+}
+
+.field select,
+.money {
+  height: 48px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--oat);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.field select {
+  width: 100%;
+  min-width: 0;
+  padding: 0 var(--space-3);
+  font-size: 0.9375rem;
+}
+
+.field select:hover,
+.money:hover {
+  border-color: #d3ccbc;
+}
+
+.money {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
+}
+
+.money:focus-within {
+  outline: 3px solid var(--sky);
+  outline-offset: 2px;
+}
+
+.money input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  outline: none;
+}
+
+.money input::placeholder {
+  color: #9aa294;
+  font-weight: 500;
+}
+
+.symbol {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--leaf-deep);
+}
+
+.per {
+  font-size: var(--text-sm);
+  color: var(--moss);
+  white-space: nowrap;
+}
+
+/* ---------- Sample week ---------- */
+.preview {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--cream);
+}
+
+.previewTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.days {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.day {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.day dt {
+  font-weight: 700;
+}
+
+.day dd {
+  margin: 0;
+  color: var(--moss);
+}
+
+/* Meals sit in a row with a small leaf-green dot between them */
+.meal:not(:last-child)::after {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin: 0 0.55em 0.2em;
+  border-radius: var(--radius-pill);
+  background: var(--leaf);
+  vertical-align: middle;
+}
+
+.sample {
+  font-size: var(--text-xs);
+  color: var(--moss);
+}
+
+.cta {
+  width: 100%;
+}
+
+@media (min-width: 1000px) {
+  .section {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+}

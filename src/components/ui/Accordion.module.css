@@ -1,0 +1,63 @@
+.list {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.item[open] {
+  border-color: #d3ccbc;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 60px;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  list-style: none;
+  cursor: pointer;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary:hover .question {
+  color: var(--leaf-deep);
+}
+
+.question {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--moss);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.item[open] .chevron {
+  transform: rotate(180deg);
+}
+
+.answer {
+  display: grid;
+  gap: var(--space-3);
+  padding: 0 var(--space-5) var(--space-5);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--moss);
+  max-width: 48rem;
+}

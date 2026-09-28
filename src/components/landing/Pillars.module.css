@@ -1,0 +1,106 @@
+.section {
+  display: grid;
+  gap: clamp(2rem, 3vw, 3rem);
+  padding-block: var(--section-y);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-7);
+}
+
+.lead {
+  max-width: 24rem;
+  font-size: clamp(1rem, 0.2vw + 0.95rem, 1.125rem);
+  line-height: 1.6;
+  color: var(--moss);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-float);
+  border-color: transparent;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-2);
+  border-radius: 18px;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.cardBody {
+  flex: 1;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--moss);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+/* The whole card is clickable through the link */
+.link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.link svg {
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+.card:hover .link svg {
+  transform: translateX(3px);
+}
+
+.leaf .icon  { background: var(--leaf-tint);  color: var(--leaf-deep); }
+.leaf .link  { color: var(--leaf-deep); }
+.ember .icon { background: var(--ember-tint); color: var(--ember-deep); }
+.ember .link { color: var(--ember-deep); }
+.sky .icon   { background: var(--sky-tint);   color: var(--sky-deep); }
+.sky .link   { color: var(--sky-deep); }
+.plum .icon  { background: var(--plum-tint);  color: var(--plum); }
+.plum .link  { color: var(--plum); }
