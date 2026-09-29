@@ -1,0 +1,123 @@
+.page {
+  min-height: 100dvh;
+  background: var(--oat);
+}
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: calc(env(safe-area-inset-top, 0px) + var(--space-3)) var(--space-4) var(--space-3);
+  border-bottom: 1px solid var(--line);
+  background: rgba(250, 248, 243, 0.94);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.action span {
+  display: none;
+}
+
+.main {
+  display: grid;
+  gap: clamp(2.5rem, 4vw, 3.5rem);
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4) var(--space-8);
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + var(--space-5));
+  z-index: 20;
+  max-width: calc(100% - 2rem);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--oat);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transform: translateX(-50%);
+  box-shadow: var(--shadow-float);
+}
+
+.loading {
+  min-height: 60dvh;
+}
+
+.errorPage {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+  padding: var(--space-8) var(--space-4);
+}
+
+@media (min-width: 760px) {
+  .action span {
+    display: inline;
+  }
+}
+
+@media (min-width: 1100px) {
+  .top {
+    padding-inline: var(--space-7);
+  }
+  .main {
+    padding: var(--space-6) var(--space-7) var(--space-8);
+  }
+}
+
+/* "Download report (PDF)" uses the browser's Save as PDF with this print layout */
+@media print {
+  .top,
+  .toast {
+    display: none;
+  }
+
+  .page,
+  .main {
+    background: #fff;
+  }
+
+  .main {
+    max-width: none;
+    padding: 0;
+    gap: 24px;
+  }
+
+  :global(a) {
+    text-decoration: none;
+  }
+}

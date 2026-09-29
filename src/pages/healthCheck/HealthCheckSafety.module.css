@@ -1,0 +1,138 @@
+.page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--oat);
+}
+
+.top {
+  padding: calc(env(safe-area-inset-top, 0px) + var(--space-3)) var(--space-5) var(--space-3);
+  border-bottom: 1px solid var(--line);
+}
+
+.top a {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) var(--space-4);
+}
+
+.card {
+  display: grid;
+  gap: var(--space-5);
+  width: 100%;
+  max-width: 720px;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  border: 2px solid #e8a3b1;
+  border-radius: 32px;
+  background: var(--berry-tint);
+  color: #5e1424;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: var(--berry);
+  color: #fff;
+}
+
+.head {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: clamp(1.75rem, 1.5vw + 1.3rem, 2.375rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #5e1424;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+.signs {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.signsIntro {
+  font-weight: 700;
+}
+
+.signs ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.signs li {
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.call,
+.hospital {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 56px;
+  padding: 0 var(--space-6);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  text-decoration: none;
+}
+
+.call {
+  background: #a12a40;
+  color: #fff;
+}
+
+.hospital {
+  border: 1.5px solid #5e1424;
+  color: #5e1424;
+}
+
+.footer {
+  display: grid;
+  gap: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 1px solid #e8a3b1;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+}
+
+.footer a {
+  font-weight: 700;
+  color: #5e1424;
+}
+
+.continue {
+  justify-self: start;
+  margin-top: var(--space-2);
+}

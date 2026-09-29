@@ -15,3 +15,5 @@
 .sky     { background: var(--sky-tint);   color: var(--sky-deep); }
 .plum    { background: var(--plum-tint);  color: var(--plum); }
 .neutral { background: var(--cream);      color: var(--ink); }
+.berry   { background: var(--berry-tint); color: #7d1f31; }
+.dark    { background: var(--ink);        color: var(--oat); }

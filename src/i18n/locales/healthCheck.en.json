@@ -1,0 +1,764 @@
+{
+  "docTitle": "Health check",
+  "title": "Health check",
+  "progress": "{{pct}}% complete",
+  "saveLater": "Save and finish later",
+  "sectionOf": "Section {{n}} of 7: {{name}}",
+  "sectionsNav": "Health check sections",
+  "yourCheck": "Your health check",
+  "sevenSections": "7 short sections",
+  "minutesLeft_one": "About {{count}} minute left",
+  "minutesLeft_other": "About {{count}} minutes left",
+  "privacy": "Your answers are private. Only you, and the experts you choose, can see them.",
+  "back": "Back",
+  "continue": "Continue",
+  "seeResults": "See my results",
+  "whyTitle": "Why we ask",
+  "liveTitle": "Your result so far",
+  "optional": "(optional)",
+  "sections": {
+    "about": {
+      "name": "About you",
+      "title": "A little about you",
+      "sub": "These change how your results are worked out.",
+      "why": [
+        "Healthy ranges and risk scores differ by age and sex, so we need both to give you accurate results.",
+        "Pregnancy changes what's healthy for weight, food and activity, so we handle it differently."
+      ],
+      "source": "WHO and FINDRISC"
+    },
+    "body": {
+      "name": "Body",
+      "title": "Your height and weight",
+      "sub": "Use your most recent measurements. A rough number is fine, and you can update it any time.",
+      "why": [
+        "BMI compares your weight with your height. It's a quick first check, but it doesn't know about muscle, age or body shape.",
+        "That's why we also ask for your waist. Fat around the middle is linked to diabetes and heart disease, even at a healthy weight. A good rule: keep your waist to less than half your height."
+      ],
+      "source": "WHO and NICE guidance"
+    },
+    "eating": {
+      "name": "Eating",
+      "title": "How do you usually eat?",
+      "sub": "Choose the answer closest to a typical week.",
+      "why": [
+        "WHO recommends at least 5 portions (400 g) of fruit and vegetables a day, less than 5 g of salt (about one teaspoon), and keeping added sugar low.",
+        "Your answers help us suggest easy swaps with foods you already cook, not a foreign diet."
+      ],
+      "source": "WHO healthy diet guidance"
+    },
+    "activity": {
+      "name": "Activity and sleep",
+      "title": "How active are you, and how do you sleep?",
+      "sub": "Think about a normal week, not your best or worst one.",
+      "why": [
+        "WHO recommends adults get 150 to 300 minutes of moderate activity a week, plus muscle-strengthening on at least 2 days.",
+        "Most adults need 7 to 9 hours of sleep. Too little affects appetite, blood sugar and mood."
+      ],
+      "source": "WHO 2020 activity guidelines"
+    },
+    "habits": {
+      "name": "Habits",
+      "title": "Tobacco and alcohol",
+      "sub": "Be as honest as you can. Nobody else sees these answers.",
+      "why": [
+        "Tobacco in any form is one of the biggest causes of heart disease, stroke and cancer, and stopping helps at any age.",
+        "WHO advises that less alcohol is always better for health, and that no amount is completely safe."
+      ],
+      "source": "WHO guidance"
+    },
+    "mind": {
+      "name": "Mind and mood",
+      "title": "How have you been feeling lately?",
+      "sub": "Your answers stay private. Only you, and the experts you choose, can see them.",
+      "why": [
+        "These four questions are the PHQ-2 and GAD-2, short screening questions that doctors around the world use to spot low mood and anxiety early.",
+        "They can't diagnose anything. They help us know when to suggest extra support."
+      ],
+      "source": "PHQ-2 and GAD-2"
+    },
+    "history": {
+      "name": "Health history",
+      "title": "Your health history",
+      "sub": "This helps us spot risks early and keep your plan safe for you.",
+      "why": [
+        "These questions come from FINDRISC, a validated score that estimates the chance of developing type 2 diabetes in the next 10 years.",
+        "Blood pressure is grouped using the International Society of Hypertension's 2020 guideline."
+      ],
+      "source": "FINDRISC and ISH 2020"
+    }
+  },
+  "about": {
+    "age": "Your age",
+    "ageUnit": "years",
+    "ageHint": "You need to be 18 or over.",
+    "ageError": "Please enter an age between 18 and 110.",
+    "sex": "Sex",
+    "sexHint": "Healthy waist sizes and risk scores are different for women and men.",
+    "sexOptions": {
+      "female": "Female",
+      "male": "Male"
+    },
+    "pregnant": "Are you pregnant?",
+    "pregnantOptions": [
+      "No",
+      "Yes",
+      "Not sure"
+    ]
+  },
+  "body": {
+    "units": "Units",
+    "metric": "Metric (cm, kg)",
+    "imperial": "Imperial (ft, lb)",
+    "height": "Height",
+    "weight": "Weight",
+    "feet": "Height (feet)",
+    "inches": "(inches)",
+    "waist": "Waist size",
+    "waistOptional": "(optional, but very useful)",
+    "waistHow": "Measure halfway between your lowest rib and the top of your hip bone, after breathing out normally. Don't pull the tape tight.",
+    "rangeError": "Please check your height and weight. They look outside the usual range.",
+    "bmi": "Body mass index (BMI)",
+    "whtr": "Waist-to-height ratio",
+    "liveEmpty": "Enter your height and weight to see your BMI straight away.",
+    "pregnancyNote": "During pregnancy, BMI isn't used to judge your weight. Enter your current measurements; your dietitian will guide the rest."
+  },
+  "categories": {
+    "bmi": {
+      "underweight": "Underweight",
+      "healthy": "Healthy weight",
+      "overweight": "Overweight",
+      "obesity": "Obesity"
+    },
+    "whtr": {
+      "healthy": "Healthy range",
+      "increased": "Increased",
+      "high": "High"
+    },
+    "bp": {
+      "normal": "Normal",
+      "highNormal": "High-normal",
+      "grade1": "High",
+      "grade2": "Very high",
+      "crisis": "Dangerously high"
+    },
+    "findrisc": {
+      "low": "Low",
+      "slight": "Slightly elevated",
+      "moderate": "Moderate",
+      "high": "High",
+      "veryHigh": "Very high"
+    }
+  },
+  "scale": {
+    "bmi": [
+      "Under",
+      "Healthy",
+      "Over",
+      "Obesity"
+    ],
+    "whtr": [
+      "Healthy",
+      "Increased",
+      "High"
+    ],
+    "bp": [
+      "Normal",
+      "",
+      "High"
+    ],
+    "findrisc": [
+      "Low",
+      "",
+      "Moderate",
+      "",
+      "Very high"
+    ]
+  },
+  "eating": {
+    "answered": "questions answered. There are no wrong answers; think about a normal week.",
+    "questions": {
+      "fv": {
+        "title": "Portions of fruit and vegetables on a typical day",
+        "help": "A portion is about a handful: one orange or banana, or a cupful of cooked ugu, spinach or garden egg.",
+        "options": [
+          "None",
+          "1 to 2",
+          "3 to 4",
+          "5 or more"
+        ]
+      },
+      "drinks": {
+        "title": "How often do you have sugary drinks?",
+        "help": "Soft drinks, malt drinks, sweetened juice or zobo, or tea and coffee with sugar.",
+        "options": [
+          "Rarely",
+          "A few times a week",
+          "Once a day",
+          "More than once a day"
+        ]
+      },
+      "cubes": {
+        "title": "Seasoning or stock cubes in your cooking each day",
+        "help": "Cubes are one of the biggest hidden sources of salt.",
+        "options": [
+          "None",
+          "1",
+          "2 to 3",
+          "4 or more"
+        ]
+      },
+      "fried": {
+        "title": "How often do you eat fried food?",
+        "help": "Such as puff-puff, akara, fried plantain, yam or chicken.",
+        "options": [
+          "Rarely",
+          "1 to 2 times a week",
+          "3 to 5 times a week",
+          "Every day"
+        ]
+      },
+      "grains": {
+        "title": "Which grains do you mostly eat?",
+        "help": "Whole grains: ofada or brown rice, oats, whole wheat. Refined: white rice, white bread, pasta.",
+        "options": [
+          "Mostly whole",
+          "A mix",
+          "Mostly refined",
+          "Not sure"
+        ]
+      }
+    }
+  },
+  "activity": {
+    "minutes": "Active minutes in a typical week",
+    "minutesHelp": "Anything that makes you breathe faster but still able to talk: brisk walking, dancing, cycling, sweeping, farm work.",
+    "minutesUnit": "min",
+    "minutesValue": "{{count}} minutes a week",
+    "target": "150 WHO target",
+    "max": "420+",
+    "bands": {
+      "meets": "Meets the WHO target",
+      "getting": "Getting there: {{gap}} minutes to go",
+      "grow": "Room to grow: {{gap}} minutes to go"
+    },
+    "strength": "Days a week you do muscle-strengthening activity",
+    "strengthHelp": "Such as squats, push-ups, carrying loads or lifting weights.",
+    "strengthOptions": [
+      "None",
+      "1 day",
+      "2 days",
+      "3 or more"
+    ],
+    "sleep": "Hours of sleep on a typical night",
+    "less": "Less sleep",
+    "more": "More sleep",
+    "hoursUnit": "h",
+    "sleepBands": {
+      "short": "Less than recommended",
+      "healthy": "In the healthy range",
+      "long": "More than usual"
+    }
+  },
+  "habits": {
+    "questions": {
+      "tobacco": {
+        "title": "Do you smoke or use tobacco?",
+        "help": "Including cigarettes, shisha, snuff or chewing tobacco.",
+        "options": [
+          "Never",
+          "I used to",
+          "Yes, currently"
+        ]
+      },
+      "alcohol": {
+        "title": "How much alcohol do you drink in a typical week?",
+        "help": "One drink is a small bottle of beer, a glass of wine or palm wine, or a shot of spirits.",
+        "options": [
+          "None",
+          "1 to 7 drinks",
+          "8 to 14 drinks",
+          "15 or more"
+        ]
+      }
+    }
+  },
+  "mind": {
+    "intro": "Over the last 2 weeks, how often have you been bothered by the following?",
+    "questions": {
+      "p1": {
+        "title": "Little interest or pleasure in doing things",
+        "options": [
+          "Not at all",
+          "Several days",
+          "More than half the days",
+          "Nearly every day"
+        ]
+      },
+      "p2": {
+        "title": "Feeling down, depressed, or hopeless",
+        "options": [
+          "Not at all",
+          "Several days",
+          "More than half the days",
+          "Nearly every day"
+        ]
+      },
+      "g1": {
+        "title": "Feeling nervous, anxious, or on edge",
+        "options": [
+          "Not at all",
+          "Several days",
+          "More than half the days",
+          "Nearly every day"
+        ]
+      },
+      "g2": {
+        "title": "Not being able to stop or control worrying",
+        "options": [
+          "Not at all",
+          "Several days",
+          "More than half the days",
+          "Nearly every day"
+        ]
+      }
+    },
+    "skip": "I'd prefer not to answer these",
+    "skipped": "You've chosen to skip this section. That's completely fine, and it won't lower your score.",
+    "undo": "Answer them after all",
+    "supportTitle": "Your wellbeing matters too",
+    "supportBody": "Mood affects sleep, appetite and energy. If you're finding things hard, you don't have to wait for your results: you can talk to one of our psychologists.",
+    "supportCrisis": "If you're thinking of harming yourself, please call 112 now or go to the nearest hospital.",
+    "supportCta": "Talk to a psychologist"
+  },
+  "history": {
+    "conditions": "Has a doctor ever told you that you have any of these?",
+    "conditionsHint": "Choose all that apply.",
+    "conditionOptions": {
+      "hypertension": "High blood pressure",
+      "type2": "Type 2 diabetes",
+      "prediabetes": "Prediabetes",
+      "cholesterol": "High cholesterol",
+      "heart": "Heart disease or stroke",
+      "kidney": "Kidney disease",
+      "pcos": "PCOS",
+      "sickle": "Sickle cell disease",
+      "asthma": "Asthma",
+      "none": "None of these"
+    },
+    "bpTitle": "Your latest blood pressure",
+    "bpOptional": "(if you know it)",
+    "bpTop": "Top number",
+    "bpBottom": "Bottom number",
+    "bpUnit": "mmHg",
+    "bpUnknown": "I don't know my numbers",
+    "bpUnknownNote": "That's common. Most pharmacies can check it for you in a few minutes, and you can add it later.",
+    "bpInvalid": "Please check the numbers. The top number is usually between 90 and 200 and higher than the bottom one.",
+    "bpDanger": "This reading is very high. See what to do now",
+    "liveBp": "Blood pressure",
+    "liveBpEmpty": "Add a reading to see where it sits. Normal is below 130/85.",
+    "questions": {
+      "highSugar": {
+        "title": "Has a test ever shown your blood sugar was high?",
+        "help": "For example during pregnancy, an illness or a health check.",
+        "options": [
+          "No",
+          "Yes",
+          "Not sure"
+        ]
+      },
+      "bpMeds": {
+        "title": "Do you take medicine for high blood pressure?",
+        "options": [
+          "No",
+          "Yes"
+        ]
+      },
+      "family": {
+        "title": "Has anyone in your family been diagnosed with diabetes?",
+        "options": [
+          "No",
+          "Grandparent, aunt, uncle or cousin",
+          "Parent, brother, sister or child"
+        ]
+      }
+    }
+  },
+  "intro": {
+    "badge": "Free health check",
+    "title": "Know where you stand, in about 5 minutes.",
+    "body": "Answer seven short sections about your body, food, activity, sleep and wellbeing. We'll turn your answers into your Living Score and a plan built around you.",
+    "start": "Start my health check",
+    "resume": "Continue where you left off",
+    "startAgain": "Start again",
+    "lastResults": "See your last results",
+    "lastResultsDate": "Last checked {{date}}",
+    "stopAnyTime": "You can stop and continue later",
+    "standards": "Built on World Health Organization guidance and validated tools used by doctors worldwide (FINDRISC, PHQ-2, GAD-2). This check is a guide, not a diagnosis.",
+    "draftSaved": "You have answers saved from {{date}}.",
+    "exampleLabel": "Example result",
+    "exampleTitle": "Your Living Score",
+    "exampleBody": "Six areas, one clear picture.",
+    "getTitle": "What you'll get",
+    "get": {
+      "score": {
+        "title": "Your Living Score",
+        "body": "One number from 0 to 100, across six areas of health."
+      },
+      "numbers": {
+        "title": "Your key numbers",
+        "body": "BMI, waist-to-height ratio, blood pressure and type 2 diabetes risk."
+      },
+      "priorities": {
+        "title": "Your top 3 priorities",
+        "body": "Small, specific changes using foods you already know."
+      }
+    },
+    "backHome": "Back to my home"
+  },
+  "calculating": {
+    "title": "Putting your results together",
+    "sub": "This takes a few seconds.",
+    "steps": [
+      "Checking your body measurements",
+      "Comparing your eating with WHO guidance",
+      "Working out your type 2 diabetes risk (FINDRISC)",
+      "Looking at activity, sleep and wellbeing",
+      "Building your Living Score and priorities"
+    ],
+    "error": "We couldn't save your results. Check your connection and try again.",
+    "retry": "Try again"
+  },
+  "pillars": {
+    "eating": "Eating",
+    "activity": "Activity",
+    "body": "Body",
+    "sleep": "Sleep",
+    "mind": "Mind",
+    "habits": "Habits"
+  },
+  "results": {
+    "docTitle": "Your health check results",
+    "dateLine": "Your health check results · {{date}}",
+    "scoreTitle": "Your Living Score",
+    "outOf": "out of 100",
+    "bands": {
+      "attention": "Needs attention",
+      "grow": "Room to grow",
+      "good": "Good",
+      "strong": "Strong"
+    },
+    "bandsLegend": "Score bands: Needs attention under 40, Room to grow 40 to 59, Good 60 to 79, Strong 80 and above",
+    "headline": {
+      "strong": "You're in great shape, {{name}}.",
+      "good": "You're off to a good start, {{name}}.",
+      "grow": "You've taken the first step, {{name}}.",
+      "attention": "Thank you for being honest, {{name}}. Let's work on this together."
+    },
+    "headlineNoName": {
+      "strong": "You're in great shape.",
+      "good": "You're off to a good start.",
+      "grow": "You've taken the first step.",
+      "attention": "Thank you for being honest. Let's work on this together."
+    },
+    "summaryMixed": "{{strong}} {{strongVerb}} strong. {{weak}} {{weakVerb}} where small, steady changes will make the biggest difference.",
+    "summaryAllStrong": "Every area is looking healthy. Keep doing what you're doing, and check again in 4 weeks.",
+    "summaryAllWeak": "{{weak}} all have room to grow. Start with one priority below; small steps add up quickly.",
+    "is": "is",
+    "are": "are",
+    "and": "and",
+    "nextCheck": "Next check-in: {{date}}",
+    "measured": "Measured against WHO guidance",
+    "areasTitle": "Your six health areas",
+    "areasHint": "Select one to see why",
+    "areasLabel": "Your six health areas",
+    "ofHundred": "{{score}} of 100",
+    "notScored": "Not scored",
+    "status": {
+      "strong": "Strong",
+      "good": "Good",
+      "grow": "Room to grow",
+      "attention": "Needs attention",
+      "skipped": "Skipped"
+    },
+    "detail": {
+      "eating": "Fruit and vegetables: {{fv}} a day (the target is 5 or more). Sugary drinks: {{drinks}}. Seasoning cubes: {{cubes}} a day. Fried food: {{fried}}. Grains: {{grains}}.",
+      "activity": "About {{minutes}} active minutes a week (the target is 150 or more), and muscle-strengthening on {{strength}} a week (the target is 2 or more).",
+      "body": "BMI {{bmi}} ({{bmiCat}}). {{waistPart}} Blood pressure: {{bpPart}}.",
+      "bodyPregnant": "During pregnancy we don't score weight. Blood pressure: {{bpPart}}.",
+      "waistPart": "Waist-to-height ratio {{whtr}} ({{whtrCat}}).",
+      "noWaist": "Add your waist size for a fuller picture.",
+      "bpNotKnown": "not measured yet",
+      "sleep": "About {{hours}} hours a night. Most adults need 7 to 9.",
+      "mindPositive": "Your answers suggest you may be dealing with low mood or anxiety. You're not alone, and support can really help.",
+      "mindNegative": "Your answers to the PHQ-2 and GAD-2 questions don't suggest low mood or anxiety right now.",
+      "mindSkipped": "You chose not to answer these questions, so Mind isn't part of your score.",
+      "habits": "Tobacco: {{tobacco}}. Alcohol: {{alcohol}} a week."
+    },
+    "numbersTitle": "Your key numbers",
+    "numbersIntro": "Each one is compared with international guidelines, so you know exactly where you stand.",
+    "numbers": {
+      "bmi": {
+        "label": "Body mass index (BMI)",
+        "source": "WHO BMI classification",
+        "notes": {
+          "underweight": "Below the healthy range of 18.5 to 24.9. A dietitian can help you gain weight in a healthy way.",
+          "healthy": "Within the healthy range of 18.5 to 24.9. Keep it up.",
+          "overweight": "A little above the healthy range of 18.5 to 24.9. Losing about {{kg}} kg would bring you closer.",
+          "obesity": "Above the healthy range. Losing even 5% of your weight (about {{kg}} kg) lowers the risk of diabetes and heart disease."
+        },
+        "pregnant": "During pregnancy, BMI isn't used to judge weight. Your dietitian will guide you."
+      },
+      "whtr": {
+        "label": "Waist-to-height ratio",
+        "source": "NICE 2022 guidance",
+        "notes": {
+          "healthy": "Your waist ({{waist}} cm) is less than half your height. That's healthy.",
+          "increased": "Your waist ({{waist}} cm) is just over half your height. Aim for under {{target}} cm.",
+          "high": "Your waist ({{waist}} cm) is well over half your height, which raises health risks. Aim for under {{target}} cm."
+        },
+        "missing": "Add your waist size to see this. It's one of the best signs of health risk."
+      },
+      "bp": {
+        "label": "Blood pressure",
+        "source": "ISH 2020 guideline",
+        "missing": "Not measured yet. Most pharmacies can check it in minutes.",
+        "notes": {
+          "normal": "Below 130/85, which is normal. Check it again every year.",
+          "highNormal": "Slightly raised. Less salt and more activity help. Check again within 3 to 6 months.",
+          "grade1": "In the high blood pressure range. Please see a doctor or nurse to check it again soon.",
+          "grade2": "Very high. Please see a doctor within the next week.",
+          "crisis": "Dangerously high. Please get medical help today."
+        }
+      },
+      "findrisc": {
+        "label": "Type 2 diabetes risk",
+        "of": "of 26",
+        "source": "FINDRISC score",
+        "note": "About {{risk}} people with this score develop type 2 diabetes within 10 years.",
+        "noteLow": "About {{risk}} people with this score develop type 2 diabetes within 10 years. Keep it that way.",
+        "noWaist": "Add your waist size for a more accurate score.",
+        "notApplicable": "You've told us you have diabetes or prediabetes, so this risk score doesn't apply. Your plan will be tailored to it."
+      }
+    },
+    "prioritiesTitle": "Your top 3 priorities",
+    "prioritiesIntro": "Start with one. Small changes you keep beat big changes you don't.",
+    "priorities": {
+      "vegetables": {
+        "title": "Add more vegetables and fruit every day",
+        "body": "You have about {{now}} of the 5 portions WHO recommends. Stir ugu or spinach into your stew, snack on garden egg or an orange, and add vegetables to rice.",
+        "cta": "See vegetable recipes"
+      },
+      "moveMore": {
+        "title": "Build up to 150 active minutes a week",
+        "body": "You're at about {{minutes}}. A brisk 20-minute walk after dinner on a few evenings would close the {{gap}}-minute gap.",
+        "cta": "Start a walking plan"
+      },
+      "sugaryDrinks": {
+        "title": "Swap one sugary drink a day",
+        "body": "Try water with lemon, unsweetened zobo, or tea without sugar. It's one of the quickest ways to lower diabetes risk.",
+        "cta": "Set a daily reminder"
+      },
+      "lessSalt": {
+        "title": "Use fewer seasoning cubes",
+        "body": "Cubes are packed with salt. Try one less, and add flavour with onions, garlic, ginger, crayfish or fresh pepper.",
+        "cta": "See low-salt recipes"
+      },
+      "lessFried": {
+        "title": "Boil, grill or steam more often",
+        "body": "Swap some fried plantain or akara for boiled plantain or moi moi. You'll keep the taste and lose a lot of oil.",
+        "cta": "See healthier swaps"
+      },
+      "wholeGrains": {
+        "title": "Choose whole grains",
+        "body": "Ofada or brown rice, oats and whole-wheat bread keep you full longer and steady your blood sugar.",
+        "cta": "See whole-grain meals"
+      },
+      "strength": {
+        "title": "Add strength exercises twice a week",
+        "body": "Squats, push-ups against a wall, or carrying loads all count. Ten minutes is a good start.",
+        "cta": "Get a 10-minute routine"
+      },
+      "sleep": {
+        "title": "Protect your sleep",
+        "body": "You sleep about {{hours}} hours. Try a regular bedtime, less screen time before bed, and less caffeine after midday.",
+        "cta": "Get sleep tips"
+      },
+      "alcohol": {
+        "title": "Cut down on alcohol",
+        "body": "Try alcohol-free days each week and smaller measures. Your blood pressure, sleep and weight will all benefit.",
+        "cta": "Get support to cut down"
+      },
+      "weight": {
+        "title": "Aim to lose about {{kg}} kg",
+        "body": "That's about 5% of your weight, gently, over a few months. It's enough to lower your risk of diabetes and heart disease.",
+        "cta": "Plan it with a dietitian"
+      },
+      "stopSmoking": {
+        "title": "Get support to stop smoking",
+        "body": "It's the single best thing you can do for your health, at any age. Support makes it far more likely to work.",
+        "cta": "Talk to a doctor"
+      },
+      "talkToSomeone": {
+        "title": "Talk to someone about how you've been feeling",
+        "body": "Your answers suggest things may be hard right now. A psychologist can help, by video, voice or chat, in private.",
+        "cta": "Talk to a psychologist"
+      },
+      "keepGoing": {
+        "title": "Keep doing what you're doing",
+        "body": "You're meeting the main guidelines. Check again in 4 weeks to keep it that way.",
+        "cta": "Explore healthy recipes"
+      }
+    },
+    "guidelinesTitle": "You and the guidelines",
+    "cols": {
+      "area": "Area",
+      "you": "You",
+      "guideline": "Guideline",
+      "progress": "Progress",
+      "status": "Status"
+    },
+    "rows": {
+      "fv": {
+        "area": "Fruit and vegetables",
+        "target": "5 or more a day",
+        "you": [
+          "None a day",
+          "1 to 2 a day",
+          "3 to 4 a day",
+          "5 or more a day"
+        ]
+      },
+      "minutes": {
+        "area": "Active minutes",
+        "target": "150 or more a week",
+        "you": "{{count}} a week"
+      },
+      "strength": {
+        "area": "Strength training",
+        "target": "2 or more days a week",
+        "you": [
+          "None",
+          "1 day a week",
+          "2 days a week",
+          "3 or more days a week"
+        ]
+      },
+      "drinks": {
+        "area": "Sugary drinks",
+        "target": "Rarely",
+        "you": [
+          "Rarely",
+          "A few times a week",
+          "Once a day",
+          "More than once a day"
+        ]
+      },
+      "salt": {
+        "area": "Salt (seasoning cubes)",
+        "target": "Under 5 g of salt a day",
+        "you": [
+          "None",
+          "1 a day",
+          "2 to 3 a day",
+          "4 or more a day"
+        ]
+      },
+      "sleep": {
+        "area": "Sleep",
+        "target": "7 to 9 hours",
+        "you": "{{count}} hours"
+      },
+      "habits": {
+        "area": "Tobacco and alcohol",
+        "target": "None, or very little alcohol",
+        "youNone": "None",
+        "you": "{{tobacco}}; {{alcohol}}"
+      }
+    },
+    "statuses": {
+      "meets": "Meets",
+      "below": "Below",
+      "above": "Above",
+      "check": "Check"
+    },
+    "mindTitle": "Mind and mood",
+    "mind": {
+      "positive": "Your answers suggest you may be dealing with low mood or anxiety. That's more common than you might think, and talking to someone really helps.",
+      "negative": "Your answers don't suggest low mood or anxiety right now. That's worth protecting: sleep, movement and time with people all help.",
+      "skipped": "You chose not to answer these questions. You can talk to a psychologist any time, no questionnaire needed.",
+      "crisis": "If you're thinking of harming yourself, please call 112 now or go to the nearest hospital.",
+      "cta": "Talk to a psychologist"
+    },
+    "checksTitle": "Worth checking",
+    "checks": {
+      "bpDoctor": "Your blood pressure is high. Please book a check with a doctor or nurse soon.",
+      "bpRecheck": "Your blood pressure is slightly raised. Check it again within 3 to 6 months.",
+      "bpUnknown": "You don't know your blood pressure. Most pharmacies can check it in a few minutes; add it next time.",
+      "sugarTestSoon": "Your diabetes risk is raised. A fasting blood sugar or HbA1c test is a good idea soon.",
+      "sugarTest": "A simple blood sugar test at a clinic or pharmacy this year would give you peace of mind.",
+      "addWaist": "Add your waist size next time for a more accurate picture.",
+      "pregnancy": "You're pregnant, so weight-based measures aren't scored. Please follow your antenatal care team's advice."
+    },
+    "nextTitle": "What happens next",
+    "next": {
+      "plan": {
+        "title": "Your meal plan is ready",
+        "body": "A week of meals built from your results and foods you know, reviewed by a registered dietitian.",
+        "cta": "See my meal plan"
+      },
+      "dietitian": {
+        "title": "Go through it with a dietitian",
+        "body": "Talk about your results by video, voice or chat.",
+        "cta": "Book a consultation"
+      },
+      "remind": {
+        "title": "Check again in 4 weeks",
+        "body": "See how your score moves as small changes add up.",
+        "label": "Remind me on {{date}}"
+      }
+    },
+    "aboutTitle": "About this check",
+    "aboutBody": [
+      "Your Living Score combines six areas of health into one number from 0 to 100. It's a guide to help you improve, not a medical diagnosis. If you're worried about your health, or have symptoms, please speak to a doctor.",
+      "Only you, and the experts you choose to share it with, can see these results."
+    ],
+    "methodsTitle": "Methods and sources",
+    "methods": [
+      "Body mass index: WHO classification for adults",
+      "Waist-to-height ratio: NICE guideline on overweight and obesity (2022)",
+      "Blood pressure: International Society of Hypertension global guideline (2020)",
+      "Diabetes risk: FINDRISC, Finnish Diabetes Risk Score (Lindström and Tuomilehto, 2003)",
+      "Low mood and anxiety: PHQ-2 and GAD-2 screening questions",
+      "Diet, activity and sleep: WHO healthy diet guidance and WHO physical activity guidelines (2020)"
+    ],
+    "download": "Download report (PDF)",
+    "share": "Share with my doctor",
+    "retake": "Take the check again",
+    "shareTitle": "My Living Dose health check",
+    "copied": "Summary copied. Paste it into a message to your doctor.",
+    "shareText": "My Living Dose health check ({{date}})\nLiving Score: {{score}}/100 ({{band}})\nBMI: {{bmi}}\nWaist-to-height ratio: {{whtr}}\nBlood pressure: {{bp}}\nType 2 diabetes risk (FINDRISC): {{findrisc}}",
+    "notAvailable": "Not measured"
+  },
+  "safety": {
+    "docTitle": "Please get medical help",
+    "title": "Please get medical help now",
+    "body": "A blood pressure of {{bp}} is very high. It needs to be checked by a doctor today.",
+    "signsIntro": "Call 112 or go to the nearest hospital straight away if you also have:",
+    "signs": [
+      "Chest pain",
+      "Shortness of breath",
+      "Back pain",
+      "Numbness or weakness",
+      "A change in your vision",
+      "Difficulty speaking"
+    ],
+    "call": "Call 112",
+    "hospital": "Find a hospital near me",
+    "recheck": "If you feel well, sit quietly for 5 minutes and measure again. If it's still 180/110 or higher, contact a doctor today.",
+    "saved": "Your answers are saved.",
+    "typo": "I typed it wrongly, go back",
+    "continue": "I feel well, show my results"
+  },
+  "incomplete": "Please answer every question in this section to continue."
+}

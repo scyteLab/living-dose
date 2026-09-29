@@ -8,7 +8,7 @@ import useDocumentTitle from '@/hooks/useDocumentTitle'
 import styles from './Welcome.module.css'
 
 const NEXT = [
-  { key: 'check', icon: ClipboardPlus, tone: 'ember', to: '/plan', featured: true },
+  { key: 'check', icon: ClipboardPlus, tone: 'ember', to: '/health-check', featured: true },
   { key: 'shop', icon: ShoppingBag, tone: 'leaf', to: '/shop' },
   { key: 'care', icon: Video, tone: 'sky', to: '/care' },
 ]
