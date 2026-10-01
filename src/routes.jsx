@@ -2,6 +2,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { lazy } from 'react'
 import AppShell from '@/layouts/AppShell'
+import RouteError from '@/components/system/RouteError'
 import AuthShell from '@/components/auth/AuthShell'
 import { GuestOnly, RequireAuth } from '@/components/auth/RequireAuth'
 import HealthCheckProvider from '@/providers/HealthCheckProvider'
@@ -16,6 +17,18 @@ const Basket = lazy(() => import('@/pages/shop/BasketPage'))
 const Checkout = lazy(() => import('@/pages/shop/CheckoutPage'))
 const Order = lazy(() => import('@/pages/shop/OrderPage'))
 const Orders = lazy(() => import('@/pages/shop/OrdersPage'))
+const Account = lazy(() => import('@/pages/AccountPage'))
+const StaffLayout = lazy(() => import('@/components/staff/StaffLayout'))
+const StaffOverview = lazy(() => import('@/pages/staff/StaffOverview'))
+const StaffOrders = lazy(() => import('@/pages/staff/StaffOrders'))
+const StaffAppointments = lazy(() => import('@/pages/staff/StaffAppointments'))
+const StaffModeration = lazy(() => import('@/pages/staff/StaffModeration'))
+const StaffContent = lazy(() => import('@/pages/staff/StaffContent'))
+const StaffActivity = lazy(() => import('@/pages/staff/StaffActivity'))
+const ProLayout = lazy(() => import('@/components/pro/ProLayout'))
+const ProSchedule = lazy(() => import('@/pages/pro/ProSchedule'))
+const ProConsultation = lazy(() => import('@/pages/pro/ProConsultation'))
+const ProAvailability = lazy(() => import('@/pages/pro/ProAvailability'))
 const Care = lazy(() => import('@/pages/care/CarePage'))
 const Professional = lazy(() => import('@/pages/care/ProfessionalPage'))
 const Appointment = lazy(() => import('@/pages/care/AppointmentPage'))
@@ -51,6 +64,7 @@ export const routes = [
   {
     path: '/',
     element: <AppShell />,
+    errorElement: <RouteError />,
     children: [
       { index: true, element: <Home /> },
       { path: 'plan', element: <Plan /> },
@@ -60,6 +74,8 @@ export const routes = [
       { path: 'basket', element: <Basket /> },
       { path: 'checkout', element: <RequireAuth><Checkout /></RequireAuth> },
       { path: 'orders', element: <RequireAuth><Orders /></RequireAuth> },
+      { path: 'account', element: <RequireAuth><Account /></RequireAuth> },
+      { path: 'account/:section', element: <RequireAuth><Account /></RequireAuth> },
       { path: 'orders/:orderId', element: <RequireAuth><Order /></RequireAuth> },
       { path: 'care', element: <Care /> },
       { path: 'care/appointments', element: <RequireAuth><Appointments /></RequireAuth> },
@@ -85,12 +101,36 @@ export const routes = [
   {
     // Sign-in pages: their own full-screen layout, no site navigation
     element: <AuthShell />,
+    errorElement: <RouteError />,
     children: [
       { path: 'sign-in', element: <GuestOnly><SignIn /></GuestOnly> },
       { path: 'join', element: <GuestOnly><SignUp /></GuestOnly> },
       { path: 'verify', element: <Verify /> },
       { path: 'onboarding', element: <RequireAuth><Onboarding /></RequireAuth> },
       { path: 'welcome', element: <RequireAuth><Welcome /></RequireAuth> },
+      {
+        // Staff console: sign-in required here, staff role checked inside StaffLayout
+        path: 'staff',
+        element: <RequireAuth><StaffLayout /></RequireAuth>,
+        children: [
+          { index: true, element: <StaffOverview /> },
+          { path: 'orders', element: <StaffOrders /> },
+          { path: 'appointments', element: <StaffAppointments /> },
+          { path: 'moderation', element: <StaffModeration /> },
+          { path: 'content', element: <StaffContent /> },
+          { path: 'activity', element: <StaffActivity /> },
+        ],
+      },
+      {
+        // Professionals' portal: sign-in required here, professional role checked inside ProLayout
+        path: 'pro',
+        element: <RequireAuth><ProLayout /></RequireAuth>,
+        children: [
+          { index: true, element: <ProSchedule /> },
+          { path: 'consultations/:appointmentId', element: <ProConsultation /> },
+          { path: 'availability', element: <ProAvailability /> },
+        ],
+      },
       {
         // Health check: answers are shared across these pages and saved as a draft
         path: 'health-check',

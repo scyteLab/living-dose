@@ -15,12 +15,12 @@
 
   /* Leaf: food, farm, growth, progress */
   --leaf: #7caf42;
-  --leaf-deep: #4c7a1f;
+  --leaf-deep: #44701a;
   --leaf-tint: #eaf3dd;
 
   /* Ember: nutrition, energy, action, rewards */
   --ember: #f57f17;
-  --ember-deep: #b4530a;
+  --ember-deep: #a34a07;
   --ember-tint: #fdebdb;
 
   /* Sky: care, clinical trust, records */

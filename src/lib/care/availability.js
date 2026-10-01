@@ -32,7 +32,7 @@ export function availableDays(professional, { now = new Date(), days = care.days
     const noon = lagosTime(ty, tm, td + i, 12)
     const { iso, weekday } = lagosDay(noon)
     const hours = professional.schedule[weekday]
-    if (!hours) continue
+    if (!hours || professional.daysOff?.includes(iso)) continue
     const [y, m, d] = iso.split('-').map(Number)
     const slots = []
     for (let mins = hours[0] * 60; mins + care.slotMinutes <= hours[1] * 60; mins += care.slotMinutes) {

@@ -31,7 +31,7 @@ export default function RecipePage() {
   const { t } = useTranslation('learn')
   const tp = useTranslation('plan').t
   const r = RECIPES_BY_ID[recipeId]
-  useDocumentTitle(r?.name ?? t('docTitle'))
+  useDocumentTitle(r?.name ?? t('docTitle'), r ? `${r.name}: a ${r.minutes ? `${r.minutes}-minute ` : ''}recipe with about ${r.kcal} kcal per serving, from Living Dose.` : undefined)
   const { addMany } = useCart()
   const [servings, setServings] = useState(2)
   const [added, setAdded] = useState(null)

@@ -1,0 +1,178 @@
+{
+  "docTitle": "My account",
+  "title": "My account",
+  "intro": "Your details, family, reminders and privacy, all in one place.",
+  "nav": {
+    "label": "Account sections",
+    "profile": "Profile",
+    "household": "Household",
+    "notifications": "Notifications",
+    "privacy": "Privacy and data",
+    "security": "Sign-in and security"
+  },
+  "saved": "Saved.",
+  "save": "Save changes",
+  "saving": "Saving…",
+  "cancel": "Cancel",
+  "optional": "(optional)",
+  "profile": {
+    "title": "Profile",
+    "name": "First name",
+    "nameHint": "This is how we greet you and how you appear in Community.",
+    "nameError": "Please enter your first name (up to 40 characters).",
+    "phone": "Phone number",
+    "email": "Email",
+    "notSet": "Not added",
+    "contactHint": "You sign in with this. To change it, contact us.",
+    "language": "Language",
+    "languageHint": "More languages are on the way.",
+    "region": "Country",
+    "regionHint": "Sets your currency, local foods and experts.",
+    "units": "Units",
+    "unitsOptions": {
+      "metric": "Metric (kg, cm)",
+      "imperial": "Imperial (lb, ft)"
+    }
+  },
+  "household": {
+    "title": "Household",
+    "intro": "Add the people you cook for or care for, including loved ones abroad.",
+    "you": "You",
+    "add": "Add a person",
+    "edit": "Edit",
+    "remove": "Remove",
+    "removeConfirm": "Remove {{name}} from your household?",
+    "empty": "It's just you for now.",
+    "planTitle": "Meal plan portions",
+    "planBody": "Your meal plan is set for {{count}} person.",
+    "planBody_other": "Your meal plan is set for {{count}} people.",
+    "planUse": "Cook for {{count}}",
+    "planUse_one": "Cook for {{count}} person",
+    "planUse_other": "Cook for {{count}} people",
+    "planUpdated": "Your meal plan now cooks for {{count}}.",
+    "form": {
+      "addTitle": "Add a person",
+      "editTitle": "Edit {{name}}",
+      "name": "Name",
+      "relationship": "Relationship",
+      "ageGroup": "Age group",
+      "avoid": "Foods they avoid",
+      "lives": "Lives",
+      "livesOptions": {
+        "home": "With me",
+        "nigeria": "Elsewhere in Nigeria",
+        "abroad": "Abroad"
+      },
+      "errors": {
+        "name": "Please enter a name (up to 40 characters).",
+        "relationship": "Please choose a relationship.",
+        "ageGroup": "Please choose an age group."
+      }
+    },
+    "relationships": {
+      "partner": "Partner",
+      "child": "Child",
+      "parent": "Parent",
+      "sibling": "Brother or sister",
+      "grandparent": "Grandparent",
+      "other": "Other"
+    },
+    "ageGroups": {
+      "child": "Child (under 12)",
+      "teen": "Teenager (12 to 17)",
+      "adult": "Adult",
+      "older": "Older adult (65+)"
+    },
+    "avoidOptions": {
+      "pork": "Pork",
+      "beef": "Beef",
+      "chicken": "Chicken",
+      "fish": "Fish",
+      "shellfish": "Shellfish",
+      "egg": "Eggs",
+      "dairy": "Dairy",
+      "nuts": "Nuts"
+    },
+    "childNote": "Children have different nutrition needs. A dietitian can tailor their meals."
+  },
+  "notifications": {
+    "title": "Notifications",
+    "intro": "Choose what we remind you about, and how.",
+    "what": "Reminders",
+    "meals": "Meal reminders",
+    "mealsHint": "A nudge at your usual meal times.",
+    "water": "Water reminders",
+    "waterHint": "A few gentle reminders through the day.",
+    "consultations": "Consultation reminders",
+    "consultationsHint": "Always on, so you never miss a booked call.",
+    "checkIn": "Health check-in every 4 weeks",
+    "orders": "Order and delivery updates",
+    "news": "Healthy recipes and tips",
+    "times": "Meal times",
+    "slots": {
+      "breakfast": "Breakfast",
+      "lunch": "Lunch",
+      "dinner": "Dinner"
+    },
+    "how": "How to reach you",
+    "channels": {
+      "push": "App notifications",
+      "sms": "Text message (SMS)",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    },
+    "channelError": "Please keep at least one way for us to reach you.",
+    "quiet": "Quiet hours",
+    "quietHint": "No reminders between these times, except for consultations.",
+    "from": "From",
+    "to": "To",
+    "serverNote": "Reminders are sent once the Living Dose server is connected. Your choices are saved now."
+  },
+  "privacy": {
+    "title": "Privacy and data",
+    "intro": "You're in control of your information. Under Nigeria's data protection law you can see, correct and delete what we hold about you.",
+    "consents": "Your consents",
+    "termsAgreed": "Terms of use and Privacy policy",
+    "healthAgreed": "Using your health information to personalise your plans",
+    "agreedOn": "Agreed on {{date}}",
+    "notRecorded": "Agreed when you joined",
+    "healthHint": "If you withdraw this, we'll stop personalising your plans. Contact us to withdraw.",
+    "policies": "Read the policies",
+    "download": "Download my data",
+    "downloadBody": "A file with everything Living Dose holds about you on this device: health checks, meal plans, food diary, orders, appointments and more.",
+    "downloadButton": "Download my data",
+    "downloaded": "Your data file has been downloaded.",
+    "deleteLocal": "Delete my data from this device",
+    "deleteLocalBody": "Removes your health checks, meal plans, diary, habits, orders and other saved information from this device. Your account stays open.",
+    "deleteLocalButton": "Delete data from this device",
+    "deleteTitle": "Delete your data from this device?",
+    "deleteBody": "This can't be undone. We suggest downloading your data first.",
+    "deleteType": "Type DELETE to confirm",
+    "deleteConfirm": "Delete my data",
+    "deleted_one": "Deleted {{count}} item from this device.",
+    "deleted_other": "Deleted {{count}} items from this device.",
+    "account": "Close my account",
+    "accountBody": "We'll delete your account and all the data we hold on our servers, except what the law requires us to keep, such as order records for tax. We'll confirm by message.",
+    "accountButton": "Request account deletion",
+    "accountSubject": "Account deletion request"
+  },
+  "security": {
+    "title": "Sign-in and security",
+    "method": "How you sign in",
+    "methodPhone": "One-time code by text message to {{phone}}",
+    "methodEmail": "One-time code by email to {{email}}",
+    "noPassword": "There's no password to remember or steal. Each code works once and expires quickly.",
+    "signOut": "Sign out",
+    "signOutBody": "Sign out on this device.",
+    "signOutAll": "Sign out everywhere",
+    "signOutAllBody": "Sign out on every phone and computer you've used. Useful if you've lost a device.",
+    "signOutAllConfirm": "Sign out of Living Dose on all your devices?",
+    "tips": "Staying safe",
+    "tipsItems": [
+      "Living Dose will never ask for your code by phone, message or email.",
+      "Don't share your code with anyone, even someone saying they're from Living Dose.",
+      "Use a screen lock on your phone, as your health information is on it."
+    ]
+  },
+  "staffConsole": "Staff console"
+}

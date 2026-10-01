@@ -1,0 +1,195 @@
+{
+  "docTitle": "Staff console",
+  "title": "Staff console",
+  "signedInAs": "Signed in as {{name}}",
+  "backToSite": "Back to the site",
+  "nav": {
+    "label": "Staff sections",
+    "overview": "Overview",
+    "orders": "Orders",
+    "appointments": "Consultations",
+    "moderation": "Moderation",
+    "content": "Clinical review",
+    "activity": "Activity log"
+  },
+  "gate": {
+    "title": "Staff only",
+    "body": "This area is for the Living Dose team. Your account doesn't have staff access.",
+    "live": "Ask an administrator to give your account the staff role. It is set on the server, so it can't be changed from here.",
+    "demo": "Demo mode: you can try the staff console with demo access. In the live app, only staff accounts set on the server can open it.",
+    "enableDemo": "Turn on demo staff access",
+    "home": "Go to the home page"
+  },
+  "demoBanner": "Demo mode: this console shows data saved in this browser only.",
+  "overview": {
+    "title": "Today at a glance",
+    "ordersToday": "Orders today",
+    "openOrders": "Open orders",
+    "toPack": "to pack",
+    "cashDue": "Cash due on delivery",
+    "appointments": "Upcoming consultations",
+    "next24h": "in the next 24 hours",
+    "reports": "Posts to review",
+    "review": "Articles awaiting review",
+    "goOrders": "Go to orders",
+    "goAppointments": "See consultations",
+    "goModeration": "Review reports",
+    "goContent": "See clinical review"
+  },
+  "orders": {
+    "title": "Orders",
+    "search": "Search orders",
+    "searchPlaceholder": "Order number, name, phone or area",
+    "filters": {
+      "open": "Open",
+      "placed": "To pack",
+      "packed": "Packed",
+      "onTheWay": "On the way",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "all": "All"
+    },
+    "count_one": "{{count}} order",
+    "count_other": "{{count}} orders",
+    "empty": "No orders here.",
+    "cols": {
+      "order": "Order",
+      "customer": "Customer",
+      "delivery": "Delivery",
+      "total": "Total",
+      "status": "Status",
+      "action": "Next step"
+    },
+    "advance": {
+      "packed": "Mark packed",
+      "onTheWay": "Send out",
+      "delivered": "Mark delivered"
+    },
+    "view": "View",
+    "items_one": "{{count}} item",
+    "items_other": "{{count}} items",
+    "detail": {
+      "title": "Order {{id}}",
+      "customer": "Customer",
+      "call": "Call",
+      "items": "Items",
+      "note": "Rider note",
+      "history": "History",
+      "payment": "Pay on delivery: {{amount}}",
+      "paid": "Payment collected on delivery",
+      "cancel": "Cancel order",
+      "cancelConfirm": "Cancel order {{id}}? The customer will see it as cancelled.",
+      "close": "Close"
+    },
+    "status": {
+      "placed": "Placed",
+      "packed": "Packed",
+      "onTheWay": "On the way",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    }
+  },
+  "appointments": {
+    "title": "Consultations",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "empty": "No consultations here.",
+    "cols": {
+      "time": "Time (WAT)",
+      "professional": "Professional",
+      "type": "Type",
+      "topic": "Topic",
+      "status": "Status",
+      "action": "Action"
+    },
+    "complete": "Completed",
+    "noShow": "No-show",
+    "status": {
+      "booked": "Booked",
+      "completed": "Completed",
+      "no_show": "No-show",
+      "cancelled": "Cancelled"
+    },
+    "shared": "Results shared"
+  },
+  "moderation": {
+    "title": "Moderation",
+    "open": "To review",
+    "resolved": "Resolved",
+    "empty": "Nothing to review. Good news.",
+    "reasons": {
+      "harmful": "Harmful or dangerous health advice",
+      "unkind": "Unkind, bullying or hateful",
+      "spam": "Spam or selling",
+      "private": "Shares someone's private details",
+      "other": "Something else"
+    },
+    "reports_one": "{{count}} report",
+    "reports_other": "{{count}} reports",
+    "kind": {
+      "post": "Post",
+      "reply": "Reply"
+    },
+    "in": "in {{group}}",
+    "remove": "Remove",
+    "keep": "Keep",
+    "view": "View in context",
+    "removed": "Removed",
+    "kept": "Kept",
+    "removeConfirm": "Remove this for everyone?",
+    "guide": "Remove anything harmful, unkind, selling or sharing private details. If a post suggests someone may be at risk, contact them and follow the safeguarding procedure."
+  },
+  "content": {
+    "title": "Clinical review",
+    "intro": "Everything here must be checked and signed off by a registered dietitian or doctor before launch.",
+    "articles": "Articles",
+    "status": "Status",
+    "awaiting": "Awaiting review",
+    "reviewed": "Reviewed by {{name}}",
+    "howTo": "To sign off an article, set reviewedBy and reviewedOn in src/data/articles.js.",
+    "other": "Other content to verify",
+    "items": {
+      "recipes": {
+        "title": "{{count}} meal-plan recipes",
+        "body": "Nutrition estimates and pregnancy, blood-sugar and heart tags. File: src/data/recipes.js"
+      },
+      "foods": {
+        "title": "{{count}} everyday foods",
+        "body": "Nutrition estimates for Snap a meal. File: src/data/foods.js"
+      },
+      "scoring": {
+        "title": "Health check scoring",
+        "body": "Living Score weights and wording. File: src/lib/healthCheck/scoring.js"
+      },
+      "professionals": {
+        "title": "{{count}} sample professionals",
+        "body": "Replace with real, verified professionals. File: src/data/professionals.js"
+      },
+      "community": {
+        "title": "{{count}} sample community posts",
+        "body": "Remove or replace before launch. File: src/data/community.js"
+      },
+      "products": {
+        "title": "{{count}} products",
+        "body": "Prices and farm details are placeholders. File: src/data/products.js"
+      }
+    }
+  },
+  "activity": {
+    "title": "Activity log",
+    "intro": "Every staff action, newest first.",
+    "empty": "No staff actions yet.",
+    "cols": {
+      "when": "When",
+      "who": "Who",
+      "action": "Action",
+      "detail": "Detail"
+    },
+    "actions": {
+      "order.status": "Order status",
+      "appointment.status": "Consultation",
+      "moderation.remove": "Removed post",
+      "moderation.keep": "Kept post"
+    }
+  }
+}

@@ -55,9 +55,15 @@ export async function saveResult(userId, answers, results) {
   return { id: data.id, ...record, createdAt: data.created_at }
 }
 
+/** Ignore damaged or partial records rather than letting them break pages. */
+const isComplete = (r) => Boolean(r?.results && typeof r.results.score === 'number' && r.results.pillars && r.results.measures && r.answers)
+
 /** The most recent finished check, or null. */
 export async function loadLatestResult(userId) {
-  if (isDemo) return (readJson(resultsKey(userId)) ?? [])[0] ?? null
+  if (isDemo) {
+    const latest = (readJson(resultsKey(userId)) ?? [])[0]
+    return isComplete(latest) ? latest : null
+  }
 
   const { data, error } = await supabase
     .from('health_checks')
@@ -67,7 +73,8 @@ export async function loadLatestResult(userId) {
     .limit(1)
     .maybeSingle()
   if (error) throw error
-  return data ? { id: data.id, answers: data.answers, results: data.results, remind: data.remind, createdAt: data.created_at } : null
+  const record = data ? { id: data.id, answers: data.answers, results: data.results, remind: data.remind, createdAt: data.created_at } : null
+  return isComplete(record) ? record : null
 }
 
 /** Turn the 4-week reminder on or off for a saved check. */

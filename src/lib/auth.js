@@ -117,3 +117,24 @@ export async function signOut() {
   }
   await supabase.auth.signOut()
 }
+
+/** Update the person's name and preferences (stored with their account). */
+export async function updateProfile(user, patch) {
+  if (isDemo) {
+    await wait(300)
+    writeDemoUser({ ...user, user_metadata: { ...user.user_metadata, ...patch } })
+    return
+  }
+  const { error } = await supabase.auth.updateUser({ data: patch })
+  if (error) throw toAuthError(error)
+  if (patch.first_name) await supabase.from('profiles').update({ first_name: patch.first_name }).eq('id', user.id)
+}
+
+/** Sign out on every device, not just this one. */
+export async function signOutEverywhere() {
+  if (isDemo) {
+    writeDemoUser(null)
+    return
+  }
+  await supabase.auth.signOut({ scope: 'global' })
+}

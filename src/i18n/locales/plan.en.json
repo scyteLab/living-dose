@@ -198,5 +198,6 @@
     "cancel": "Cancel",
     "saved": "Your plan has been rebuilt."
   },
-  "review": "Recipes follow WHO healthy eating guidance and will be reviewed by a registered dietitian."
+  "review": "Recipes follow WHO healthy eating guidance and will be reviewed by a registered dietitian.",
+  "metaDescription": "A weekly meal plan built from your health check, local foods and your budget, with a shopping list to match."
 }

@@ -22,13 +22,13 @@ const TABS = ['feed', 'groups', 'challenges']
 
 export default function CommunityPage() {
   const { t } = useTranslation('community')
-  useDocumentTitle(t('docTitle'))
+  useDocumentTitle(t('docTitle'), t('metaDescription'))
   const { user } = useAuth()
   const c = useCommunity(user)
   const [params, setParams] = useSearchParams()
   const [notice, setNotice] = useState(null)
-  const report = useReport((id) => {
-    c.report(id)
+  const report = useReport((id, reason) => {
+    c.report(id, reason)
     setNotice(t('report.done'))
   })
   const tab = TABS.includes(params.get('tab')) ? params.get('tab') : 'feed'

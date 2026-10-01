@@ -142,13 +142,15 @@
       "placed": "Order placed",
       "packed": "Packed",
       "onTheWay": "On the way",
-      "delivered": "Delivered"
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
     },
     "statusHint": {
       "placed": "We've received your order.",
       "packed": "We pack fresh food on the morning of delivery.",
       "onTheWay": "The rider will call before arriving.",
-      "delivered": "Enjoy your food."
+      "delivered": "Enjoy your food.",
+      "cancelled": "This order was cancelled. Nothing to pay."
     },
     "items": "Items",
     "deliverTo": "Delivering to",
@@ -158,7 +160,8 @@
     "contact": "Contact us",
     "continue": "Continue shopping",
     "all": "All orders",
-    "notFound": "We couldn't find that order."
+    "notFound": "We couldn't find that order.",
+    "cancelledNotice": "This order was cancelled. Nothing will be delivered and there's nothing to pay. Contact us if you have questions."
   },
   "orders": {
     "docTitle": "Your orders",
@@ -175,5 +178,6 @@
     "protein": "High protein",
     "lowCost": "Lower cost"
   },
-  "prices": "Prices shown in naira. Delivery is free on orders of {{amount}} or more."
+  "prices": "Prices shown in naira. Delivery is free on orders of {{amount}} or more.",
+  "metaDescription": "Fresh, traceable food from local farms and ready meal packs for healthier eating, delivered in Lagos. Pay on delivery."
 }

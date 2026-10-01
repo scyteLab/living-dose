@@ -26,7 +26,7 @@ function newRef() {
   return `LC-${code}`
 }
 
-export async function bookAppointment(userId, { professionalId, type, start, topic, note, shareResults }) {
+export async function bookAppointment(userId, { professionalId, type, start, topic, note, shareResults, memberName }) {
   const booked = bookedSlots()
   const slotKey = `${professionalId}|${start}`
   if (booked.has(slotKey)) {
@@ -45,6 +45,7 @@ export async function bookAppointment(userId, { professionalId, type, start, top
     topic,
     note: note?.trim() || null,
     shareResults: Boolean(shareResults),
+    memberName: memberName || null,
     status: 'booked',
     createdAt: new Date().toISOString(),
   }

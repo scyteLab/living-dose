@@ -510,5 +510,16 @@
         "body": "We set you up on Living Dose and support you as you grow."
       }
     }
+  },
+  "system": {
+    "offline": "You're offline. Changes are saved on this device.",
+    "backOnline": "You're back online.",
+    "errorTitle": "Something went wrong",
+    "errorBody": "Sorry, this page didn't load properly. Your information is safe. Please try again.",
+    "updateTitle": "Living Dose has been updated",
+    "updateBody": "A newer version is ready. Reload to continue where you left off.",
+    "retry": "Try again",
+    "home": "Go to the home page",
+    "orTry": "Or try one of these:"
   }
 }

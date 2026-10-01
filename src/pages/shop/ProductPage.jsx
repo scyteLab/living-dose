@@ -17,7 +17,7 @@ export default function ProductPage() {
   const { productId } = useParams()
   const { t } = useTranslation('shop')
   const product = PRODUCTS_BY_ID[productId]
-  useDocumentTitle(product?.name ?? t('docTitle'))
+  useDocumentTitle(product?.name ?? t('docTitle'), product ? `${product.name} (${product.unit}). ${product.description}` : undefined)
 
   if (!product) {
     return (

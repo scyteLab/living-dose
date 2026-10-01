@@ -18,7 +18,7 @@ const SORTS = ['recommended', 'priceLow', 'priceHigh', 'name']
 /** Search, category and filters live in the address, so a filtered view can be shared or bookmarked. */
 export default function ShopPage() {
   const { t } = useTranslation('shop')
-  useDocumentTitle(t('docTitle'))
+  useDocumentTitle(t('docTitle'), t('metaDescription'))
   const { user } = useAuth()
   const searchId = useId()
   const sortId = useId()

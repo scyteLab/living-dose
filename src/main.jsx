@@ -5,6 +5,7 @@ import { queryClient } from '@/lib/queryClient'
 import RegionProvider from '@/providers/RegionProvider'
 import AuthProvider from '@/providers/AuthProvider'
 import CartProvider from '@/providers/CartProvider'
+import { registerServiceWorker } from '@/lib/pwa'
 import '@/i18n'
 import '@/styles/global.css'
 import App from './App'
@@ -22,3 +23,5 @@ createRoot(document.getElementById('root')).render(
     </QueryClientProvider>
   </StrictMode>,
 )
+
+registerServiceWorker()

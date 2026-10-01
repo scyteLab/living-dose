@@ -8,8 +8,8 @@ export default function useReport(onReported) {
     <ReportDialog
       open={Boolean(target)}
       onClose={() => setTarget(null)}
-      onReport={() => {
-        onReported(target)
+      onReport={(reason) => {
+        onReported(target, reason)
         setTarget(null)
       }}
     />

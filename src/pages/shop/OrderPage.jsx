@@ -66,7 +66,7 @@ export default function OrderPage() {
       <div className={styles.checkoutLayout}>
         <div className={styles.checkoutMain}>
           <section className={styles.panel}>
-            <OrderTimeline status={order.status} />
+            {order.status === 'cancelled' ? <p className={styles.errorText}>{t('order.cancelledNotice')}</p> : <OrderTimeline status={order.status} />}
           </section>
 
           <section className={styles.panel} aria-labelledby="items-title">

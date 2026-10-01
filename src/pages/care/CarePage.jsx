@@ -10,10 +10,11 @@ import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { bookedSlots, listAppointments } from '@/lib/care/appointments'
 import { availableDays, lagosDay } from '@/lib/care/availability'
+import { withSchedule } from '@/lib/pro/schedule'
 
 export default function CarePage() {
   const { t } = useTranslation('care')
-  useDocumentTitle(t('docTitle'))
+  useDocumentTitle(t('docTitle'), t('metaDescription'))
   const { user } = useAuth()
   const langId = useId()
   const sortId = useId()
@@ -49,7 +50,7 @@ export default function CarePage() {
   // Next free time for everyone, worked out once per visit
   const nextFor = useMemo(() => {
     const booked = bookedSlots()
-    return Object.fromEntries(PROFESSIONALS.map((p) => [p.id, availableDays(p, { booked })]))
+    return Object.fromEntries(PROFESSIONALS.map((p) => [p.id, availableDays(withSchedule(p), { booked })]))
   }, [])
 
   const todayIso = lagosDay(new Date()).iso

@@ -22,8 +22,8 @@ export default function GroupPage() {
   const { user } = useAuth()
   const c = useCommunity(user)
   const [notice, setNotice] = useState(null)
-  const report = useReport((id) => {
-    c.report(id)
+  const report = useReport((id, reason) => {
+    c.report(id, reason)
     setNotice(t('report.done'))
   })
 

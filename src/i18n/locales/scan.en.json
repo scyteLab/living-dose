@@ -1,0 +1,111 @@
+{
+  "docTitle": "Snap a meal",
+  "title": "Snap a meal",
+  "intro": "Log what you eat in seconds, or check where a Living Dose product came from.",
+  "tabs": {
+    "label": "Scan options",
+    "meal": "Snap a meal",
+    "product": "Scan a product"
+  },
+  "steps": {
+    "label": "Logging steps",
+    "photo": "Photo",
+    "plate": "What's on your plate",
+    "save": "Save"
+  },
+  "photo": {
+    "title": "Take a photo of your plate",
+    "body": "It's saved with your diary entry, so you and your dietitian can look back on it.",
+    "take": "Take a photo",
+    "choose": "Choose a photo",
+    "retake": "Change photo",
+    "skip": "Skip the photo",
+    "alt": "Photo of your meal",
+    "error": "That photo couldn't be read. Please try another.",
+    "next": "Continue"
+  },
+  "plate": {
+    "title": "What's on your plate?",
+    "body": "Search and add each part of your meal, then pick the portion size.",
+    "search": "Search foods",
+    "placeholder": "Search, e.g. jollof, eba, egusi",
+    "noResults": "Nothing found. Try a simpler word, like rice or soup.",
+    "add": "Add",
+    "addAria": "Add {{name}}",
+    "quick": "Popular",
+    "empty": "Nothing added yet.",
+    "remove": "Remove {{name}}",
+    "portion": "Portion",
+    "portions": {
+      "0.75": "Smaller",
+      "1": "Medium",
+      "1.5": "Larger"
+    },
+    "portionHint": "Medium: {{portion}}",
+    "next": "Review",
+    "back": "Back",
+    "recipe": "Meal-plan recipe"
+  },
+  "review": {
+    "title": "Check and save",
+    "slot": "Which meal is this?",
+    "slots": {
+      "breakfast": "Breakfast",
+      "lunch": "Lunch",
+      "dinner": "Dinner",
+      "snack": "Snack"
+    },
+    "totals": "Estimated nutrition",
+    "energy": "Energy",
+    "protein": "Protein",
+    "fibre": "Fibre",
+    "salt": "Salt",
+    "veg": "Fruit and veg",
+    "portionsCount": "{{count}} portions",
+    "saltHigh": "That's quite a lot of salt for one meal. Adults should have under 5 g in a whole day.",
+    "save": "Save to my diary",
+    "saved": "Saved to your food diary.",
+    "another": "Log another meal",
+    "estimates": "These are estimates. Home-cooked portions vary.",
+    "back": "Back"
+  },
+  "diary": {
+    "title": "Today's food diary",
+    "empty": "Nothing logged yet today.",
+    "total": "{{kcal}} kcal logged today",
+    "remove": "Delete this entry",
+    "removeConfirm": "Delete this meal from your diary?",
+    "items_one": "{{count}} item",
+    "items_other": "{{count}} items",
+    "noPhoto": "No photo",
+    "planNote": "Meals you tick in your meal plan are counted on your Home page."
+  },
+  "guest": {
+    "title": "Sign in to keep a food diary",
+    "body": "Your meals, photos and totals are private to you.",
+    "cta": "Sign in"
+  },
+  "product": {
+    "title": "Scan a product",
+    "body": "Every Living Dose product has a code on the label. Scan it to see where your food came from.",
+    "camera": "Scan with camera",
+    "stop": "Stop camera",
+    "cameraHelp": "Point your camera at the QR code on the label.",
+    "cameraError": "We couldn't open the camera. You can type the code instead.",
+    "noCamera": "Camera scanning isn't available in this browser. Type the code printed under the QR code instead.",
+    "codeLabel": "Code on the label",
+    "codePlaceholder": "e.g. LD-UGU-B0930",
+    "check": "Check code",
+    "invalid": "We don't recognise that code. Check it matches the label, for example LD-UGU-B0930.",
+    "samples": "Try a sample code:",
+    "result": "Traced",
+    "batch": "Batch {{batch}}",
+    "from": "From",
+    "harvested_one": "Harvested {{count}} day before packing",
+    "harvested_other": "Harvested up to {{count}} days before packing",
+    "packed": "Checked and packed at the Living Dose hub, Lagos",
+    "noTrace": "This product is made in our kitchen from traceable ingredients.",
+    "view": "View product",
+    "scanAnother": "Scan another"
+  }
+}

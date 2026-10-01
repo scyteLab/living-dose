@@ -5,6 +5,7 @@ import { CalendarPlus, CircleCheck, Clock, Video } from 'lucide-react'
 import Avatar from '@/components/care/Avatar'
 import styles from '@/components/care/Care.module.css'
 import PageIntro from '@/components/page/PageIntro'
+import ConsultationSummary from '@/components/care/ConsultationSummary'
 import Button from '@/components/ui/Button'
 import Dialog from '@/components/ui/Dialog'
 import { care } from '@/config/care'
@@ -166,6 +167,7 @@ export default function AppointmentPage() {
               </button>
             </div>
           )}
+          {appt.summary && <ConsultationSummary summary={appt.summary} professional={p} />}
         </section>
 
         <aside className={styles.apptSide}>

@@ -1,0 +1,123 @@
+{
+  "docTitle": "Professionals' portal",
+  "title": "Professionals' portal",
+  "backToSite": "Back to the site",
+  "nav": {
+    "label": "Portal sections",
+    "schedule": "My schedule",
+    "availability": "Availability"
+  },
+  "gate": {
+    "title": "For Living Dose professionals",
+    "body": "This area is for registered professionals who consult on Living Dose.",
+    "live": "Once we've verified your registration, our team links your account to your profile. Contact us if you think you should have access.",
+    "demo": "Demo mode: choose a sample professional to try the portal as them. In the live app, access is set by our team after verification.",
+    "pick": "Try the portal as",
+    "start": "Open the portal",
+    "home": "Go to the home page"
+  },
+  "demoBanner": "Demo mode: you're seeing consultations booked in this browser.",
+  "schedule": {
+    "title": "Good to see you, {{name}}",
+    "today": "Today",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "empty": "No consultations here.",
+    "member": "Member",
+    "open": "Open",
+    "results": "Results shared",
+    "noResults": "Results not shared",
+    "summaryDone": "Summary sent",
+    "summaryDue": "Summary to write",
+    "stats": {
+      "today": "Today",
+      "week": "Next 7 days",
+      "due": "Summaries to write"
+    }
+  },
+  "consult": {
+    "back": "Back to my schedule",
+    "notFound": "We couldn't find that consultation.",
+    "with": "{{type}} with {{name}}",
+    "when": "When",
+    "topic": "Topic",
+    "note": "Member's note",
+    "noNote": "No note added.",
+    "status": "Status",
+    "join": "Start consultation",
+    "joinNote": "The call opens 10 minutes before the start once the video service is connected.",
+    "complete": "Mark as completed",
+    "noShow": "Mark as no-show",
+    "results": "Health check results",
+    "resultsNotShared": "The member chose not to share their health check results for this consultation.",
+    "checkedOn": "From their check on {{date}}",
+    "score": "Living Score",
+    "priorities": "Their top priorities",
+    "bmi": "BMI",
+    "bp": "Blood pressure",
+    "risk": "Type 2 diabetes risk",
+    "notMeasured": "Not measured",
+    "summaryTitle": "Summary and next steps",
+    "summaryHint": "The member sees this on their appointment page. Write in plain language.",
+    "summary": "Summary",
+    "summaryPlaceholder": "What you discussed and the main advice, in a few sentences.",
+    "steps": "Next steps",
+    "stepPlaceholder": "For example: walk 20 minutes after dinner on 3 evenings",
+    "addStep": "Add a step",
+    "removeStep": "Remove step {{n}}",
+    "followUp": "Follow-up",
+    "followUpOptions": {
+      "none": "No follow-up needed",
+      "2weeks": "In 2 weeks",
+      "4weeks": "In 4 weeks",
+      "3months": "In 3 months"
+    },
+    "send": "Send to member",
+    "sent": "Sent. The member can now see your summary.",
+    "update": "Update summary",
+    "summaryError": "Please write a short summary (at least 20 characters).",
+    "privateTitle": "Private notes",
+    "privateHint": "Only you can see these. They are not shared with the member.",
+    "privateSaved": "Saved",
+    "safety": "If you're worried about the member's safety, follow the safeguarding procedure and contact the Living Dose clinical lead straight away.",
+    "statuses": {
+      "booked": "Booked",
+      "completed": "Completed",
+      "no_show": "No-show",
+      "cancelled": "Cancelled"
+    }
+  },
+  "availability": {
+    "title": "Availability",
+    "intro": "Set the hours you take consultations. Members can only book within these times.",
+    "weekly": "Weekly hours",
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "working": "Working",
+    "off": "Not working",
+    "from": "From",
+    "to": "To",
+    "hoursError": "Choose a start time before the end time, between 6 AM and 10 PM.",
+    "daysOff": "Days off",
+    "daysOffHint": "Holidays, training or leave. Existing bookings on these days aren't cancelled automatically.",
+    "addDayOff": "Add day off",
+    "remove": "Remove",
+    "save": "Save availability",
+    "saved": "Saved. Members now see your new times.",
+    "timesIn": "Times are in Lagos time (WAT)."
+  },
+  "summaryMember": {
+    "title": "Your consultation summary",
+    "from": "From {{name}}, {{date}}",
+    "steps": "Your next steps",
+    "followUp": "Suggested follow-up: {{when}}",
+    "book": "Book a follow-up"
+  }
+}

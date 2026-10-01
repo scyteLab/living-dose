@@ -16,7 +16,7 @@ const KINDS = ['all', 'article', 'recipe']
 
 export default function LearnPage() {
   const { t } = useTranslation('learn')
-  useDocumentTitle(t('docTitle'))
+  useDocumentTitle(t('docTitle'), t('metaDescription'))
   const { user } = useAuth()
   const searchId = useId()
   const [params, setParams] = useSearchParams()

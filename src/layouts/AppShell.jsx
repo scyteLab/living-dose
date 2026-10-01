@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import { Outlet, ScrollRestoration } from 'react-router-dom'
+import OfflineBanner from '@/components/system/OfflineBanner'
 import { useTranslation } from 'react-i18next'
 import Navbar from '@/components/navigation/Navbar'
 import TabBar from '@/components/navigation/TabBar'
@@ -34,6 +35,7 @@ export default function AppShell() {
       <TabBar />
 
       {/* New pages open at the top; Back returns to where you were */}
+      <OfflineBanner />
       <ScrollRestoration />
     </div>
   )

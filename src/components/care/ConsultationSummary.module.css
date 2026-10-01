@@ -1,0 +1,70 @@
+.box {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: 1.5px solid var(--leaf);
+  border-radius: 22px;
+  background: #f6faf0;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.from {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--moss);
+}
+
+.body {
+  line-height: 1.65;
+  white-space: pre-line;
+}
+
+.sub {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps li {
+  display: flex;
+  gap: var(--space-2);
+  line-height: 1.5;
+}
+
+.steps svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--leaf-deep);
+}
+
+.follow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 14px;
+  background: var(--paper);
+}
+
+.follow p {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+}

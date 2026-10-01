@@ -15,7 +15,7 @@ export default function ProfessionalPage() {
   const { professionalId } = useParams()
   const { t } = useTranslation('care')
   const p = PROFESSIONALS_BY_ID[professionalId]
-  useDocumentTitle(p ? `${p.name}, ${p.title}` : t('docTitle'))
+  useDocumentTitle(p ? `${p.name}, ${p.title}` : t('docTitle'), p?.bio)
 
   if (!p) {
     return (

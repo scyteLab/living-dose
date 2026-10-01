@@ -38,7 +38,7 @@ export default function useDashboard(user) {
         loading: false,
         record,
         nextAppt,
-        latestOrder: orders.find((o) => o.status !== 'delivered') ?? null,
+        latestOrder: orders.find((o) => o.status !== 'delivered' && o.status !== 'cancelled') ?? null,
         hasOrder: orders.length > 0,
         hasAppointment: appointments.length > 0,
         planSeen,

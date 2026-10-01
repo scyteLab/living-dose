@@ -19,7 +19,7 @@ import { dayTotals } from '@/lib/mealPlan/generate'
 
 export default function Plan() {
   const { t } = useTranslation('plan')
-  useDocumentTitle(t('docTitle'))
+  useDocumentTitle(t('docTitle'), t('metaDescription'))
   const { user, loading } = useAuth()
 
   if (loading) return <div className={styles.loading} role="status" aria-label={t('docTitle')} />

@@ -1,0 +1,23 @@
+{
+  "name": "Living Dose",
+  "short_name": "Living Dose",
+  "description": "Healthy food, personal nutrition and care from experts, in one app.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF8F3",
+  "theme_color": "#FAF8F3",
+  "lang": "en",
+  "categories": ["health", "food", "lifestyle"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Snap a meal", "url": "/scan", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "My meal plan", "url": "/plan", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Talk to an expert", "url": "/care", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

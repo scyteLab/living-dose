@@ -61,7 +61,7 @@ export default function Navbar() {
             <BasketButton />
             {user ? (
               <>
-                <Link to="/welcome" className={styles.account} aria-label={t('nav.signedInAs', { name: displayName })}>
+                <Link to="/account" className={styles.account} aria-label={t('nav.signedInAs', { name: displayName })}>
                   <span className={styles.avatar} aria-hidden="true">
                     {displayName.charAt(0).toUpperCase()}
                   </span>

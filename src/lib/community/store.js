@@ -27,7 +27,7 @@ export function saveCommunity(userId, data) {
 const ago = (now, minutes) => new Date(now - minutes * 60000).toISOString()
 
 /** Sample posts plus the member's own, newest first, with their replies and counts. */
-export function buildFeed(data, now = Date.now()) {
+export function buildFeed(data, now = Date.now(), hidden = []) {
   const seeds = SEED_POSTS.map((p) => ({
     ...p,
     createdAt: ago(now, p.minutesAgo),
@@ -35,10 +35,10 @@ export function buildFeed(data, now = Date.now()) {
     seed: true,
   }))
   return [...data.posts, ...seeds]
-    .filter((p) => !data.reported.includes(p.id))
+    .filter((p) => !data.reported.includes(p.id) && !hidden.includes(p.id))
     .map((p) => {
       const extra = data.replies[p.id] ?? []
-      const replies = [...(p.replies ?? []), ...extra].filter((r) => !data.reported.includes(r.id))
+      const replies = [...(p.replies ?? []), ...extra].filter((r) => !data.reported.includes(r.id) && !hidden.includes(r.id))
       const mine = data.helpful.includes(p.id)
       return { ...p, replies, helpfulCount: (p.helpful ?? 0) + (mine ? 1 : 0), helpfulByMe: mine }
     })

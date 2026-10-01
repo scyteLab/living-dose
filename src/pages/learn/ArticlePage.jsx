@@ -15,7 +15,7 @@ export default function ArticlePage() {
   const { slug } = useParams()
   const { t, i18n } = useTranslation('learn')
   const a = ARTICLES_BY_SLUG[slug]
-  useDocumentTitle(a?.title ?? t('docTitle'))
+  useDocumentTitle(a?.title ?? t('docTitle'), a?.summary)
 
   if (!a) {
     return (

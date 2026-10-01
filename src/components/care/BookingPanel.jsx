@@ -10,6 +10,7 @@ import { care } from '@/config/care'
 import useAuth from '@/hooks/useAuth'
 import { bookAppointment, bookedSlots } from '@/lib/care/appointments'
 import { availableDays } from '@/lib/care/availability'
+import { withSchedule } from '@/lib/pro/schedule'
 import { formatDateChip, formatDay, formatTime, viewerDiffers } from '@/lib/care/format'
 import { loadLatestResult } from '@/lib/healthCheck/storage'
 import { formatPrice } from '@/lib/shop/money'
@@ -23,11 +24,12 @@ export default function BookingPanel({ professional: p }) {
   const locale = i18n.language
   const navigate = useNavigate()
   const location = useLocation()
-  const { user } = useAuth()
+  const { user, firstName } = useAuth()
 
   const [type, setType] = useState(p.types[0])
   const [booked, setBooked] = useState(bookedSlots)
-  const days = useMemo(() => availableDays(p, { booked }), [p, booked])
+  // Use the professional's own saved hours and days off
+  const days = useMemo(() => availableDays(withSchedule(p), { booked }), [p, booked])
   const [date, setDate] = useState(days[0]?.date ?? null)
   const [slot, setSlot] = useState(null)
   const [topic, setTopic] = useState(p.specialty === 'psychologist' ? 'mood' : 'plan')
@@ -63,7 +65,7 @@ export default function BookingPanel({ professional: p }) {
     setStatus('booking')
     setError(null)
     try {
-      const appt = await bookAppointment(user.id, { professionalId: p.id, type, start: slot, topic, note, shareResults: hasResults && share })
+      const appt = await bookAppointment(user.id, { professionalId: p.id, type, start: slot, topic, note, shareResults: hasResults && share, memberName: firstName })
       navigate(`/care/appointments/${appt.id}`, { state: { justBooked: true } })
     } catch (err) {
       setStatus('idle')

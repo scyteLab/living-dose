@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+# Personal pages: nothing useful for search engines, and they need sign-in
+Disallow: /account
+Disallow: /checkout
+Disallow: /orders
+Disallow: /basket
+Disallow: /health-check
+Disallow: /onboarding
+Disallow: /welcome
+Disallow: /verify
+Disallow: /care/appointments
+
+Sitemap: https://livingdose.netlify.app/sitemap.xml
