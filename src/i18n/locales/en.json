@@ -207,7 +207,7 @@
           "wed": {
             "breakfast": "Oats with milk and banana",
             "lunch": "Jollof rice with chicken and salad",
-            "dinner": "Vegetable soup with liver"
+            "dinner": "Vegetable soup with fish"
           }
         }
       }
@@ -318,24 +318,6 @@
     "title": "This page doesn't exist",
     "body": "The link may be old or mistyped.",
     "cta": "Go to home"
-  },
-  "routeError": {
-    "crash": {
-      "title": "Something went wrong on our side",
-      "body": "This page hit an unexpected problem. Reloading usually fixes it, and nothing you've saved has been lost."
-    },
-    "stale": {
-      "title": "This page couldn't load",
-      "body": "Living Dose may have just been updated, or your connection dropped. Reload to get the latest version."
-    },
-    "notFound": {
-      "title": "This page doesn't exist",
-      "body": "The link may be old or mistyped."
-    },
-    "reload": "Reload page",
-    "home": "Go to home",
-    "helpPrefix": "Still seeing this?",
-    "helpLink": "Tell us what happened"
   },
   "common": {
     "loading": "Loading",

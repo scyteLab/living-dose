@@ -1,0 +1,181 @@
+{
+  "docTitle": "Home",
+  "greeting": {
+    "morning": "Good morning, {{name}}.",
+    "afternoon": "Good afternoon, {{name}}.",
+    "evening": "Good evening, {{name}}.",
+    "morningNoName": "Good morning.",
+    "afternoonNoName": "Good afternoon.",
+    "eveningNoName": "Good evening."
+  },
+  "summaryMeals": "You've had {{done}} of today's {{total}} planned meals.",
+  "summaryNoneYet": "Your meals for today are ready in your plan.",
+  "summaryAppt": "Your consultation with {{name}} is {{when}}.",
+  "snap": "Snap a meal",
+  "bookExpert": "Book an expert",
+  "score": {
+    "title": "Your Living Score",
+    "next_one": "Next check-in in {{count}} day",
+    "next_other": "Next check-in in {{count}} days",
+    "due": "Your next check-in is due",
+    "retake": "Take it again",
+    "see": "See full results",
+    "bmi": "BMI",
+    "bp": "Blood pressure",
+    "bpNone": "Not measured",
+    "risk": "Diabetes risk",
+    "riskNA": "Not applicable",
+    "summary": {
+      "strong": "You're in great shape. Keep your habits going.",
+      "good": "Good foundations. {{Weak}} is where you'll gain the most.",
+      "grow": "Room to grow. Start with {{weak}} this week.",
+      "attention": "Let's work on this together, starting with {{weak}}."
+    }
+  },
+  "meals": {
+    "title": "Today's meals",
+    "open": "Open meal plan",
+    "count": "{{done}} of {{total}} meals",
+    "markEaten": "Mark as eaten",
+    "eatenLabel": "Eaten",
+    "markLabel": "Mark {{name}} as eaten",
+    "eatenOf": "of {{target}} kcal eaten"
+  },
+  "habits": {
+    "title": "Today's habits",
+    "water": "Water",
+    "waterCount": "{{count}} of {{goal}} glasses",
+    "glass": "Glass {{n}}",
+    "waterGroup": "Glasses of water today",
+    "minutes": "Active minutes",
+    "minutesCount": "{{count}} of {{goal}} today",
+    "minutesGap": "{{count}} more to reach today's goal",
+    "minutesDone": "Today's goal reached",
+    "addTen": "10 min",
+    "addTenLabel": "Add 10 active minutes",
+    "mood": "How are you feeling today?",
+    "moods": {
+      "great": "Great",
+      "good": "Good",
+      "okay": "Okay",
+      "low": "Low",
+      "struggling": "Struggling"
+    },
+    "moodThanks": "Thanks for checking in. This stays private to you.",
+    "moodLow": "Thank you for telling us. You don't have to manage on your own.",
+    "moodLowCta": "Talk to a psychologist",
+    "moodCrisis": "If you're thinking of harming yourself, please call 112 now."
+  },
+  "appt": {
+    "title": "Your next consultation",
+    "all": "My appointments",
+    "with": "{{type}} with {{name}}",
+    "topic": "Topic: {{topic}}",
+    "in": "Starts {{when}}.",
+    "joinFrom": "You can join from 10 minutes before.",
+    "joinAt": "Join opens at {{time}}",
+    "join": "Join consultation",
+    "calendar": "Add to calendar",
+    "sharing": "Your latest health check results will be shared, as you chose.",
+    "none": "No consultations booked",
+    "noneBody": "Talk to a dietitian, doctor or psychologist by video, voice or chat.",
+    "noneCta": "Find an expert"
+  },
+  "focus": {
+    "title": "This week's focus",
+    "all": "All priorities",
+    "of": "Priority {{n}} of {{total}}",
+    "minutes": "{{done}} of 150 minutes",
+    "daysLeft_one": "{{count}} day left",
+    "daysLeft_other": "{{count}} days left",
+    "logHint": "Add your active minutes in Today's habits.",
+    "moveTip": "A brisk 20-minute walk after dinner keeps you on track.",
+    "none": "No focus yet",
+    "noneBody": "Take your health check to get your top 3 priorities."
+  },
+  "order": {
+    "title": "Your order",
+    "track": "Track",
+    "items_one": "{{count}} item",
+    "items_other": "{{count}} items",
+    "arriving": "Arriving {{date}}, {{window}}",
+    "pay": "Pay on delivery",
+    "none": "Fresh food, delivered",
+    "noneBody": "Traceable produce and ready meal packs from local farms.",
+    "noneCta": "Browse the shop",
+    "windows": {
+      "morning": "9 AM to 12 PM",
+      "afternoon": "12 to 4 PM",
+      "evening": "4 to 7 PM"
+    }
+  },
+  "read": {
+    "label": "Recommended read",
+    "because": "Picked for you from your health check.",
+    "cta": "Read the article",
+    "items": {
+      "lessSalt": "5 ways to use fewer seasoning cubes without losing flavour",
+      "vegetables": "Easy ways to add vegetables to Nigerian meals",
+      "moveMore": "How to fit 150 active minutes into a busy week",
+      "sugaryDrinks": "Better drinks than soft drinks and sweet malt",
+      "lessFried": "Boil, grill or steam: healthier ways with plantain and yam",
+      "wholeGrains": "A simple guide to whole grains in Nigeria",
+      "strength": "Strength exercises you can do at home",
+      "sleep": "Seven habits for better sleep",
+      "alcohol": "Cutting down on alcohol: where to start",
+      "weight": "Losing weight gently, the realistic way",
+      "stopSmoking": "Stopping smoking: what really helps",
+      "talkToSomeone": "When to talk to someone about how you feel",
+      "keepGoing": "Keeping healthy habits for the long run"
+    }
+  },
+  "week": {
+    "streak_one": "{{count}}-day streak",
+    "streak_other": "{{count}}-day streak",
+    "streakZero": "Start a streak today",
+    "streakHint": "Days you've logged your meals",
+    "days": "Meals logged this week",
+    "today": "Today",
+    "water": "Water: {{value}} glasses a day",
+    "waterNone": "Water: nothing logged yet",
+    "waterHint": "Average this week"
+  },
+  "start": {
+    "eyebrow": "Welcome to Living Dose",
+    "title": "Let's get you set up, {{name}}.",
+    "titleNoName": "Let's get you set up.",
+    "body": "Four steps to a plan built around you. Start with the health check; everything else follows from it.",
+    "progress": "Getting started",
+    "progressCount": "{{done}} of 4 done",
+    "step": "Step {{n}}",
+    "done": "Done",
+    "steps": {
+      "check": {
+        "title": "Take your free health check",
+        "body": "About 5 minutes. Get your Living Score and your top 3 priorities.",
+        "cta": "Start my health check"
+      },
+      "plan": {
+        "title": "See your meal plan",
+        "body": "A week of meals built from your results and local foods.",
+        "cta": "Open my meal plan",
+        "locked": "Unlocks after your health check"
+      },
+      "shop": {
+        "title": "Shop your first basket",
+        "body": "Fresh, traceable food delivered. Pay on delivery.",
+        "cta": "Browse the shop"
+      },
+      "care": {
+        "title": "Meet a dietitian",
+        "body": "Go through your results by video, voice or chat.",
+        "cta": "Find an expert"
+      }
+    },
+    "scoreTitle": "Your Living Score",
+    "scoreBody": "Take the health check to see your score across six areas: eating, activity, body, sleep, mind and habits.",
+    "habitTitle": "Start a habit today",
+    "habitHint": "Tap a glass each time you drink one. Small wins count.",
+    "privacy": "Your health information is private. Only you, and the experts you choose, can see it."
+  }
+}

@@ -8,6 +8,7 @@ import Button from '@/components/ui/Button'
 import useScrolled from '@/hooks/useScrolled'
 import useAuth from '@/hooks/useAuth'
 import { siteNav } from '@/config/navigation'
+import BasketButton from '@/components/shop/BasketButton'
 import RegionMenu from './RegionMenu'
 import MobileMenu from './MobileMenu'
 import styles from './Navbar.module.css'
@@ -57,6 +58,7 @@ export default function Navbar() {
 
           <div className={styles.actions}>
             <RegionMenu className={styles.desktopOnly} />
+            <BasketButton />
             {user ? (
               <>
                 <Link to="/welcome" className={styles.account} aria-label={t('nav.signedInAs', { name: displayName })}>

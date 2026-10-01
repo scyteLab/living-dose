@@ -1,0 +1,112 @@
+{
+  "docTitle": "Learn",
+  "title": "Learn",
+  "intro": "Practical guides and recipes for healthier living, written for the foods and life you know.",
+  "searchLabel": "Search Learn",
+  "searchPlaceholder": "Search, e.g. salt, sleep, moi moi",
+  "topics": {
+    "all": "All topics",
+    "eating": "Healthy eating",
+    "diabetes": "Blood sugar",
+    "heart": "Heart health",
+    "weight": "Weight",
+    "activity": "Activity",
+    "sleep": "Sleep",
+    "mind": "Mind and mood",
+    "habits": "Habits",
+    "pregnancy": "Pregnancy"
+  },
+  "kinds": {
+    "all": "Everything",
+    "article": "Articles",
+    "recipe": "Recipes"
+  },
+  "kindLabel": "Show",
+  "count_one": "{{count}} result",
+  "count_other": "{{count}} results",
+  "empty": "Nothing matches yet. Try another word or topic.",
+  "clear": "Clear",
+  "forYou": "For you",
+  "forYouHint": "Picked from your health check priorities.",
+  "featured": "Featured",
+  "all": "Browse everything",
+  "saved": "Saved",
+  "savedCount": "Saved ({{count}})",
+  "minutesRead": "{{count}} min read",
+  "minutesCook": "{{count}} min",
+  "noCook": "No cooking",
+  "kcal": "{{count}} kcal",
+  "article": {
+    "back": "Back to Learn",
+    "updated": "Updated {{date}}",
+    "reviewed": "Reviewed by {{name}} on {{date}}",
+    "pending": "Awaiting clinical review",
+    "takeaways": "Key takeaways",
+    "sources": "Sources",
+    "sourcesNote": "This article follows the guidance listed. It is general information, not a diagnosis. Speak to a doctor about your own health.",
+    "related": "Keep reading",
+    "notFound": "We couldn't find that article.",
+    "tip": "Tip",
+    "talk": "Talk to an expert about this",
+    "talkBody": "Book a private consultation with a dietitian, doctor or psychologist.",
+    "talkCta": "Find an expert"
+  },
+  "recipe": {
+    "back": "Back to Learn",
+    "serves": "Nutrition per serving",
+    "ingredients": "Ingredients",
+    "servings": "Servings",
+    "method": "Method",
+    "for_one": "For {{count}} serving",
+    "for_other": "For {{count}} servings",
+    "shop": "Shop the ingredients",
+    "added_one": "Added {{count}} item to your basket.",
+    "added_other": "Added {{count}} items to your basket.",
+    "viewBasket": "View basket",
+    "estimates": "Nutrition values are estimates per serving.",
+    "notFound": "We couldn't find that recipe.",
+    "contains": "Contains: {{list}}",
+    "nutrients": {
+      "kcal": "Energy",
+      "protein": "Protein",
+      "carbs": "Carbohydrate",
+      "fat": "Fat",
+      "fibre": "Fibre",
+      "salt": "Salt"
+    },
+    "moreServings": "More servings",
+    "fewerServings": "Fewer servings",
+    "moreRecipes": "More recipes"
+  },
+  "meals": {
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "snack": "Snack"
+  },
+  "save": "Save",
+  "savedLabel": "Saved",
+  "saveAria": "Save {{title}}",
+  "unsaveAria": "Remove {{title}} from saved",
+  "share": "Share",
+  "copied": "Link copied",
+  "helpful": {
+    "question": "Was this helpful?",
+    "yes": "Yes",
+    "no": "No",
+    "thanks": "Thank you for your feedback."
+  },
+  "tags": {
+    "diabetic": "Blood-sugar friendly",
+    "heart": "Heart-healthy",
+    "protein": "High protein",
+    "pregnancy": "Pregnancy-safe"
+  },
+  "savedPage": {
+    "docTitle": "Saved",
+    "title": "Saved",
+    "intro": "Articles and recipes you've saved on this device.",
+    "empty": "Nothing saved yet. Tap Save on any article or recipe to keep it here.",
+    "browse": "Browse Learn"
+  }
+}

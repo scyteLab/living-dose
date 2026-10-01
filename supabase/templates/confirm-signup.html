@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>Welcome to Living Dose: confirm your email</title>
+</head>
+<body style="margin:0; padding:0; background-color:#F3EFE6; -webkit-text-size-adjust:100%;">
+  <!-- Preview text shown in the inbox list, hidden in the email -->
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">Your Living Dose confirmation code is inside. Welcome!&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F3EFE6;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;">
+
+          <!-- Logo: the three-block mark rebuilt with tables (no image to block), then the wordmark -->
+          <tr>
+            <td style="padding:0 8px 20px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="bottom" style="padding:0;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                      <tr><td style="width:14px; height:12px; font-size:0; line-height:0;">&#8203;</td></tr>
+                      <tr><td style="width:14px; height:24px; background-color:#7CAF42; border-radius:0 0 0 10px; font-size:0; line-height:0;">&#8203;</td></tr>
+                    </table>
+                  </td>
+                  <td style="width:2px; font-size:0; line-height:0;">&#8203;</td>
+                  <td valign="top" style="padding:0;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                      <tr><td style="width:14px; height:28px; background-color:#F57F17; border-radius:0 10px 0 0; font-size:0; line-height:0;">&#8203;</td></tr>
+                      <tr><td style="width:14px; height:1px; font-size:0; line-height:0;">&#8203;</td></tr>
+                      <tr><td style="width:14px; height:7px; background-color:#369FF3; border-radius:0 0 6px 0; font-size:0; line-height:0;">&#8203;</td></tr>
+                    </table>
+                  </td>
+                  <td valign="middle" style="padding-left:12px; font-family:'Outfit','Segoe UI',Arial,Helvetica,sans-serif; font-size:22px; line-height:1; font-weight:800; letter-spacing:0.5px; color:#7CAF42; white-space:nowrap;">LIVING DOSE</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Card -->
+          <tr>
+            <td style="background-color:#FFFFFF; border:1px solid #E6E1D6; border-radius:20px; padding:36px 32px;">
+              <h1 style="margin:0 0 12px; font-family:'Outfit','Segoe UI',Arial,Helvetica,sans-serif; font-size:26px; line-height:1.2; font-weight:800; color:#1E3318;">Welcome to Living Dose</h1>
+              <p style="margin:0 0 24px; font-family:'Segoe UI',Arial,Helvetica,sans-serif; font-size:16px; line-height:1.6; color:#5B6655;">You're one step away from your free health check and a meal plan built around you. Enter this code to confirm your email address.</p>
+
+              <!-- The code -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" style="background-color:#EAF3DD; border:2px dashed #7CAF42; border-radius:16px; padding:22px 12px;">
+                    <p style="margin:0 0 6px; font-family:'Segoe UI',Arial,Helvetica,sans-serif; font-size:13px; font-weight:700; color:#4C7A1F;">Your confirmation code</p>
+                    <p style="margin:0; font-family:'Courier New',Courier,monospace; font-size:36px; line-height:1.1; font-weight:700; letter-spacing:10px; color:#1E3318;">{{ .Token }}</p>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin:24px 0 0; font-family:'Segoe UI',Arial,Helvetica,sans-serif; font-size:15px; line-height:1.6; color:#5B6655;">The code expires in <strong style="color:#1E3318;">10 minutes</strong> and can only be used once.</p>
+
+              <!-- Safety note -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:24px;">
+                <tr>
+                  <td style="background-color:#FAF8F3; border-radius:12px; padding:14px 16px; font-family:'Segoe UI',Arial,Helvetica,sans-serif; font-size:14px; line-height:1.55; color:#33452D;">
+                    <strong style="color:#1E3318;">Keep this code private.</strong> Living Dose will never ask for it by phone, message or email.
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin:24px 0 0; font-family:'Segoe UI',Arial,Helvetica,sans-serif; font-size:13px; line-height:1.6; color:#5B6655;">This code was requested for {{ .Email }}. If you didn't create a Living Dose account, you can ignore this email and no account will be set up.</p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td align="center" style="padding:24px 16px 0; font-family:'Segoe UI',Arial,Helvetica,sans-serif; font-size:13px; line-height:1.6; color:#5B6655;">
+              <p style="margin:0 0 4px; font-style:italic; color:#1E3318;">Healthy living made affordable.</p>
+              <p style="margin:0;">Living Dose &middot; Lagos, Nigeria &middot; <a href="{{ .SiteURL }}/contact" style="color:#4C7A1F; text-decoration:underline;">Contact us</a></p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

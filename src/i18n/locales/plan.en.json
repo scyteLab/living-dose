@@ -1,0 +1,202 @@
+{
+  "docTitle": "Your meal plan",
+  "guest": {
+    "eyebrow": "Meal plans",
+    "title": "A week of meals built around you.",
+    "body": "Tell us about your health and your budget, and we'll plan breakfast, lunch, dinner and snacks from foods you already know, with a shopping list to match.",
+    "cta": "Create a free account",
+    "signIn": "I already have an account",
+    "points": [
+      "Built from your free health check",
+      "Nigerian dishes, sized to your needs",
+      "A shopping list for the whole household"
+    ]
+  },
+  "title": "Your meal plan",
+  "thisWeek": "This week",
+  "nextWeek": "Next week",
+  "weekRange": "{{from}} to {{to}}",
+  "settingsButton": "Plan settings",
+  "weekLabel": "Choose a week",
+  "basis": {
+    "healthCheck": "Built around your health check from {{date}}",
+    "default": "A balanced starter plan",
+    "defaultCta": "Take the free health check to personalise it",
+    "retake": "Update your health check"
+  },
+  "focus": {
+    "diabetic": "Steady blood sugar",
+    "heart": "Heart-healthy, lower salt",
+    "pregnancy": "Pregnancy-safe",
+    "lose": "Gentle weight loss"
+  },
+  "dailyTarget": "{{kcal}} kcal a day",
+  "tabs": {
+    "label": "Plan views",
+    "meals": "Meals",
+    "shopping": "Shopping list"
+  },
+  "days": {
+    "label": "Days of the week",
+    "eaten": "{{done}} of {{total}} eaten",
+    "today": "Today"
+  },
+  "slots": {
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "snack": "Snack"
+  },
+  "slotTimes": {
+    "breakfast": "7 to 9 AM",
+    "lunch": "12 to 2 PM",
+    "dinner": "6 to 8 PM",
+    "snack": "Mid-afternoon"
+  },
+  "portion": {
+    "0.75": "A smaller portion",
+    "1": "1 portion",
+    "1.25": "1¼ portions",
+    "1.5": "1½ portions"
+  },
+  "minutes": "{{count}} min",
+  "noCook": "No cooking",
+  "batch": "Cook once, eat twice",
+  "tags": {
+    "diabetic": "Blood-sugar friendly",
+    "heart": "Heart-healthy",
+    "protein": "High protein",
+    "pregnancy": "Pregnancy-safe",
+    "lowCost": "Lower cost"
+  },
+  "actions": {
+    "eaten": "Eaten",
+    "markEaten": "Mark as eaten",
+    "swap": "Swap",
+    "recipe": "Recipe",
+    "undoSwap": "Back to the planned meal",
+    "swapped": "Swapped"
+  },
+  "emptySlot": "No recipe fits your choices for this meal yet. Try relaxing one of the foods you avoid.",
+  "summary": {
+    "title": "{{day}} at a glance",
+    "energy": "Energy",
+    "ofTarget": "of {{target}} kcal",
+    "protein": "Protein",
+    "fibre": "Fibre",
+    "salt": "Salt",
+    "veg": "Fruit and veg",
+    "water": "Water",
+    "portions": "{{count}} of 5 portions",
+    "saltValue": "about {{value}} g",
+    "saltLimit": "under 5 g",
+    "waterValue": "{{value}} litres",
+    "gramsOf": "{{value}} of {{target}} g",
+    "eatenSoFar": "{{kcal}} kcal eaten so far",
+    "estimates": "Nutrition values are estimates. They don't include salt added at the table or drinks."
+  },
+  "tips": {
+    "title": "Tip for today",
+    "items": {
+      "water": "Keep a bottle of water nearby. Thirst is often mistaken for hunger.",
+      "plate": "Fill half your plate with vegetables, a quarter with protein and a quarter with starch.",
+      "cubes": "Try one seasoning cube instead of two. Crayfish, onions and pepper add plenty of flavour.",
+      "batch": "Cook beans or moi moi in a big batch and keep portions in the fridge for up to 3 days.",
+      "swallow": "Keep swallows to about the size of your fist and add an extra spoon of vegetable soup.",
+      "fruit": "Fresh fruit is better than juice: you get the fibre and less sugar.",
+      "walk": "A 10-minute walk after meals helps keep blood sugar steady."
+    }
+  },
+  "recipe": {
+    "close": "Close",
+    "per": "Nutrition per serving",
+    "servings": "Servings",
+    "fewer": "Fewer servings",
+    "more": "More servings",
+    "ingredients": "Ingredients",
+    "method": "Method",
+    "for": "For {{count}} serving",
+    "for_other": "For {{count}} servings",
+    "estimates": "Nutrition values are estimates, based on typical portions.",
+    "units": {
+      "kcal": "kcal",
+      "g": "g"
+    },
+    "nutrients": {
+      "kcal": "Energy",
+      "protein": "Protein",
+      "carbs": "Carbohydrate",
+      "fat": "Fat",
+      "fibre": "Fibre",
+      "salt": "Salt"
+    },
+    "time": "{{count}} minutes",
+    "contains": "Contains: {{list}}",
+    "containsNames": {
+      "pork": "pork",
+      "beef": "beef",
+      "chicken": "chicken",
+      "fish": "fish or crayfish",
+      "shellfish": "shellfish",
+      "egg": "egg",
+      "dairy": "dairy",
+      "nuts": "nuts"
+    }
+  },
+  "swap": {
+    "title": "Swap {{meal}}",
+    "intro": "These fit your plan and the foods you avoid.",
+    "current": "Planned",
+    "choose": "Choose this",
+    "none": "There are no other recipes that fit your choices for this meal."
+  },
+  "shopping": {
+    "title": "Shopping list for the week",
+    "intro": "Everything you need for this week's meals, for {{count}} person.",
+    "intro_other": "Everything you need for this week's meals, for {{count}} people.",
+    "aisles": {
+      "produce": "Fruit and vegetables",
+      "protein": "Fish, meat and eggs",
+      "grains": "Grains, beans and swallows",
+      "dairy": "Dairy",
+      "pantry": "Store cupboard"
+    },
+    "progress": "{{done}} of {{total}} ticked",
+    "copy": "Copy list",
+    "copied": "Shopping list copied.",
+    "reset": "Untick all",
+    "shop": "Find these in the Living Dose shop",
+    "copyTitle": "Living Dose shopping list, week of {{date}}"
+  },
+  "settings": {
+    "title": "Plan settings",
+    "intro": "Changing these rebuilds this week's plan. Meals you've marked as eaten are kept.",
+    "household": "People you're cooking for",
+    "fewer": "Fewer people",
+    "more": "More people",
+    "budget": "Budget",
+    "budgetOptions": {
+      "low": "Lower cost",
+      "balanced": "Balanced",
+      "flexible": "Flexible"
+    },
+    "budgetHint": "Lower cost leans on beans, garri, yam and seasonal vegetables.",
+    "avoid": "Foods to leave out",
+    "avoidHint": "We'll never include these.",
+    "avoidOptions": {
+      "pork": "Pork",
+      "beef": "Beef",
+      "chicken": "Chicken",
+      "fish": "Fish and crayfish",
+      "shellfish": "Shellfish",
+      "egg": "Eggs",
+      "dairy": "Dairy",
+      "nuts": "Nuts"
+    },
+    "snacks": "Include a daily snack",
+    "save": "Save and rebuild plan",
+    "cancel": "Cancel",
+    "saved": "Your plan has been rebuilt."
+  },
+  "review": "Recipes follow WHO healthy eating guidance and will be reviewed by a registered dietitian."
+}

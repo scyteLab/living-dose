@@ -1,0 +1,178 @@
+{
+  "docTitle": "Community",
+  "title": "Community",
+  "intro": "Share wins, ask questions and keep each other going. Moderated, kind, and with professionals on hand.",
+  "guidelinesShort": "Be kind, keep personal details private, and remember advice here isn't a replacement for your own doctor.",
+  "guidelinesLink": "Community guidelines",
+  "demoNote": "Demo mode: posts are saved on this device only until the Living Dose server is connected.",
+  "tabs": {
+    "label": "Community sections",
+    "feed": "Feed",
+    "groups": "Groups",
+    "challenges": "Challenges"
+  },
+  "filterAll": "All groups",
+  "filterJoined": "My groups",
+  "filterLabel": "Show posts from",
+  "groups": {
+    "blood-sugar": {
+      "name": "Blood sugar support",
+      "desc": "Living with diabetes or prediabetes, or lowering your risk."
+    },
+    "weight-journey": {
+      "name": "Weight journey",
+      "desc": "Gentle, realistic weight loss and keeping it off."
+    },
+    "pregnancy-parents": {
+      "name": "Pregnancy and new parents",
+      "desc": "Eating well in pregnancy and feeding young children."
+    },
+    "heart-health": {
+      "name": "Heart health",
+      "desc": "Blood pressure, cholesterol and heart-healthy cooking."
+    },
+    "fitness-beginners": {
+      "name": "Fitness beginners",
+      "desc": "Starting to move more, at your own pace."
+    },
+    "mind-wellbeing": {
+      "name": "Mind and wellbeing",
+      "desc": "Stress, low mood and looking after yourself. Posts here are anonymous."
+    },
+    "diaspora-families": {
+      "name": "Diaspora families",
+      "desc": "Caring for loved ones in Nigeria from abroad."
+    }
+  },
+  "members": "{{count}} members",
+  "join": "Join",
+  "joined": "Joined",
+  "leave": "Leave group",
+  "joinAria": "Join {{name}}",
+  "leaveAria": "Leave {{name}}",
+  "anonymousGroup": "Anonymous posting",
+  "viewGroup": "View group",
+  "backToCommunity": "Back to Community",
+  "groupNotFound": "We couldn't find that group.",
+  "noPosts": "No posts here yet. Be the first to share.",
+  "composer": {
+    "title": "Share with the community",
+    "placeholder": "Share a win, ask a question or offer support…",
+    "group": "Post in",
+    "anonymous": "Post anonymously",
+    "anonymousForced": "Posts in this group are always anonymous.",
+    "post": "Post",
+    "reply": "Reply",
+    "replyPlaceholder": "Write a kind, helpful reply…",
+    "count": "{{count}} / {{max}}",
+    "reminder": "Please don't share phone numbers, addresses or personal medical details.",
+    "signIn": "Sign in to post",
+    "signInReply": "Sign in to reply",
+    "posted": "Your post is live.",
+    "replied": "Your reply is posted.",
+    "errors": {
+      "short": "Please write a little more (at least 10 characters).",
+      "long": "That's too long. Please keep it under 2,000 characters.",
+      "contact": "For your safety, please remove phone numbers and email addresses."
+    }
+  },
+  "crisis": {
+    "title": "You don't have to go through this alone",
+    "body": "It sounds like things are really hard right now. Talking to someone can help, and you deserve support.",
+    "call": "Call 112",
+    "callBody": "If you're in danger or thinking of harming yourself, call now or go to the nearest hospital.",
+    "talk": "Talk to a psychologist",
+    "postAnyway": "Post to the community anyway",
+    "edit": "Go back and edit"
+  },
+  "post": {
+    "anonymous": "Anonymous member",
+    "you": "You",
+    "in": "in {{group}}",
+    "helpful": "Helpful",
+    "helpfulCount_one": "{{count}} found this helpful",
+    "helpfulCount_other": "{{count}} found this helpful",
+    "replies_one": "{{count}} reply",
+    "replies_other": "{{count}} replies",
+    "noReplies": "Reply",
+    "report": "Report",
+    "professional": "Verified professional",
+    "notFound": "We couldn't find that post. It may have been removed.",
+    "repliesTitle": "Replies",
+    "back": "Back"
+  },
+  "report": {
+    "title": "Report this post",
+    "intro": "Our moderators review every report. The post will be hidden for you straight away.",
+    "reasons": {
+      "harmful": "Harmful or dangerous health advice",
+      "unkind": "Unkind, bullying or hateful",
+      "spam": "Spam or selling",
+      "private": "Shares someone's private details",
+      "other": "Something else"
+    },
+    "submit": "Report post",
+    "cancel": "Cancel",
+    "done": "Thanks. We've hidden it for you and our moderators will review it."
+  },
+  "challenges": {
+    "intro": "Weekly challenges, tracked automatically from what you log on Home.",
+    "taking": "{{count}} taking part",
+    "join": "Join challenge",
+    "leave": "Leave",
+    "joinedLabel": "You're in",
+    "completed": "Completed this week",
+    "signIn": "Sign in to join",
+    "items": {
+      "water-week": {
+        "title": "Water week",
+        "body": "Drink 8 glasses of water every day this week.",
+        "progress": "{{value}} of {{target}} days"
+      },
+      "move-150": {
+        "title": "150 active minutes",
+        "body": "Reach the WHO weekly target of 150 active minutes.",
+        "progress": "{{value}} of {{target}} minutes"
+      },
+      "log-meals": {
+        "title": "Log your meals",
+        "body": "Mark your meals as eaten on at least 5 days.",
+        "progress": "{{value}} of {{target}} days"
+      }
+    },
+    "howTo": "Log water and active minutes on your Home page, and tick meals in your meal plan."
+  },
+  "guidelines": {
+    "docTitle": "Community guidelines",
+    "title": "Community guidelines",
+    "intro": "Living Dose Community is a supportive space. These guidelines keep it safe and kind for everyone.",
+    "items": [
+      {
+        "t": "Be kind and respectful",
+        "b": "Everyone is on their own journey. Encourage, don't judge. No bullying, hate or harassment."
+      },
+      {
+        "t": "Share experience, not prescriptions",
+        "b": "Talk about what has worked for you, but don't tell others to start, stop or change medicines. Only verified professionals give clinical guidance here, and even then it's general: your own doctor knows you best."
+      },
+      {
+        "t": "Protect your privacy",
+        "b": "Don't post phone numbers, addresses, email addresses or anyone else's personal details. Use anonymous posting in Mind and wellbeing."
+      },
+      {
+        "t": "No selling or spam",
+        "b": "No adverts, product promotion, \"miracle cures\" or links to buy things."
+      },
+      {
+        "t": "Look out for each other",
+        "b": "If someone seems to be in danger, report the post so our team can help. If you are in crisis yourself, call 112 or go to the nearest hospital."
+      },
+      {
+        "t": "Moderation",
+        "b": "Our moderators review reports and may remove posts or suspend accounts that break these guidelines."
+      }
+    ],
+    "back": "Back to Community"
+  },
+  "allGroups": "See all groups"
+}
