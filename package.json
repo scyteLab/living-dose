@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "db:seed": "node scripts/generate-seed.mjs",
+    "db:test": "bash supabase/tests/run.sh"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.2",

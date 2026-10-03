@@ -73,7 +73,9 @@
     "errors": {
       "short": "Please write a little more (at least 10 characters).",
       "long": "That's too long. Please keep it under 2,000 characters.",
-      "contact": "For your safety, please remove phone numbers and email addresses."
+      "contact": "For your safety, please remove phone numbers and email addresses.",
+      "slowDown": "You've posted a lot in the last hour. Please take a short break and try again later.",
+      "failed": "That didn't post. Please check your connection and try again."
     }
   },
   "crisis": {
@@ -175,5 +177,6 @@
     "back": "Back to Community"
   },
   "allGroups": "See all groups",
-  "metaDescription": "A moderated, supportive community for healthier living. Share wins, ask questions and join weekly challenges."
+  "metaDescription": "A moderated, supportive community for healthier living. Share wins, ask questions and join weekly challenges.",
+  "loading": "Loading posts…"
 }

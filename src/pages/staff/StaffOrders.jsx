@@ -8,7 +8,8 @@ import Button from '@/components/ui/Button'
 import Dialog from '@/components/ui/Dialog'
 import Tag from '@/components/ui/Tag'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
-import { listAllOrders, nextStatus, setOrderStatus } from '@/lib/staff/api'
+import { nextStatus } from '@/lib/staff/api'
+import { staffOrders, staffSetOrderStatus } from '@/lib/staff/service'
 import { formatPrice } from '@/lib/shop/money'
 
 const FILTERS = ['open', 'placed', 'packed', 'onTheWay', 'delivered', 'cancelled', 'all']
@@ -17,7 +18,9 @@ const TONE = { placed: 'ember', packed: 'sky', onTheWay: 'plum', delivered: 'lea
 export default function StaffOrders() {
   const { t, i18n } = useTranslation('staff')
   useDocumentTitle(t('orders.title'))
-  const { data: orders, refresh, staff, storage } = useStaffData(listAllOrders)
+  const { data, error, refresh, staff } = useStaffData(staffOrders)
+  const orders = data ?? []
+  const [actionError, setActionError] = useState(false)
   const [filter, setFilter] = useState('open')
   const [q, setQ] = useState('')
   const [openId, setOpenId] = useState(null)
@@ -32,8 +35,13 @@ export default function StaffOrders() {
   })
   const current = orders.find((o) => o.id === openId)
 
-  const move = (o, status, extra) => {
-    setOrderStatus(storage, staff, o.userId, o.id, status, extra)
+  const move = async (o, status) => {
+    try {
+      setActionError(false)
+      await staffSetOrderStatus(o, status, staff)
+    } catch {
+      setActionError(true)
+    }
     refresh()
   }
 
@@ -63,6 +71,11 @@ export default function StaffOrders() {
           </button>
         ))}
       </div>
+      {(error || actionError) && (
+        <p className={styles.errorText} role="alert">
+          {error ? t('loadError') : t('actionError')}
+        </p>
+      )}
       <p className={styles.small} aria-live="polite">
         {t('orders.count', { count: shown.length })}
       </p>
@@ -104,7 +117,7 @@ export default function StaffOrders() {
                     </td>
                     <td>
                       {next ? (
-                        <Button size="sm" variant={next === 'delivered' ? 'primary' : 'outline'} onClick={() => move(o, next, next === 'delivered' ? { paid: true } : undefined)}>
+                        <Button size="sm" variant={next === 'delivered' ? 'primary' : 'outline'} onClick={() => move(o, next)}>
                           {t(`orders.advance.${next}`)}
                         </Button>
                       ) : (
@@ -172,7 +185,7 @@ export default function StaffOrders() {
             )}
             {!['delivered', 'cancelled'].includes(current.status) && (
               <div className={styles.detailActions}>
-                <Button onClick={() => move(current, nextStatus(current.status), nextStatus(current.status) === 'delivered' ? { paid: true } : undefined)}>
+                <Button onClick={() => move(current, nextStatus(current.status))}>
                   {t(`orders.advance.${nextStatus(current.status)}`)}
                 </Button>
                 <button

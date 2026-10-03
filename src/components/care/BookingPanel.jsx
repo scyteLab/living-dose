@@ -8,9 +8,10 @@ import Button from '@/components/ui/Button'
 import Field from '@/components/ui/Field'
 import { care } from '@/config/care'
 import useAuth from '@/hooks/useAuth'
-import { bookAppointment, bookedSlots } from '@/lib/care/appointments'
+import { bookAppointment, bookedSlots, loadBookedSlots } from '@/lib/care/appointments'
 import { availableDays } from '@/lib/care/availability'
-import { withSchedule } from '@/lib/pro/schedule'
+import { applySchedule } from '@/lib/pro/schedule'
+import { loadAllSchedules } from '@/lib/pro/service'
 import { formatDateChip, formatDay, formatTime, viewerDiffers } from '@/lib/care/format'
 import { loadLatestResult } from '@/lib/healthCheck/storage'
 import { formatPrice } from '@/lib/shop/money'
@@ -28,8 +29,28 @@ export default function BookingPanel({ professional: p }) {
 
   const [type, setType] = useState(p.types[0])
   const [booked, setBooked] = useState(bookedSlots)
+  // Refresh taken times from the server (instant from this device in demo mode)
+  useEffect(() => {
+    let alive = true
+    loadBookedSlots([p.id])
+      .then((set) => alive && setBooked(set))
+      .catch(() => {})
+    return () => {
+      alive = false
+    }
+  }, [p.id])
   // Use the professional's own saved hours and days off
-  const days = useMemo(() => availableDays(withSchedule(p), { booked }), [p, booked])
+  const [sched, setSched] = useState(null)
+  useEffect(() => {
+    let alive = true
+    loadAllSchedules([p])
+      .then((m) => alive && setSched(m[p.id]))
+      .catch(() => {})
+    return () => {
+      alive = false
+    }
+  }, [p])
+  const days = useMemo(() => availableDays(applySchedule(p, sched), { booked }), [p, sched, booked])
   const [date, setDate] = useState(days[0]?.date ?? null)
   const [slot, setSlot] = useState(null)
   const [topic, setTopic] = useState(p.specialty === 'psychologist' ? 'mood' : 'plan')
@@ -69,8 +90,11 @@ export default function BookingPanel({ professional: p }) {
       navigate(`/care/appointments/${appt.id}`, { state: { justBooked: true } })
     } catch (err) {
       setStatus('idle')
-      if (err.kind === 'taken') {
-        setBooked(bookedSlots())
+      if (['too-soon', 'outside-hours', 'day-off', 'too-far-ahead', 'too-many-bookings', 'invalid-time'].includes(err.kind)) {
+        setError(err.kind)
+        loadBookedSlots([p.id]).then(setBooked).catch(() => {})
+      } else if (err.kind === 'taken') {
+        loadBookedSlots([p.id]).then(setBooked).catch(() => {})
         setSlot(null)
         setError('taken')
       } else setError('generic')

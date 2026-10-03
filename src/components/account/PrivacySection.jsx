@@ -6,6 +6,8 @@ import Button from '@/components/ui/Button'
 import Dialog from '@/components/ui/Dialog'
 import { site } from '@/config/site'
 import { buildExport, deleteLocalData, downloadJson } from '@/lib/account/data'
+import { syncApi } from '@/lib/sync/remote'
+import { isSupabaseConfigured } from '@/lib/supabase'
 import styles from './Account.module.css'
 
 export default function PrivacySection({ user }) {
@@ -62,6 +64,7 @@ export default function PrivacySection({ user }) {
           {t('privacy.download')}
         </p>
         <p className={styles.small}>{t('privacy.downloadBody')}</p>
+        {isSupabaseConfigured && <p className={styles.small}>{t('privacy.syncNote')}</p>}
         <Button
           variant="outline"
           size="sm"
@@ -80,7 +83,7 @@ export default function PrivacySection({ user }) {
           <Trash2 size={18} strokeWidth={2} aria-hidden="true" />
           {t('privacy.deleteLocal')}
         </p>
-        <p className={styles.small}>{t('privacy.deleteLocalBody')}</p>
+        <p className={styles.small}>{isSupabaseConfigured ? t('privacy.deleteLocalBodySynced') : t('privacy.deleteLocalBody')}</p>
         <Button variant="outline" size="sm" className={`${styles.selfStart} ${styles.danger}`} onClick={() => setConfirming(true)}>
           {t('privacy.deleteLocalButton')}
         </Button>
@@ -114,7 +117,9 @@ export default function PrivacySection({ user }) {
             <Button
               className={styles.dangerSolid}
               disabled={typed.trim().toUpperCase() !== 'DELETE'}
-              onClick={() => {
+              onClick={async () => {
+                // With sync on, remove the synced copy too, or it would come straight back
+                if (isSupabaseConfigured) await syncApi(user.id).removeAll().catch(() => {})
                 const count = deleteLocalData(user.id)
                 setConfirming(false)
                 setTyped('')

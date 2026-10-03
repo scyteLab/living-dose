@@ -8,7 +8,8 @@
     "household": "Household",
     "notifications": "Notifications",
     "privacy": "Privacy and data",
-    "security": "Sign-in and security"
+    "security": "Sign-in and security",
+    "organisation": "Organisation"
   },
   "saved": "Saved.",
   "save": "Save changes",
@@ -154,7 +155,9 @@
     "account": "Close my account",
     "accountBody": "We'll delete your account and all the data we hold on our servers, except what the law requires us to keep, such as order records for tax. We'll confirm by message.",
     "accountButton": "Request account deletion",
-    "accountSubject": "Account deletion request"
+    "accountSubject": "Account deletion request",
+    "deleteLocalBodySynced": "Removes your health check drafts, meal plans, diary, habits, saved articles and settings from this device and from your account's synced copy, so they won't come back on your other devices. Your health check results, orders and consultations are kept; ask us to delete those.",
+    "syncNote": "Your meal plan, diary, habits and settings sync across the devices you sign in on. Meal photos stay on the device they were taken on."
   },
   "security": {
     "title": "Sign-in and security",

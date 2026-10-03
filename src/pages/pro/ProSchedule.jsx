@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useOutletContext } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ChevronRight, FileCheck2, FilePen, Share2 } from 'lucide-react'
@@ -8,7 +8,7 @@ import Tag from '@/components/ui/Tag'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { formatDay, formatTime } from '@/lib/care/format'
 import { lagosDay } from '@/lib/care/availability'
-import { appointmentsFor } from '@/lib/pro/api'
+import { proAppointments } from '@/lib/pro/service'
 
 /** "Dr Chinedu Okeke" → "Dr Okeke"; "Funmi Adeyemi" → "Funmi". */
 const greetingName = (name) => (name.startsWith('Dr ') ? `Dr ${name.split(' ').at(-1)}` : name.split(' ')[0])
@@ -20,7 +20,17 @@ export default function ProSchedule() {
   useDocumentTitle(t('nav.schedule'))
   const [tab, setTab] = useState('upcoming')
   const [now] = useState(() => Date.now())
-  const [all] = useState(() => appointmentsFor(window.localStorage, pro.id).filter((a) => a.status !== 'cancelled'))
+  const [list0, setList0] = useState(null)
+  useEffect(() => {
+    let alive = true
+    proAppointments(pro.id)
+      .then((l) => alive && setList0(l))
+      .catch(() => alive && setList0([]))
+    return () => {
+      alive = false
+    }
+  }, [pro.id])
+  const all = (list0 ?? []).filter((a) => a.status !== 'cancelled')
 
   const today = lagosDay(new Date(now)).iso
   const ended = (a) => new Date(a.start).getTime() + a.minutes * 60000 < now

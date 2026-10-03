@@ -23,7 +23,7 @@ alter table public.appointments add column if not exists member_name text;
 
 -- Summary and next steps, visible to the member and their professional
 create table if not exists public.consultation_summaries (
-  appointment_id  uuid primary key references public.appointments (id) on delete cascade,
+  appointment_id  text primary key references public.appointments (id) on delete cascade,
   professional_id text not null,
   summary         text not null check (char_length(summary) >= 20),
   next_steps      text[] not null default '{}',
@@ -38,7 +38,7 @@ create policy "Summaries: professional writes own" on public.consultation_summar
 
 -- Private clinical notes: only the professional who wrote them can see them
 create table if not exists public.professional_notes (
-  appointment_id  uuid primary key references public.appointments (id) on delete cascade,
+  appointment_id  text primary key references public.appointments (id) on delete cascade,
   professional_id text not null,
   note            text not null default '',
   updated_at      timestamptz not null default now()

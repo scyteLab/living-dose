@@ -657,6 +657,7 @@
 .panel {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  align-content: start;
   gap: var(--space-3);
   padding: var(--space-5);
   border: 1px solid var(--line);
@@ -920,4 +921,176 @@
   gap: 4px;
   justify-self: start;
   min-height: 40px;
+}
+
+/* ================= Organisation portal ================= */
+.brandOrg {
+  background: var(--plum);
+  color: #fff;
+}
+
+.orgIcon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--plum-tint);
+  color: var(--plum);
+}
+
+.sampleToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sampleToggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--ink);
+}
+
+.orgGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: var(--space-4);
+}
+
+.stack {
+  display: flex;
+  height: 22px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--cream);
+}
+
+.stack span {
+  height: 100%;
+}
+
+.legend {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-sm);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.legend strong {
+  margin-left: auto;
+  font-family: var(--font-display);
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+.bars {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bars li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px var(--space-3);
+  align-items: center;
+  font-size: var(--text-sm);
+}
+
+.barLabel {
+  grid-column: 1 / -1;
+  font-weight: 600;
+}
+
+.barTrack {
+  height: 10px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--cream);
+}
+
+.barTrack span {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--leaf);
+}
+
+.barValue {
+  min-width: 2.75rem;
+  text-align: right;
+  font-family: var(--font-display);
+}
+
+.riskList {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.riskList li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.riskList li > span {
+  display: grid;
+  gap: 2px;
+  font-weight: 600;
+}
+
+.riskValue {
+  min-width: 4.25rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.75rem;
+  color: var(--ember-deep);
+}
+
+.cta {
+  background: var(--leaf-tint);
+  border-color: transparent;
+}
+
+.selfStart {
+  justify-self: start;
+}
+
+.code {
+  padding: var(--space-2) var(--space-4);
+  border: 2px dashed var(--plum);
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  color: var(--plum);
+}
+
+.messageBox {
+  padding: var(--space-4);
+  border-radius: 14px;
+  background: var(--oat);
+  line-height: 1.6;
 }

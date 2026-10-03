@@ -1,20 +1,37 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Trash2 } from 'lucide-react'
 import styles from '@/components/staff/Staff.module.css'
 import Button from '@/components/ui/Button'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
-import { loadSchedule, saveSchedule, validHours } from '@/lib/pro/schedule'
+import { proLoadSchedule, proSaveSchedule } from '@/lib/pro/service'
+import { validHours } from '@/lib/pro/schedule'
 import { toIso } from '@/lib/mealPlan/storage'
 
 const HOURS = Array.from({ length: 17 }, (_, i) => i + 6) // 6 AM to 10 PM
 
+/** Loads the saved hours (from the server when connected), then shows the editor. */
 export default function ProAvailability() {
   const pro = useOutletContext()
-  const { t, i18n } = useTranslation('pro')
+  const { t } = useTranslation('pro')
   useDocumentTitle(t('availability.title'))
-  const [initial] = useState(() => loadSchedule(pro))
+  const [initial, setInitial] = useState(null)
+  useEffect(() => {
+    let alive = true
+    proLoadSchedule(pro)
+      .then((s) => alive && setInitial(s))
+      .catch(() => alive && setInitial({ hours: pro.schedule, daysOff: [] }))
+    return () => {
+      alive = false
+    }
+  }, [pro])
+  if (!initial) return <div className={styles.loading} role="status" aria-label={t('availability.title')} />
+  return <AvailabilityEditor pro={pro} initial={initial} />
+}
+
+function AvailabilityEditor({ pro, initial }) {
+  const { t, i18n } = useTranslation('pro')
   const [hours, setHours] = useState(initial.hours)
   const [daysOff, setDaysOff] = useState(initial.daysOff)
   const [newDay, setNewDay] = useState('')
@@ -133,7 +150,7 @@ export default function ProAvailability() {
       </section>
 
       <div className={styles.rowActions}>
-        <Button disabled={!allValid} onClick={() => (saveSchedule(pro.id, { hours, daysOff }), setSaved(true))}>
+        <Button disabled={!allValid} onClick={() => proSaveSchedule(pro.id, { hours, daysOff }).then(() => setSaved(true)).catch(() => setSaved(false))}>
           {t('availability.save')}
         </Button>
         {saved && (

@@ -2,12 +2,13 @@ import { useTranslation } from 'react-i18next'
 import styles from '@/components/staff/Staff.module.css'
 import useStaffData from '@/components/staff/useStaffData'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
-import { listActivity } from '@/lib/staff/api'
+import { staffActivity } from '@/lib/staff/service'
 
 export default function StaffActivity() {
   const { t, i18n } = useTranslation('staff')
   useDocumentTitle(t('activity.title'))
-  const { data: log } = useStaffData(listActivity)
+  const { data } = useStaffData(staffActivity)
+  const log = data ?? []
   const fmt = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' })
   return (
     <div className={styles.page}>

@@ -9,13 +9,21 @@ import Button from '@/components/ui/Button'
 import Tag from '@/components/ui/Tag'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { timeAgo } from '@/lib/community/store'
-import { listReports, resolveReport } from '@/lib/staff/api'
+import { staffReports, staffResolveReport } from '@/lib/staff/service'
 
 export default function StaffModeration() {
   const { t, i18n } = useTranslation('staff')
   const tc = useTranslation('community').t
   useDocumentTitle(t('moderation.title'))
-  const { data: reports, refresh, staff, storage } = useStaffData(listReports)
+  const { data, refresh, staff } = useStaffData(staffReports)
+  const reports = data ?? []
+  const decide = async (r, decision) => {
+    try {
+      await staffResolveReport(r, decision, staff)
+    } finally {
+      refresh()
+    }
+  }
   const [tab, setTab] = useState('open')
 
   // One card per reported item, with every reason given
@@ -70,8 +78,7 @@ export default function StaffModeration() {
                       className={styles.removeButton}
                       onClick={() => {
                         if (!window.confirm(t('moderation.removeConfirm'))) return
-                        resolveReport(storage, staff, r.id, 'remove')
-                        refresh()
+                        decide(r, 'remove')
                       }}
                     >
                       {t('moderation.remove')}
@@ -80,8 +87,7 @@ export default function StaffModeration() {
                       size="sm"
                       variant="outline"
                       onClick={() => {
-                        resolveReport(storage, staff, r.id, 'keep')
-                        refresh()
+                        decide(r, 'keep')
                       }}
                     >
                       {t('moderation.keep')}

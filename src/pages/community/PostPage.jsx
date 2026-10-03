@@ -25,6 +25,7 @@ export default function PostPage() {
   })
   const post = c.feed.find((p) => p.id === postId)
 
+  if (!post && c.loading) return <p className={styles.empty} role="status">{t('loading')}</p>
   if (!post) {
     return (
       <div className={styles.page}>

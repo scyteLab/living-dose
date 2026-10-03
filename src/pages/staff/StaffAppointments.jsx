@@ -7,7 +7,7 @@ import Tag from '@/components/ui/Tag'
 import { PROFESSIONALS_BY_ID } from '@/data/professionals'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { formatDay, formatTime } from '@/lib/care/format'
-import { listAllAppointments, setAppointmentStatus } from '@/lib/staff/api'
+import { staffAppointments, staffSetAppointmentStatus } from '@/lib/staff/service'
 
 const TONE = { booked: 'sky', completed: 'leaf', no_show: 'ember', cancelled: 'berry' }
 
@@ -15,7 +15,15 @@ export default function StaffAppointments() {
   const { t, i18n } = useTranslation('staff')
   const tc = useTranslation('care').t
   useDocumentTitle(t('appointments.title'))
-  const { data: all, refresh, staff, storage } = useStaffData(listAllAppointments)
+  const { data, refresh, staff } = useStaffData(staffAppointments)
+  const all = data ?? []
+  const mark = async (a, status) => {
+    try {
+      await staffSetAppointmentStatus(a, status, staff)
+    } finally {
+      refresh()
+    }
+  }
   const [tab, setTab] = useState('upcoming')
   const [now] = useState(() => Date.now())
   const isPast = (a) => new Date(a.start).getTime() + a.minutes * 60000 < now
@@ -81,10 +89,10 @@ export default function StaffAppointments() {
                         <td className={styles.actionsCell}>
                           {a.status === 'booked' && (
                             <>
-                              <button type="button" className={styles.miniButton} onClick={() => (setAppointmentStatus(storage, staff, a.userId, a.id, 'completed'), refresh())}>
+                              <button type="button" className={styles.miniButton} onClick={() => mark(a, 'completed')}>
                                 {t('appointments.complete')}
                               </button>
-                              <button type="button" className={styles.miniButton} onClick={() => (setAppointmentStatus(storage, staff, a.userId, a.id, 'no_show'), refresh())}>
+                              <button type="button" className={styles.miniButton} onClick={() => mark(a, 'no_show')}>
                                 {t('appointments.noShow')}
                               </button>
                             </>

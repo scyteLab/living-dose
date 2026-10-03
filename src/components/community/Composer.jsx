@@ -68,8 +68,15 @@ export default function Composer({ mode = 'post', group, onSubmit }) {
   }
 
   const forcedAnon = GROUPS_BY_ID[groupId]?.anonymous
-  const send = () => {
-    onSubmit({ group: groupId, body, anonymous: forcedAnon || anon })
+  const send = async () => {
+    try {
+      await onSubmit({ group: groupId, body, anonymous: forcedAnon || anon })
+    } catch (err) {
+      // The server checks the same rules; show its reason if it refuses
+      setCrisis(false)
+      setError({ 'too-short': 'short', 'too-long': 'long', 'contact-details': 'contact', 'slow-down': 'slowDown' }[err?.kind] ?? 'failed')
+      return
+    }
     setBody('')
     setCrisis(false)
     setDone(true)

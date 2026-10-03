@@ -8,9 +8,10 @@ import styles from '@/components/care/Care.module.css'
 import { CONSULT_TYPES, LANGUAGES, PROFESSIONALS, SPECIALTIES } from '@/data/professionals'
 import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
-import { bookedSlots, listAppointments } from '@/lib/care/appointments'
+import { bookedSlots, listAppointments, loadBookedSlots } from '@/lib/care/appointments'
 import { availableDays, lagosDay } from '@/lib/care/availability'
-import { withSchedule } from '@/lib/pro/schedule'
+import { applySchedule } from '@/lib/pro/schedule'
+import { loadAllSchedules } from '@/lib/pro/service'
 
 export default function CarePage() {
   const { t } = useTranslation('care')
@@ -47,11 +48,28 @@ export default function CarePage() {
     setParams(next, { replace: true })
   }
 
-  // Next free time for everyone, worked out once per visit
-  const nextFor = useMemo(() => {
-    const booked = bookedSlots()
-    return Object.fromEntries(PROFESSIONALS.map((p) => [p.id, availableDays(withSchedule(p), { booked })]))
+  // Next free time for everyone: uses taken times from the server when connected
+  const [booked, setBooked] = useState(bookedSlots)
+  useEffect(() => {
+    let alive = true
+    loadBookedSlots()
+      .then((set) => alive && setBooked(set))
+      .catch(() => {})
+    return () => {
+      alive = false
+    }
   }, [])
+  const [schedules, setSchedules] = useState({})
+  useEffect(() => {
+    let alive = true
+    loadAllSchedules(PROFESSIONALS)
+      .then((m) => alive && setSchedules(m))
+      .catch(() => {})
+    return () => {
+      alive = false
+    }
+  }, [])
+  const nextFor = useMemo(() => Object.fromEntries(PROFESSIONALS.map((p) => [p.id, availableDays(applySchedule(p, schedules[p.id]), { booked })])), [booked, schedules])
 
   const todayIso = lagosDay(new Date()).iso
   const results = PROFESSIONALS.filter(

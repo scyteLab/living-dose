@@ -30,3 +30,6 @@ export function validHours(range) {
   const [start, end] = range
   return Number.isInteger(start) && Number.isInteger(end) && start >= 6 && end <= 22 && start < end
 }
+
+/** The professional with given hours and days off applied. */
+export const applySchedule = (pro, sched) => (sched ? { ...pro, schedule: sched.hours, daysOff: sched.daysOff } : withSchedule(pro))

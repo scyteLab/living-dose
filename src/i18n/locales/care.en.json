@@ -120,7 +120,13 @@
     "errors": {
       "time": "Please choose a time.",
       "taken": "Someone has just booked that time. Please choose another.",
-      "generic": "The booking didn't go through. Please try again."
+      "generic": "The booking didn't go through. Please try again.",
+      "too-soon": "That time is too soon to book. Please choose a later time.",
+      "outside-hours": "That time is outside their working hours. Please choose another.",
+      "day-off": "They're not working that day. Please choose another day.",
+      "too-far-ahead": "That's too far ahead to book. Please choose an earlier day.",
+      "too-many-bookings": "You already have 5 upcoming consultations. Please attend or cancel one before booking another.",
+      "invalid-time": "Please choose one of the times shown."
     }
   },
   "appt": {

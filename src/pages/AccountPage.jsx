@@ -1,6 +1,7 @@
 import { NavLink, Navigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Bell, LayoutDashboard, Lock, ShieldCheck, UserRound, UsersRound } from 'lucide-react'
+import { Bell, Building2, LayoutDashboard, Lock, ShieldCheck, UserRound, UsersRound } from 'lucide-react'
+import OrganisationSection from '@/components/account/OrganisationSection'
 import { isStaff } from '@/lib/staff/access'
 import clsx from 'clsx'
 import HouseholdSection from '@/components/account/HouseholdSection'
@@ -16,6 +17,7 @@ const SECTIONS = [
   { id: 'profile', icon: UserRound, Component: ProfileSection },
   { id: 'household', icon: UsersRound, Component: HouseholdSection },
   { id: 'notifications', icon: Bell, Component: NotificationsSection },
+  { id: 'organisation', icon: Building2, Component: OrganisationSection },
   { id: 'privacy', icon: ShieldCheck, Component: PrivacySection },
   { id: 'security', icon: Lock, Component: SecuritySection },
 ]

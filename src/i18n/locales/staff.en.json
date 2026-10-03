@@ -191,5 +191,7 @@
       "moderation.remove": "Removed post",
       "moderation.keep": "Kept post"
     }
-  }
+  },
+  "loadError": "This couldn't be loaded. Check your connection and refresh the page.",
+  "actionError": "That change didn't go through. The list has been refreshed; please try again."
 }

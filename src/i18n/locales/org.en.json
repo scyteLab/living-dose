@@ -1,0 +1,102 @@
+{
+  "docTitle": "Organisation portal",
+  "title": "Organisation portal",
+  "backToSite": "Back to the site",
+  "nav": {
+    "label": "Portal sections",
+    "overview": "Wellbeing overview",
+    "invite": "Invite your people"
+  },
+  "sectors": {
+    "manufacturing": "Manufacturing",
+    "education": "Education",
+    "insurance": "Insurance"
+  },
+  "gate": {
+    "title": "For sponsoring organisations",
+    "body": "Employers, schools and insurers who offer Living Dose to their people can see anonymised wellbeing totals here.",
+    "live": "Our team sets up access for your organisation's administrators. Contact us to get started.",
+    "demo": "Demo mode: choose a sample organisation to try the portal.",
+    "pick": "Try the portal as",
+    "start": "Open the portal",
+    "home": "Go to the home page",
+    "partner": "Become a partner"
+  },
+  "privacy": "Anonymised totals only. You never see anyone's individual results, and figures for fewer than 5 people are hidden.",
+  "sample": {
+    "label": "Show sample data",
+    "note": "Sample data: 140 fictional people, for previewing the portal. Turn off to see your real totals."
+  },
+  "overview": {
+    "title": "Wellbeing overview",
+    "enrolled": "People enrolled",
+    "seats": "of {{count}} places",
+    "checked": "Health checks done",
+    "participation": "{{pct}}% of enrolled",
+    "average": "Average Living Score",
+    "suppressedTitle": "Not enough results yet",
+    "suppressedBody": "To protect privacy, totals appear once at least 10 people have taken the health check. {{count}} more needed.",
+    "bands": "How scores are spread",
+    "bandNames": {
+      "strong": "Strong",
+      "good": "Good",
+      "grow": "Room to grow",
+      "attention": "Needs attention"
+    },
+    "fewer": "fewer than 5",
+    "pillars": "Average by health area",
+    "risks": "Health risks to act on",
+    "riskNames": {
+      "weight": "Living with overweight or obesity",
+      "bloodPressure": "Raised blood pressure",
+      "diabetes": "Moderate or higher type 2 diabetes risk"
+    },
+    "ofMeasured": "of {{count}} measured",
+    "notEnough": "Not enough people measured yet",
+    "priorities": "Most common priorities",
+    "prioritiesHint": "Share of people whose health check put this in their top 3.",
+    "programmes": "Turn this into action",
+    "programmesBody": "Our dietitians and doctors can run talks, cooking workshops and screening days built around these priorities.",
+    "programmesCta": "Talk to us about a programme",
+    "download": "Download report (CSV)",
+    "asOf": "As of {{date}}",
+    "failed": "The totals couldn't be loaded. Check your connection and refresh."
+  },
+  "invite": {
+    "title": "Invite your people",
+    "intro": "Share this code. People join from My account → Organisation, and choose to be counted in your anonymised totals.",
+    "code": "Your organisation code",
+    "copy": "Copy code",
+    "copied": "Copied",
+    "messageTitle": "Message to share",
+    "message": "We've partnered with Living Dose to support your health. Sign up free at livingdose.netlify.app, take the 5-minute health check, then go to My account → Organisation and enter the code {{code}}. Your personal results stay private to you: we only ever see anonymised totals for the whole group.",
+    "copyMessage": "Copy message",
+    "steps": "How it works for your people",
+    "stepsItems": [
+      "They sign up and take the free health check.",
+      "They enter your code in My account → Organisation and agree to be counted.",
+      "They get meal plans, the shop, experts and community, like every member.",
+      "They can leave your organisation at any time."
+    ]
+  },
+  "member": {
+    "title": "Organisation",
+    "intro": "If your employer, school or insurer offers Living Dose, join with their code.",
+    "code": "Organisation code",
+    "codePlaceholder": "e.g. LAGOSFOODS",
+    "consent": "I agree that my health check results can be included in anonymised totals for this organisation. They will never see my individual results.",
+    "join": "Join",
+    "errors": {
+      "code": "We don't recognise that code. Check it with your organisation.",
+      "consent": "Please tick the box to agree before joining.",
+      "failed": "That didn't go through. Check your connection and try again."
+    },
+    "joined": "You're part of {{name}}",
+    "joinedOn": "Joined {{date}}",
+    "whatShared": "What they can see",
+    "whatSharedBody": "Only totals for the whole group, such as the average Living Score, and only when at least 10 people have taken the health check. Never your name, answers or results.",
+    "leave": "Leave this organisation",
+    "leaveConfirm": "Leave {{name}}? Your results will no longer be counted in their totals.",
+    "left": "You've left the organisation."
+  }
+}

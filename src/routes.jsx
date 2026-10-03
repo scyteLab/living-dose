@@ -29,6 +29,9 @@ const ProLayout = lazy(() => import('@/components/pro/ProLayout'))
 const ProSchedule = lazy(() => import('@/pages/pro/ProSchedule'))
 const ProConsultation = lazy(() => import('@/pages/pro/ProConsultation'))
 const ProAvailability = lazy(() => import('@/pages/pro/ProAvailability'))
+const OrgLayout = lazy(() => import('@/components/org/OrgLayout'))
+const OrgOverview = lazy(() => import('@/pages/org/OrgOverview'))
+const OrgInvite = lazy(() => import('@/pages/org/OrgInvite'))
 const Care = lazy(() => import('@/pages/care/CarePage'))
 const Professional = lazy(() => import('@/pages/care/ProfessionalPage'))
 const Appointment = lazy(() => import('@/pages/care/AppointmentPage'))
@@ -129,6 +132,15 @@ export const routes = [
           { index: true, element: <ProSchedule /> },
           { path: 'consultations/:appointmentId', element: <ProConsultation /> },
           { path: 'availability', element: <ProAvailability /> },
+        ],
+      },
+      {
+        // Organisation portal: anonymised totals only; admin role checked inside OrgLayout
+        path: 'org',
+        element: <RequireAuth><OrgLayout /></RequireAuth>,
+        children: [
+          { index: true, element: <OrgOverview /> },
+          { path: 'invite', element: <OrgInvite /> },
         ],
       },
       {

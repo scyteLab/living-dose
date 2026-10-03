@@ -129,6 +129,12 @@
       "phone": "Please enter a phone number we can reach you on.",
       "slot": "Please choose a delivery time.",
       "generic": "Your order couldn't be placed. Please try again."
+    },
+    "serverErrors": {
+      "invalid-slot": "That delivery time is no longer available. Please choose another.",
+      "outside-delivery-area": "We don't deliver to that state yet. We currently deliver in Lagos.",
+      "unavailable-product": "Something in your basket is no longer available. Please check your basket.",
+      "invalid-quantity": "Please check the quantities in your basket (up to 20 of each item)."
     }
   },
   "order": {

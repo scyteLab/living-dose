@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useOutletContext, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ArrowLeft, Lock, Plus, ShieldAlert, Trash2, Video } from 'lucide-react'
@@ -8,27 +8,45 @@ import Field from '@/components/ui/Field'
 import Tag from '@/components/ui/Tag'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { formatDay, formatTime } from '@/lib/care/format'
-import { findAppointment, loadNote, saveNote, saveSummary, setStatus, sharedResults } from '@/lib/pro/api'
+import { proConsultation, proMark, proSaveNote, proSaveSummary } from '@/lib/pro/service'
 
 const FOLLOW_UPS = ['none', '2weeks', '4weeks', '3months']
 const BAND_TONE = { strong: 'leaf', good: 'sky', grow: 'ember', attention: 'berry' }
 
+/** Loads the consultation (from the server when connected), then shows it. */
 export default function ProConsultation() {
   const pro = useOutletContext()
   const { appointmentId } = useParams()
+  const { t } = useTranslation('pro')
+  const [loaded, setLoaded] = useState(null)
+  const [version, setVersion] = useState(0)
+  useEffect(() => {
+    let alive = true
+    proConsultation(pro.id, appointmentId)
+      .then((d) => alive && setLoaded(d))
+      .catch(() => alive && setLoaded({ appt: null, results: null, note: '' }))
+    return () => {
+      alive = false
+    }
+  }, [pro.id, appointmentId, version])
+  if (!loaded) return <div className={styles.loading} role="status" aria-label={t('nav.schedule')} />
+  return <ConsultationView key={`${appointmentId}-${version}`} pro={pro} data={loaded} reload={() => setVersion((v) => v + 1)} />
+}
+
+function ConsultationView({ pro, data, reload }) {
   const { t, i18n } = useTranslation('pro')
   const tc = useTranslation('care').t
   const th = useTranslation('healthCheck').t
   useDocumentTitle(t('nav.schedule'))
-  const storage = window.localStorage
-  const [appt, setAppt] = useState(() => findAppointment(storage, pro.id, appointmentId))
+  const appt = data.appt
   const [summary, setSummary] = useState(appt?.summary?.summary ?? '')
   const [steps, setSteps] = useState(appt?.summary?.nextSteps?.length ? appt.summary.nextSteps : [''])
   const [followUp, setFollowUp] = useState(appt?.summary?.followUp ?? '4weeks')
-  const [note, setNote] = useState(() => loadNote(storage, pro.id, appointmentId))
+  const [note, setNote] = useState(data.note)
   const [noteSaved, setNoteSaved] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState(false)
+  const [failed, setFailed] = useState(false)
 
   if (!appt) {
     return (
@@ -41,20 +59,23 @@ export default function ProConsultation() {
     )
   }
 
-  const results = sharedResults(storage, appt)
+  const results = data.results
   const m = results?.measures
-  const reload = () => setAppt(findAppointment(storage, pro.id, appointmentId))
 
-  const send = (e) => {
+  const send = async (e) => {
     e.preventDefault()
     if (summary.trim().length < 20) {
       setError(true)
       return
     }
     setError(false)
-    saveSummary(storage, appt, { summary, nextSteps: steps, followUp: followUp === 'none' ? null : followUp })
-    reload()
-    setSent(true)
+    try {
+      await proSaveSummary(appt, { summary, nextSteps: steps, followUp: followUp === 'none' ? null : followUp })
+      setFailed(false)
+      setSent(true)
+    } catch {
+      setFailed(true)
+    }
   }
 
   return (
@@ -92,7 +113,7 @@ export default function ProConsultation() {
                   <Video size={18} strokeWidth={2} aria-hidden="true" />
                   {t('consult.join')}
                 </Button>
-                <button type="button" className={styles.miniButton} onClick={() => (setStatus(storage, appt, 'no_show'), reload())}>
+                <button type="button" className={styles.miniButton} onClick={() => proMark(appt, 'no_show').then(reload).catch(() => setFailed(true))}>
                   {t('consult.noShow')}
                 </button>
               </div>
@@ -141,6 +162,11 @@ export default function ProConsultation() {
             </Field>
             <div className={styles.rowActions}>
               <Button type="submit">{appt.summary ? t('consult.update') : t('consult.send')}</Button>
+              {failed && (
+                <span className={styles.errorText} role="alert">
+                  {t('consult.failed')}
+                </span>
+              )}
               {sent && (
                 <span className={styles.ok} role="status">
                   {t('consult.sent')}
@@ -163,7 +189,7 @@ export default function ProConsultation() {
               rows={4}
               value={note}
               onChange={(e) => (setNote(e.target.value), setNoteSaved(false))}
-              onBlur={() => (saveNote(storage, pro.id, appt.id, note), setNoteSaved(true))}
+              onBlur={() => proSaveNote(pro.id, appt.id, note).then(() => setNoteSaved(true)).catch(() => setFailed(true))}
             />
             {noteSaved && (
               <span className={styles.ok} role="status">

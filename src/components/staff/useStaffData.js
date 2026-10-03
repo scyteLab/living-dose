@@ -1,18 +1,28 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import useAuth from '@/hooks/useAuth'
 
 /**
- * Reads a slice of staff data and refreshes it after each action.
- * `load` gets the storage; `staff` identifies who made a change in the log.
+ * Loads a slice of staff data (from the server or this browser) and reloads it
+ * after each action. `loader` is an async function from lib/staff/service.js.
+ * `staff` identifies who made a change in demo mode's activity log.
  */
-export default function useStaffData(load) {
+export default function useStaffData(loader) {
   const { firstName, user } = useAuth()
+  const [data, setData] = useState(null)
+  const [error, setError] = useState(false)
   const [version, setVersion] = useState(0)
-  const [data, setData] = useState(() => load(window.localStorage))
-  const refresh = useCallback(() => {
-    setData(load(window.localStorage))
-    setVersion((v) => v + 1)
-  }, [load])
+
+  useEffect(() => {
+    let alive = true
+    loader()
+      .then((d) => alive && (setData(d), setError(false)))
+      .catch(() => alive && setError(true))
+    return () => {
+      alive = false
+    }
+  }, [loader, version])
+
+  const refresh = useCallback(() => setVersion((v) => v + 1), [])
   const staff = { name: firstName || user?.phone || user?.email || 'Staff' }
-  return { data, refresh, staff, version, storage: window.localStorage }
+  return { data, error, loading: data === null && !error, refresh, staff }
 }

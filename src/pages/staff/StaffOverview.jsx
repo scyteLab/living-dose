@@ -5,13 +5,15 @@ import styles from '@/components/staff/Staff.module.css'
 import useStaffData from '@/components/staff/useStaffData'
 import { ARTICLES } from '@/data/articles'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
-import { overview } from '@/lib/staff/api'
+import { staffOverview } from '@/lib/staff/service'
 import { formatPrice } from '@/lib/shop/money'
 
 export default function StaffOverview() {
   const { t } = useTranslation('staff')
   useDocumentTitle(t('docTitle'))
-  const { data: o } = useStaffData(overview)
+  const { data: o, error } = useStaffData(staffOverview)
+  if (error) return <p className={styles.empty}>{t('loadError')}</p>
+  if (!o) return <div className={styles.loading} role="status" />
   const awaiting = ARTICLES.filter((a) => !a.reviewedBy).length
 
   const cards = [

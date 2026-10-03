@@ -85,7 +85,8 @@
       "completed": "Completed",
       "no_show": "No-show",
       "cancelled": "Cancelled"
-    }
+    },
+    "failed": "That didn't save. Check your connection and try again."
   },
   "availability": {
     "title": "Availability",

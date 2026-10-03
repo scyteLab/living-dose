@@ -46,6 +46,7 @@ export default function CheckoutPage() {
   const [slot, setSlot] = useState(null)
   const [note, setNote] = useState('')
   const [errors, setErrors] = useState({})
+  const [serverError, setServerError] = useState(null)
   const [status, setStatus] = useState('idle')
   const [attempts, setAttempts] = useState(0)
   const days = useMemo(() => deliverySlots({ days: shop.daysAhead, slots: shop.slots }), [])
@@ -82,7 +83,8 @@ export default function CheckoutPage() {
       setStatus('placed')
       clear()
       navigate(`/orders/${order.id}`, { replace: true, state: { justPlaced: true } })
-    } catch {
+    } catch (err) {
+      setServerError(['invalid-slot', 'outside-delivery-area', 'unavailable-product', 'invalid-quantity'].includes(err?.kind) ? err.kind : null)
       setStatus('error')
     }
   }
@@ -187,7 +189,7 @@ export default function CheckoutPage() {
         <OrderSummary totals={totals}>
           {status === 'error' && (
             <p className={styles.errorText} role="alert">
-              {t('checkout.errors.generic')}
+              {serverError ? t(`checkout.serverErrors.${serverError}`) : t('checkout.errors.generic')}
             </p>
           )}
           <Button type="submit" variant="action" className={styles.full} disabled={status === 'placing'}>

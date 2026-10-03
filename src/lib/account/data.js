@@ -60,6 +60,7 @@ export function buildExport(user, storage = window.localStorage) {
 /** Removes everything this device holds for the person. Returns how many items went. */
 export function deleteLocalData(userId, storage = window.localStorage) {
   let removed = 0
+  storage.removeItem(`ld.sync.${userId}`) // sync notes, so nothing is re-uploaded
   for (const [, key] of PER_USER) {
     if (storage.getItem(key(userId)) != null) {
       storage.removeItem(key(userId))

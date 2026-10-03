@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import { Outlet, ScrollRestoration } from 'react-router-dom'
+import useSync from '@/hooks/useSync'
 import OfflineBanner from '@/components/system/OfflineBanner'
 import { useTranslation } from 'react-i18next'
 import Navbar from '@/components/navigation/Navbar'
@@ -8,6 +9,7 @@ import Footer from '@/components/navigation/Footer'
 import styles from './AppShell.module.css'
 
 export default function AppShell() {
+  const { version: syncVersion } = useSync()
   const { t } = useTranslation()
 
   return (
@@ -26,7 +28,8 @@ export default function AppShell() {
             </div>
           }
         >
-          <Outlet />
+          {/* Reloads the page's data when newer data arrives from another device */}
+          <Outlet key={syncVersion} />
         </Suspense>
       </main>
 
