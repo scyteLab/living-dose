@@ -9,12 +9,12 @@ import { WelcomeBackVisual } from '@/components/auth/PanelVisuals'
 import Button from '@/components/ui/Button'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import useRegion from '@/hooks/useRegion'
-import { sendCode } from '@/lib/auth'
+import { phoneAuthEnabled, sendCode } from '@/lib/auth'
 import { setPending } from '@/lib/authFlow'
 import { COUNTRIES, isValidNational, toE164 } from '@/lib/phone'
 import styles from './Auth.module.css'
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+import { EMAIL_PATTERN } from '@/lib/email'
 
 export default function SignIn() {
   const { t } = useTranslation('auth')
@@ -23,7 +23,7 @@ export default function SignIn() {
   const location = useLocation()
   const { region } = useRegion()
 
-  const [mode, setMode] = useState('phone')
+  const [mode, setMode] = useState(phoneAuthEnabled ? 'phone' : 'email')
   const [country, setCountry] = useState(COUNTRIES.some((c) => c.code === region) ? region : 'NG')
   const [digits, setDigits] = useState('')
   const [email, setEmail] = useState('')
@@ -74,13 +74,7 @@ export default function SignIn() {
           </span>
         </div>
       }
-      footer={
-        <Trans
-          t={t}
-          i18nKey="legalLine"
-          components={{ terms: <Link to="/terms" />, privacy: <Link to="/privacy" /> }}
-        />
-      }
+      footer={<Trans t={t} i18nKey="legalLine" components={{ terms: <Link to="/terms" />, privacy: <Link to="/privacy" /> }} />}
     >
       <header className={styles.head}>
         <h1 className={styles.title}>{t('signIn.title')}</h1>
@@ -88,15 +82,17 @@ export default function SignIn() {
       </header>
 
       <form className={styles.form} onSubmit={onSubmit} noValidate>
-        <Segmented
-          label={t('signIn.methodLabel')}
-          value={mode}
-          onChange={switchMode}
-          options={[
-            { value: 'phone', label: t('signIn.phoneTab'), icon: Smartphone },
-            { value: 'email', label: t('signIn.emailTab'), icon: Mail },
-          ]}
-        />
+        {phoneAuthEnabled && (
+          <Segmented
+            label={t('signIn.methodLabel')}
+            value={mode}
+            onChange={switchMode}
+            options={[
+              { value: 'phone', label: t('signIn.phoneTab'), icon: Smartphone },
+              { value: 'email', label: t('signIn.emailTab'), icon: Mail },
+            ]}
+          />
+        )}
 
         {mode === 'phone' ? (
           <PhoneField
@@ -144,8 +140,7 @@ export default function SignIn() {
 
         {error?.field === 'form' && (
           <p className={styles.formError} role="alert">
-            {t(`errors.${error.kind}`)}{' '}
-            {error.kind === 'no_account' && <Link to="/join">{t('signIn.createInstead')}</Link>}
+            {t(`errors.${error.kind}`)} {error.kind === 'no_account' && <Link to="/join">{t('signIn.createInstead')}</Link>}
           </p>
         )}
 

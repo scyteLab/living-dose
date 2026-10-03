@@ -27,7 +27,10 @@ vi.mock('@/lib/supabase', () => {
     supabase: {
       rpc: (name, args) => (mock.calls.push({ rpc: name, args }), Promise.resolve(mock.replies[`rpc:${name}`] ?? { data: null, error: null })),
       from: query,
-      auth: { getUser: async () => ({ data: { user: { id: 'staff-uuid' } } }) },
+      auth: {
+        getUser: async () => ({ data: { user: { id: 'staff-uuid' } } }),
+        signInWithOtp: async (args) => (mock.calls.push({ otp: args }), mock.replies.otp ?? { error: null }),
+      },
     },
   }
 })
@@ -162,5 +165,26 @@ describe('phase 2: community, professionals, organisations', async () => {
     expect(await org.joinWithCode('u1', 'NOPE', true)).toEqual({ ok: false, reason: 'code' })
     mock.replies['rpc:organisation_summary'] = { data: { enrolled: 3, checked: 2, suppressed: true }, error: null }
     expect(await org.organisationStats('lagos-foods')).toMatchObject({ suppressed: true, needed: 8 })
+  })
+})
+
+describe('sign-up errors', async () => {
+  const { sendCode } = await import('@/lib/auth')
+
+  it('explains when phone codes are not set up yet', async () => {
+    mock.replies.otp = { error: { message: 'Unsupported phone provider', status: 400 } }
+    await expect(sendCode({ channel: 'phone', phone: '+2348012345678', intent: 'signup' })).rejects.toMatchObject({ kind: 'phone_unavailable' })
+  })
+
+  it('explains when the account could not be created', async () => {
+    mock.replies.otp = { error: { message: 'Database error saving new user', status: 500 } }
+    await expect(sendCode({ channel: 'email', email: 'ada@example.com', intent: 'signup' })).rejects.toMatchObject({ kind: 'signup_failed' })
+  })
+
+  it('signs up by email with the name and consents attached', async () => {
+    mock.replies.otp = { error: null }
+    await sendCode({ channel: 'email', email: 'ada@example.com', intent: 'signup', metadata: { first_name: 'Ada' } })
+    const call = mock.calls.find((c) => c.otp)
+    expect(call.otp).toEqual({ email: 'ada@example.com', options: { shouldCreateUser: true, data: { first_name: 'Ada' } } })
   })
 })

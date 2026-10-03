@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { Trans, useTranslation } from 'react-i18next'
-import { ArrowRight, Lock } from 'lucide-react'
+import { ArrowRight, Lock, Mail, Smartphone } from 'lucide-react'
 import AuthLayout from '@/components/auth/AuthLayout'
 import PhoneField from '@/components/auth/PhoneField'
+import Segmented from '@/components/auth/Segmented'
 import Stepper from '@/components/auth/Stepper'
 import { BenefitsVisual, FreeBadge } from '@/components/auth/PanelVisuals'
 import Button from '@/components/ui/Button'
 import Checkbox from '@/components/ui/Checkbox'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import useRegion from '@/hooks/useRegion'
-import { sendCode } from '@/lib/auth'
+import { phoneAuthEnabled, sendCode } from '@/lib/auth'
+import { EMAIL_PATTERN } from '@/lib/email'
 import { setPending, setPrefill } from '@/lib/authFlow'
 import { COUNTRIES, isValidNational, toE164 } from '@/lib/phone'
 import styles from './Auth.module.css'
@@ -29,6 +31,8 @@ export default function SignUp() {
   const [name, setName] = useState('')
   const [country, setCountry] = useState(COUNTRIES.some((c) => c.code === region) ? region : 'NG')
   const [digits, setDigits] = useState('')
+  const [mode, setMode] = useState(phoneAuthEnabled ? 'phone' : 'email')
+  const [email, setEmail] = useState('')
   const [terms, setTerms] = useState(false)
   const [health, setHealth] = useState(false)
   const [news, setNews] = useState(false)
@@ -51,13 +55,16 @@ export default function SignUp() {
 
   const nameOk = name.trim().length >= 2
   const phoneOk = isValidNational(digits, country)
-  const ready = nameOk && phoneOk && terms && health
+  const emailOk = EMAIL_PATTERN.test(email.trim())
+  const contactOk = mode === 'phone' ? phoneOk : emailOk
+  const ready = nameOk && contactOk && terms && health
 
   const onSubmit = async (e) => {
     e.preventDefault()
     const found = {}
     if (!nameOk) found.name = t('errors.nameMissing')
-    if (!phoneOk) found.phone = t('errors.phoneInvalid')
+    if (mode === 'phone' && !phoneOk) found.phone = t('errors.phoneInvalid')
+    if (mode === 'email' && !emailOk) found.email = t('errors.emailInvalid')
     if (!terms) found.terms = true
     if (!health) found.health = true
     setErrors(found)
@@ -68,7 +75,7 @@ export default function SignUp() {
 
     setBusy(true)
     setFormError(null)
-    const phone = toE164(digits, country)
+    const target = mode === 'phone' ? { phone: toE164(digits, country) } : { email: email.trim() }
     const now = new Date().toISOString()
     const metadata = {
       first_name: name.trim(),
@@ -77,8 +84,8 @@ export default function SignUp() {
       marketing_opt_in: news,
     }
     try {
-      await sendCode({ channel: 'phone', phone, intent: 'signup', metadata })
-      setPending({ channel: 'phone', phone, intent: 'signup', metadata })
+      await sendCode({ channel: mode, ...target, intent: 'signup', metadata })
+      setPending({ channel: mode, ...target, intent: 'signup', metadata })
       navigate('/verify')
     } catch (err) {
       setFormError(err.kind ?? 'generic')
@@ -90,7 +97,7 @@ export default function SignUp() {
 
   return (
     <AuthLayout
-      width="mdWide"
+      width="md"
       panel={{ title: t('signUp.panelTitle'), sub: t('signUp.panelSub'), visual: <BenefitsVisual />, bottom: <FreeBadge /> }}
       footer={
         <span className={styles.secure}>
@@ -131,18 +138,60 @@ export default function SignUp() {
           )}
         </div>
 
-        <PhoneField
-          label={t('phone.label')}
-          country={country}
-          onCountryChange={setCountry}
-          digits={digits}
-          onDigitsChange={(d) => {
-            setDigits(d)
-            if (errors.phone) setErrors((x) => ({ ...x, phone: undefined }))
-          }}
-          hint={t('signUp.phoneHint')}
-          error={errors.phone}
-        />
+        {phoneAuthEnabled && (
+          <Segmented
+            label={t('signUp.methodLabel')}
+            value={mode}
+            onChange={(m) => {
+              setMode(m)
+              setErrors((x) => ({ ...x, phone: undefined, email: undefined }))
+              setFormError(null)
+            }}
+            options={[
+              { value: 'phone', label: t('signIn.phoneTab'), icon: Smartphone },
+              { value: 'email', label: t('signIn.emailTab'), icon: Mail },
+            ]}
+          />
+        )}
+
+        {mode === 'phone' ? (
+          <PhoneField
+            label={t('phone.label')}
+            country={country}
+            onCountryChange={setCountry}
+            digits={digits}
+            onDigitsChange={(d) => {
+              setDigits(d)
+              if (errors.phone) setErrors((x) => ({ ...x, phone: undefined }))
+            }}
+            hint={t('signUp.phoneHint')}
+            error={errors.phone}
+          />
+        ) : (
+          <div className={styles.field}>
+            <label htmlFor="signup-email" className={styles.label}>
+              {t('email.label')}
+            </label>
+            <input
+              id="signup-email"
+              className={`${styles.input} ${errors.email ? styles.inputError : ''} ${emailOk ? styles.inputValid : ''}`}
+              type="email"
+              autoComplete="email"
+              inputMode="email"
+              placeholder={t('email.placeholder')}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value)
+                if (errors.email) setErrors((x) => ({ ...x, email: undefined }))
+              }}
+              aria-invalid={errors.email ? true : undefined}
+              aria-describedby="signup-email-note"
+            />
+            <p id="signup-email-note" className={errors.email ? styles.errorText : styles.hint}>
+              {errors.email ?? t('signUp.emailHint')}
+            </p>
+          </div>
+        )}
 
         <fieldset className={styles.consents}>
           <legend className="sr-only">{t('signUp.consentsLegend')}</legend>

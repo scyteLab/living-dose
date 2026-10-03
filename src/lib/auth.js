@@ -37,12 +37,21 @@ function writeDemoUser(user) {
 
 export const DEMO_AUTH_EVENT = DEMO_EVENT
 
+/**
+ * Phone codes need an SMS provider set up in Supabase (Authentication → Providers → Phone).
+ * Until then, set nothing and people sign up and sign in by email.
+ * Once SMS works, add VITE_PHONE_AUTH_ENABLED=true (Netlify and .env.local) and redeploy.
+ */
+export const phoneAuthEnabled = isDemo || import.meta.env.VITE_PHONE_AUTH_ENABLED === 'true'
+
 /** Turns Supabase errors into a small set of codes the pages have messages for. */
 function toAuthError(error) {
   const code = error?.code ?? ''
   const message = (error?.message ?? '').toLowerCase()
   let kind = 'generic'
-  if (code === 'otp_expired' || message.includes('expired')) kind = 'expired'
+  if (code === 'phone_provider_disabled' || message.includes('phone provider') || (message.includes('sms') && message.includes('provider'))) kind = 'phone_unavailable'
+  else if (message.includes('database error saving new user')) kind = 'signup_failed'
+  else if (code === 'otp_expired' || message.includes('expired')) kind = 'expired'
   else if (message.includes('invalid') || message.includes('token')) kind = 'invalid_code'
   else if (error?.status === 429 || code.includes('rate_limit') || message.includes('rate limit')) kind = 'rate_limited'
   else if (code === 'otp_disabled' || message.includes('signups not allowed')) kind = 'no_account'

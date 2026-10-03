@@ -85,7 +85,7 @@
   "signUp": {
     "docTitle": "Create your account",
     "title": "Create your free account",
-    "lead": "It takes about a minute. You'll confirm your number with a one-time code.",
+    "lead": "It takes about a minute. You'll confirm with a one-time code.",
     "panelTitle": "Your healthier week starts here.",
     "panelSub": "Everything you need to eat well and stay well, in one free account.",
     "nameLabel": "What should we call you?",
@@ -99,7 +99,9 @@
     "submit": "Create free account",
     "haveAccount": "Already have an account?",
     "signIn": "Sign in",
-    "secure": "Your information is encrypted and never sold."
+    "secure": "Your information is encrypted and never sold.",
+    "methodLabel": "Sign up with",
+    "emailHint": "We'll email you a 6-digit code to confirm it's yours."
   },
   "verify": {
     "docTitle": "Enter your code",
@@ -192,6 +194,8 @@
     "rate_limited": "Too many attempts. Please wait a minute, then try again.",
     "no_account": "We couldn't find an account with those details.",
     "network": "We couldn't connect. Check your internet connection and try again.",
-    "generic": "Something went wrong. Please try again."
+    "generic": "Something went wrong. Please try again.",
+    "phone_unavailable": "Codes by text message aren't available yet. Please use your email address instead.",
+    "signup_failed": "We couldn't create your account just now. Please try again in a minute, or contact us if it keeps happening."
   }
 }
