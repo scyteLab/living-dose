@@ -53,6 +53,9 @@ export function setOrderStatus(storage, staff, userId, orderId, status, extra = 
   const orders = read(storage, key, [])
   const order = orders.find((o) => o.id === orderId)
   if (!order) throw new Error('not-found')
+  // Same rule as the server: a "pay now" order isn't packed until it's paid
+  if (status !== 'cancelled' && order.payment === 'paystack' && order.paymentStatus !== 'paid') throw new Error('awaiting-payment')
+  if (status === 'delivered' && order.payment !== 'paystack') extra = { ...extra, paymentStatus: 'paid' }
   const history = [...(order.history ?? [{ status: order.status, at: order.createdAt }]), { status, at: new Date().toISOString(), by: staff?.name }]
   write(storage, key, orders.map((o) => (o.id === orderId ? { ...o, ...extra, status, history } : o)))
   logAction(storage, staff, 'order.status', `${orderId} → ${status}`)

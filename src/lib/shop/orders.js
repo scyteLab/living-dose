@@ -26,6 +26,7 @@ export function orderFromRow(row) {
     payment: row.payment,
     note: row.note,
     paid: Boolean(row.paid),
+    paymentStatus: row.payment_status ?? (row.paid ? 'paid' : 'dueOnDelivery'),
     history: (row.history ?? []).map((h) => ({ status: h.status, at: h.at })),
   }
 }
@@ -59,6 +60,7 @@ export async function placeOrder(userId, { basket, address, slot, payment, note 
         p_address: address,
         p_slot: slot,
         p_note: note?.trim() || null,
+        p_payment: payment === 'paystack' ? 'paystack' : 'payOnDelivery',
       }),
     )
     return (await getOrder(userId, placed.id)) ?? { id: placed.id }
@@ -74,6 +76,7 @@ export async function placeOrder(userId, { basket, address, slot, payment, note 
     address,
     slot,
     payment,
+    paymentStatus: payment === 'paystack' ? 'pending' : 'dueOnDelivery',
     note: note?.trim() || null,
   }
   const orders = [order, ...read(userId)].slice(0, 50)

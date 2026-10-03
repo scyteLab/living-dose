@@ -48,6 +48,15 @@ describe('orders', () => {
   })
 })
 
+describe('payments', () => {
+  it('a pay-now order is not packed until it is paid', () => {
+    const s = memoryStorage({ 'ld.orders.u9': [{ id: 'LD-PAY', status: 'placed', total: 1000, payment: 'paystack', paymentStatus: 'pending', createdAt: '2026-10-01T08:00:00Z' }] })
+    expect(() => setOrderStatus(s, staff, 'u9', 'LD-PAY', 'packed')).toThrow('awaiting-payment')
+    setOrderStatus(s, staff, 'u9', 'LD-PAY', 'cancelled')
+    expect(listAllOrders(s)[0].status).toBe('cancelled')
+  })
+})
+
 describe('appointments', () => {
   it('lists bookings soonest first and updates them', () => {
     const s = seed()

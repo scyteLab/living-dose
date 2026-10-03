@@ -3,6 +3,8 @@ import { Link, useLocation, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { CircleCheck } from 'lucide-react'
 import OrderTimeline from '@/components/shop/OrderTimeline'
+import PaymentStatus from '@/components/shop/PaymentStatus'
+import { confirmPayment, startPayment } from '@/lib/shop/payments'
 import styles from '@/components/shop/Shop.module.css'
 import PageIntro from '@/components/page/PageIntro'
 import Button from '@/components/ui/Button'
@@ -19,13 +21,39 @@ export default function OrderPage() {
   const location = useLocation()
   const [order, setOrder] = useState(undefined)
 
+  const [paying, setPaying] = useState(false)
+  const returned = new URLSearchParams(location.search).get('payment') === 'return'
+  const [checks, setChecks] = useState(0)
+
   useEffect(() => {
     let alive = true
     getOrder(user.id, orderId).then((o) => alive && setOrder(o))
     return () => {
       alive = false
     }
-  }, [user.id, orderId])
+  }, [user.id, orderId, checks])
+
+  // Back from Paystack: confirm with the server, then check again for up to ~30 seconds
+  useEffect(() => {
+    if (!returned || !order || order.paymentStatus !== 'pending' || checks > 10) return
+    const timer = setTimeout(
+      () => {
+        if (checks === 0) confirmPayment(orderId).catch(() => {}).finally(() => setChecks((n) => n + 1))
+        else setChecks((n) => n + 1)
+      },
+      checks === 0 ? 0 : 3000,
+    )
+    return () => clearTimeout(timer)
+  }, [returned, order, checks, orderId])
+
+  const payNow = async () => {
+    setPaying(true)
+    const result = await startPayment(user.id, orderId).catch(() => null)
+    if (!result?.redirected) {
+      setPaying(false)
+      setChecks((n) => n + 1)
+    }
+  }
 
   if (order === undefined) return <div className={styles.loading} role="status" />
   if (!order) {
@@ -66,6 +94,9 @@ export default function OrderPage() {
       <div className={styles.checkoutLayout}>
         <div className={styles.checkoutMain}>
           <section className={styles.panel}>
+            {order.payment === 'paystack' && order.status !== 'cancelled' && (
+              <PaymentStatus order={order} confirming={returned && order.paymentStatus === 'pending' && checks <= 10} paying={paying} onPay={payNow} demoPaid={location.state?.demoPaid} />
+            )}
             {order.status === 'cancelled' ? <p className={styles.errorText}>{t('order.cancelledNotice')}</p> : <OrderTimeline status={order.status} />}
           </section>
 

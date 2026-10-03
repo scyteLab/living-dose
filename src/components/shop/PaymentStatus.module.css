@@ -1,0 +1,42 @@
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border-radius: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.box > span {
+  flex: 1;
+  display: grid;
+  gap: 2px;
+  min-width: 12rem;
+  font-weight: 500;
+}
+
+.box svg {
+  flex-shrink: 0;
+}
+
+.paid {
+  background: var(--leaf-tint);
+  color: #2f4f12;
+}
+
+.waiting {
+  background: #fdf5dd;
+  color: #5c4a10;
+}
+
+.failed {
+  background: var(--berry-tint);
+  color: #7d1f31;
+}
+
+.button {
+  flex-shrink: 0;
+}

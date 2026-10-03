@@ -87,6 +87,12 @@
       "onTheWay": "On the way",
       "delivered": "Delivered",
       "cancelled": "Cancelled"
+    },
+    "payment": {
+      "dueOnDelivery": "Pay on delivery",
+      "pending": "Awaiting payment",
+      "paid": "Paid",
+      "failed": "Payment failed"
     }
   },
   "appointments": {

@@ -114,9 +114,12 @@ export default function StaffOrders() {
                     <td className={styles.num}>{formatPrice(o.total)}</td>
                     <td>
                       <Tag tone={TONE[o.status]}>{t(`orders.status.${o.status}`)}</Tag>
+                      <span className={styles.small}>{t(`orders.payment.${o.paymentStatus ?? 'dueOnDelivery'}`)}</span>
                     </td>
                     <td>
-                      {next ? (
+                      {next && o.payment === 'paystack' && o.paymentStatus !== 'paid' ? (
+                        <span className={styles.small}>{t('orders.payment.pending')}</span>
+                      ) : next ? (
                         <Button size="sm" variant={next === 'delivered' ? 'primary' : 'outline'} onClick={() => move(o, next)}>
                           {t(`orders.advance.${next}`)}
                         </Button>

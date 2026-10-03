@@ -17,6 +17,7 @@ the app uses Supabase. Without them it runs in demo mode on the device.
 | **Staff moderation** | ✅ phase 2 |
 | **Professionals' portal** (consultations, shared results, summaries, private notes, hours) | ✅ phase 2 |
 | **Organisations** (joining with a code; anonymised totals worked out on the server) | ✅ phase 2 |
+| **Online payments with Paystack** (see PAYMENTS.md) | ✅ |
 | **Personal data across your devices**: meal plan, food diary (photos stay on the device), habits, unfinished health check, household, notification choices, saved articles, groups and challenges | ✅ phase 3 |
 
 ## Set up, step by step
@@ -35,10 +36,11 @@ Each one is safe to run once; stop and check if any shows an error.
 9. `migrations/0009_secure_shop_and_care.sql`
 10. `migrations/0010_community_professionals_organisations.sql`
 11. `migrations/0011_personal_sync.sql`
-12. `seed/products.sql`: the catalogue, prices and delivery settings
-13. `seed/sample_professionals.sql`: **for testing only.** These 10 people are fictional.
+12. `migrations/0012_payments.sql` (then follow `PAYMENTS.md` to switch on Pay now)
+13. `seed/products.sql`: the catalogue, prices and delivery settings
+14. `seed/sample_professionals.sql`: **for testing only.** These 10 people are fictional.
     Delete them before launch (the command is at the top of the file).
-14. `seed/sample_organisations.sql`: **for testing only.** Three sample organisations.
+15. `seed/sample_organisations.sql`: **for testing only.** Three sample organisations.
 
 ## Make yourself staff
 
@@ -86,7 +88,7 @@ With PostgreSQL 15+ installed locally:
 npm run db:test
 ```
 
-This builds a throwaway database, runs every migration and seed, then checks 118
+This builds a throwaway database, runs every migration and seed, then checks 135
 security rules. For example: prices can't be changed from the browser, nobody can
 see another member's orders, two people can't book the same time, anonymous posts
 never reveal who wrote them, private notes stay private, and organisations never

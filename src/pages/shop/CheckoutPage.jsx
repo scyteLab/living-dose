@@ -11,6 +11,7 @@ import useAuth from '@/hooks/useAuth'
 import useCart from '@/hooks/useCart'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { deliverySlots, placeOrder } from '@/lib/shop/orders'
+import { onlinePaymentAvailable, startPayment } from '@/lib/shop/payments'
 import { displayPhone } from '@/lib/phone'
 import { OrderSummary } from './BasketPage'
 
@@ -47,6 +48,7 @@ export default function CheckoutPage() {
   const [note, setNote] = useState('')
   const [errors, setErrors] = useState({})
   const [serverError, setServerError] = useState(null)
+  const [payment, setPayment] = useState('payOnDelivery')
   const [status, setStatus] = useState('idle')
   const [attempts, setAttempts] = useState(0)
   const days = useMemo(() => deliverySlots({ days: shop.daysAhead, slots: shop.slots }), [])
@@ -78,10 +80,17 @@ export default function CheckoutPage() {
     setStatus('placing')
     try {
       const clean = Object.fromEntries(Object.entries(address).map(([k, v]) => [k, v.trim()]))
-      const order = await placeOrder(user.id, { basket, address: clean, slot, payment: 'payOnDelivery', note })
+      const order = await placeOrder(user.id, { basket, address: clean, slot, payment, note })
       window.localStorage.setItem(ADDRESS_KEY, JSON.stringify(clean))
       setStatus('placed')
       clear()
+      if (payment === 'paystack') {
+        // Off to Paystack's secure page (in demo mode it's marked paid here instead)
+        const result = await startPayment(user.id, order.id).catch(() => null)
+        if (result?.redirected) return
+        navigate(`/orders/${order.id}`, { replace: true, state: { justPlaced: true, demoPaid: Boolean(result?.demo), payFailed: !result } })
+        return
+      }
       navigate(`/orders/${order.id}`, { replace: true, state: { justPlaced: true } })
     } catch (err) {
       setServerError(['invalid-slot', 'outside-delivery-area', 'unavailable-product', 'invalid-quantity'].includes(err?.kind) ? err.kind : null)
@@ -173,8 +182,17 @@ export default function CheckoutPage() {
               <Banknote size={20} strokeWidth={2} aria-hidden="true" />
               {t('checkout.paymentTitle')}
             </h2>
-            <label className={clsx(styles.payOption, styles.slotOn)}>
-              <input type="radio" name="payment" checked readOnly />
+            {onlinePaymentAvailable && (
+              <label className={clsx(styles.payOption, payment === 'paystack' && styles.slotOn)}>
+                <input type="radio" name="payment" checked={payment === 'paystack'} onChange={() => setPayment('paystack')} />
+                <span>
+                  <strong>{t('checkout.payNow')}</strong>
+                  {t('checkout.payNowBody')}
+                </span>
+              </label>
+            )}
+            <label className={clsx(styles.payOption, payment === 'payOnDelivery' && styles.slotOn)}>
+              <input type="radio" name="payment" checked={payment === 'payOnDelivery'} onChange={() => setPayment('payOnDelivery')} />
               <span>
                 <strong>{t('checkout.payOnDelivery')}</strong>
                 {t('checkout.payOnDeliveryBody')}
