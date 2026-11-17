@@ -1,0 +1,76 @@
+{
+  "docTitle": "Shuttle Meds",
+  "metaDescription": "Shuttle Meds by Living Dose: emergency response, live doctor calls and mobile clinics for people far from a hospital. Coming soon. Join the waitlist.",
+  "badge": "Coming soon",
+  "title": "Shuttle Meds: care that comes to you",
+  "lead": "For families far from a hospital: fast first aid and ambulance response, a live video call with a doctor in minutes, and mobile clinics that visit your community.",
+  "joinWaitlist": "Join the waitlist",
+  "talkNow": "Talk to an expert today",
+  "emergencyTitle": "In an emergency right now?",
+  "emergencyBody": "Shuttle Meds isn't live yet. Call 112 or go to the nearest hospital.",
+  "call112": "Call 112",
+  "whatTitle": "What Shuttle Meds will do",
+  "services": {
+    "emergency": {
+      "title": "Emergency response",
+      "body": "Request an ambulance or a trained first-aid responder, and see them on their way. A doctor joins the call to guide you until help arrives."
+    },
+    "doctorCall": {
+      "title": "A doctor on call",
+      "body": "A live video or voice call with a doctor, even on a slow connection, from wherever you are. Built for towns and villages far from a clinic."
+    },
+    "mobileClinic": {
+      "title": "Mobile clinics",
+      "body": "Clinic vans that visit communities on a schedule: check-ups, blood pressure and blood sugar screening, antenatal visits and child health."
+    },
+    "medicines": {
+      "title": "Medicines delivered",
+      "body": "Prescriptions from your consultation delivered to your door or to the next mobile clinic stop."
+    }
+  },
+  "howTitle": "How it will work",
+  "steps": [
+    {
+      "t": "Request help",
+      "b": "One tap in the app, or a call to our line if you don't have data."
+    },
+    {
+      "t": "A doctor joins",
+      "b": "Within minutes, a doctor assesses you by video or voice and decides what's needed."
+    },
+    {
+      "t": "Help comes to you",
+      "b": "A first-aid responder, ambulance or mobile clinic is sent, or medicines are delivered."
+    },
+    {
+      "t": "Follow-up",
+      "b": "Your Living Dose care team checks in afterwards, and everything is saved to your records."
+    }
+  ],
+  "waitlistTitle": "Be first to know",
+  "waitlistBody": "We're starting with pilot communities in South-West Nigeria. Tell us where you are, and we'll let you know when Shuttle Meds reaches you.",
+  "thanks": "Thank you, {{name}}! You're on the waitlist. We'll be in touch when Shuttle Meds reaches your area.",
+  "form": {
+    "name": "Your name",
+    "nameError": "Please enter your name.",
+    "contact": "Phone number or email",
+    "contactPlaceholder": "0801 234 5678 or you@example.com",
+    "contactError": "Please enter a phone number or an email address.",
+    "state": "State",
+    "community": "Town or community",
+    "optional": "(optional)",
+    "communityPlaceholder": "e.g. Imeko, Ogun",
+    "interests": "What would help you most?",
+    "who": "Who is it for?",
+    "whoOptions": {
+      "self": "Me",
+      "family": "My family",
+      "community": "My community",
+      "organisation": "My organisation"
+    },
+    "sending": "Joining…",
+    "failed": "That didn't go through. Please check your connection and try again.",
+    "privacy": "We'll only use these details to tell you about Shuttle Meds.",
+    "privacyLink": "Privacy policy"
+  }
+}

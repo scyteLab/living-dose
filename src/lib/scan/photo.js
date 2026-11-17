@@ -27,11 +27,5 @@ export function compressPhoto(file, maxSide = 480, quality = 0.72) {
   })
 }
 
-/**
- * Automatic food recognition. Returns suggested items, or null when no
- * recognition service is connected yet (the person then picks foods themselves).
- * Later: call a Supabase Edge Function that sends the photo to a vision model.
- */
-export async function recognisePlate() {
-  return null
-}
+/** A sharper copy for the AI to read (about 100 to 200 KB). Not stored. */
+export const photoForAI = (file) => compressPhoto(file, 1024, 0.8)

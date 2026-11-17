@@ -663,3 +663,104 @@
     top: calc(var(--nav-height) + var(--space-4));
   }
 }
+
+/* ================= AI recognition and advice ================= */
+.aiBusy,
+.aiFound {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.aiBusy {
+  background: var(--sky-tint);
+  color: #0f3f73;
+}
+
+.aiFound {
+  background: var(--leaf-tint);
+  color: #2f4f12;
+}
+
+.spin {
+  animation: ld-spin 900ms linear infinite;
+}
+
+@keyframes ld-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin {
+    animation: none;
+  }
+}
+
+.aiTag {
+  margin-left: var(--space-2);
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--sky-tint);
+  color: #0f3f73;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.advice {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.advice ul {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tip {
+  display: grid;
+  gap: 4px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: 14px;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.tip_tip {
+  background: #fdf5dd;
+  color: #5c4a10;
+}
+
+.tip_warn {
+  background: var(--berry-tint);
+  color: #7d1f31;
+}
+
+.tip_good {
+  background: var(--leaf-tint);
+  color: #2f4f12;
+}
+
+.fromCheck {
+  justify-self: start;
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+.tipLink {
+  justify-self: start;
+  font-weight: 700;
+  color: inherit;
+}

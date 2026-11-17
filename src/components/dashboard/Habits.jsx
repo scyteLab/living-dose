@@ -18,6 +18,9 @@ export default function Habits({ today, setWater, addMinutes, setMood }) {
       <div className={styles.habitGrid}>
         <div className={styles.waterBox}>
           <WaterTracker value={today.water} onChange={setWater} />
+          <Link to="/challenges/water" className={styles.selfieLink}>
+            {t('habits.waterSelfie')}
+          </Link>
         </div>
         <div className={clsx(styles.habit, styles.minutesBox)}>
           <div className={styles.habitHead}>
@@ -46,7 +49,13 @@ export default function Habits({ today, setWater, addMinutes, setMood }) {
         <legend className={styles.habitName}>{t('habits.mood')}</legend>
         <div className={styles.moods}>
           {MOODS.map((m) => (
-            <button key={m} type="button" aria-pressed={today.mood === m} className={clsx(styles.moodButton, today.mood === m && styles.moodOn)} onClick={() => setMood(m)}>
+            <button
+              key={m}
+              type="button"
+              aria-pressed={today.mood === m}
+              className={clsx(styles.moodButton, today.mood === m && styles.moodOn)}
+              onClick={() => setMood(m)}
+            >
               {t(`habits.moods.${m}`)}
             </button>
           ))}

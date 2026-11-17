@@ -185,5 +185,10 @@
       "ended": "Completed"
     }
   },
-  "metaDescription": "Book registered dietitians, doctors, psychologists and fitness coaches by video, voice or chat, in English, Yorùbá, Igbo, Hausa and Pidgin."
+  "metaDescription": "Book registered dietitians, doctors, psychologists and fitness coaches by video, voice or chat, in English, Yorùbá, Igbo, Hausa and Pidgin.",
+  "shuttle": {
+    "title": "Shuttle Meds:",
+    "body": "ambulance and first-aid response, doctor calls for remote areas and mobile clinics.",
+    "badge": "Coming soon"
+  }
 }

@@ -1004,3 +1004,11 @@
     gap: var(--space-7);
   }
 }
+
+.selfieLink {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--sky-deep);
+}

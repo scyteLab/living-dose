@@ -1,20 +1,5 @@
--- Living Dose: server connection, phase 2
--- Community, the professionals' portal and organisations.
--- Run after 0009 in Supabase: Dashboard → SQL Editor → paste → Run.
---
--- What this changes:
---   • Members read community posts through views that never include who wrote
---     them, so anonymous posts stay anonymous. Posting, replying, reacting and
---     reporting go through checked functions.
---   • Staff moderate with resolve_report(), which hides the post for everyone.
---   • Professionals save summaries, mark consultations and keep private notes
---     through functions limited to their own consultations.
---   • Organisations' anonymised totals are worked out here, with the privacy
---     rules (at least 10 people; counts under 5 hidden) applied on the server.
+-- Living Dose: server connection, phase 2 (safe to run more than once)
 
--- ============================================================ community
-
--- Members no longer read or write the tables directly
 drop policy if exists "Posts: members read visible" on public.community_posts;
 drop policy if exists "Posts: insert own" on public.community_posts;
 drop policy if exists "Replies: members read visible" on public.community_replies;
@@ -22,7 +7,6 @@ drop policy if exists "Replies: insert own" on public.community_replies;
 drop policy if exists "Reactions: read" on public.community_reactions;
 drop policy if exists "Reactions: own" on public.community_reactions;
 drop policy if exists "Reports: insert own" on public.community_reports;
--- Staff can read everything for moderation (including hidden items)
 drop policy if exists "Posts: staff read" on public.community_posts;
 drop policy if exists "Replies: staff read" on public.community_replies;
 create policy "Posts: staff read" on public.community_posts for select using (public.is_staff());
@@ -33,7 +17,6 @@ returns boolean language sql immutable as $$
   select p_group = any (array['blood-sugar', 'weight-journey', 'pregnancy-parents', 'heart-health', 'fitness-beginners', 'mind-wellbeing', 'diaspora-families'])
 $$;
 
--- Same checks as the app (src/lib/community/safety.js): length, and no phone numbers or emails
 create or replace function public.community_text_ok(p_body text)
 returns text language plpgsql immutable as $$
 declare joined text;
@@ -45,8 +28,6 @@ begin
   return null;
 end $$;
 
--- What members see. These views run as their owner, so they decide exactly which
--- columns leave the database: never user_id, and no name on anonymous posts.
 create or replace view public.community_feed as
   select p.id, p.group_id, p.anonymous,
          case when p.anonymous then null else p.author_name end as author_name,
@@ -84,7 +65,7 @@ begin
   if (select count(*) from community_posts where user_id = auth.uid() and created_at > now() - interval '1 hour') >= 10 then
     raise exception 'slow-down';
   end if;
-  v_anon := coalesce(p_anonymous, false) or p_group = 'mind-wellbeing';   -- that group is always anonymous
+  v_anon := coalesce(p_anonymous, false) or p_group = 'mind-wellbeing';
   select nullif(trim(raw_user_meta_data ->> 'first_name'), '') into v_name from auth.users where id = auth.uid();
   insert into community_posts (user_id, group_id, anonymous, author_name, body)
   values (auth.uid(), p_group, v_anon, case when v_anon then null else left(v_name, 40) end, trim(p_body))
@@ -101,7 +82,7 @@ begin
   if not found then raise exception 'not-found'; end if;
   v_problem := community_text_ok(p_body);
   if v_problem is not null then raise exception '%', v_problem; end if;
-  v_pro := my_professional_id();                       -- verified professionals reply as themselves
+  v_pro := my_professional_id();
   v_anon := v_pro is null and (coalesce(p_anonymous, false) or v_group = 'mind-wellbeing');
   select nullif(trim(raw_user_meta_data ->> 'first_name'), '') into v_name from auth.users where id = auth.uid();
   insert into community_replies (post_id, user_id, anonymous, author_name, professional_id, body)
@@ -121,7 +102,6 @@ begin
   return true;
 end $$;
 
--- Report a post or a reply. It's hidden for the reporter straight away (see the views).
 create or replace function public.report_item(p_kind text, p_id uuid, p_reason text)
 returns void language plpgsql security definer set search_path = public as $$
 begin
@@ -136,7 +116,6 @@ begin
   end if;
 end $$;
 
--- Staff: remove (hide for everyone) or keep. Settles every open report on that item.
 create or replace function public.resolve_report(p_report_id bigint, p_decision text)
 returns void language plpgsql security definer set search_path = public as $$
 declare v_report community_reports;
@@ -158,11 +137,9 @@ begin
   values (auth.uid(), 'moderation.' || p_decision, coalesce('post ' || v_report.post_id, 'reply ' || v_report.reply_id) || ' (' || v_report.reason || ')');
 end $$;
 
--- ============================================================ professionals
-
--- Professionals no longer update consultations directly (that allowed changing the fee)
 drop policy if exists "Appointments: professional update" on public.appointments;
 drop policy if exists "Summaries: professional writes own" on public.consultation_summaries;
+drop policy if exists "Summaries: professional reads own" on public.consultation_summaries;
 create policy "Summaries: professional reads own" on public.consultation_summaries for select
   using (professional_id = public.my_professional_id());
 
@@ -194,7 +171,6 @@ begin
   if not found then raise exception 'not-found'; end if;
 end $$;
 
--- Working hours must be sensible: whole hours from 6 AM to 10 PM, start before end
 create or replace function public.valid_hours(p_hours jsonb)
 returns boolean language sql immutable as $$
   select jsonb_typeof(p_hours) = 'object' and not exists (
@@ -205,18 +181,12 @@ $$;
 alter table public.professional_schedules drop constraint if exists professional_schedules_hours_valid;
 alter table public.professional_schedules add constraint professional_schedules_hours_valid check (public.valid_hours(hours));
 
--- ============================================================ organisations
-
--- The member's own organisation, by name (members can't list organisations)
 create or replace function public.my_organisation()
 returns table (org_id text, name text, joined_at timestamptz)
 language sql stable security definer set search_path = public as $$
   select o.id, o.name, m.joined_at from organisation_members m join organisations o on o.id = m.org_id where m.user_id = auth.uid()
 $$;
 
--- Anonymised totals for an organisation's administrators.
--- Rules: nothing below 10 health checks; any count from 1 to 4 is returned as null;
--- risks need 10 people measured; priorities need at least 5 people.
 create or replace function public.organisation_summary()
 returns jsonb language plpgsql volatile security definer set search_path = public as $$
 declare
@@ -256,7 +226,6 @@ begin
         group by 1 having count(*) >= 5 order by c desc limit 5) t), '[]')
   ) into v_result;
 
-  -- Apply the small-count rules to the risks
   v_result := jsonb_set(v_result, '{risks}', (
     select jsonb_object_agg(k, case
       when (v ->> 'base')::int < 10 then jsonb_build_object('suppressed', true)
@@ -265,8 +234,6 @@ begin
     from jsonb_each(v_result -> 'risks') as e(k, v)));
   return v_result;
 end $$;
-
--- ============================================================ who can call what
 
 revoke all on function public.create_post(text, text, boolean), public.create_reply(uuid, text, boolean), public.toggle_helpful(uuid),
   public.report_item(text, uuid, text), public.resolve_report(bigint, text), public.save_consultation_summary(text, text, text[], text),

@@ -874,3 +874,31 @@
     grid-template-columns: minmax(0, 1fr) 340px;
   }
 }
+
+.shuttle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1.5px dashed var(--sky);
+  border-radius: 14px;
+  background: var(--sky-tint);
+  color: #0f3f73;
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+
+.shuttle > span:first-of-type {
+  flex: 1;
+  min-width: 14rem;
+}
+
+.shuttleBadge {
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--sky-deep);
+  color: #fff;
+  font-size: var(--text-xs);
+  font-weight: 700;
+}

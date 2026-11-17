@@ -49,8 +49,11 @@ function toAuthError(error) {
   const code = error?.code ?? ''
   const message = (error?.message ?? '').toLowerCase()
   let kind = 'generic'
-  if (code === 'phone_provider_disabled' || message.includes('phone provider') || (message.includes('sms') && message.includes('provider'))) kind = 'phone_unavailable'
+  if (code === 'phone_provider_disabled' || message.includes('phone provider') || (message.includes('sms') && message.includes('provider')))
+    kind = 'phone_unavailable'
   else if (message.includes('database error saving new user')) kind = 'signup_failed'
+  else if (message.includes('error sending') || message.includes('sending email') || message.includes('sending confirmation') || code === 'unexpected_failure')
+    kind = 'email_not_sent'
   else if (code === 'otp_expired' || message.includes('expired')) kind = 'expired'
   else if (message.includes('invalid') || message.includes('token')) kind = 'invalid_code'
   else if (error?.status === 429 || code.includes('rate_limit') || message.includes('rate limit')) kind = 'rate_limited'
@@ -98,9 +101,7 @@ export async function verifyCode({ channel, phone, email, token, metadata }) {
     writeDemoUser(user)
     return user
   }
-  const { data, error } = await supabase.auth.verifyOtp(
-    channel === 'phone' ? { phone, token, type: 'sms' } : { email, token, type: 'email' },
-  )
+  const { data, error } = await supabase.auth.verifyOtp(channel === 'phone' ? { phone, token, type: 'sms' } : { email, token, type: 'email' })
   if (error) throw toAuthError(error)
   return data.user
 }
@@ -112,9 +113,7 @@ export async function saveProfile(user, { household, goals }) {
     writeDemoUser({ ...user, user_metadata: { ...user.user_metadata, household, goals, onboarded: true } })
     return
   }
-  const { error } = await supabase
-    .from('profiles')
-    .upsert({ id: user.id, household_type: household, goals, onboarded_at: new Date().toISOString() })
+  const { error } = await supabase.from('profiles').upsert({ id: user.id, household_type: household, goals, onboarded_at: new Date().toISOString() })
   if (error) throw toAuthError(error)
   await supabase.auth.updateUser({ data: { household, goals, onboarded: true } })
 }

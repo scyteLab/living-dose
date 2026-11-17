@@ -32,7 +32,14 @@ export default function ChallengeCard({ challenge, joined, progress, onToggle, s
               </span>
             )}
           </div>
-          <span className={styles.bar} role="progressbar" aria-valuenow={progress.value} aria-valuemin={0} aria-valuemax={progress.target} aria-label={t(`challenges.items.${challenge.id}.title`)}>
+          <span
+            className={styles.bar}
+            role="progressbar"
+            aria-valuenow={progress.value}
+            aria-valuemin={0}
+            aria-valuemax={progress.target}
+            aria-label={t(`challenges.items.${challenge.id}.title`)}
+          >
             <span style={{ width: `${progress.pct}%` }} />
           </span>
         </div>
@@ -44,7 +51,13 @@ export default function ChallengeCard({ challenge, joined, progress, onToggle, s
           </Button>
         ) : joined ? (
           <>
-            <span className={styles.inLabel}>{t('challenges.joinedLabel')}</span>
+            {challenge.id === 'water-week' ? (
+              <Button to="/challenges/water" size="sm">
+                {t('challenges.waterSelfie')}
+              </Button>
+            ) : (
+              <span className={styles.inLabel}>{t('challenges.joinedLabel')}</span>
+            )}
             <button type="button" className={styles.linkButton} onClick={() => onToggle(challenge.id)}>
               {t('challenges.leave')}
             </button>

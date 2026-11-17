@@ -1,7 +1,7 @@
 import { useEffect, useId, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { CalendarDays, CircleAlert } from 'lucide-react'
+import { Ambulance, CalendarDays, CircleAlert } from 'lucide-react'
 import clsx from 'clsx'
 import ProCard from '@/components/care/ProCard'
 import styles from '@/components/care/Care.module.css'
@@ -69,7 +69,10 @@ export default function CarePage() {
       alive = false
     }
   }, [])
-  const nextFor = useMemo(() => Object.fromEntries(PROFESSIONALS.map((p) => [p.id, availableDays(applySchedule(p, schedules[p.id]), { booked })])), [booked, schedules])
+  const nextFor = useMemo(
+    () => Object.fromEntries(PROFESSIONALS.map((p) => [p.id, availableDays(applySchedule(p, schedules[p.id]), { booked })])),
+    [booked, schedules],
+  )
 
   const todayIso = lagosDay(new Date()).iso
   const results = PROFESSIONALS.filter(
@@ -78,11 +81,7 @@ export default function CarePage() {
       (!type || p.types.includes(type)) &&
       (!language || p.languages.includes(language)) &&
       (!todayOnly || nextFor[p.id][0]?.date === todayIso),
-  ).sort((a, b) =>
-    sort === 'experience'
-      ? b.years - a.years
-      : (nextFor[a.id][0]?.slots[0] ?? '9999').localeCompare(nextFor[b.id][0]?.slots[0] ?? '9999'),
-  )
+  ).sort((a, b) => (sort === 'experience' ? b.years - a.years : (nextFor[a.id][0]?.slots[0] ?? '9999').localeCompare(nextFor[b.id][0]?.slots[0] ?? '9999')))
 
   const filtered = type || language || todayOnly
 
@@ -107,9 +106,23 @@ export default function CarePage() {
         {t('emergency')}
       </p>
 
+      <Link to="/shuttle-meds" className={styles.shuttle}>
+        <Ambulance size={22} strokeWidth={2} aria-hidden="true" />
+        <span>
+          <strong>{t('shuttle.title')}</strong> {t('shuttle.body')}
+        </span>
+        <span className={styles.shuttleBadge}>{t('shuttle.badge')}</span>
+      </Link>
+
       <nav className={styles.tabs} aria-label={t('specialties.all')}>
         {['all', ...SPECIALTIES].map((s) => (
-          <button key={s} type="button" aria-pressed={specialty === s} className={clsx(styles.tab, specialty === s && styles.tabOn)} onClick={() => update({ s })}>
+          <button
+            key={s}
+            type="button"
+            aria-pressed={specialty === s}
+            className={clsx(styles.tab, specialty === s && styles.tabOn)}
+            onClick={() => update({ s })}
+          >
             {t(`specialties.${s}`)}
           </button>
         ))}
@@ -118,11 +131,22 @@ export default function CarePage() {
       <div className={styles.filters}>
         <div className={styles.typeChips} role="group" aria-label={t('filters.type')}>
           {CONSULT_TYPES.map((ty) => (
-            <button key={ty} type="button" aria-pressed={type === ty} className={clsx(styles.chip, type === ty && styles.chipOn)} onClick={() => update({ type: type === ty ? null : ty })}>
+            <button
+              key={ty}
+              type="button"
+              aria-pressed={type === ty}
+              className={clsx(styles.chip, type === ty && styles.chipOn)}
+              onClick={() => update({ type: type === ty ? null : ty })}
+            >
               {t(`types.${ty}`)}
             </button>
           ))}
-          <button type="button" aria-pressed={todayOnly} className={clsx(styles.chip, todayOnly && styles.chipOn)} onClick={() => update({ today: todayOnly ? null : '1' })}>
+          <button
+            type="button"
+            aria-pressed={todayOnly}
+            className={clsx(styles.chip, todayOnly && styles.chipOn)}
+            onClick={() => update({ today: todayOnly ? null : '1' })}
+          >
             {t('filters.today')}
           </button>
         </div>

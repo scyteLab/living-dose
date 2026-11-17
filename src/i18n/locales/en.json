@@ -334,7 +334,8 @@
       "plans": "Meal plans",
       "care": "Consultations",
       "community": "Community",
-      "learn": "Learn"
+      "learn": "Learn",
+      "shuttleMeds": "Shuttle Meds (coming soon)"
     },
     "copyright": "© {{year}} Living Dose. All rights reserved.",
     "made": "Made in Lagos, for families everywhere.",

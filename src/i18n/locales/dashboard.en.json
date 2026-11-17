@@ -64,7 +64,8 @@
     "moodThanks": "Thanks for checking in. This stays private to you.",
     "moodLow": "Thank you for telling us. You don't have to manage on your own.",
     "moodLowCta": "Talk to a psychologist",
-    "moodCrisis": "If you're thinking of harming yourself, please call 112 now."
+    "moodCrisis": "If you're thinking of harming yourself, please call 112 now.",
+    "waterSelfie": "Log a glass with a selfie →"
   },
   "appt": {
     "title": "Your next consultation",

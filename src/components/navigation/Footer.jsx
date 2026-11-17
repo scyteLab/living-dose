@@ -12,6 +12,7 @@ const COLUMNS = [
       { key: 'care', to: '/care' },
       { key: 'community', to: '/community' },
       { key: 'learn', to: '/learn' },
+      { key: 'shuttleMeds', to: '/shuttle-meds' },
     ],
   },
   {

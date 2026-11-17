@@ -107,5 +107,73 @@
     "noTrace": "This product is made in our kitchen from traceable ingredients.",
     "view": "View product",
     "scanAnother": "Scan another"
+  },
+  "ai": {
+    "asInPhoto": "as in your photo",
+    "analysing": "Looking at your plate…",
+    "found_one": "We spotted {{count}} item. Check it and adjust anything we got wrong.",
+    "found_other": "We spotted {{count}} items. Check them and adjust anything we got wrong.",
+    "noFood": "We couldn't see any food in that photo. Try again with the plate in the middle of the frame, in good light.",
+    "unavailable": "Automatic recognition isn't switched on here, so add your foods below.",
+    "error": "We couldn't read your plate just now. Add your foods below.",
+    "estimate": "AI estimate for what's in your photo",
+    "confidence": {
+      "high": "AI",
+      "medium": "AI · check",
+      "low": "AI · unsure"
+    }
+  },
+  "advice": {
+    "title": "Our advice for this meal",
+    "fromCheck": "From your health check",
+    "readMore": "Read more",
+    "tips": {
+      "saltHigh": "This meal is high in salt. Adults should have under 5 g in a whole day, so go easy on seasoning cubes and salty snacks for the rest of today.",
+      "sugaryDrink": "Swap the sugary drink for water or unsweetened zobo next time. That alone can save several teaspoons of sugar.",
+      "fried": "Something here is fried. Try boiled or roasted plantain, moi moi instead of akara, or grilled fish next time.",
+      "addVeg": "Add vegetables: a handful of ugu, spinach or a side of salad would make this meal more balanced.",
+      "bigSwallow": "That's a large portion of swallow. Aim for about the size of your fist and add more soup vegetables.",
+      "bigMeal": "This is a big meal. Make your next one lighter, and take a short walk after eating.",
+      "addProtein": "This meal is low in protein. Add beans, eggs, fish or chicken to keep you full for longer.",
+      "balanced": "Nicely balanced: vegetables, protein and not too much salt. Keep it up!"
+    }
+  },
+  "water": {
+    "docTitle": "Water challenge",
+    "back": "Back to challenges",
+    "title": "Water challenge",
+    "intro": "Drink 8 glasses today. Take a live selfie each time you drink, and we'll count the glass for you.",
+    "progressLabel": "Today's water",
+    "ofGoal": "of {{goal}} glasses today",
+    "glassDone": "Glass {{n}}: done",
+    "glassTodo": "Glass {{n}}: to go",
+    "goalDone": "You've reached today's goal. Brilliant!",
+    "selfieTitle": "Take a water selfie",
+    "how": "Hold your glass or bottle up to your mouth, with your face in the frame. It has to be a live photo, taken now.",
+    "start": "Open the camera",
+    "next": "Log another glass",
+    "take": "Take selfie",
+    "checking": "Checking…",
+    "stop": "Close camera",
+    "accepted": "Glass counted! Keep it up.",
+    "demoAccepted": "Glass counted. (Demo: the selfie wasn't checked.)",
+    "rejected": "We couldn't confirm that one. Make sure your face and your drink are both in the picture.",
+    "notSetUp": "Selfie checks aren't switched on yet, so this glass wasn't counted. You can still add it on your Home page.",
+    "checkFailed": "We couldn't check your selfie just now. Please try again in a moment.",
+    "tooSoon_one": "Nice! Give it {{count}} minute before your next glass.",
+    "tooSoon_other": "Nice! Give it {{count}} minutes before your next glass.",
+    "max": "That's plenty of water for today. Well done!",
+    "privacy": "Live camera only, so photos can't be uploaded. We check that a real face and a drink are in the picture; we don't identify who you are. Your selfies stay on this phone and are cleared tomorrow.",
+    "today": "Today's selfies",
+    "selfieAlt": "Water selfie at {{time}}",
+    "verified": "Checked",
+    "camera": {
+      "label": "Live camera",
+      "starting": "Starting camera…",
+      "deniedTitle": "Camera access is off",
+      "deniedBody": "To take a water selfie, allow camera access for this site in your browser settings, then reload the page.",
+      "unsupportedTitle": "Camera not available",
+      "unsupportedBody": "This browser can't open the camera. Try Chrome or Safari on your phone."
+    }
   }
 }

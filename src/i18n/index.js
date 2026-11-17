@@ -17,13 +17,14 @@ import accountEn from './locales/account.en.json'
 import staffEn from './locales/staff.en.json'
 import proEn from './locales/pro.en.json'
 import orgEn from './locales/org.en.json'
+import shuttleEn from './locales/shuttle.en.json'
 
 // Every piece of UI text lives in locales/*.json so we can add
 // French, Yoruba, Hausa, Igbo, Swahili and more without touching components.
 i18n.use(initReactI18next).init({
   resources: {
     // "translation" holds the interface text; long content has its own files
-    en: { translation: en, legal: legalEn, faq: faqEn, auth: authEn, healthCheck: healthCheckEn, plan: planEn, shop: shopEn, care: careEn, dashboard: dashboardEn, learn: learnEn, community: communityEn, scan: scanEn, account: accountEn, staff: staffEn, pro: proEn, org: orgEn },
+    en: { translation: en, legal: legalEn, faq: faqEn, auth: authEn, healthCheck: healthCheckEn, plan: planEn, shop: shopEn, care: careEn, dashboard: dashboardEn, learn: learnEn, community: communityEn, scan: scanEn, account: accountEn, staff: staffEn, pro: proEn, org: orgEn, shuttle: shuttleEn },
   },
   lng: storage.get('ld.language') || import.meta.env.VITE_DEFAULT_LOCALE || 'en',
   fallbackLng: 'en',

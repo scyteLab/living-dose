@@ -45,6 +45,8 @@ export function saveDiary(userId, entries) {
 
 /** The food or recipe behind a logged item, in the same shape. */
 export function lookup(item) {
+  // Foods the AI recognised but that aren't in our list carry their own estimate
+  if (item.source === 'ai') return item.food ?? null
   if (item.source === 'recipe') {
     const r = RECIPES_BY_ID[item.id]
     return r && { ...r, portion: '1 serving' }

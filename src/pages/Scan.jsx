@@ -44,7 +44,7 @@ function MealLogger({ userId }) {
   const diary = useDiary(userId)
   return (
     <div className={styles.layout}>
-      <SnapFlow onSave={diary.add} />
+      <SnapFlow onSave={diary.add} userId={userId} />
       <DiaryList entries={diary.entries} onRemove={diary.remove} />
     </div>
   )

@@ -11,6 +11,8 @@ import HealthCheckProvider from '@/providers/HealthCheckProvider'
 const Home = lazy(() => import('@/pages/Home'))
 const Plan = lazy(() => import('@/pages/Plan'))
 const Scan = lazy(() => import('@/pages/Scan'))
+const WaterChallenge = lazy(() => import('@/pages/WaterChallenge'))
+const ShuttleMeds = lazy(() => import('@/pages/ShuttleMeds'))
 const Shop = lazy(() => import('@/pages/shop/ShopPage'))
 const Product = lazy(() => import('@/pages/shop/ProductPage'))
 const Basket = lazy(() => import('@/pages/shop/BasketPage'))
@@ -72,6 +74,8 @@ export const routes = [
       { index: true, element: <Home /> },
       { path: 'plan', element: <Plan /> },
       { path: 'scan', element: <Scan /> },
+      { path: 'challenges/water', element: <RequireAuth><WaterChallenge /></RequireAuth> },
+      { path: 'shuttle-meds', element: <ShuttleMeds /> },
       { path: 'shop', element: <Shop /> },
       { path: 'shop/:productId', element: <Product /> },
       { path: 'basket', element: <Basket /> },

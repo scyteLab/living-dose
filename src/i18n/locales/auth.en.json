@@ -196,6 +196,7 @@
     "network": "We couldn't connect. Check your internet connection and try again.",
     "generic": "Something went wrong. Please try again.",
     "phone_unavailable": "Codes by text message aren't available yet. Please use your email address instead.",
-    "signup_failed": "We couldn't create your account just now. Please try again in a minute, or contact us if it keeps happening."
+    "signup_failed": "We couldn't create your account just now. Please try again in a minute, or contact us if it keeps happening.",
+    "email_not_sent": "We couldn't send your sign-in email just now. Please try again in a few minutes, or use the Contact page if it keeps happening."
   }
 }

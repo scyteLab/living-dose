@@ -1,13 +1,17 @@
-import { useDeferredValue, useId, useRef, useState } from 'react'
+import { useDeferredValue, useEffect, useId, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ArrowLeft, ArrowRight, Camera, ImagePlus, Plus, Search, Trash2 } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Camera, ImagePlus, Lightbulb, Loader2, Plus, Search, Sparkles, Trash2 } from 'lucide-react'
 import clsx from 'clsx'
 import Segmented from '@/components/auth/Segmented'
 import Button from '@/components/ui/Button'
 import { FOODS, FOODS_BY_ID } from '@/data/foods'
 import { RECIPES } from '@/data/recipes'
 import { PORTIONS, lookup, searchFoods, slotForTime, totals } from '@/lib/scan/diary'
-import { compressPhoto, recognisePlate } from '@/lib/scan/photo'
+import { mealAdvice } from '@/lib/scan/advice'
+import { compressPhoto, photoForAI } from '@/lib/scan/photo'
+import { callVision } from '@/lib/scan/vision'
+import { loadLatestResult } from '@/lib/healthCheck/storage'
 import { toIso } from '@/lib/mealPlan/storage'
 import styles from './Scan.module.css'
 
@@ -15,7 +19,7 @@ const STEPS = ['photo', 'plate', 'save']
 const QUICK = ['jollof-rice', 'eba', 'egusi-soup', 'beans-porridge', 'dodo', 'grilled-chicken', 'moi-moi', 'soft-drink']
 
 /** Photo → what's on the plate → check and save. */
-export default function SnapFlow({ onSave }) {
+export default function SnapFlow({ onSave, userId }) {
   const { t } = useTranslation('scan')
   const searchId = useId()
   const cameraRef = useRef(null)
@@ -28,6 +32,21 @@ export default function SnapFlow({ onSave }) {
   const query = useDeferredValue(q)
   const [slot, setSlot] = useState(() => slotForTime())
   const [saved, setSaved] = useState(false)
+  // AI: 'idle' | 'analysing' | 'found' | 'none' (no food seen) | 'unavailable' | 'error'
+  const [ai, setAi] = useState('idle')
+  const [priorities, setPriorities] = useState([])
+
+  // Health check priorities, so advice can be personal
+  useEffect(() => {
+    if (!userId) return
+    let alive = true
+    loadLatestResult(userId)
+      .then((r) => alive && setPriorities((r?.results?.priorities ?? []).map((p) => p.id)))
+      .catch(() => {})
+    return () => {
+      alive = false
+    }
+  }, [userId])
 
   const onFile = async (e) => {
     const file = e.target.files?.[0]
@@ -36,10 +55,25 @@ export default function SnapFlow({ onSave }) {
     try {
       setPhotoError(false)
       setPhoto(await compressPhoto(file))
-      const suggested = await recognisePlate(file)
-      if (suggested?.length) setItems(suggested)
     } catch {
       setPhotoError(true)
+      return
+    }
+    // Ask the AI what's on the plate, then go straight to checking it
+    setAi('analysing')
+    const result = await callVision('plate', await photoForAI(file).catch(() => null))
+    // Only keep foods the app can show (an older app version may not know a new catalogue id)
+    const known = result.status === 'ok' ? (result.data.items ?? []).filter((it) => lookup(it)) : []
+    if (result.status === 'ok' && result.data.isFood && known.length) {
+      const stamp = Date.now()
+      setItems(known.map((it, i) => ({ ...it, key: `ai-${stamp}-${i}` })))
+      setAi('found')
+      setStep(1)
+    } else if (result.status === 'ok') {
+      setAi('none')
+    } else {
+      setAi(result.status === 'unavailable' ? 'unavailable' : 'error')
+      setStep(1)
     }
   }
 
@@ -49,7 +83,14 @@ export default function SnapFlow({ onSave }) {
 
   const save = () => {
     const now = new Date()
-    onSave({ date: toIso(now), time: now.toISOString(), slot, photo, items: items.map(({ source, id, portion }) => ({ source, id, portion })) })
+    onSave({
+      date: toIso(now),
+      time: now.toISOString(),
+      slot,
+      photo,
+      ai: ai === 'found',
+      items: items.map(({ source, id, portion, food }) => (source === 'ai' ? { source, id, portion, food } : { source, id, portion })),
+    })
     setSaved(true)
   }
 
@@ -60,6 +101,7 @@ export default function SnapFlow({ onSave }) {
     setQ('')
     setSaved(false)
     setSlot(slotForTime())
+    setAi('idle')
   }
 
   if (saved) {
@@ -98,11 +140,22 @@ export default function SnapFlow({ onSave }) {
               {t('photo.error')}
             </p>
           )}
+          {ai === 'analysing' && (
+            <p className={styles.aiBusy} role="status">
+              <Loader2 size={18} strokeWidth={2.2} className={styles.spin} aria-hidden="true" />
+              {t('ai.analysing')}
+            </p>
+          )}
+          {ai === 'none' && (
+            <p className={styles.warning} role="alert">
+              {t('ai.noFood')}
+            </p>
+          )}
           {/* capture="environment" opens the back camera on phones; desktops get a file picker */}
           <input ref={cameraRef} type="file" accept="image/*" capture="environment" className="sr-only" onChange={onFile} tabIndex={-1} aria-hidden="true" />
           <input ref={fileRef} type="file" accept="image/*" className="sr-only" onChange={onFile} tabIndex={-1} aria-hidden="true" />
           <div className={styles.buttons}>
-            <Button variant="action" onClick={() => cameraRef.current.click()}>
+            <Button variant="action" onClick={() => cameraRef.current.click()} disabled={ai === 'analysing'}>
               <Camera size={18} strokeWidth={2} aria-hidden="true" />
               {photo ? t('photo.retake') : t('photo.take')}
             </Button>
@@ -113,7 +166,7 @@ export default function SnapFlow({ onSave }) {
           </div>
           <div className={styles.nav}>
             <span />
-            <Button onClick={() => setStep(1)}>
+            <Button onClick={() => setStep(1)} disabled={ai === 'analysing'}>
               {photo ? t('photo.next') : t('photo.skip')}
               <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
             </Button>
@@ -130,6 +183,14 @@ export default function SnapFlow({ onSave }) {
               <p className={styles.muted}>{t('plate.body')}</p>
             </div>
           </div>
+
+          {ai === 'found' && (
+            <p className={styles.aiFound} role="status">
+              <Sparkles size={18} strokeWidth={2} aria-hidden="true" />
+              {t('ai.found', { count: items.length })}
+            </p>
+          )}
+          {(ai === 'unavailable' || ai === 'error') && photo && <p className={styles.small}>{t(ai === 'error' ? 'ai.error' : 'ai.unavailable')}</p>}
 
           <div className={styles.search}>
             <label htmlFor={searchId} className="sr-only">
@@ -174,7 +235,13 @@ export default function SnapFlow({ onSave }) {
               <p className={styles.small}>{t('plate.quick')}</p>
               <div className={styles.quickChips}>
                 {QUICK.map((id) => (
-                  <button key={id} type="button" className={styles.quickChip} onClick={() => addItem('food', id)} aria-label={t('plate.addAria', { name: FOODS_BY_ID[id].name })}>
+                  <button
+                    key={id}
+                    type="button"
+                    className={styles.quickChip}
+                    onClick={() => addItem('food', id)}
+                    aria-label={t('plate.addAria', { name: FOODS_BY_ID[id].name })}
+                  >
                     <Plus size={14} strokeWidth={2.4} aria-hidden="true" />
                     {FOODS_BY_ID[id].name}
                   </button>
@@ -190,18 +257,29 @@ export default function SnapFlow({ onSave }) {
               return (
                 <li key={item.key} className={styles.plateItem}>
                   <div className={styles.plateText}>
-                    <strong>{food.name}</strong>
+                    <strong>
+                      {food.name}
+                      {item.confidence && <span className={styles.aiTag}>{t(`ai.confidence.${item.confidence}`)}</span>}
+                    </strong>
                     <span className={styles.small}>
-                      {t('plate.portionHint', { portion: food.portion })} · {Math.round(food.kcal * item.portion)} kcal
+                      {item.source === 'ai' ? t('ai.estimate') : t('plate.portionHint', { portion: food.portion })} · {Math.round(food.kcal * item.portion)}{' '}
+                      kcal
                     </span>
                   </div>
-                  <Segmented
-                    label={`${t('plate.portion')}: ${food.name}`}
-                    value={item.portion}
-                    onChange={(portion) => setItems((list) => list.map((x) => (x.key === item.key ? { ...x, portion } : x)))}
-                    options={PORTIONS.map((p) => ({ value: p, label: t(`plate.portions.${p}`) }))}
-                  />
-                  <button type="button" className={styles.iconButton} aria-label={t('plate.remove', { name: food.name })} onClick={() => setItems((list) => list.filter((x) => x.key !== item.key))}>
+                  {item.source !== 'ai' && (
+                    <Segmented
+                      label={`${t('plate.portion')}: ${food.name}`}
+                      value={item.portion}
+                      onChange={(portion) => setItems((list) => list.map((x) => (x.key === item.key ? { ...x, portion } : x)))}
+                      options={PORTIONS.map((p) => ({ value: p, label: t(`plate.portions.${p}`) }))}
+                    />
+                  )}
+                  <button
+                    type="button"
+                    className={styles.iconButton}
+                    aria-label={t('plate.remove', { name: food.name })}
+                    onClick={() => setItems((list) => list.filter((x) => x.key !== item.key))}
+                  >
                     <Trash2 size={18} strokeWidth={2} aria-hidden="true" />
                   </button>
                 </li>
@@ -230,7 +308,8 @@ export default function SnapFlow({ onSave }) {
             <ul className={styles.reviewItems}>
               {items.map((item) => (
                 <li key={item.key}>
-                  {lookup(item).name} <span className={styles.small}>({t(`plate.portions.${item.portion}`).toLowerCase()})</span>
+                  {lookup(item).name}{' '}
+                  <span className={styles.small}>({item.source === 'ai' ? t('ai.asInPhoto') : t(`plate.portions.${item.portion}`).toLowerCase()})</span>
                 </li>
               ))}
             </ul>
@@ -238,7 +317,12 @@ export default function SnapFlow({ onSave }) {
 
           <div className={styles.slotPick}>
             <p className={styles.label}>{t('review.slot')}</p>
-            <Segmented label={t('review.slot')} value={slot} onChange={setSlot} options={['breakfast', 'lunch', 'dinner', 'snack'].map((s) => ({ value: s, label: t(`review.slots.${s}`) }))} />
+            <Segmented
+              label={t('review.slot')}
+              value={slot}
+              onChange={setSlot}
+              options={['breakfast', 'lunch', 'dinner', 'snack'].map((s) => ({ value: s, label: t(`review.slots.${s}`) }))}
+            />
           </div>
 
           <div className={styles.totals} aria-label={t('review.totals')}>
@@ -273,8 +357,26 @@ export default function SnapFlow({ onSave }) {
                 <dd>{t('review.portionsCount', { count: sum.veg })}</dd>
               </div>
             </dl>
-            {sum.salt >= 2.5 && <p className={styles.warning}>{t('review.saltHigh')}</p>}
             <p className={styles.small}>{t('review.estimates')}</p>
+          </div>
+
+          <div className={styles.advice} aria-labelledby="advice-h">
+            <p id="advice-h" className={styles.label}>
+              <Lightbulb size={18} strokeWidth={2} aria-hidden="true" /> {t('advice.title')}
+            </p>
+            <ul>
+              {mealAdvice(items, sum, priorities).map((tip) => (
+                <li key={tip.id} className={clsx(styles.tip, styles[`tip_${tip.tone}`])}>
+                  {tip.fromCheck && <span className={styles.fromCheck}>{t('advice.fromCheck')}</span>}
+                  <span>{t(`advice.tips.${tip.id}`)}</span>
+                  {tip.article && (
+                    <Link to={`/learn/${tip.article}`} className={styles.tipLink}>
+                      {t('advice.readMore')}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className={styles.nav}>
