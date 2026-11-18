@@ -51,7 +51,6 @@ export default function Dashboard() {
           firstName={firstName}
           status={{ hasResult: false, planSeen: dash.planSeen, hasOrder: dash.hasOrder, hasAppointment: dash.hasAppointment }}
           water={dash.todayHabits.water}
-          setWater={dash.setWater}
         />
         <div className={styles.simplePrompt}>
           <SimplePrompt onSwitch={() => setSimple(true)} />
@@ -103,7 +102,7 @@ export default function Dashboard() {
       </div>
 
       <div className={styles.rowB}>
-        <Habits today={dash.todayHabits} setWater={dash.setWater} addMinutes={dash.addMinutes} setMood={dash.setMood} />
+        <Habits today={dash.todayHabits} addMinutes={dash.addMinutes} setMood={dash.setMood} />
         <NextConsultation appt={dash.nextAppt} />
       </div>
 

@@ -9,7 +9,7 @@ import styles from './Dashboard.module.css'
 const ICONS = { check: ClipboardPlus, plan: Utensils, shop: ShoppingBasket, care: Video }
 
 /** First-run Home: four steps, a score placeholder and a habit to start straight away. */
-export default function GettingStarted({ firstName, status, water, setWater }) {
+export default function GettingStarted({ firstName, status, water }) {
   const { t } = useTranslation('dashboard')
   const { steps, done, next } = gettingStarted(status)
 
@@ -77,7 +77,7 @@ export default function GettingStarted({ firstName, status, water, setWater }) {
         </div>
         <div className={styles.card}>
           <p className={styles.cardTitle}>{t('start.habitTitle')}</p>
-          <WaterTracker value={water} onChange={setWater} />
+          <WaterTracker value={water} />
           <p className={styles.small}>{t('start.habitHint')}</p>
         </div>
         <p className={styles.privacy}>

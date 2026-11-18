@@ -7,7 +7,7 @@ import CardHead from './CardHead'
 import WaterTracker from './WaterTracker'
 import styles from './Dashboard.module.css'
 
-export default function Habits({ today, setWater, addMinutes, setMood }) {
+export default function Habits({ today, addMinutes, setMood }) {
   const { t } = useTranslation('dashboard')
   const gap = Math.max(0, MINUTES_GOAL - today.minutes)
   const low = today.mood === 'low' || today.mood === 'struggling'
@@ -17,10 +17,7 @@ export default function Habits({ today, setWater, addMinutes, setMood }) {
       <CardHead id="habits-h" title={t('habits.title')} />
       <div className={styles.habitGrid}>
         <div className={styles.waterBox}>
-          <WaterTracker value={today.water} onChange={setWater} />
-          <Link to="/challenges/water" className={styles.selfieLink}>
-            {t('habits.waterSelfie')}
-          </Link>
+          <WaterTracker value={today.water} />
         </div>
         <div className={clsx(styles.habit, styles.minutesBox)}>
           <div className={styles.habitHead}>

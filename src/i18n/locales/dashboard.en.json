@@ -46,8 +46,6 @@
     "title": "Today's habits",
     "water": "Water",
     "waterCount": "{{count}} of {{goal}} glasses",
-    "glass": "Glass {{n}}",
-    "waterGroup": "Glasses of water today",
     "minutes": "Active minutes",
     "minutesCount": "{{count}} of {{goal}} today",
     "minutesGap": "{{count}} more to reach today's goal",
@@ -66,7 +64,8 @@
     "moodLow": "Thank you for telling us. You don't have to manage on your own.",
     "moodLowCta": "Talk to a psychologist",
     "moodCrisis": "If you're thinking of harming yourself, please call 112 now.",
-    "waterSelfie": "Log a glass with a selfie →"
+    "waterSelfie": "Add a glass with a selfie",
+    "waterHow": "Glasses are added when a live selfie shows you drinking."
   },
   "appt": {
     "title": "Your next consultation",
@@ -177,7 +176,7 @@
     "scoreTitle": "Your Living Score",
     "scoreBody": "Take the health check to see your score across six areas: eating, activity, body, sleep, mind and habits.",
     "habitTitle": "Start a habit today",
-    "habitHint": "Tap a glass each time you drink one. Small wins count.",
+    "habitHint": "Each time you drink, take a quick selfie with your glass. Small wins count.",
     "privacy": "Your health information is private. Only you, and the experts you choose, can see it."
   }
 }
