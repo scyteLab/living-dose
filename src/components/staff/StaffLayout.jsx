@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ArrowLeft, ClipboardCheck, FileClock, Flag, LayoutDashboard, Package, Video } from 'lucide-react'
+import { Ambulance, ArrowLeft, ClipboardCheck, FileClock, Flag, LayoutDashboard, Package, Video } from 'lucide-react'
 import clsx from 'clsx'
 import Logo from '@/components/brand/Logo'
 import Button from '@/components/ui/Button'
@@ -16,6 +16,7 @@ const NAV = [
   { to: '/staff/appointments', id: 'appointments', icon: Video },
   { to: '/staff/moderation', id: 'moderation', icon: Flag },
   { to: '/staff/content', id: 'content', icon: ClipboardCheck },
+  { to: '/staff/waitlist', id: 'waitlist', icon: Ambulance },
   { to: '/staff/activity', id: 'activity', icon: FileClock },
 ]
 

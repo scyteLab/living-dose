@@ -10,7 +10,8 @@
     "appointments": "Consultations",
     "moderation": "Moderation",
     "content": "Clinical review",
-    "activity": "Activity log"
+    "activity": "Activity log",
+    "waitlist": "Waitlist and messages"
   },
   "gate": {
     "title": "Staff only",
@@ -199,5 +200,39 @@
     }
   },
   "loadError": "This couldn't be loaded. Check your connection and refresh the page.",
-  "actionError": "That change didn't go through. The list has been refreshed; please try again."
+  "actionError": "That change didn't go through. The list has been refreshed; please try again.",
+  "waitlist": {
+    "title": "Waitlist and messages",
+    "intro": "Everyone who joined the Shuttle Meds waitlist, and messages sent from the Contact page. Download the list to share demand by state with partners.",
+    "tabsLabel": "Show",
+    "tabs": {
+      "waitlist": "Shuttle Meds waitlist ({{count}})",
+      "messages": "Contact messages ({{count}})"
+    },
+    "download": "Download CSV",
+    "stats": {
+      "total": "People on the waitlist",
+      "lastWeek": "Joined in the last 7 days",
+      "states": "States"
+    },
+    "byState": "Where they are",
+    "byInterest": "What they want most",
+    "byWho": "Who it’s for",
+    "stateFilter": "Filter by state",
+    "allStates": "All states",
+    "everything": "Everything",
+    "empty": "No one has joined the waitlist yet. Share livingdose.netlify.app/shuttle-meds to start.",
+    "noMessages": "No Contact messages yet.",
+    "loadError": "We couldn't load the list. If this is new, run migration 0013 in Supabase, then refresh.",
+    "cols": {
+      "when": "When",
+      "name": "Name",
+      "contact": "Phone or email",
+      "where": "Where",
+      "interests": "Interested in",
+      "who": "For",
+      "topic": "Topic",
+      "message": "Message"
+    }
+  }
 }

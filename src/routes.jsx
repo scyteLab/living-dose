@@ -27,6 +27,7 @@ const StaffAppointments = lazy(() => import('@/pages/staff/StaffAppointments'))
 const StaffModeration = lazy(() => import('@/pages/staff/StaffModeration'))
 const StaffContent = lazy(() => import('@/pages/staff/StaffContent'))
 const StaffActivity = lazy(() => import('@/pages/staff/StaffActivity'))
+const StaffWaitlist = lazy(() => import('@/pages/staff/StaffWaitlist'))
 const ProLayout = lazy(() => import('@/components/pro/ProLayout'))
 const ProSchedule = lazy(() => import('@/pages/pro/ProSchedule'))
 const ProConsultation = lazy(() => import('@/pages/pro/ProConsultation'))
@@ -126,6 +127,7 @@ export const routes = [
           { path: 'moderation', element: <StaffModeration /> },
           { path: 'content', element: <StaffContent /> },
           { path: 'activity', element: <StaffActivity /> },
+          { path: 'waitlist', element: <StaffWaitlist /> },
         ],
       },
       {

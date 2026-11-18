@@ -45,9 +45,11 @@ export default function ShuttleMeds() {
     setStatus('sending')
     if (isSupabaseConfigured) {
       const isEmail = contact.includes('@')
-      const { error } = await supabase
-        .from('contact_messages')
-        .insert({ name: form.name.trim(), email: contact, phone: isEmail ? null : contact, topic: 'shuttle-meds', message })
+      const row = { name: form.name.trim(), email: contact, phone: isEmail ? null : contact, topic: 'shuttle-meds', message }
+      const details = { state: form.state, community: form.community.trim(), interests: form.interests, who: form.who }
+      let { error } = await supabase.from('contact_messages').insert({ ...row, details })
+      // Before migration 0013 the details column doesn't exist yet: the message text still has everything
+      if (error && /details/i.test(error.message ?? '')) ({ error } = await supabase.from('contact_messages').insert(row))
       setStatus(error ? 'error' : 'done')
       return
     }
