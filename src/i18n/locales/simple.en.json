@@ -1,0 +1,54 @@
+{
+  "docTitle": "Home",
+  "greeting": {
+    "morning": "Good morning, {{name}}",
+    "afternoon": "Good afternoon, {{name}}",
+    "evening": "Good evening, {{name}}",
+    "morningNoName": "Good morning",
+    "afternoonNoName": "Good afternoon",
+    "eveningNoName": "Good evening"
+  },
+  "water_zero": "No water yet today. Try to drink 8 glasses.",
+  "water_one": "You've had 1 glass of water today. Well done.",
+  "water_other": "You've had {{count}} glasses of water today. Well done.",
+  "waterDone": "You've had all 8 glasses of water today. Excellent!",
+  "tapToStart": "Tap a picture to start.",
+  "tiles": {
+    "snap": { "title": "Snap my food", "hint": "Take a photo of your meal" },
+    "water": { "title": "I drank water", "hint": "Take a selfie with your drink" },
+    "doctor": { "title": "Talk to a doctor", "hint": "Video or voice call" },
+    "meals": { "title": "My meals today", "hint": "See what to eat" },
+    "help": { "title": "Get help now", "hint": "Emergency" },
+    "family": { "title": "Call my family", "titleNamed": "Call {{name}}", "hint": "Add their number first", "hintNamed": "Tap to call" }
+  },
+  "readAloud": "Read to me",
+  "stopReading": "Stop reading",
+  "noVoice": "This phone can't read aloud.",
+  "fullView": "Switch to full view",
+  "changeFamily": "Change family number",
+  "help": {
+    "title": "Get help now",
+    "body": "If someone is badly hurt, can't breathe, or has fainted, call for emergency help now.",
+    "call112": "Call 112 (emergency)",
+    "callFamily": "Call {{name}}",
+    "shuttle": "Shuttle Meds: ambulance and doctor at home (coming soon)",
+    "close": "Close"
+  },
+  "family": {
+    "title": "Who should we call?",
+    "body": "Save one family member's number. Then the big button calls them in one tap.",
+    "name": "Their name",
+    "namePlaceholder": "e.g. Tunde",
+    "phone": "Their phone number",
+    "phonePlaceholder": "e.g. 0803 123 4567",
+    "phoneError": "Please enter a full phone number.",
+    "save": "Save number",
+    "remove": "Remove number",
+    "cancel": "Cancel"
+  },
+  "prompt": {
+    "title": "Prefer bigger buttons?",
+    "body": "Simple view shows six big picture buttons, bigger text and a Read to me button. Good for older family members.",
+    "action": "Switch to simple view"
+  }
+}

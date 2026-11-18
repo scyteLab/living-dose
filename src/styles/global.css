@@ -91,3 +91,9 @@ button {
     scroll-behavior: auto !important;
   }
 }
+
+/* Simple view (Account → Display): everything a size bigger, larger tap targets */
+html[data-view='simple'] {
+  font-size: 112.5%;
+  --touch-min: 52px;
+}

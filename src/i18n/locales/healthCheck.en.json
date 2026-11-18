@@ -100,11 +100,7 @@
       "male": "Male"
     },
     "pregnant": "Are you pregnant?",
-    "pregnantOptions": [
-      "No",
-      "Yes",
-      "Not sure"
-    ]
+    "pregnantOptions": ["No", "Yes", "Not sure"]
   },
   "body": {
     "units": "Units",
@@ -151,29 +147,10 @@
     }
   },
   "scale": {
-    "bmi": [
-      "Under",
-      "Healthy",
-      "Over",
-      "Obesity"
-    ],
-    "whtr": [
-      "Healthy",
-      "Increased",
-      "High"
-    ],
-    "bp": [
-      "Normal",
-      "",
-      "High"
-    ],
-    "findrisc": [
-      "Low",
-      "",
-      "Moderate",
-      "",
-      "Very high"
-    ]
+    "bmi": ["Under", "Healthy", "Over", "Obesity"],
+    "whtr": ["Healthy", "Increased", "High"],
+    "bp": ["Normal", "", "High"],
+    "findrisc": ["Low", "", "Moderate", "", "Very high"]
   },
   "eating": {
     "answered": "questions answered. There are no wrong answers; think about a normal week.",
@@ -181,52 +158,27 @@
       "fv": {
         "title": "Portions of fruit and vegetables on a typical day",
         "help": "A portion is about a handful: one orange or banana, or a cupful of cooked ugu, spinach or garden egg.",
-        "options": [
-          "None",
-          "1 to 2",
-          "3 to 4",
-          "5 or more"
-        ]
+        "options": ["None", "1 to 2", "3 to 4", "5 or more"]
       },
       "drinks": {
         "title": "How often do you have sugary drinks?",
         "help": "Soft drinks, malt drinks, sweetened juice or zobo, or tea and coffee with sugar.",
-        "options": [
-          "Rarely",
-          "A few times a week",
-          "Once a day",
-          "More than once a day"
-        ]
+        "options": ["Rarely", "A few times a week", "Once a day", "More than once a day"]
       },
       "cubes": {
         "title": "Seasoning or stock cubes in your cooking each day",
         "help": "Cubes are one of the biggest hidden sources of salt.",
-        "options": [
-          "None",
-          "1",
-          "2 to 3",
-          "4 or more"
-        ]
+        "options": ["None", "1", "2 to 3", "4 or more"]
       },
       "fried": {
         "title": "How often do you eat fried food?",
         "help": "Such as puff-puff, akara, fried plantain, yam or chicken.",
-        "options": [
-          "Rarely",
-          "1 to 2 times a week",
-          "3 to 5 times a week",
-          "Every day"
-        ]
+        "options": ["Rarely", "1 to 2 times a week", "3 to 5 times a week", "Every day"]
       },
       "grains": {
         "title": "Which grains do you mostly eat?",
         "help": "Whole grains: ofada or brown rice, oats, whole wheat. Refined: white rice, white bread, pasta.",
-        "options": [
-          "Mostly whole",
-          "A mix",
-          "Mostly refined",
-          "Not sure"
-        ]
+        "options": ["Mostly whole", "A mix", "Mostly refined", "Not sure"]
       }
     }
   },
@@ -244,12 +196,7 @@
     },
     "strength": "Days a week you do muscle-strengthening activity",
     "strengthHelp": "Such as squats, push-ups, carrying loads or lifting weights.",
-    "strengthOptions": [
-      "None",
-      "1 day",
-      "2 days",
-      "3 or more"
-    ],
+    "strengthOptions": ["None", "1 day", "2 days", "3 or more"],
     "sleep": "Hours of sleep on a typical night",
     "less": "Less sleep",
     "more": "More sleep",
@@ -265,21 +212,12 @@
       "tobacco": {
         "title": "Do you smoke or use tobacco?",
         "help": "Including cigarettes, shisha, snuff or chewing tobacco.",
-        "options": [
-          "Never",
-          "I used to",
-          "Yes, currently"
-        ]
+        "options": ["Never", "I used to", "Yes, currently"]
       },
       "alcohol": {
         "title": "How much alcohol do you drink in a typical week?",
         "help": "One drink is a small bottle of beer, a glass of wine or palm wine, or a shot of spirits.",
-        "options": [
-          "None",
-          "1 to 7 drinks",
-          "8 to 14 drinks",
-          "15 or more"
-        ]
+        "options": ["None", "1 to 7 drinks", "8 to 14 drinks", "15 or more"]
       }
     }
   },
@@ -288,39 +226,19 @@
     "questions": {
       "p1": {
         "title": "Little interest or pleasure in doing things",
-        "options": [
-          "Not at all",
-          "Several days",
-          "More than half the days",
-          "Nearly every day"
-        ]
+        "options": ["Not at all", "Several days", "More than half the days", "Nearly every day"]
       },
       "p2": {
         "title": "Feeling down, depressed, or hopeless",
-        "options": [
-          "Not at all",
-          "Several days",
-          "More than half the days",
-          "Nearly every day"
-        ]
+        "options": ["Not at all", "Several days", "More than half the days", "Nearly every day"]
       },
       "g1": {
         "title": "Feeling nervous, anxious, or on edge",
-        "options": [
-          "Not at all",
-          "Several days",
-          "More than half the days",
-          "Nearly every day"
-        ]
+        "options": ["Not at all", "Several days", "More than half the days", "Nearly every day"]
       },
       "g2": {
         "title": "Not being able to stop or control worrying",
-        "options": [
-          "Not at all",
-          "Several days",
-          "More than half the days",
-          "Nearly every day"
-        ]
+        "options": ["Not at all", "Several days", "More than half the days", "Nearly every day"]
       }
     },
     "skip": "I'd prefer not to answer these",
@@ -361,26 +279,15 @@
       "highSugar": {
         "title": "Has a test ever shown your blood sugar was high?",
         "help": "For example during pregnancy, an illness or a health check.",
-        "options": [
-          "No",
-          "Yes",
-          "Not sure"
-        ]
+        "options": ["No", "Yes", "Not sure"]
       },
       "bpMeds": {
         "title": "Do you take medicine for high blood pressure?",
-        "options": [
-          "No",
-          "Yes"
-        ]
+        "options": ["No", "Yes"]
       },
       "family": {
         "title": "Has anyone in your family been diagnosed with diabetes?",
-        "options": [
-          "No",
-          "Grandparent, aunt, uncle or cousin",
-          "Parent, brother, sister or child"
-        ]
+        "options": ["No", "Grandparent, aunt, uncle or cousin", "Parent, brother, sister or child"]
       }
     }
   },
@@ -622,12 +529,7 @@
       "fv": {
         "area": "Fruit and vegetables",
         "target": "5 or more a day",
-        "you": [
-          "None a day",
-          "1 to 2 a day",
-          "3 to 4 a day",
-          "5 or more a day"
-        ]
+        "you": ["None a day", "1 to 2 a day", "3 to 4 a day", "5 or more a day"]
       },
       "minutes": {
         "area": "Active minutes",
@@ -637,32 +539,17 @@
       "strength": {
         "area": "Strength training",
         "target": "2 or more days a week",
-        "you": [
-          "None",
-          "1 day a week",
-          "2 days a week",
-          "3 or more days a week"
-        ]
+        "you": ["None", "1 day a week", "2 days a week", "3 or more days a week"]
       },
       "drinks": {
         "area": "Sugary drinks",
         "target": "Rarely",
-        "you": [
-          "Rarely",
-          "A few times a week",
-          "Once a day",
-          "More than once a day"
-        ]
+        "you": ["Rarely", "A few times a week", "Once a day", "More than once a day"]
       },
       "salt": {
         "area": "Salt (seasoning cubes)",
         "target": "Under 5 g of salt a day",
-        "you": [
-          "None",
-          "1 a day",
-          "2 to 3 a day",
-          "4 or more a day"
-        ]
+        "you": ["None", "1 a day", "2 to 3 a day", "4 or more a day"]
       },
       "sleep": {
         "area": "Sleep",
@@ -745,14 +632,7 @@
     "title": "Please get medical help now",
     "body": "A blood pressure of {{bp}} is very high. It needs to be checked by a doctor today.",
     "signsIntro": "Call 112 or go to the nearest hospital straight away if you also have:",
-    "signs": [
-      "Chest pain",
-      "Shortness of breath",
-      "Back pain",
-      "Numbness or weakness",
-      "A change in your vision",
-      "Difficulty speaking"
-    ],
+    "signs": ["Chest pain", "Shortness of breath", "Back pain", "Numbness or weakness", "A change in your vision", "Difficulty speaking"],
     "call": "Call 112",
     "hospital": "Find a hospital near me",
     "recheck": "If you feel well, sit quietly for 5 minutes and measure again. If it's still 180/110 or higher, contact a doctor today.",

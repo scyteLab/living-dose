@@ -1,4 +1,5 @@
 {
+  "waterSelfie": "Water selfie",
   "docTitle": "Home",
   "greeting": {
     "morning": "Good morning, {{name}}.",

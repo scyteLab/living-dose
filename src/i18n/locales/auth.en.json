@@ -158,7 +158,18 @@
     },
     "submit": "Continue",
     "skip": "Skip for now",
-    "footer": "Your choices shape your plan. Change them any time in Settings."
+    "footer": "Your choices shape your plan. Change them any time in Settings.",
+    "viewTitle": "How should the app look?",
+    "view": {
+      "full": {
+        "title": "Full view",
+        "body": "Your score, meal plan, habits and more, all on one page."
+      },
+      "simple": {
+        "title": "Simple view",
+        "body": "Six big picture buttons, bigger text and a Read to me button. Good for older family members."
+      }
+    }
   },
   "welcome": {
     "docTitle": "Welcome",

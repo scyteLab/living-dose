@@ -6,11 +6,7 @@
     "body": "Tell us about your health and your budget, and we'll plan breakfast, lunch, dinner and snacks from foods you already know, with a shopping list to match.",
     "cta": "Create a free account",
     "signIn": "I already have an account",
-    "points": [
-      "Built from your free health check",
-      "Nigerian dishes, sized to your needs",
-      "A shopping list for the whole household"
-    ]
+    "points": ["Built from your free health check", "Nigerian dishes, sized to your needs", "A shopping list for the whole household"]
   },
   "title": "Your meal plan",
   "thisWeek": "This week",

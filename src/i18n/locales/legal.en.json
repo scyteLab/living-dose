@@ -22,17 +22,13 @@
       {
         "id": "account",
         "title": "Your account",
-        "paragraphs": [
-          "When you create an account, you agree to:"
-        ],
+        "paragraphs": ["When you create an account, you agree to:"],
         "items": [
           "keep your sign-in details private;",
           "give accurate information, including health information, so our recommendations are safe for you;",
           "tell us straight away if you think someone else has used your account."
         ],
-        "after": [
-          "You can close your account at any time from your settings or by contacting us."
-        ]
+        "after": ["You can close your account at any time from your settings or by contacting us."]
       },
       {
         "id": "not-emergency",
@@ -72,18 +68,14 @@
       {
         "id": "fair-use",
         "title": "Using Living Dose fairly",
-        "paragraphs": [
-          "Please don't:"
-        ],
+        "paragraphs": ["Please don't:"],
         "items": [
           "share false or harmful health information, including in community groups;",
           "harass, insult or threaten anyone, including professionals and delivery staff;",
           "try to access other people's accounts or information;",
           "copy, resell or misuse Living Dose or its content."
         ],
-        "after": [
-          "We may suspend or close accounts that break these rules."
-        ]
+        "after": ["We may suspend or close accounts that break these rules."]
       },
       {
         "id": "content",
@@ -118,9 +110,7 @@
       {
         "id": "contact",
         "title": "Contact us",
-        "paragraphs": [
-          "Questions about these terms? Email {{email}} or write to us at {{address}}."
-        ]
+        "paragraphs": ["Questions about these terms? Email {{email}} or write to us at {{address}}."]
       }
     ]
   },
@@ -138,9 +128,7 @@
       {
         "id": "what-we-collect",
         "title": "What we collect",
-        "paragraphs": [
-          "We collect only what we need to give you the service:"
-        ],
+        "paragraphs": ["We collect only what we need to give you the service:"],
         "items": [
           "Account details: your name, phone number, email and password.",
           "Profile and health information you choose to share: age, sex, height, weight, health conditions, allergies, diet preferences, meal logs, meal photos and readings such as blood pressure or blood sugar.",
@@ -152,9 +140,7 @@
       {
         "id": "health-information",
         "title": "Your health information",
-        "paragraphs": [
-          "Health information is sensitive, so we treat it with extra care:"
-        ],
+        "paragraphs": ["Health information is sensitive, so we treat it with extra care:"],
         "items": [
           "We only collect it with your permission, and you can see everything you've shared at any time.",
           "Only you and the professionals you choose to consult can see your health records.",
@@ -164,9 +150,7 @@
       {
         "id": "how-we-use",
         "title": "How we use your information",
-        "paragraphs": [
-          "We use your information to:"
-        ],
+        "paragraphs": ["We use your information to:"],
         "items": [
           "create your account and household profiles;",
           "calculate your Living Score and build your meal plans;",
@@ -179,9 +163,7 @@
       {
         "id": "sharing",
         "title": "Who we share it with",
-        "paragraphs": [
-          "We never sell your personal information. We only share it with:"
-        ],
+        "paragraphs": ["We never sell your personal information. We only share it with:"],
         "items": [
           "the professionals you choose to consult;",
           "delivery partners, who receive only what they need to deliver your order;",
@@ -189,9 +171,7 @@
           "providers who host and secure our systems, under strict contracts;",
           "authorities, only where the law requires it."
         ],
-        "after": [
-          "If you use Diaspora Care, the family member you care for decides what you can see."
-        ]
+        "after": ["If you use Diaspora Care, the family member you care for decides what you can see."]
       },
       {
         "id": "security",
@@ -211,9 +191,7 @@
       {
         "id": "your-rights",
         "title": "Your rights",
-        "paragraphs": [
-          "Under the Nigeria Data Protection Act 2023, and the UK or EU GDPR if you live there, you can:"
-        ],
+        "paragraphs": ["Under the Nigeria Data Protection Act 2023, and the UK or EU GDPR if you live there, you can:"],
         "items": [
           "get a copy of your information;",
           "correct anything that's wrong;",
@@ -243,9 +221,7 @@
       {
         "id": "changes",
         "title": "Changes to this policy",
-        "paragraphs": [
-          "If we make important changes, we'll tell you in the app or by email before they take effect."
-        ]
+        "paragraphs": ["If we make important changes, we'll tell you in the app or by email before they take effect."]
       }
     ]
   }

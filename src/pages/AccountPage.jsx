@@ -1,9 +1,10 @@
 import { NavLink, Navigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Bell, Building2, LayoutDashboard, Lock, ShieldCheck, UserRound, UsersRound } from 'lucide-react'
+import { Accessibility, Bell, Building2, LayoutDashboard, Lock, ShieldCheck, UserRound, UsersRound } from 'lucide-react'
 import OrganisationSection from '@/components/account/OrganisationSection'
 import { isStaff } from '@/lib/staff/access'
 import clsx from 'clsx'
+import DisplaySection from '@/components/account/DisplaySection'
 import HouseholdSection from '@/components/account/HouseholdSection'
 import NotificationsSection from '@/components/account/NotificationsSection'
 import PrivacySection from '@/components/account/PrivacySection'
@@ -16,6 +17,7 @@ import useDocumentTitle from '@/hooks/useDocumentTitle'
 const SECTIONS = [
   { id: 'profile', icon: UserRound, Component: ProfileSection },
   { id: 'household', icon: UsersRound, Component: HouseholdSection },
+  { id: 'display', icon: Accessibility, Component: DisplaySection },
   { id: 'notifications', icon: Bell, Component: NotificationsSection },
   { id: 'organisation', icon: Building2, Component: OrganisationSection },
   { id: 'privacy', icon: ShieldCheck, Component: PrivacySection },
@@ -42,7 +44,12 @@ export default function AccountPage() {
       <div className={styles.layout}>
         <nav className={styles.nav} aria-label={t('nav.label')}>
           {SECTIONS.map(({ id, icon: Icon }) => (
-            <NavLink key={id} to={id === 'profile' ? '/account' : `/account/${id}`} end className={({ isActive }) => clsx(styles.navLink, isActive && styles.navOn)}>
+            <NavLink
+              key={id}
+              to={id === 'profile' ? '/account' : `/account/${id}`}
+              end
+              className={({ isActive }) => clsx(styles.navLink, isActive && styles.navOn)}
+            >
               <Icon size={19} strokeWidth={2} aria-hidden="true" />
               {t(`nav.${id}`)}
             </NavLink>

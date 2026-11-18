@@ -9,7 +9,8 @@
     "notifications": "Notifications",
     "privacy": "Privacy and data",
     "security": "Sign-in and security",
-    "organisation": "Organisation"
+    "organisation": "Organisation",
+    "display": "Display"
   },
   "saved": "Saved.",
   "save": "Save changes",
@@ -177,5 +178,18 @@
       "Use a screen lock on your phone, as your health information is on it."
     ]
   },
-  "staffConsole": "Staff console"
+  "staffConsole": "Staff console",
+  "display": {
+    "title": "Display and help",
+    "intro": "Make Living Dose easier to use on this phone. These settings stay on this phone, so you can set them up for a parent.",
+    "viewLabel": "View",
+    "simple": "Simple view",
+    "simpleHint": "Six big picture buttons, bigger text, and a Read to me button on every page.",
+    "readLabel": "Read to me",
+    "readHint": "Tap to hear how the phone's voice sounds. In Simple view, the round speaker button reads any page aloud.",
+    "readSample": "Hello. This is Living Dose. I can read each page to you.",
+    "familyLabel": "Family member to call",
+    "familyHint": "In Simple view, one big button calls this person.",
+    "saved": "Saved."
+  }
 }

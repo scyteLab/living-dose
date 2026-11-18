@@ -1012,3 +1012,7 @@
   font-weight: 700;
   color: var(--sky-deep);
 }
+
+.simplePrompt {
+  margin-top: var(--space-5);
+}

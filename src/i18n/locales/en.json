@@ -468,31 +468,19 @@
       "professionals": {
         "title": "Health professionals",
         "for": "Registered doctors, dietitians, psychologists and fitness coaches",
-        "points": [
-          "Meet patients who are looking for your expertise",
-          "Scheduling, video calls and records in one place",
-          "Set your own hours, from anywhere"
-        ],
+        "points": ["Meet patients who are looking for your expertise", "Scheduling, video calls and records in one place", "Set your own hours, from anywhere"],
         "cta": "Apply as a professional"
       },
       "farmers": {
         "title": "Farmers and suppliers",
         "for": "Farms, food processors and makers of healthy products",
-        "points": [
-          "Steady demand for quality produce",
-          "Fair prices, paid on time",
-          "Traceability records that show off your farm"
-        ],
+        "points": ["Steady demand for quality produce", "Fair prices, paid on time", "Traceability records that show off your farm"],
         "cta": "Become a supplier"
       },
       "organisations": {
         "title": "Organisations",
         "for": "Companies, schools, hospitals and NGOs",
-        "points": [
-          "Staff wellness with private, anonymised reports",
-          "School feeding and child growth tracking",
-          "Sponsored meals with clear reporting"
-        ],
+        "points": ["Staff wellness with private, anonymised reports", "School feeding and child growth tracking", "Sponsored meals with clear reporting"],
         "cta": "Talk to our team"
       }
     },

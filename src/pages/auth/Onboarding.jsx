@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ArrowRight, Check, Globe2, User, Users } from 'lucide-react'
+import { Accessibility, ArrowRight, Check, Globe2, LayoutDashboard, User, Users } from 'lucide-react'
 import clsx from 'clsx'
 import AuthLayout from '@/components/auth/AuthLayout'
 import Stepper from '@/components/auth/Stepper'
@@ -11,12 +11,18 @@ import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { saveProfile } from '@/lib/auth'
 import { clearPrefill, getPrefill } from '@/lib/authFlow'
+import { isSimple, setSimple } from '@/lib/simple/view'
 import styles from './Auth.module.css'
 
 const WHO = [
   { id: 'me', icon: User },
   { id: 'family', icon: Users },
   { id: 'abroad', icon: Globe2 },
+]
+
+const VIEWS = [
+  { id: 'full', icon: LayoutDashboard },
+  { id: 'simple', icon: Accessibility },
 ]
 
 const GOALS = [
@@ -38,16 +44,14 @@ export default function Onboarding() {
   const [prefill] = useState(getPrefill)
   const [who, setWho] = useState(prefill?.household ?? user?.user_metadata?.household ?? null)
   const [goals, setGoals] = useState(prefill?.goals ?? user?.user_metadata?.goals ?? [])
+  const [view, setView] = useState(() => (user && isSimple(user.id) ? 'simple' : 'full'))
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState(null)
   const [showWhoError, setShowWhoError] = useState(false)
 
   const toggleGoal = (id) => setGoals((g) => (g.includes(id) ? g.filter((x) => x !== id) : [...g, id]))
 
-  const chosenGoals = useMemo(
-    () => GOALS.filter((g) => goals.includes(g.id)).map((g) => ({ ...g, label: t(`about.goals.${g.id}`) })),
-    [goals, t],
-  )
+  const chosenGoals = useMemo(() => GOALS.filter((g) => goals.includes(g.id)).map((g) => ({ ...g, label: t(`about.goals.${g.id}`) })), [goals, t])
 
   const finish = async () => {
     clearPrefill()
@@ -65,6 +69,7 @@ export default function Onboarding() {
     setError(null)
     try {
       await saveProfile(user, { household: who, goals })
+      setSimple(user.id, view === 'simple')
       finish()
     } catch (err) {
       setError(err.kind ?? 'generic')
@@ -125,6 +130,27 @@ export default function Onboarding() {
               {t('errors.whoMissing')}
             </p>
           )}
+        </fieldset>
+
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.subTitle}>{t('about.viewTitle')}</legend>
+          <div className={styles.whoGrid}>
+            {VIEWS.map(({ id, icon: Icon }) => (
+              <label key={id} className={clsx(styles.whoCard, view === id && styles.whoOn)}>
+                <input type="radio" name="view" value={id} checked={view === id} onChange={() => setView(id)} className={styles.whoRadio} />
+                <span className={styles.whoIcon} aria-hidden="true">
+                  <Icon size={18} strokeWidth={1.8} />
+                </span>
+                <span className={styles.whoText}>
+                  <span className={styles.whoTitle}>{t(`about.view.${id}.title`)}</span>
+                  <span className={styles.whoBody}>{t(`about.view.${id}.body`)}</span>
+                </span>
+                <span className={styles.whoCheck} aria-hidden="true">
+                  <Check size={13} strokeWidth={3} />
+                </span>
+              </label>
+            ))}
+          </div>
         </fieldset>
 
         <fieldset className={styles.fieldset}>

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ScanLine, Video } from 'lucide-react'
+import { GlassWater, ScanLine, Video } from 'lucide-react'
+import SimpleHome from '@/components/simple/SimpleHome'
+import SimplePrompt from '@/components/simple/SimplePrompt'
 import GettingStarted from '@/components/dashboard/GettingStarted'
 import Habits from '@/components/dashboard/Habits'
 import NextConsultation from '@/components/dashboard/NextConsultation'
@@ -17,6 +19,7 @@ import useDocumentTitle from '@/hooks/useDocumentTitle'
 import useMealPlan from '@/hooks/useMealPlan'
 import { relativeWhen } from '@/lib/care/format'
 import { partOfDay } from '@/lib/dashboard/insights'
+import { useSimpleView } from '@/lib/simple/view'
 
 const todayIndex = () => (new Date().getDay() + 6) % 7
 
@@ -30,18 +33,30 @@ export default function Dashboard() {
   const mp = useMealPlan(user)
   // The time the page opened, so everything on it agrees on "now"
   const [now] = useState(() => Date.now())
+  const [simple, setSimple] = useSimpleView(user?.id)
+
+  // Simple view: six big picture buttons instead of the full dashboard
+  if (simple) {
+    if (dash.loading) return <div className={styles.loading} role="status" aria-label={t('docTitle')} />
+    return <SimpleHome userId={user.id} firstName={firstName} water={dash.todayHabits.water} onFullView={() => setSimple(false)} />
+  }
 
   if (dash.loading || mp.loading || !mp.plan) return <div className={styles.loading} role="status" aria-label={t('docTitle')} />
 
   // New members: the getting-started checklist until the health check is done
   if (!dash.record) {
     return (
-      <GettingStarted
-        firstName={firstName}
-        status={{ hasResult: false, planSeen: dash.planSeen, hasOrder: dash.hasOrder, hasAppointment: dash.hasAppointment }}
-        water={dash.todayHabits.water}
-        setWater={dash.setWater}
-      />
+      <>
+        <GettingStarted
+          firstName={firstName}
+          status={{ hasResult: false, planSeen: dash.planSeen, hasOrder: dash.hasOrder, hasAppointment: dash.hasAppointment }}
+          water={dash.todayHabits.water}
+          setWater={dash.setWater}
+        />
+        <div className={styles.simplePrompt}>
+          <SimplePrompt onSwitch={() => setSimple(true)} />
+        </div>
+      </>
     )
   }
 
@@ -71,6 +86,10 @@ export default function Dashboard() {
             <ScanLine size={18} strokeWidth={2} aria-hidden="true" />
             {t('snap')}
           </Button>
+          <Button to="/challenges/water" variant="outline" size="sm">
+            <GlassWater size={18} strokeWidth={2} aria-hidden="true" />
+            {t('waterSelfie')}
+          </Button>
           <Button to="/care" variant="care" size="sm">
             <Video size={18} strokeWidth={2} aria-hidden="true" />
             {t('bookExpert')}
@@ -95,6 +114,8 @@ export default function Dashboard() {
       </div>
 
       <WeekStrip planStore={mp.store} habits={dash.habits} />
+
+      <SimplePrompt onSwitch={() => setSimple(true)} />
     </div>
   )
 }

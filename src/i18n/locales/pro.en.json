@@ -92,15 +92,7 @@
     "title": "Availability",
     "intro": "Set the hours you take consultations. Members can only book within these times.",
     "weekly": "Weekly hours",
-    "days": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ],
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     "working": "Working",
     "off": "Not working",
     "from": "From",
