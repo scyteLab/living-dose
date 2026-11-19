@@ -9,11 +9,11 @@ import styles from './Plan.module.css'
 const TAG_TONE = { diabetic: 'sky', heart: 'leaf', protein: 'ember', pregnancy: 'plum' }
 
 /** Choose another recipe for one meal. Every option already respects the person's rules. */
-export default function SwapDialog({ target, settings, targets, onChoose, onUndo, onClose }) {
+export default function SwapDialog({ target, settings, targets, counts = {}, onChoose, onUndo, onClose }) {
   const { t } = useTranslation('plan')
   const open = Boolean(target)
   const current = target ? RECIPES_BY_ID[target.meal.recipeId] : null
-  const options = target ? alternatives({ slot: target.slot, currentId: target.meal.recipeId, settings, targets }) : []
+  const options = target ? alternatives({ slot: target.slot, currentId: target.meal.recipeId, settings, targets, counts }) : []
 
   return (
     <Dialog
@@ -46,9 +46,10 @@ export default function SwapDialog({ target, settings, targets, onChoose, onUndo
                     {r.minutes ? t('minutes', { count: r.minutes }) : t('noCook')}
                   </span>
                   <span className={styles.mealTags}>
+                    <Tag tone={r.inWeek ? 'neutral' : 'leaf'}>{r.inWeek ? t('swap.inWeek', { count: r.inWeek }) : t('swap.newThisWeek')}</Tag>
                     {r.tags
                       .filter((x) => x !== 'pregnancy')
-                      .slice(0, 2)
+                      .slice(0, 1)
                       .map((tag) => (
                         <Tag key={tag} tone={TAG_TONE[tag]}>
                           {t(`tags.${tag}`)}

@@ -144,7 +144,10 @@
     "intro": "These fit your plan and the foods you avoid.",
     "current": "Planned",
     "choose": "Choose this",
-    "none": "There are no other recipes that fit your choices for this meal."
+    "none": "There are no other recipes that fit your choices for this meal.",
+    "newThisWeek": "New this week",
+    "inWeek_one": "Already in your week",
+    "inWeek_other": "In your week {{count}} times"
   },
   "shopping": {
     "title": "Shopping list for the week",
@@ -195,5 +198,11 @@
     "saved": "Your plan has been rebuilt."
   },
   "review": "Recipes follow WHO healthy eating guidance and will be reviewed by a registered dietitian.",
-  "metaDescription": "A weekly meal plan built from your health check, local foods and your budget, with a shopping list to match."
+  "metaDescription": "A weekly meal plan built from your health check, local foods and your budget, with a shopping list to match.",
+  "variety": {
+    "count_one": "1 different meal this week",
+    "count_other": "{{count}} different meals this week",
+    "shuffle": "Shuffle my week",
+    "shuffled": "Here’s a fresh week. Meals you’ve already eaten stay as they were."
+  }
 }

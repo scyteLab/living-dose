@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Shuffle } from 'lucide-react'
 import clsx from 'clsx'
 import DayStrip from '@/components/plan/DayStrip'
 import DaySummary from '@/components/plan/DaySummary'
@@ -15,7 +16,7 @@ import { RECIPES_BY_ID } from '@/data/recipes'
 import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import useMealPlan from '@/hooks/useMealPlan'
-import { dayTotals } from '@/lib/mealPlan/generate'
+import { dayTotals, varietyOf, weekCounts } from '@/lib/mealPlan/generate'
 
 export default function Plan() {
   const { t } = useTranslation('plan')
@@ -70,6 +71,8 @@ function PlanForUser({ user }) {
   const rangeText = t('weekRange', { from: fmt.format(parse(plan.days[0].date)), to: fmt.format(parse(plan.days[6].date)) })
   const recordDate = mp.record ? new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long' }).format(new Date(mp.record.createdAt)) : null
   const tabs = ['meals', 'shopping']
+  const counts = weekCounts(plan.days)
+  const variety = varietyOf(plan.days)
 
   const onTabKey = (e) => {
     if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return
@@ -120,6 +123,24 @@ function PlanForUser({ user }) {
 
       {tab === 'meals' ? (
         <div id="plan-panel-meals" role="tabpanel" aria-labelledby="plan-tab-meals" className={styles.mealsPanel}>
+          <div className={styles.variety}>
+            <p className={styles.varietyText}>
+              <Shuffle size={18} strokeWidth={2} aria-hidden="true" />
+              {t('variety.count', { count: variety.different })}
+            </p>
+            <button
+              type="button"
+              className={styles.settingsButton}
+              onClick={() => {
+                mp.shuffleWeek()
+                setNotice(t('variety.shuffled'))
+                setTimeout(() => setNotice(null), 4000)
+              }}
+            >
+              <Shuffle size={18} strokeWidth={2} aria-hidden="true" />
+              <span>{t('variety.shuffle')}</span>
+            </button>
+          </div>
           <DayStrip
             days={plan.days}
             selected={selected}
@@ -165,6 +186,7 @@ function PlanForUser({ user }) {
         target={swapTarget}
         settings={settings}
         targets={targets}
+        counts={counts}
         onChoose={(id) => {
           mp.swap(swapTarget.dayIndex, swapTarget.slot, id)
           setSwapTarget(null)

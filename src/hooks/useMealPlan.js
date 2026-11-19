@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { RECIPES_BY_ID } from '@/data/recipes'
 import { generatePlan, portionFor } from '@/lib/mealPlan/generate'
-import { addDays, loadPlanStore, savePlanStore, weekStartOf } from '@/lib/mealPlan/storage'
+import { addDays, loadPlanStore, savePlanStore, toIso, weekStartOf } from '@/lib/mealPlan/storage'
 import { dailyTargets } from '@/lib/mealPlan/targets'
 import { loadLatestResult } from '@/lib/healthCheck/storage'
 
@@ -38,10 +38,13 @@ export default function useMealPlan(user) {
 
   const plan = useMemo(() => {
     if (record === undefined) return null
-    const base = generatePlan({ seed: userId, weekStart, settings: store.settings, targets })
+    const base = generatePlan({ seed: userId, weekStart, settings: store.settings, targets, shuffle: week.shuffle ?? 0 })
     const days = base.days.map((day, d) => {
       const meals = { ...day.meals }
       for (const slot of Object.keys(meals)) {
+        const keptId = week.kept?.[`${d}.${slot}`]
+        if (keptId && RECIPES_BY_ID[keptId])
+          meals[slot] = { recipeId: keptId, portion: portionFor(RECIPES_BY_ID[keptId], slot, targets.kcal, store.settings.snacks) }
         const swapId = week.overrides[`${d}.${slot}`]
         if (swapId && RECIPES_BY_ID[swapId]) {
           meals[slot] = { recipeId: swapId, portion: portionFor(RECIPES_BY_ID[swapId], slot, targets.kcal, store.settings.snacks), swapped: true }
@@ -50,7 +53,7 @@ export default function useMealPlan(user) {
       return { date: addDays(weekStart, d), meals }
     })
     return { ...base, days }
-  }, [record, userId, weekStart, store.settings, targets, week.overrides])
+  }, [record, userId, weekStart, store.settings, targets, week.overrides, week.kept, week.shuffle])
 
   const updateWeek = useCallback(
     (fn) =>
@@ -76,6 +79,25 @@ export default function useMealPlan(user) {
     [updateWeek],
   )
 
+  // A fresh week from the same rules. Days already gone and meals marked as eaten stay as they were.
+  const shuffleWeek = useCallback(() => {
+    if (!plan) return
+    const todayIso = toIso(new Date())
+    updateWeek((w) => {
+      const kept = {}
+      const overrides = {}
+      plan.days.forEach((day, d) => {
+        for (const [slot, meal] of Object.entries(day.meals)) {
+          const k = `${d}.${slot}`
+          if (!meal || !(day.date < todayIso || w.eaten[k])) continue
+          if (meal.swapped) overrides[k] = meal.recipeId
+          else kept[k] = meal.recipeId
+        }
+      })
+      return { ...w, kept, overrides, shuffle: (w.shuffle ?? 0) + 1 }
+    })
+  }, [plan, updateWeek])
+
   const toggleEaten = useCallback(
     (dayIndex, slot) =>
       updateWeek((w) => {
@@ -93,7 +115,7 @@ export default function useMealPlan(user) {
     (settings) =>
       setStore((s) => ({
         settings,
-        weeks: Object.fromEntries(Object.entries(s.weeks).map(([k, w]) => [k, { ...w, overrides: {} }])),
+        weeks: Object.fromEntries(Object.entries(s.weeks).map(([k, w]) => [k, { ...w, overrides: {}, kept: {} }])),
       })),
     [],
   )
@@ -111,6 +133,7 @@ export default function useMealPlan(user) {
     setWeekOffset,
     swap,
     undoSwap,
+    shuffleWeek,
     toggleEaten,
     toggleChecked,
     resetChecked,
