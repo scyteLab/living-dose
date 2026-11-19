@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { HeartHandshake } from 'lucide-react'
 import styles from '@/components/family/Family.module.css'
+import PushCard from '@/components/push/PushCard'
 import Button from '@/components/ui/Button'
 import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
@@ -50,6 +51,7 @@ export default function FamilyJoin() {
         {state.status === 'done' ? (
           <>
             <h1 className={styles.title}>{t('join.done', { name })}</h1>
+            <PushCard userId={user.id} why="family" name={name} compact />
             <Button to="/family" size="lg">
               {t('join.goFamily', { name })}
             </Button>

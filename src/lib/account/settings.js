@@ -36,6 +36,7 @@ export const DEFAULT_NOTIFICATIONS = {
   water: false,
   consultations: true, // always on: you need to know when your consultation starts
   checkIn: true,
+  checkInTime: '18:00', // daily reminder if they haven't checked in by then
   orders: true,
   news: false,
   channels: { push: true, sms: true, whatsapp: false, email: false },

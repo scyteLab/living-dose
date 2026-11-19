@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import PersonCard from '@/components/family/PersonCard'
 import styles from '@/components/family/Family.module.css'
+import PushCard from '@/components/push/PushCard'
 import Button from '@/components/ui/Button'
 import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
@@ -55,6 +56,8 @@ export default function Family() {
           </Button>
         </div>
       )}
+
+      {people?.length > 0 && <PushCard userId={user.id} why="family" name={people[0].ownerName} compact />}
 
       {people?.length > 0 && (
         <ul className={styles.list}>

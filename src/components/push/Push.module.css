@@ -1,0 +1,37 @@
+.card {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  font-weight: 800;
+}
+
+.body,
+.hint {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--moss);
+}
+
+.ok {
+  margin: 0;
+  font-weight: 700;
+  color: var(--leaf-deep);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}

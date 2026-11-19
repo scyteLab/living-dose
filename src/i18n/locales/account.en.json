@@ -129,7 +129,9 @@
     "quietHint": "No reminders between these times, except for consultations.",
     "from": "From",
     "to": "To",
-    "serverNote": "Reminders are sent once the Living Dose server is connected. Your choices are saved now."
+    "serverNote": "Daily check-in reminders and family alerts come as phone notifications (turn them on above). Text message, WhatsApp and email reminders are coming soon; your choices are saved now.",
+    "checkInHint": "A reminder if you haven't done your daily check-in by this time.",
+    "checkInTime": "Remind me at"
   },
   "privacy": {
     "title": "Privacy and data",

@@ -9,11 +9,16 @@
  * Requests to other servers (such as Supabase) are never cached.
  * Bump VERSION when this file changes.
  */
-const VERSION = 'ld-v1'
+const VERSION = 'ld-v2'
 const SHELL = ['/', '/offline.html', '/favicon.svg', '/icon-192.png', '/manifest.webmanifest']
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(VERSION).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()))
+  event.waitUntil(
+    caches
+      .open(VERSION)
+      .then((cache) => cache.addAll(SHELL))
+      .then(() => self.skipWaiting()),
+  )
 })
 
 self.addEventListener('activate', (event) => {
@@ -65,8 +70,46 @@ self.addEventListener('fetch', (event) => {
     return
   }
   if (url.origin !== self.location.origin) return
+  if (url.pathname.startsWith('/.netlify/')) return // functions are always live
 
   if (request.mode === 'navigate') event.respondWith(networkFirstPage(request))
   else if (url.pathname.startsWith('/assets/')) event.respondWith(cacheFirst(request))
   else event.respondWith(staleWhileRevalidate(request))
+})
+
+// ---------- Phone notifications (check-in reminders, family alerts) ----------
+self.addEventListener('push', (event) => {
+  let data
+  try {
+    data = event.data ? event.data.json() : {}
+  } catch {
+    data = { body: event.data?.text() }
+  }
+  const title = data.title || 'Living Dose'
+  event.waitUntil(
+    self.registration.showNotification(title, {
+      body: data.body || '',
+      icon: '/icon-192.png',
+      badge: '/icon-192.png',
+      tag: data.tag,
+      renotify: Boolean(data.urgent),
+      requireInteraction: Boolean(data.urgent),
+      data: { url: data.url || '/' },
+    }),
+  )
+})
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close()
+  const url = new URL(event.notification.data?.url || '/', self.location.origin).href
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((wins) => {
+      const open = wins.find((w) => w.url.startsWith(self.location.origin))
+      if (open) {
+        open.focus()
+        return open.navigate(url)
+      }
+      return self.clients.openWindow(url)
+    }),
+  )
 })

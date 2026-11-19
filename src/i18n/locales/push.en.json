@@ -1,0 +1,23 @@
+{
+  "title": "Phone notifications",
+  "why": {
+    "checkin": "Get a gentle reminder to check in each day, so you keep your streak.",
+    "family": "Get an alert on your phone straight away if {{name}} reports a warning sign.",
+    "settings": "Reminders to check in, and alerts if someone you look after reports a warning sign."
+  },
+  "turnOn": "Turn on notifications",
+  "turningOn": "Turning on…",
+  "on": "Notifications are on for this phone.",
+  "turnOff": "Turn off on this phone",
+  "test": "Send me a test",
+  "testSent": "Sent. It should arrive in a few seconds.",
+  "testNone": "We couldn't reach this phone. Try turning notifications off and on again.",
+  "states": {
+    "denied": "Notifications are blocked for Living Dose. To allow them, open your browser's site settings for this page and allow notifications, then come back.",
+    "unsupported": "This browser can't show notifications. Try Chrome on Android, or a computer.",
+    "ios-install": "On iPhone: tap the Share button, then \"Add to Home Screen\". Open Living Dose from your home screen, then turn on notifications here.",
+    "not-live": "Notifications work on the live site only.",
+    "not-configured": "Notifications aren't switched on for the site yet.",
+    "save": "We couldn't save this phone. Please try again."
+  }
+}

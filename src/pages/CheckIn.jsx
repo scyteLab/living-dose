@@ -4,12 +4,14 @@ import { CircleAlert, ClipboardCheck, PhoneCall, PartyPopper } from 'lucide-reac
 import clsx from 'clsx'
 import { FEELING_EMOJI, SLEEP_EMOJI, ScoreChart, StreakPill, WeekDots } from '@/components/checkin/parts'
 import styles from '@/components/checkin/Checkin.module.css'
+import PushCard from '@/components/push/PushCard'
 import Button from '@/components/ui/Button'
 import useAuth from '@/hooks/useAuth'
 import useCheckins from '@/hooks/useCheckins'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { FEELINGS, SLEEP, SYMPTOMS, fullCheckStatus, isUrgent, unwellStreak, weekDots } from '@/lib/checkin/checkins'
 import { loadLatestResult, loadScoreHistory } from '@/lib/healthCheck/storage'
+import { alertFamily } from '@/lib/push/push'
 
 const WARN = new Set(['chestPain', 'breathless'])
 const EMPTY = { feeling: null, sleep: null, symptoms: [], systolic: '', diastolic: '', sugar: '', note: '' }
@@ -67,7 +69,9 @@ export default function CheckIn() {
     }
     setStatus('saving')
     try {
-      const { synced } = await save(form)
+      const { synced, entry } = await save(form)
+      // A warning sign: the server double-checks it and alerts family helpers
+      if (synced && isUrgent(entry)) alertFamily()
       setStatus(synced ? 'idle' : 'offline')
       setEditing(false)
       window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -283,6 +287,8 @@ export default function CheckIn() {
           <Button to="/">{t('done.home')}</Button>
         </div>
       </section>
+
+      <PushCard userId={user.id} why="checkin" compact />
 
       {advice.length > 0 && (
         <section className={styles.panel}>

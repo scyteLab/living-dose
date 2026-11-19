@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import PushCard from '@/components/push/PushCard'
 import Button from '@/components/ui/Button'
 import { hasChannel, loadNotifications, saveNotifications } from '@/lib/account/settings'
 import styles from './Account.module.css'
@@ -42,6 +43,8 @@ export default function NotificationsSection({ user }) {
         <p className={styles.muted}>{t('notifications.intro')}</p>
       </div>
 
+      <PushCard userId={user.id} why="settings" />
+
       <fieldset className={styles.fieldset}>
         <legend className={styles.label}>{t('notifications.what')}</legend>
         <Toggle label={t('notifications.meals')} hint={t('notifications.mealsHint')} checked={n.meals} onChange={(meals) => set({ meals })} />
@@ -57,7 +60,15 @@ export default function NotificationsSection({ user }) {
         )}
         <Toggle label={t('notifications.water')} hint={t('notifications.waterHint')} checked={n.water} onChange={(water) => set({ water })} />
         <Toggle label={t('notifications.consultations')} hint={t('notifications.consultationsHint')} checked disabled onChange={() => {}} />
-        <Toggle label={t('notifications.checkIn')} checked={n.checkIn} onChange={(checkIn) => set({ checkIn })} />
+        <Toggle label={t('notifications.checkIn')} hint={t('notifications.checkInHint')} checked={n.checkIn} onChange={(checkIn) => set({ checkIn })} />
+        {n.checkIn && (
+          <div className={styles.times}>
+            <label className={styles.time}>
+              <span>{t('notifications.checkInTime')}</span>
+              <input type="time" step="3600" value={n.checkInTime} onChange={(e) => set({ checkInTime: e.target.value })} />
+            </label>
+          </div>
+        )}
         <Toggle label={t('notifications.orders')} checked={n.orders} onChange={(orders) => set({ orders })} />
         <Toggle label={t('notifications.news')} checked={n.news} onChange={(news) => set({ news })} />
       </fieldset>
