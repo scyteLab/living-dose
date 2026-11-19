@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { GlassWater, ScanLine, Video } from 'lucide-react'
 import CheckinCard from '@/components/checkin/CheckinCard'
+import FamilyStrip from '@/components/family/FamilyStrip'
 import SimpleHome from '@/components/simple/SimpleHome'
 import SimplePrompt from '@/components/simple/SimplePrompt'
 import GettingStarted from '@/components/dashboard/GettingStarted'
@@ -54,6 +55,9 @@ export default function Dashboard() {
           water={dash.todayHabits.water}
         />
         <div className={styles.simplePrompt}>
+          <FamilyStrip userId={user.id} />
+        </div>
+        <div className={styles.simplePrompt}>
           <SimplePrompt onSwitch={() => setSimple(true)} />
         </div>
       </>
@@ -98,6 +102,7 @@ export default function Dashboard() {
       </header>
 
       <CheckinCard userId={user.id} />
+      <FamilyStrip userId={user.id} />
 
       <div className={styles.rowA}>
         <ScoreCard record={dash.record} now={now} />

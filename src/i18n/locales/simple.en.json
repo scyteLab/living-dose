@@ -14,12 +14,32 @@
   "waterDone": "You've had all 8 glasses of water today. Excellent!",
   "tapToStart": "Tap a picture to start.",
   "tiles": {
-    "snap": { "title": "Snap my food", "hint": "Take a photo of your meal" },
-    "water": { "title": "I drank water", "hint": "Take a selfie with your drink" },
-    "doctor": { "title": "Talk to a doctor", "hint": "Video or voice call" },
-    "meals": { "title": "My meals today", "hint": "See what to eat" },
-    "help": { "title": "Get help now", "hint": "Emergency" },
-    "family": { "title": "Call my family", "titleNamed": "Call {{name}}", "hint": "Add their number first", "hintNamed": "Tap to call" }
+    "snap": {
+      "title": "Snap my food",
+      "hint": "Take a photo of your meal"
+    },
+    "water": {
+      "title": "I drank water",
+      "hint": "Take a selfie with your drink"
+    },
+    "doctor": {
+      "title": "Talk to a doctor",
+      "hint": "Video or voice call"
+    },
+    "meals": {
+      "title": "My meals today",
+      "hint": "See what to eat"
+    },
+    "help": {
+      "title": "Get help now",
+      "hint": "Emergency"
+    },
+    "family": {
+      "title": "Call my family",
+      "titleNamed": "Call {{name}}",
+      "hint": "Add their number first",
+      "hintNamed": "Tap to call"
+    }
   },
   "readAloud": "Read to me",
   "stopReading": "Stop reading",
@@ -50,5 +70,6 @@
     "title": "Prefer bigger buttons?",
     "body": "Simple view shows six big picture buttons, bigger text and a Read to me button. Good for older family members.",
     "action": "Switch to simple view"
-  }
+  },
+  "familyHelpers": "Let my family see how I am"
 }

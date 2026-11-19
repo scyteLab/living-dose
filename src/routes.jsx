@@ -12,6 +12,8 @@ const Home = lazy(() => import('@/pages/Home'))
 const Plan = lazy(() => import('@/pages/Plan'))
 const Scan = lazy(() => import('@/pages/Scan'))
 const CheckIn = lazy(() => import('@/pages/CheckIn'))
+const Family = lazy(() => import('@/pages/Family'))
+const FamilyJoin = lazy(() => import('@/pages/FamilyJoin'))
 const WaterChallenge = lazy(() => import('@/pages/WaterChallenge'))
 const ShuttleMeds = lazy(() => import('@/pages/ShuttleMeds'))
 const Shop = lazy(() => import('@/pages/shop/ShopPage'))
@@ -81,6 +83,22 @@ export const routes = [
         element: (
           <RequireAuth>
             <CheckIn />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'family',
+        element: (
+          <RequireAuth>
+            <Family />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'family/join/:code',
+        element: (
+          <RequireAuth>
+            <FamilyJoin />
           </RequireAuth>
         ),
       },

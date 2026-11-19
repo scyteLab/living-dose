@@ -128,6 +128,10 @@ export default function SimpleHome({ userId, firstName, water = 0, onFullView })
             {t('changeFamily')}
           </button>
         )}
+        <Link to="/account/family" className={styles.textBtn}>
+          <UsersRound size={20} strokeWidth={2} aria-hidden="true" />
+          {t('familyHelpers')}
+        </Link>
         <button type="button" className={styles.textBtn} onClick={onFullView}>
           <LayoutDashboard size={20} strokeWidth={2} aria-hidden="true" />
           {t('fullView')}

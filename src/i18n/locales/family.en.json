@@ -1,0 +1,82 @@
+{
+  "docTitle": "Family",
+  "title": "People you look after",
+  "lead": "See at a glance how your loved ones are doing today: their check-in, water and any warning signs.",
+  "empty": {
+    "title": "No one yet",
+    "body": "Ask your parent or relative to open Living Dose on their phone, go to Account → Family helpers, and send you their invite link.",
+    "own": "Want someone to look after you? Invite them from Account → Family helpers."
+  },
+  "status": {
+    "urgent": "{{name}} reported a warning sign today",
+    "unwell": "{{name}} isn't feeling well today",
+    "ok": "{{name}} checked in today",
+    "notYet": "{{name}} hasn't checked in yet today",
+    "quiet_one": "No check-in from {{name}} for {{count}} day",
+    "quiet_other": "No check-in from {{name}} for {{count}} days",
+    "quietNever": "{{name}} hasn't done a check-in yet"
+  },
+  "urgentWhat": {
+    "chestPain": "chest pain",
+    "breathless": "difficulty breathing",
+    "bpVeryHigh": "very high blood pressure",
+    "sugarLow": "low blood sugar",
+    "sugarVeryHigh": "very high blood sugar"
+  },
+  "urgentBody": "They said: {{what}}. Please call them now. If they don't answer or feel faint, call 112.",
+  "unwellBody": "A quick call could help. If they've felt unwell for several days, suggest a doctor.",
+  "quietBody": "A gentle reminder from you can help them keep going.",
+  "feltToday": "Today: {{feeling}}",
+  "water": "Water: {{count}} of 8 glasses",
+  "streak_one": "1-day streak",
+  "streak_other": "{{count}}-day streak",
+  "noStreak": "No streak yet",
+  "score": "Living Score: {{score}}",
+  "noScore": "No health check yet",
+  "call112": "Call 112",
+  "callThem": "Call {{name}}",
+  "addPhone": "Add their phone number",
+  "phoneLabel": "{{name}}'s phone number",
+  "savePhone": "Save",
+  "stopHelping": "Stop seeing {{name}}'s updates",
+  "loadError": "We couldn't load your family. Please check your connection.",
+  "join": {
+    "docTitle": "Join as a family helper",
+    "title": "{{name}} wants you to look after them",
+    "body": "You'll see {{name}}'s daily check-in, any warning signs, how much water they've had and their streak. You won't see their answers to the health check, their meals or their private notes.",
+    "accept": "Yes, I'll look after {{name}}",
+    "decline": "Not now",
+    "done": "You're now looking after {{name}}.",
+    "goFamily": "See how {{name}} is doing",
+    "notFound": "This invite link doesn't work. Please ask for a new one.",
+    "used": "This invite link has already been used. Please ask for a new one.",
+    "expired": "This invite link has expired (links last 7 days). Please ask for a new one.",
+    "own": "This is your own invite link. Send it to the family member you'd like to look after you.",
+    "setup": "Family helpers aren't switched on yet. Please try again later.",
+    "demoSelf": "Demo mode: you're accepting your own invite so you can see how it looks."
+  },
+  "account": {
+    "title": "Family helpers",
+    "intro": "Let a son, daughter or carer see how you're doing each day, from their own phone. They see your daily check-in, warning signs, water and streak. Not your health check answers, meals or notes.",
+    "invite": "Create an invite link",
+    "creating": "Creating…",
+    "linkReady": "Send this link to your family member. It works once and lasts 7 days.",
+    "copy": "Copy link",
+    "copied": "Copied",
+    "whatsapp": "Send on WhatsApp",
+    "whatsappText": "Hi, I'd like you to look after my health on Living Dose. Tap this link to join: {{link}}",
+    "helpersTitle": "Who can see your updates",
+    "noHelpers": "No one yet.",
+    "remove": "Remove",
+    "since": "since {{date}}",
+    "helpingTitle": "People you look after",
+    "seeFamily": "Open",
+    "error": "Something went wrong. Please try again."
+  },
+  "dashboard": {
+    "title": "Family",
+    "more": "See all"
+  },
+  "stopConfirm": "Yes, stop",
+  "keep": "Keep"
+}
