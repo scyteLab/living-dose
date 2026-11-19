@@ -9,6 +9,7 @@ import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { formatPrice } from '@/lib/shop/money'
 import { listOrders } from '@/lib/shop/orders'
+import { formatLocale } from '@/i18n'
 
 export default function OrdersPage() {
   const { t, i18n } = useTranslation('shop')
@@ -25,7 +26,7 @@ export default function OrdersPage() {
   }, [user.id])
 
   if (!orders) return <div className={styles.loading} role="status" />
-  const fmt = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' })
+  const fmt = new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'long', year: 'numeric' })
 
   return (
     <div className={styles.page}>

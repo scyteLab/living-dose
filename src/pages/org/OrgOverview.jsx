@@ -7,6 +7,7 @@ import Button from '@/components/ui/Button'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { aggregate, sampleCohort, toCsv } from '@/lib/org/aggregate'
 import { organisationStats } from '@/lib/org/service'
+import { formatLocale } from '@/i18n'
 
 const BAND_COLOUR = { strong: 'var(--leaf)', good: 'var(--sky)', grow: 'var(--ember)', attention: '#e0738a' }
 const PILLARS = ['eating', 'activity', 'body', 'sleep', 'mind', 'habits']
@@ -54,7 +55,11 @@ export default function OrgOverview() {
       <div className={styles.pageHead}>
         <div>
           <h1 className={styles.title}>{t('overview.title')}</h1>
-          <p className={styles.small}>{t('overview.asOf', { date: new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date()) })}</p>
+          <p className={styles.small}>
+            {t('overview.asOf', {
+              date: new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date()),
+            })}
+          </p>
         </div>
         <Button variant="outline" size="sm" onClick={download}>
           <Download size={17} strokeWidth={2} aria-hidden="true" />
@@ -99,8 +104,16 @@ export default function OrgOverview() {
             <h2 id="bands-h" className={styles.dayTitle}>
               {t('overview.bands')}
             </h2>
-            <div className={styles.stack} role="img" aria-label={Object.entries(stats.bands).map(([b, v]) => `${labels.bands[b]}: ${v.hidden ? t('overview.fewer') : `${v.pct}%`}`).join(', ')}>
-              {Object.entries(stats.bands).map(([b, v]) => (!v.hidden && v.pct > 0 ? <span key={b} style={{ width: `${v.pct}%`, background: BAND_COLOUR[b] }} /> : null))}
+            <div
+              className={styles.stack}
+              role="img"
+              aria-label={Object.entries(stats.bands)
+                .map(([b, v]) => `${labels.bands[b]}: ${v.hidden ? t('overview.fewer') : `${v.pct}%`}`)
+                .join(', ')}
+            >
+              {Object.entries(stats.bands).map(([b, v]) =>
+                !v.hidden && v.pct > 0 ? <span key={b} style={{ width: `${v.pct}%`, background: BAND_COLOUR[b] }} /> : null,
+              )}
             </div>
             <ul className={styles.legend}>
               {Object.entries(stats.bands).map(([b, v]) => (

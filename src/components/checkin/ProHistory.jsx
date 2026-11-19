@@ -4,12 +4,13 @@ import staff from '@/components/staff/Staff.module.css'
 import { isUrgent } from '@/lib/checkin/checkins'
 import { FEELING_EMOJI, ScoreChart } from './parts'
 import styles from './Checkin.module.css'
+import { formatLocale } from '@/i18n'
 
 /** For doctors: the member's Living Score over time and recent daily check-ins (shared only). */
 export default function ProHistory({ checkins = [], scores = [] }) {
   const { t, i18n } = useTranslation('checkin')
   const tp = useTranslation('pro').t
-  const fmt = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'short' })
+  const fmt = new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'short' })
   const readings = checkins.filter((c) => c.bp || c.sugar != null)
   const unwellDays = checkins.filter((c) => ['unwell', 'bad'].includes(c.feeling)).length
 

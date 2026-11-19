@@ -22,6 +22,7 @@ import useMealPlan from '@/hooks/useMealPlan'
 import { relativeWhen } from '@/lib/care/format'
 import { partOfDay } from '@/lib/dashboard/insights'
 import { useSimpleView } from '@/lib/simple/view'
+import { formatLocale } from '@/i18n'
 
 const todayIndex = () => (new Date().getDay() + 6) % 7
 
@@ -69,12 +70,17 @@ export default function Dashboard() {
   const slots = Object.keys(day.meals).filter((s) => day.meals[s])
   const done = slots.filter((s) => mp.week.eaten[`${di}.${s}`]).length
   const part = partOfDay()
-  const dateText = new Intl.DateTimeFormat(i18n.language, { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date())
+  const dateText = new Intl.DateTimeFormat(formatLocale(i18n.language), { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date())
 
   // One-line summary of the day
   const lines = [done ? t('summaryMeals', { done, total: slots.length }) : t('summaryNoneYet')]
   if (dash.nextAppt && new Date(dash.nextAppt.start).getTime() - now < 48 * 3600e3) {
-    lines.push(t('summaryAppt', { name: PROFESSIONALS_BY_ID[dash.nextAppt.professionalId].name, when: relativeWhen(dash.nextAppt.start, i18n.language, tc) }))
+    lines.push(
+      t('summaryAppt', {
+        name: PROFESSIONALS_BY_ID[dash.nextAppt.professionalId].name,
+        when: relativeWhen(dash.nextAppt.start, formatLocale(i18n.language), tc),
+      }),
+    )
   }
 
   return (

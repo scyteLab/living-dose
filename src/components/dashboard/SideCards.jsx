@@ -9,6 +9,7 @@ import { STATUSES } from '@/lib/shop/orders'
 import { daysLeftInWeek, weekMinutes } from '@/lib/dashboard/insights'
 import CardHead from './CardHead'
 import styles from './Dashboard.module.css'
+import { formatLocale } from '@/i18n'
 
 const PILLAR_TONE = { eating: 'ember', activity: 'sky', body: 'leaf', sleep: 'plum', mind: 'plum', habits: 'leaf' }
 
@@ -81,7 +82,7 @@ export function OrderCard({ order }) {
   const current = STATUSES.indexOf(order.status)
   const [date, slotWindow] = order.slot.split('|')
   const [y, m, d] = date.split('-').map(Number)
-  const day = new Intl.DateTimeFormat(i18n.language, { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(y, m - 1, d))
+  const day = new Intl.DateTimeFormat(formatLocale(i18n.language), { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(y, m - 1, d))
   const items = order.items.reduce((n, i) => n + i.qty, 0)
   const steps = [
     { s: 'placed', icon: Check },

@@ -12,6 +12,7 @@ import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { FEELINGS, SLEEP, SYMPTOMS, fullCheckStatus, isUrgent, unwellStreak, weekDots } from '@/lib/checkin/checkins'
 import { loadLatestResult, loadScoreHistory } from '@/lib/healthCheck/storage'
 import { alertFamily } from '@/lib/push/push'
+import { formatLocale } from '@/i18n'
 
 const WARN = new Set(['chestPain', 'breathless'])
 const EMPTY = { feeling: null, sleep: null, symptoms: [], systolic: '', diastolic: '', sugar: '', note: '' }
@@ -232,8 +233,8 @@ export default function CheckIn() {
   const advice = todays.flags.filter((f) => !f.startsWith('urgent:'))
   if (unwellStreak(list, today)) advice.push('unwell3')
   const full = fullCheckStatus(latestAt)
-  const dateFmt = new Intl.DateTimeFormat(i18n.language, { weekday: 'short', day: 'numeric', month: 'short' })
-  const monthFmt = new Intl.DateTimeFormat(i18n.language, { month: 'long', year: 'numeric' })
+  const dateFmt = new Intl.DateTimeFormat(formatLocale(i18n.language), { weekday: 'short', day: 'numeric', month: 'short' })
+  const monthFmt = new Intl.DateTimeFormat(formatLocale(i18n.language), { month: 'long', year: 'numeric' })
   const first = scores[0]
   const last = scores[scores.length - 1]
   const diff = last && first ? last.score - first.score : 0

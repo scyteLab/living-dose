@@ -16,13 +16,14 @@ import { formatDateChip, formatDay, formatTime, viewerDiffers } from '@/lib/care
 import { loadLatestResult } from '@/lib/healthCheck/storage'
 import { formatPrice } from '@/lib/shop/money'
 import styles from './Care.module.css'
+import { formatLocale } from '@/i18n'
 
 const TOPICS = ['plan', 'results', 'condition', 'weight', 'mood', 'other']
 
 /** Choose a type, day and time, then book. Guests are sent to sign in and brought back. */
 export default function BookingPanel({ professional: p }) {
   const { t, i18n } = useTranslation('care')
-  const locale = i18n.language
+  const locale = formatLocale(i18n.language)
   const navigate = useNavigate()
   const location = useLocation()
   const { user, firstName } = useAuth()
@@ -86,15 +87,27 @@ export default function BookingPanel({ professional: p }) {
     setStatus('booking')
     setError(null)
     try {
-      const appt = await bookAppointment(user.id, { professionalId: p.id, type, start: slot, topic, note, shareResults: hasResults && share, memberName: firstName })
+      const appt = await bookAppointment(user.id, {
+        professionalId: p.id,
+        type,
+        start: slot,
+        topic,
+        note,
+        shareResults: hasResults && share,
+        memberName: firstName,
+      })
       navigate(`/care/appointments/${appt.id}`, { state: { justBooked: true } })
     } catch (err) {
       setStatus('idle')
       if (['too-soon', 'outside-hours', 'day-off', 'too-far-ahead', 'too-many-bookings', 'invalid-time'].includes(err.kind)) {
         setError(err.kind)
-        loadBookedSlots([p.id]).then(setBooked).catch(() => {})
+        loadBookedSlots([p.id])
+          .then(setBooked)
+          .catch(() => {})
       } else if (err.kind === 'taken') {
-        loadBookedSlots([p.id]).then(setBooked).catch(() => {})
+        loadBookedSlots([p.id])
+          .then(setBooked)
+          .catch(() => {})
         setSlot(null)
         setError('taken')
       } else setError('generic')
@@ -109,12 +122,7 @@ export default function BookingPanel({ professional: p }) {
 
       <div className={styles.bookBlock}>
         <p className={styles.bookLabel}>{t('book.type')}</p>
-        <Segmented
-          label={t('book.type')}
-          value={type}
-          onChange={setType}
-          options={p.types.map((ty) => ({ value: ty, label: t(`types.${ty}`) }))}
-        />
+        <Segmented label={t('book.type')} value={type} onChange={setType} options={p.types.map((ty) => ({ value: ty, label: t(`types.${ty}`) }))} />
         <p className={styles.fee}>
           {formatPrice(p.fees[type])} · {t('book.minutes', { count: care.slotMinutes })}
         </p>

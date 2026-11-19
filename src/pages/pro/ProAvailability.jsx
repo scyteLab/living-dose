@@ -8,6 +8,7 @@ import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { proLoadSchedule, proSaveSchedule } from '@/lib/pro/service'
 import { validHours } from '@/lib/pro/schedule'
 import { toIso } from '@/lib/mealPlan/storage'
+import { formatLocale } from '@/i18n'
 
 const HOURS = Array.from({ length: 17 }, (_, i) => i + 6) // 6 AM to 10 PM
 
@@ -37,7 +38,7 @@ function AvailabilityEditor({ pro, initial }) {
   const [newDay, setNewDay] = useState('')
   const [saved, setSaved] = useState(false)
   const dayNames = t('availability.days', { returnObjects: true })
-  const hourLabel = (h) => new Intl.DateTimeFormat(i18n.language, { hour: 'numeric' }).format(new Date(2026, 0, 1, h))
+  const hourLabel = (h) => new Intl.DateTimeFormat(formatLocale(i18n.language), { hour: 'numeric' }).format(new Date(2026, 0, 1, h))
   const allValid = Object.values(hours).every(validHours)
   const today = toIso(new Date())
 
@@ -138,8 +139,13 @@ function AvailabilityEditor({ pro, initial }) {
               const [y, m, dd] = d.split('-').map(Number)
               return (
                 <li key={d}>
-                  {new Intl.DateTimeFormat(i18n.language, { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(y, m - 1, dd))}
-                  <button type="button" className={styles.iconButton} aria-label={`${t('availability.remove')} ${d}`} onClick={() => (setDaysOff(daysOff.filter((x) => x !== d)), setSaved(false))}>
+                  {new Intl.DateTimeFormat(formatLocale(i18n.language), { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(y, m - 1, dd))}
+                  <button
+                    type="button"
+                    className={styles.iconButton}
+                    aria-label={`${t('availability.remove')} ${d}`}
+                    onClick={() => (setDaysOff(daysOff.filter((x) => x !== d)), setSaved(false))}
+                  >
                     <Trash2 size={16} strokeWidth={2} aria-hidden="true" />
                   </button>
                 </li>
@@ -150,7 +156,14 @@ function AvailabilityEditor({ pro, initial }) {
       </section>
 
       <div className={styles.rowActions}>
-        <Button disabled={!allValid} onClick={() => proSaveSchedule(pro.id, { hours, daysOff }).then(() => setSaved(true)).catch(() => setSaved(false))}>
+        <Button
+          disabled={!allValid}
+          onClick={() =>
+            proSaveSchedule(pro.id, { hours, daysOff })
+              .then(() => setSaved(true))
+              .catch(() => setSaved(false))
+          }
+        >
           {t('availability.save')}
         </Button>
         {saved && (

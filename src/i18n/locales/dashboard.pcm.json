@@ -1,0 +1,164 @@
+{
+  "waterSelfie": "Water selfie",
+  "docTitle": "Home",
+  "greeting": {
+    "morning": "Good morning, {{name}}.",
+    "afternoon": "Good afternoon, {{name}}.",
+    "evening": "Good evening, {{name}}.",
+    "morningNoName": "Good morning.",
+    "afternoonNoName": "Good afternoon.",
+    "eveningNoName": "Good evening."
+  },
+  "summaryMeals": "You don chop {{done}} out of the {{total}} food wey we plan for today.",
+  "summaryNoneYet": "Your food for today don ready for your plan.",
+  "summaryAppt": "Your meeting with {{name}} na {{when}}.",
+  "snap": "Snap your food",
+  "bookExpert": "Book expert",
+  "score": {
+    "title": "Your Living Score",
+    "next_one": "Next check go reach in {{count}} day",
+    "next_other": "Next check go reach in {{count}} days",
+    "due": "Time don reach for your next check",
+    "retake": "Do am again",
+    "see": "See full result",
+    "bmi": "BMI",
+    "bp": "Blood pressure (BP)",
+    "bpNone": "You never check am",
+    "risk": "Sugar (diabetes) risk",
+    "riskNA": "E no concern you",
+    "summary": {
+      "strong": "Your body dey kampe. Continue the good habits.",
+      "good": "You get good foundation. {{Weak}} na where you go gain pass.",
+      "grow": "Space dey to improve. Start with {{weak}} this week.",
+      "attention": "Make we work on am together, start with {{weak}}."
+    }
+  },
+  "meals": {
+    "title": "Today food",
+    "open": "Open meal plan",
+    "count": "{{done}} out of {{total}} food",
+    "markEaten": "Mark say I don chop",
+    "eatenLabel": "I don chop am",
+    "markLabel": "Mark say you don chop {{name}}",
+    "eatenOf": "out of {{target}} kcal wey you don chop"
+  },
+  "habits": {
+    "title": "Today habits",
+    "water": "Water",
+    "waterCount": "{{count}} out of {{goal}} glass",
+    "minutes": "Minutes wey you move body",
+    "minutesCount": "{{count}} out of {{goal}} today",
+    "minutesGap": "{{count}} more make you reach today target",
+    "minutesDone": "You don reach today target",
+    "addTen": "10 min",
+    "addTenLabel": "Add 10 minutes wey you move body",
+    "mood": "How you dey feel today?",
+    "moods": { "great": "I dey kampe", "good": "I dey fine", "okay": "I dey manage", "low": "My mind no too dey", "struggling": "E hard for me" },
+    "moodThanks": "Thank you for telling us. Na only you go see am.",
+    "moodLow": "Thank you say you tell us. You no need carry am alone.",
+    "moodLowCta": "Talk to psychologist",
+    "moodCrisis": "If you dey think to harm yourself, abeg call 112 now now.",
+    "waterSelfie": "Add one glass with selfie",
+    "waterHow": "Glass dey add when live selfie show say you dey drink."
+  },
+  "appt": {
+    "title": "Your next meeting with expert",
+    "all": "My appointments",
+    "with": "{{type}} with {{name}}",
+    "topic": "Wetin una go talk: {{topic}}",
+    "in": "E go start {{when}}.",
+    "joinFrom": "You fit join 10 minutes before.",
+    "joinAt": "You fit join from {{time}}",
+    "join": "Join the meeting",
+    "calendar": "Put am for calendar",
+    "sharing": "We go share your last health check result, as you choose.",
+    "none": "You never book any meeting",
+    "noneBody": "Talk to dietitian, doctor or psychologist by video, voice or chat.",
+    "noneCta": "Find expert"
+  },
+  "focus": {
+    "title": "This week focus",
+    "all": "All the things wey matter",
+    "of": "Number {{n}} out of {{total}}",
+    "minutes": "{{done}} out of 150 minutes",
+    "daysLeft_one": "{{count}} day remain",
+    "daysLeft_other": "{{count}} days remain",
+    "logHint": "Add your minutes for Today habits.",
+    "moveTip": "Waka sharp-sharp for 20 minutes after dinner, e go keep you for road.",
+    "none": "No focus yet",
+    "noneBody": "Do your health check make you get the top 3 things wey matter for you."
+  },
+  "order": {
+    "title": "Your order",
+    "track": "Track am",
+    "items_one": "{{count}} item",
+    "items_other": "{{count}} items",
+    "arriving": "E go reach {{date}}, {{window}}",
+    "pay": "Pay when e reach",
+    "none": "Fresh food, we go bring am come",
+    "noneBody": "Food wey you fit trace and ready meal packs from local farm.",
+    "noneCta": "Check the shop",
+    "windows": { "morning": "9 AM reach 12 PM", "afternoon": "12 reach 4 PM", "evening": "4 reach 7 PM" }
+  },
+  "read": {
+    "label": "Something to read",
+    "because": "We pick am for you from your health check.",
+    "cta": "Read the article",
+    "items": {
+      "lessSalt": "5 ways to use less Maggi without losing taste",
+      "vegetables": "Easy ways to add vegetable to Naija food",
+      "moveMore": "How to find 150 minutes to move body for busy week",
+      "sugaryDrinks": "Better drink pass minerals and sweet malt",
+      "lessFried": "Boil, grill or steam: better ways to cook plantain and yam",
+      "wholeGrains": "Simple guide to whole grains for Nigeria",
+      "strength": "Exercise wey go make you strong, wey you fit do for house",
+      "sleep": "Seven habits for better sleep",
+      "alcohol": "How to reduce drink: where to start",
+      "weight": "How to lose weight gently, the way wey make sense",
+      "stopSmoking": "How to stop smoke: wetin really dey help",
+      "talkToSomeone": "When to talk to person about how you dey feel",
+      "keepGoing": "How to keep good habits for long time"
+    }
+  },
+  "week": {
+    "streak_one": "{{count}} day straight",
+    "streak_other": "{{count}} days straight",
+    "streakZero": "Start streak today",
+    "streakHint": "Days wey you record your food",
+    "days": "Food wey you record this week",
+    "today": "Today",
+    "water": "Water: {{value}} glass every day",
+    "waterNone": "Water: you never record anything",
+    "waterHint": "Average for this week"
+  },
+  "start": {
+    "eyebrow": "Welcome to Living Dose",
+    "title": "Make we set you up, {{name}}.",
+    "titleNoName": "Make we set you up.",
+    "body": "Four steps to plan wey dem build for you. Start with the health check; everything else go follow am.",
+    "progress": "How far you don go",
+    "progressCount": "{{done}} out of 4 don finish",
+    "step": "Step {{n}}",
+    "done": "E don finish",
+    "steps": {
+      "check": {
+        "title": "Do your free health check",
+        "body": "About 5 minutes. Get your Living Score and the top 3 things wey matter for you.",
+        "cta": "Start my health check"
+      },
+      "plan": {
+        "title": "See your meal plan",
+        "body": "One week of food wey dem build from your result and local food.",
+        "cta": "Open my meal plan",
+        "locked": "E go open after your health check"
+      },
+      "shop": { "title": "Buy your first basket", "body": "Fresh food wey you fit trace, we go bring am come. Pay when e reach.", "cta": "Check the shop" },
+      "care": { "title": "Meet dietitian", "body": "Go through your result by video, voice or chat.", "cta": "Find expert" }
+    },
+    "scoreTitle": "Your Living Score",
+    "scoreBody": "Do the health check make you see your score for six areas: food, how you move body, your body, sleep, your mind, and habits.",
+    "habitTitle": "Start one habit today",
+    "habitHint": "Anytime you drink, snap quick selfie with your glass. Small-small win dey count.",
+    "privacy": "Your health information na private. Na only you, and the experts wey you choose, fit see am."
+  }
+}

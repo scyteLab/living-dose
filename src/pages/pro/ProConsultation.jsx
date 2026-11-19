@@ -10,6 +10,7 @@ import Tag from '@/components/ui/Tag'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { formatDay, formatTime } from '@/lib/care/format'
 import { proConsultation, proMark, proSaveNote, proSaveSummary } from '@/lib/pro/service'
+import { formatLocale } from '@/i18n'
 
 const FOLLOW_UPS = ['none', '2weeks', '4weeks', '3months']
 const BAND_TONE = { strong: 'leaf', good: 'sky', grow: 'ember', attention: 'berry' }
@@ -89,7 +90,7 @@ function ConsultationView({ pro, data, reload }) {
         <div>
           <h1 className={styles.title}>{t('consult.with', { type: tc(`typesLong.${appt.type}`), name: appt.memberName || t('schedule.member') })}</h1>
           <p className={styles.muted}>
-            {formatDay(appt.start, i18n.language)}, {formatTime(appt.start, i18n.language)} (WAT) · {appt.id}
+            {formatDay(appt.start, formatLocale(i18n.language))}, {formatTime(appt.start, formatLocale(i18n.language))} (WAT) · {appt.id}
           </p>
         </div>
         <Tag tone={appt.status === 'completed' ? 'leaf' : appt.status === 'no_show' ? 'ember' : 'sky'}>{t(`consult.statuses.${appt.status}`)}</Tag>
@@ -224,7 +225,7 @@ function ConsultationView({ pro, data, reload }) {
               <>
                 <p className={styles.small}>
                   {t('consult.checkedOn', {
-                    date: new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long' }).format(new Date(results.createdAt)),
+                    date: new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'long' }).format(new Date(results.createdAt)),
                   })}
                 </p>
                 <div className={styles.scoreLine}>

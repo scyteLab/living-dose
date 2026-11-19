@@ -1,0 +1,23 @@
+{
+  "title": "Phone notifications",
+  "why": {
+    "checkin": "Make we dey remind you small every day to check in, so you no go lose your streak.",
+    "family": "Make we alert your phone one time if {{name}} report danger sign.",
+    "settings": "Reminder to check in, and alert if person wey you dey look after report danger sign."
+  },
+  "turnOn": "On notifications",
+  "turningOn": "E dey on…",
+  "on": "Notifications don on for this phone.",
+  "turnOff": "Off am for this phone",
+  "test": "Send me test",
+  "testSent": "E don go. E go show for few seconds.",
+  "testNone": "We no fit reach this phone. Try off notifications, then on am again.",
+  "states": {
+    "denied": "Notifications don block for Living Dose. To allow am, open the site settings for your browser for this page, allow notifications, then come back.",
+    "unsupported": "This browser no fit show notifications. Try Chrome for Android, or computer.",
+    "ios-install": "For iPhone: press the Share button, then \"Add to Home Screen\". Open Living Dose from your home screen, then on notifications here.",
+    "not-live": "Notifications dey work only for the live site.",
+    "not-configured": "Notifications never on for the site yet.",
+    "save": "We no fit save this phone. Abeg try again."
+  }
+}

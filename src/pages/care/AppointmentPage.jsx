@@ -15,11 +15,12 @@ import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { cancelAppointment, freeToCancel, getAppointment, joinState, toIcs } from '@/lib/care/appointments'
 import { formatDay, formatTime, relativeWhen, viewerDiffers } from '@/lib/care/format'
 import { formatPrice } from '@/lib/shop/money'
+import { formatLocale } from '@/i18n'
 
 export default function AppointmentPage() {
   const { appointmentId } = useParams()
   const { t, i18n } = useTranslation('care')
-  const locale = i18n.language
+  const locale = formatLocale(i18n.language)
   useDocumentTitle(t('appt.docTitle', { id: appointmentId }))
   const { user, firstName } = useAuth()
   const location = useLocation()

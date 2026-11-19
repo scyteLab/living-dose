@@ -13,6 +13,7 @@ import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { loadLatestResult, setReminder } from '@/lib/healthCheck/storage'
 import styles from './HealthCheckResults.module.css'
+import { formatLocale } from '@/i18n'
 
 const FOUR_WEEKS = 28 * 24 * 60 * 60 * 1000
 
@@ -54,8 +55,8 @@ export default function HealthCheckResults() {
   const { record } = state
   const { results, answers } = record
   const created = new Date(record.createdAt)
-  const fmt = (d) => new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' }).format(d)
-  const fmtShort = (d) => new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long' }).format(d)
+  const fmt = (d) => new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'long', year: 'numeric' }).format(d)
+  const fmtShort = (d) => new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'long' }).format(d)
   const dateText = fmt(created)
   const nextDateText = fmtShort(new Date(created.getTime() + FOUR_WEEKS))
 

@@ -1,0 +1,644 @@
+{
+  "docTitle": "Health check",
+  "title": "Health check",
+  "progress": "{{pct}}% don finish",
+  "saveLater": "Save am and finish later",
+  "sectionOf": "Part {{n}} out of 7: {{name}}",
+  "sectionsNav": "Health check parts",
+  "yourCheck": "Your health check",
+  "sevenSections": "7 short parts",
+  "minutesLeft_one": "About {{count}} minute remain",
+  "minutesLeft_other": "About {{count}} minutes remain",
+  "privacy": "Your answers na private. Na only you, and the experts wey you choose, fit see dem.",
+  "back": "Go back",
+  "continue": "Continue",
+  "seeResults": "See my result",
+  "whyTitle": "Why we dey ask",
+  "liveTitle": "Your result so far",
+  "optional": "(if you want)",
+  "sections": {
+    "about": {
+      "name": "About you",
+      "title": "Small about you",
+      "sub": "These ones dey change how we go calculate your result.",
+      "why": [
+        "Healthy range and risk score no be the same for different age and for man or woman, so we need both to give you correct result.",
+        "Pregnancy dey change wetin healthy for weight, food and how you move body, so we dey handle am different."
+      ],
+      "source": "WHO and FINDRISC"
+    },
+    "body": {
+      "name": "Body",
+      "title": "Your height and weight",
+      "sub": "Use the last measurement wey you take. Rough number dey okay, and you fit update am anytime.",
+      "why": [
+        "BMI dey compare your weight with your height. Na quick first check, but e no know about muscle, age or body shape.",
+        "Na why we dey ask for your waist too. Fat for belle side dey connect to sugar (diabetes) and heart sickness, even if your weight dey okay. Good rule: make your waist no reach half of your height."
+      ],
+      "source": "WHO and NICE guidance"
+    },
+    "eating": {
+      "name": "Food",
+      "title": "How you dey usually chop?",
+      "sub": "Choose the answer wey near how normal week dey be.",
+      "why": [
+        "WHO say make you chop at least 5 portions (400 g) of fruit and vegetable every day, less than 5 g of salt (about one teaspoon), and make sugar wey dem add no plenty.",
+        "Your answers go help us suggest easy changes with food wey you don dey cook, no be foreign food."
+      ],
+      "source": "WHO healthy diet guidance"
+    },
+    "activity": {
+      "name": "Move body and sleep",
+      "title": "How you dey move body, and how you dey sleep?",
+      "sub": "Think about normal week, no be your best or worst week.",
+      "why": [
+        "WHO say make adults move body for 150 reach 300 minutes every week, plus exercise wey dey make muscle strong for at least 2 days.",
+        "Most adults need 7 reach 9 hours of sleep. If e no reach, e dey affect appetite, blood sugar and mood."
+      ],
+      "source": "WHO 2020 activity guidelines"
+    },
+    "habits": {
+      "name": "Habits",
+      "title": "Smoke and drink",
+      "sub": "Talk true as you fit. Nobody else go see these answers.",
+      "why": [
+        "Tobacco for any form na one of the biggest causes of heart sickness, stroke and cancer, and to stop dey help for any age.",
+        "WHO advise say less alcohol always better for health, and no amount dey completely safe."
+      ],
+      "source": "WHO guidance"
+    },
+    "mind": {
+      "name": "Mind and mood",
+      "title": "How you don dey feel lately?",
+      "sub": "Your answers go stay private. Na only you, and the experts wey you choose, fit see dem.",
+      "why": [
+        "These four questions na PHQ-2 and GAD-2, short screening questions wey doctors all over the world dey use to notice early when mind no dey happy and when worry plenty.",
+        "Dem no fit diagnose anything. Dem dey help us know when to suggest extra support."
+      ],
+      "source": "PHQ-2 and GAD-2"
+    },
+    "history": {
+      "name": "Health history",
+      "title": "Your health history",
+      "sub": "This one dey help us notice risk early and keep your plan safe for you.",
+      "why": [
+        "These questions come from FINDRISC, score wey dem don test, wey dey estimate the chance to get type 2 diabetes for the next 10 years.",
+        "We dey group blood pressure with the International Society of Hypertension 2020 guideline."
+      ],
+      "source": "FINDRISC and ISH 2020"
+    }
+  },
+  "about": {
+    "age": "Your age",
+    "ageUnit": "years",
+    "ageHint": "You must be 18 or pass.",
+    "ageError": "Abeg put age between 18 and 110.",
+    "sex": "Man or woman",
+    "sexHint": "Healthy waist size and risk score no be the same for women and men.",
+    "sexOptions": {
+      "female": "Woman",
+      "male": "Man"
+    },
+    "pregnant": "You dey pregnant?",
+    "pregnantOptions": ["No", "Yes", "I no sure"]
+  },
+  "body": {
+    "units": "Units",
+    "metric": "Metric (cm, kg)",
+    "imperial": "Imperial (ft, lb)",
+    "height": "Height",
+    "weight": "Weight",
+    "feet": "Height (feet)",
+    "inches": "(inches)",
+    "waist": "Waist size",
+    "waistOptional": "(if you want, but e dey help well well)",
+    "waistHow": "Measure for the middle between your last rib and the top of your hip bone, after you breathe out normal. No pull the tape tight.",
+    "rangeError": "Abeg check your height and weight. Dem no look like normal range.",
+    "bmi": "Body mass index (BMI)",
+    "whtr": "Waist-to-height ratio",
+    "liveEmpty": "Put your height and weight make you see your BMI one time.",
+    "pregnancyNote": "For pregnancy, we no dey use BMI to judge your weight. Put your current measurement; your dietitian go guide you for the rest."
+  },
+  "categories": {
+    "bmi": {
+      "underweight": "Weight too low",
+      "healthy": "Healthy weight",
+      "overweight": "Weight pass small",
+      "obesity": "Obesity"
+    },
+    "whtr": {
+      "healthy": "Healthy range",
+      "increased": "E don increase",
+      "high": "E high"
+    },
+    "bp": {
+      "normal": "Normal",
+      "highNormal": "Normal but e dey near high",
+      "grade1": "High",
+      "grade2": "High well well",
+      "crisis": "High wey dey dangerous"
+    },
+    "findrisc": {
+      "low": "Low",
+      "slight": "E pass normal small",
+      "moderate": "Middle",
+      "high": "High",
+      "veryHigh": "High well well"
+    }
+  },
+  "scale": {
+    "bmi": ["Low", "Healthy", "Pass", "Obesity"],
+    "whtr": ["Healthy", "Increase", "High"],
+    "bp": ["Normal", "", "High"],
+    "findrisc": ["Low", "", "Middle", "", "High well well"]
+  },
+  "eating": {
+    "answered": "questions don answer. No wrong answer dey; think about normal week.",
+    "questions": {
+      "fv": {
+        "title": "How many portions of fruit and vegetable you dey chop for normal day",
+        "help": "One portion na about one handful: one orange or banana, or one cup of cooked ugu, spinach or garden egg.",
+        "options": ["None", "1 reach 2", "3 reach 4", "5 or pass"]
+      },
+      "drinks": {
+        "title": "How often you dey drink sweet drink?",
+        "help": "Minerals, malt, juice or zobo wey get sugar, or tea and coffee with sugar.",
+        "options": ["E no dey too happen", "Few times for one week", "Once every day", "Pass once every day"]
+      },
+      "cubes": {
+        "title": "How many Maggi or seasoning cube you dey use for cooking every day",
+        "help": "Cube na one of the biggest place wey salt dey hide.",
+        "options": ["None", "1", "2 reach 3", "4 or pass"]
+      },
+      "fried": {
+        "title": "How often you dey chop fried food?",
+        "help": "Like puff-puff, akara, fried plantain (dodo), fried yam or fried chicken.",
+        "options": ["E no dey too happen", "1 reach 2 times for one week", "3 reach 5 times for one week", "Every day"]
+      },
+      "grains": {
+        "title": "Which kind grain you dey chop pass?",
+        "help": "Whole grain: ofada or brown rice, oats, whole wheat. Refined: white rice, white bread, spaghetti/pasta.",
+        "options": ["Mostly whole grain", "Mix of both", "Mostly refined", "I no sure"]
+      }
+    }
+  },
+  "activity": {
+    "minutes": "How many minutes you dey move body for normal week",
+    "minutesHelp": "Anything wey dey make you breathe fast but you fit still talk: fast waka, dance, bicycle, sweeping, farm work.",
+    "minutesUnit": "min",
+    "minutesValue": "{{count}} minutes every week",
+    "target": "150 WHO target",
+    "max": "420+",
+    "bands": {
+      "meets": "E reach WHO target",
+      "getting": "You dey reach there: {{gap}} minutes remain",
+      "grow": "Space dey to improve: {{gap}} minutes remain"
+    },
+    "strength": "How many days for one week you dey do exercise wey dey make muscle strong",
+    "strengthHelp": "Like squat, push-up, to carry load or lift weight.",
+    "strengthOptions": ["None", "1 day", "2 days", "3 or pass"],
+    "sleep": "How many hours you dey sleep for normal night",
+    "less": "Less sleep",
+    "more": "More sleep",
+    "hoursUnit": "h",
+    "sleepBands": {
+      "short": "E no reach wetin dem recommend",
+      "healthy": "E dey healthy range",
+      "long": "E pass normal"
+    }
+  },
+  "habits": {
+    "questions": {
+      "tobacco": {
+        "title": "You dey smoke or use tobacco?",
+        "help": "Including cigarette, shisha, snuff or tobacco wey dem dey chew.",
+        "options": ["Never", "I dey do am before", "Yes, I dey do am now"]
+      },
+      "alcohol": {
+        "title": "How much alcohol you dey drink for normal week?",
+        "help": "One drink na one small bottle of beer, one glass of wine or palm wine, or one shot of spirit.",
+        "options": ["None", "1 reach 7 drinks", "8 reach 14 drinks", "15 or pass"]
+      }
+    }
+  },
+  "mind": {
+    "intro": "For the last 2 weeks, how often these things don worry you?",
+    "questions": {
+      "p1": {
+        "title": "You no too get interest or enjoyment for wetin you dey do",
+        "options": ["No at all", "Some days", "Pass half of the days", "Almost every day"]
+      },
+      "p2": {
+        "title": "You dey feel down, your mind no dey happy, or you no get hope",
+        "options": ["No at all", "Some days", "Pass half of the days", "Almost every day"]
+      },
+      "g1": {
+        "title": "You dey feel nervous, fear dey catch you, or your mind no dey rest",
+        "options": ["No at all", "Some days", "Pass half of the days", "Almost every day"]
+      },
+      "g2": {
+        "title": "You no fit stop or control worry",
+        "options": ["No at all", "Some days", "Pass half of the days", "Almost every day"]
+      }
+    },
+    "skip": "I no wan answer these ones",
+    "skipped": "You don choose to skip this part. E dey okay, and e no go reduce your score.",
+    "undo": "Make I answer dem",
+    "supportTitle": "How you dey feel matter too",
+    "supportBody": "Mood dey affect sleep, appetite and energy. If things dey hard for you, you no need wait for your result: you fit talk to one of our psychologists.",
+    "supportCrisis": "If you dey think to harm yourself, abeg call 112 now now or go the nearest hospital.",
+    "supportCta": "Talk to psychologist"
+  },
+  "history": {
+    "conditions": "Doctor don ever tell you say you get any of these?",
+    "conditionsHint": "Choose all the ones wey concern you.",
+    "conditionOptions": {
+      "hypertension": "High BP",
+      "type2": "Type 2 diabetes (sugar)",
+      "prediabetes": "Prediabetes",
+      "cholesterol": "High cholesterol",
+      "heart": "Heart sickness or stroke",
+      "kidney": "Kidney sickness",
+      "pcos": "PCOS",
+      "sickle": "Sickle cell",
+      "asthma": "Asthma",
+      "none": "None of these"
+    },
+    "bpTitle": "Your last blood pressure (BP)",
+    "bpOptional": "(if you know am)",
+    "bpTop": "Top number",
+    "bpBottom": "Down number",
+    "bpUnit": "mmHg",
+    "bpUnknown": "I no know my numbers",
+    "bpUnknownNote": "E dey happen well well. Most chemists fit check am for you for few minutes, and you fit add am later.",
+    "bpInvalid": "Abeg check the numbers. The top number dey usually between 90 and 200 and e dey high pass the down one.",
+    "bpDanger": "This reading high well well. See wetin to do now",
+    "liveBp": "Blood pressure (BP)",
+    "liveBpEmpty": "Add reading make you see where e dey. Normal na less than 130/85.",
+    "questions": {
+      "highSugar": {
+        "title": "Test don ever show say your blood sugar high?",
+        "help": "For example during pregnancy, when you sick, or for health check.",
+        "options": ["No", "Yes", "I no sure"]
+      },
+      "bpMeds": {
+        "title": "You dey take medicine for high BP?",
+        "options": ["No", "Yes"]
+      },
+      "family": {
+        "title": "Anybody for your family don get diabetes (sugar)?",
+        "options": ["No", "Grandpa or grandma, aunty, uncle or cousin", "Papa or mama, brother, sister or pikin"]
+      }
+    }
+  },
+  "intro": {
+    "badge": "Free health check",
+    "title": "Know where you stand, for about 5 minutes.",
+    "body": "Answer seven short parts about your body, food, how you move body, sleep and how you dey feel. We go turn your answers to your Living Score and plan wey we build for you.",
+    "start": "Start my health check",
+    "resume": "Continue from where you stop",
+    "startAgain": "Start again",
+    "lastResults": "See your last result",
+    "lastResultsDate": "Last check {{date}}",
+    "stopAnyTime": "You fit stop and continue later",
+    "standards": "We build am on World Health Organization guidance and tools wey doctors for the whole world dey use (FINDRISC, PHQ-2, GAD-2). This check na guide, e no be diagnosis.",
+    "draftSaved": "You get answers wey save from {{date}}.",
+    "exampleLabel": "Example result",
+    "exampleTitle": "Your Living Score",
+    "exampleBody": "Six areas, one clear picture.",
+    "getTitle": "Wetin you go get",
+    "get": {
+      "score": {
+        "title": "Your Living Score",
+        "body": "One number from 0 reach 100, for six areas of health."
+      },
+      "numbers": {
+        "title": "Your main numbers",
+        "body": "BMI, waist-to-height ratio, BP and type 2 diabetes risk."
+      },
+      "priorities": {
+        "title": "Your top 3 things wey matter",
+        "body": "Small, clear changes with food wey you don sabi."
+      }
+    },
+    "backHome": "Go back to my home"
+  },
+  "calculating": {
+    "title": "We dey put your result together",
+    "sub": "E go take few seconds.",
+    "steps": [
+      "We dey check your body measurements",
+      "We dey compare your food with WHO guidance",
+      "We dey calculate your type 2 diabetes risk (FINDRISC)",
+      "We dey look how you move body, sleep and how you dey feel",
+      "We dey build your Living Score and the things wey matter"
+    ],
+    "error": "We no fit save your result. Check your network and try again.",
+    "retry": "Try again"
+  },
+  "pillars": {
+    "eating": "Food",
+    "activity": "Move body",
+    "body": "Body",
+    "sleep": "Sleep",
+    "mind": "Mind",
+    "habits": "Habits"
+  },
+  "results": {
+    "docTitle": "Your health check result",
+    "dateLine": "Your health check result · {{date}}",
+    "scoreTitle": "Your Living Score",
+    "outOf": "out of 100",
+    "bands": {
+      "attention": "E need attention",
+      "grow": "Space dey to improve",
+      "good": "Good",
+      "strong": "Strong"
+    },
+    "bandsLegend": "Score bands: E need attention less than 40, Space dey to improve 40 reach 59, Good 60 reach 79, Strong 80 and pass",
+    "headline": {
+      "strong": "Your body dey kampe, {{name}}.",
+      "good": "You don start well, {{name}}.",
+      "grow": "You don take the first step, {{name}}.",
+      "attention": "Thank you say you talk true, {{name}}. Make we work on am together."
+    },
+    "headlineNoName": {
+      "strong": "Your body dey kampe.",
+      "good": "You don start well.",
+      "grow": "You don take the first step.",
+      "attention": "Thank you say you talk true. Make we work on am together."
+    },
+    "summaryMixed": "{{strong}} {{strongVerb}} strong. {{weak}} {{weakVerb}} where small-small, steady change go make the biggest difference.",
+    "summaryAllStrong": "Every area dey healthy. Continue wetin you dey do, and check again after 4 weeks.",
+    "summaryAllWeak": "{{weak}} all get space to improve. Start with one of the things for down; small-small steps dey add up quick.",
+    "is": "dey",
+    "are": "dey",
+    "and": "and",
+    "nextCheck": "Next check: {{date}}",
+    "measured": "We measure am with WHO guidance",
+    "areasTitle": "Your six health areas",
+    "areasHint": "Choose one make you see why",
+    "areasLabel": "Your six health areas",
+    "ofHundred": "{{score}} out of 100",
+    "notScored": "No score",
+    "status": {
+      "strong": "Strong",
+      "good": "Good",
+      "grow": "Space dey to improve",
+      "attention": "E need attention",
+      "skipped": "You skip am"
+    },
+    "detail": {
+      "eating": "Fruit and vegetable: {{fv}} every day (target na 5 or pass). Sweet drinks: {{drinks}}. Maggi cubes: {{cubes}} every day. Fried food: {{fried}}. Grains: {{grains}}.",
+      "activity": "About {{minutes}} minutes of moving body every week (target na 150 or pass), and exercise for strong muscle {{strength}} every week (target na 2 or pass).",
+      "body": "BMI {{bmi}} ({{bmiCat}}). {{waistPart}} Blood pressure: {{bpPart}}.",
+      "bodyPregnant": "For pregnancy we no dey score weight. Blood pressure: {{bpPart}}.",
+      "waistPart": "Waist-to-height ratio {{whtr}} ({{whtrCat}}).",
+      "noWaist": "Add your waist size make the picture full.",
+      "bpNotKnown": "you never check am",
+      "sleep": "About {{hours}} hours every night. Most adults need 7 reach 9.",
+      "mindPositive": "Your answers show say your mind fit no dey happy or worry dey worry you. You no dey alone, and support fit really help.",
+      "mindNegative": "Your answers for the PHQ-2 and GAD-2 questions no show say your mind no dey happy or worry dey worry you now.",
+      "mindSkipped": "You choose say you no go answer these questions, so Mind no dey your score.",
+      "habits": "Tobacco: {{tobacco}}. Alcohol: {{alcohol}} every week."
+    },
+    "numbersTitle": "Your main numbers",
+    "numbersIntro": "We compare each one with international guidelines, so you go know exactly where you stand.",
+    "numbers": {
+      "bmi": {
+        "label": "Body mass index (BMI)",
+        "source": "WHO BMI classification",
+        "notes": {
+          "underweight": "E dey under the healthy range of 18.5 reach 24.9. Dietitian fit help you add weight the healthy way.",
+          "healthy": "E dey inside the healthy range of 18.5 reach 24.9. Continue like that.",
+          "overweight": "E pass the healthy range of 18.5 reach 24.9 small. If you lose about {{kg}} kg, you go near am.",
+          "obesity": "E pass the healthy range. Even if you lose 5% of your weight (about {{kg}} kg), e go reduce the risk of sugar (diabetes) and heart sickness."
+        },
+        "pregnant": "For pregnancy, we no dey use BMI to judge weight. Your dietitian go guide you."
+      },
+      "whtr": {
+        "label": "Waist-to-height ratio",
+        "source": "NICE 2022 guidance",
+        "notes": {
+          "healthy": "Your waist ({{waist}} cm) no reach half of your height. E dey healthy.",
+          "increased": "Your waist ({{waist}} cm) just pass half of your height. Try make e less than {{target}} cm.",
+          "high": "Your waist ({{waist}} cm) pass half of your height well well, and e dey increase health risk. Try make e less than {{target}} cm."
+        },
+        "missing": "Add your waist size make you see this one. Na one of the best signs of health risk."
+      },
+      "bp": {
+        "label": "Blood pressure (BP)",
+        "source": "ISH 2020 guideline",
+        "missing": "You never check am. Most chemists fit check am for few minutes.",
+        "notes": {
+          "normal": "E less than 130/85, e dey normal. Check am again every year.",
+          "highNormal": "E don rise small. Less salt and more moving body go help. Check again inside 3 reach 6 months.",
+          "grade1": "E dey the high BP range. Abeg see doctor or nurse make dem check am again soon.",
+          "grade2": "E high well well. Abeg see doctor inside the next one week.",
+          "crisis": "E high wey dey dangerous. Abeg find medical help today."
+        }
+      },
+      "findrisc": {
+        "label": "Type 2 diabetes risk",
+        "of": "out of 26",
+        "source": "FINDRISC score",
+        "note": "About {{risk}} people wey get this score dey get type 2 diabetes inside 10 years.",
+        "noteLow": "About {{risk}} people wey get this score dey get type 2 diabetes inside 10 years. Keep am like that.",
+        "noWaist": "Add your waist size make the score correct pass.",
+        "notApplicable": "You don tell us say you get diabetes or prediabetes, so this risk score no concern you. We go plan for am."
+      }
+    },
+    "prioritiesTitle": "Your top 3 things wey matter",
+    "prioritiesIntro": "Start with one. Small change wey you fit keep better pass big change wey you no go keep.",
+    "priorities": {
+      "vegetables": {
+        "title": "Add more vegetable and fruit every day",
+        "body": "You dey chop about {{now}} out of the 5 portions wey WHO recommend. Put ugu or spinach for your stew, chop garden egg or orange as small chop, and add vegetable to rice.",
+        "cta": "See vegetable recipes"
+      },
+      "moveMore": {
+        "title": "Build up to 150 minutes of moving body every week",
+        "body": "You dey about {{minutes}}. Fast 20-minute waka after dinner for some evenings go close the {{gap}}-minute gap.",
+        "cta": "Start waka plan"
+      },
+      "sugaryDrinks": {
+        "title": "Change one sweet drink every day",
+        "body": "Try water with lemon, zobo wey no get sugar, or tea without sugar. Na one of the quickest ways to reduce diabetes risk.",
+        "cta": "Set daily reminder"
+      },
+      "lessSalt": {
+        "title": "Use less Maggi cubes",
+        "body": "Cubes full of salt. Try one less, and add taste with onion, garlic, ginger, crayfish or fresh pepper.",
+        "cta": "See recipes wey get less salt"
+      },
+      "lessFried": {
+        "title": "Boil, grill or steam more",
+        "body": "Change some dodo or akara to boiled plantain or moi moi. The taste go remain and plenty oil go comot.",
+        "cta": "See better swaps"
+      },
+      "wholeGrains": {
+        "title": "Choose whole grains",
+        "body": "Ofada or brown rice, oats and whole-wheat bread dey hold belle long and keep blood sugar steady.",
+        "cta": "See whole-grain food"
+      },
+      "strength": {
+        "title": "Add exercise for strong muscle two times every week",
+        "body": "Squats, push-up against wall, or to carry load all dey count. Ten minutes na good start.",
+        "cta": "Get 10-minute routine"
+      },
+      "sleep": {
+        "title": "Protect your sleep",
+        "body": "You dey sleep about {{hours}} hours. Try sleep the same time every night, reduce phone and TV before bed, and reduce coffee after afternoon.",
+        "cta": "Get sleep tips"
+      },
+      "alcohol": {
+        "title": "Reduce alcohol",
+        "body": "Try days without alcohol every week and smaller cup. Your BP, sleep and weight go all benefit.",
+        "cta": "Get support to reduce am"
+      },
+      "weight": {
+        "title": "Try lose about {{kg}} kg",
+        "body": "That one na about 5% of your weight, gently, for some months. E reach to reduce your risk of sugar (diabetes) and heart sickness.",
+        "cta": "Plan am with dietitian"
+      },
+      "stopSmoking": {
+        "title": "Get support to stop smoke",
+        "body": "Na the best single thing wey you fit do for your health, for any age. Support go make am easy to work.",
+        "cta": "Talk to doctor"
+      },
+      "talkToSomeone": {
+        "title": "Talk to person about how you don dey feel",
+        "body": "Your answers show say things fit dey hard for you now. Psychologist fit help, by video, voice or chat, for private.",
+        "cta": "Talk to psychologist"
+      },
+      "keepGoing": {
+        "title": "Continue wetin you dey do",
+        "body": "You dey meet the main guidelines. Check again after 4 weeks make e remain like that.",
+        "cta": "Check healthy recipes"
+      }
+    },
+    "guidelinesTitle": "You and the guidelines",
+    "cols": {
+      "area": "Area",
+      "you": "You",
+      "guideline": "Guideline",
+      "progress": "Progress",
+      "status": "Status"
+    },
+    "rows": {
+      "fv": {
+        "area": "Fruit and vegetable",
+        "target": "5 or pass every day",
+        "you": ["None every day", "1 reach 2 every day", "3 reach 4 every day", "5 or pass every day"]
+      },
+      "minutes": {
+        "area": "Minutes to move body",
+        "target": "150 or pass every week",
+        "you": "{{count}} every week"
+      },
+      "strength": {
+        "area": "Exercise for strong muscle",
+        "target": "2 days or pass every week",
+        "you": ["None", "1 day every week", "2 days every week", "3 days or pass every week"]
+      },
+      "drinks": {
+        "area": "Sweet drinks",
+        "target": "E no suppose dey too happen",
+        "you": ["E no dey too happen", "Few times for one week", "Once every day", "Pass once every day"]
+      },
+      "salt": {
+        "area": "Salt (Maggi cubes)",
+        "target": "Less than 5 g of salt every day",
+        "you": ["None", "1 every day", "2 reach 3 every day", "4 or pass every day"]
+      },
+      "sleep": {
+        "area": "Sleep",
+        "target": "7 reach 9 hours",
+        "you": "{{count}} hours"
+      },
+      "habits": {
+        "area": "Tobacco and alcohol",
+        "target": "None, or small alcohol",
+        "youNone": "None",
+        "you": "{{tobacco}}; {{alcohol}}"
+      }
+    },
+    "statuses": {
+      "meets": "E reach",
+      "below": "E no reach",
+      "above": "E pass",
+      "check": "Check am"
+    },
+    "mindTitle": "Mind and mood",
+    "mind": {
+      "positive": "Your answers show say your mind fit no dey happy or worry dey worry you. E dey happen to plenty people pass as you think, and to talk to person really dey help.",
+      "negative": "Your answers no show say your mind no dey happy or worry dey worry you now. Protect am: sleep, moving body and time with people all dey help.",
+      "skipped": "You choose say you no go answer these questions. You fit talk to psychologist anytime, no need for questions.",
+      "crisis": "If you dey think to harm yourself, abeg call 112 now now or go the nearest hospital.",
+      "cta": "Talk to psychologist"
+    },
+    "checksTitle": "Wetin you suppose check",
+    "checks": {
+      "bpDoctor": "Your BP high. Abeg book check with doctor or nurse soon.",
+      "bpRecheck": "Your BP don rise small. Check am again inside 3 reach 6 months.",
+      "bpUnknown": "You no know your BP. Most chemists fit check am for few minutes; add am next time.",
+      "sugarTestSoon": "Your diabetes risk don rise. Fasting blood sugar or HbA1c test go good soon.",
+      "sugarTest": "Simple blood sugar test for clinic or chemist this year go give you peace of mind.",
+      "addWaist": "Add your waist size next time make the picture correct pass.",
+      "pregnancy": "You dey pregnant, so we no dey score measures wey concern weight. Abeg follow the advice of your antenatal care team."
+    },
+    "nextTitle": "Wetin go happen next",
+    "next": {
+      "plan": {
+        "title": "Your meal plan don ready",
+        "body": "One week of food wey dem build from your result and food wey you sabi, registered dietitian dey review am.",
+        "cta": "See my meal plan"
+      },
+      "dietitian": {
+        "title": "Go through am with dietitian",
+        "body": "Talk about your result by video, voice or chat.",
+        "cta": "Book doctor meeting"
+      },
+      "remind": {
+        "title": "Check again after 4 weeks",
+        "body": "See how your score dey move as small-small change dey add up.",
+        "label": "Remind me on {{date}}"
+      }
+    },
+    "aboutTitle": "About this check",
+    "aboutBody": [
+      "Your Living Score dey join six areas of health to one number from 0 reach 100. Na guide to help you improve, e no be medical diagnosis. If your health dey worry you, or you get symptoms, abeg talk to doctor.",
+      "Na only you, and the experts wey you choose to share am with, fit see this result."
+    ],
+    "methodsTitle": "Methods and sources",
+    "methods": [
+      "Body mass index: WHO classification for adults",
+      "Waist-to-height ratio: NICE guideline on overweight and obesity (2022)",
+      "Blood pressure: International Society of Hypertension global guideline (2020)",
+      "Diabetes risk: FINDRISC, Finnish Diabetes Risk Score (Lindström and Tuomilehto, 2003)",
+      "Mind wey no dey happy and worry: PHQ-2 and GAD-2 screening questions",
+      "Food, moving body and sleep: WHO healthy diet guidance and WHO physical activity guidelines (2020)"
+    ],
+    "download": "Download report (PDF)",
+    "share": "Share with my doctor",
+    "retake": "Do the check again",
+    "shareTitle": "My Living Dose health check",
+    "copied": "Summary don copy. Paste am for message to your doctor.",
+    "shareText": "My Living Dose health check ({{date}})\nLiving Score: {{score}}/100 ({{band}})\nBMI: {{bmi}}\nWaist-to-height ratio: {{whtr}}\nBlood pressure: {{bp}}\nType 2 diabetes risk (FINDRISC): {{findrisc}}",
+    "notAvailable": "You never check am"
+  },
+  "safety": {
+    "docTitle": "Abeg find medical help",
+    "title": "Abeg find medical help now",
+    "body": "BP of {{bp}} high well well. Doctor must check am today.",
+    "signsIntro": "Call 112 or go the nearest hospital sharp-sharp if you still get:",
+    "signs": ["Chest pain", "E hard to breathe", "Back pain", "Part of body no dey feel or e weak", "Your eye no dey see well like before", "E hard to talk"],
+    "call": "Call 112",
+    "hospital": "Find hospital near me",
+    "recheck": "If you dey feel fine, sit down quietly for 5 minutes and check am again. If e still dey 180/110 or pass, contact doctor today.",
+    "saved": "Your answers don save.",
+    "typo": "I type am wrong, make I go back",
+    "continue": "I dey feel fine, show my result"
+  },
+  "incomplete": "Abeg answer every question for this part make you continue."
+}

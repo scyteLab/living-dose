@@ -1,0 +1,147 @@
+{
+  "docTitle": "Community",
+  "title": "Community",
+  "intro": "Share your wins, ask questions and help each other continue. People dey watch am, e dey kind, and health workers dey there.",
+  "guidelinesShort": "Be kind, keep your personal details private, and remember say advice here no fit replace your own doctor.",
+  "guidelinesLink": "Community rules",
+  "demoNote": "Demo mode: posts dey save for this phone only until Living Dose server connect.",
+  "tabs": { "label": "Community sections", "feed": "Feed", "groups": "Groups", "challenges": "Challenges" },
+  "filterAll": "All groups",
+  "filterJoined": "My groups",
+  "filterLabel": "Show posts from",
+  "groups": {
+    "blood-sugar": { "name": "Blood sugar support", "desc": "For people wey get sugar (diabetes) or prediabetes, or wey wan reduce their risk." },
+    "weight-journey": { "name": "Weight journey", "desc": "Lose weight gently, the way wey make sense, and keep am down." },
+    "pregnancy-parents": { "name": "Pregnancy and new parents", "desc": "How to chop well for pregnancy and feed small pikin." },
+    "heart-health": { "name": "Heart health", "desc": "BP, cholesterol and cooking wey good for heart." },
+    "fitness-beginners": { "name": "Fitness for beginners", "desc": "Start to move your body more, small-small, as e fit you." },
+    "mind-wellbeing": {
+      "name": "Mind and wellbeing",
+      "desc": "Stress, when mind no dey happy, and how to take care of yourself. Posts here no dey show name."
+    },
+    "diaspora-families": { "name": "Diaspora families", "desc": "Care for your people for Nigeria from abroad." }
+  },
+  "members": "{{count}} members",
+  "join": "Join",
+  "joined": "You don join",
+  "leave": "Comot from group",
+  "joinAria": "Join {{name}}",
+  "leaveAria": "Comot from {{name}}",
+  "anonymousGroup": "Post without your name",
+  "viewGroup": "See group",
+  "backToCommunity": "Go back to Community",
+  "groupNotFound": "We no see that group.",
+  "noPosts": "No post here yet. Be the first to share.",
+  "composer": {
+    "title": "Share with the community",
+    "placeholder": "Share your win, ask question or support person…",
+    "group": "Post for",
+    "anonymous": "Post without my name",
+    "anonymousForced": "Posts for this group no dey ever show name.",
+    "post": "Post",
+    "reply": "Reply",
+    "replyPlaceholder": "Write kind reply wey go help…",
+    "count": "{{count}} / {{max}}",
+    "reminder": "Abeg no share phone number, address or your personal medical details.",
+    "signIn": "Sign in make you post",
+    "signInReply": "Sign in make you reply",
+    "posted": "Your post don show.",
+    "replied": "Your reply don show.",
+    "errors": {
+      "short": "Abeg write small more (at least 10 letters).",
+      "long": "E too long. Abeg make am less than 2,000 letters.",
+      "contact": "For your safety, abeg remove phone numbers and email addresses.",
+      "slowDown": "You don post plenty for the last one hour. Abeg rest small and try again later.",
+      "failed": "E no post. Abeg check your network and try again."
+    }
+  },
+  "crisis": {
+    "title": "You no need face this one alone",
+    "body": "E be like say things hard well well for you now. To talk to person fit help, and you deserve support.",
+    "call": "Call 112",
+    "callBody": "If you dey danger or you dey think to harm yourself, call now or go the nearest hospital.",
+    "talk": "Talk to psychologist",
+    "postAnyway": "Post am for the community anyway",
+    "edit": "Go back and change am"
+  },
+  "post": {
+    "anonymous": "Member wey no show name",
+    "you": "You",
+    "in": "for {{group}}",
+    "helpful": "E help me",
+    "helpfulCount_one": "{{count}} person talk say e help",
+    "helpfulCount_other": "{{count}} people talk say e help",
+    "replies_one": "{{count}} reply",
+    "replies_other": "{{count}} replies",
+    "noReplies": "Reply",
+    "report": "Report",
+    "professional": "Health worker wey dem confirm",
+    "notFound": "We no see that post. Dem fit don remove am.",
+    "repliesTitle": "Replies",
+    "back": "Go back"
+  },
+  "report": {
+    "title": "Report this post",
+    "intro": "Our moderators dey check every report. The post go hide from you sharp-sharp.",
+    "reasons": {
+      "harmful": "Health advice wey fit harm person",
+      "unkind": "E no kind, bullying or hate",
+      "spam": "Spam or person dey sell market",
+      "private": "E share another person private details",
+      "other": "Something else"
+    },
+    "submit": "Report post",
+    "cancel": "Cancel",
+    "done": "Thank you. We don hide am for you and our moderators go check am."
+  },
+  "challenges": {
+    "intro": "Weekly challenges, wey dey track automatic from wetin you record for Home.",
+    "taking": "{{count}} people dey do am",
+    "join": "Join challenge",
+    "leave": "Comot",
+    "joinedLabel": "You dey inside",
+    "completed": "You finish am this week",
+    "signIn": "Sign in make you join",
+    "items": {
+      "water-week": { "title": "Water week", "body": "Drink 8 glass of water every day this week.", "progress": "{{value}} out of {{target}} days" },
+      "move-150": {
+        "title": "150 minutes to move body",
+        "body": "Reach the WHO weekly target of 150 minutes wey you move body.",
+        "progress": "{{value}} out of {{target}} minutes"
+      },
+      "log-meals": {
+        "title": "Record your food",
+        "body": "Mark say you don chop your food for at least 5 days.",
+        "progress": "{{value}} out of {{target}} days"
+      }
+    },
+    "howTo": "Record water with water selfie, add minutes wey you move body for your Home page, and tick food for your meal plan.",
+    "waterSelfie": "Snap water selfie"
+  },
+  "guidelines": {
+    "docTitle": "Community rules",
+    "title": "Community rules",
+    "intro": "Living Dose Community na place wey we dey support each other. These rules dey keep am safe and kind for everybody.",
+    "items": [
+      { "t": "Be kind and respect people", "b": "Everybody dey their own journey. Encourage, no judge. No bullying, hate or harassment." },
+      {
+        "t": "Share wetin happen to you, no write prescription",
+        "b": "Talk about wetin work for you, but no tell people make dem start, stop or change medicine. Na only health workers wey we don confirm dey give clinical advice here, and even that one na general advice: your own doctor sabi you pass."
+      },
+      {
+        "t": "Protect your privacy",
+        "b": "No post phone numbers, address, email address or another person personal details. Use post-without-name for Mind and wellbeing."
+      },
+      { "t": "No market or spam", "b": "No advert, product promotion, \"miracle cure\" or link to buy things." },
+      {
+        "t": "Look out for each other",
+        "b": "If e be like say person dey danger, report the post so our team fit help. If na you dey crisis, call 112 or go the nearest hospital."
+      },
+      { "t": "Moderation", "b": "Our moderators dey check reports and dem fit remove posts or block accounts wey break these rules." }
+    ],
+    "back": "Go back to Community"
+  },
+  "allGroups": "See all groups",
+  "metaDescription": "Community wey dem dey watch, wey dey support healthy living. Share your wins, ask questions and join weekly challenges.",
+  "loading": "Posts dey load…"
+}

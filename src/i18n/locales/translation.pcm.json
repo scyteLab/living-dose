@@ -1,0 +1,348 @@
+{
+  "brand": { "name": "Living Dose", "tagline": "Healthy life wey no cost too much" },
+  "nav": {
+    "home": "Home",
+    "plan": "Plan",
+    "scan": "Snap your plate",
+    "shop": "Shop",
+    "care": "Care",
+    "community": "Community",
+    "learn": "Learn",
+    "main": "Main menu",
+    "homeLink": "Living Dose home",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "skip": "Skip go the main thing",
+    "account": "My account",
+    "signOut": "Sign out",
+    "signedInAs": "You sign in as {{name}}"
+  },
+  "region": {
+    "button": "Country and language: {{region}}, {{language}}",
+    "title": "Country and language",
+    "country": "Country",
+    "countryHint": "E dey set your local food, experts and money.",
+    "language": "Language",
+    "later": "E dey come later"
+  },
+  "regions": { "NG": "Nigeria", "GH": "Ghana", "KE": "Kenya", "GB": "United Kingdom", "US": "United States", "CA": "Canada" },
+  "landing": {
+    "hero": {
+      "badge": "Food, nutrition and care for one place",
+      "title": "Your health start from your plate.",
+      "body": "Buy fresh food wey you fit trace. Get meal plan wey dem build for your health and your pocket. Talk to dietitian or doctor when you need am.",
+      "ctaPrimary": "Do the free health check",
+      "ctaSecondary": "Check healthy food",
+      "trustDietitians": "Registered dietitians dey check the plans",
+      "trustFree": "Free to join, no card needed",
+      "visualLabel": "Small look of the Living Dose app: Living Score of 78, today lunch plan, video call with dietitian and 6 days straight of healthy living.",
+      "scoreTitle": "Living Score",
+      "scoreNote": "E go up 4 points this week. Continue to drink water.",
+      "mealTime": "Lunch, 1:00 PM",
+      "mealKcal": "540 kcal",
+      "mealName": "Ofada rice with vegetable stew",
+      "tagDiabetic": "E good for sugar patient",
+      "tagFibre": "Fibre plenty",
+      "consultTitle": "Video call with dietitian",
+      "consultTime": "Today, 4:30 PM",
+      "consultJoin": "Join",
+      "streak": "6 days straight of healthy living"
+    },
+    "pillars": {
+      "title": "Everything wey healthy family need.",
+      "intro": "Four pillars, one account for the whole family.",
+      "food": {
+        "title": "Healthy food market",
+        "body": "Fresh food, food for special diet and ready meals, wey you fit trace from farm reach your door.",
+        "link": "Buy healthy food"
+      },
+      "nutrition": {
+        "title": "Your own nutrition plan",
+        "body": "Meal plans for your target, your health and your pocket, wey dem build with local food and dietitians check.",
+        "link": "Build my plan"
+      },
+      "care": {
+        "title": "Care when you need am",
+        "body": "Video, voice or chat with dietitians, doctors and psychologists, and your records go dey one place.",
+        "link": "Book appointment"
+      },
+      "track": {
+        "title": "Track am and improve",
+        "body": "Snap your plate, record your food and water, and watch your Living Score dey grow every week.",
+        "link": "Start to track"
+      }
+    },
+    "loop": {
+      "title": "One cycle. Better every week.",
+      "intro": "Every part of Living Dose dey feed the next one, so small-small change go add up.",
+      "assess": { "title": "Check", "body": "Five-minute health check go show where you dey start from." },
+      "plan": { "title": "Plan", "body": "Meal plan for your body, wetin you like, and your pocket." },
+      "eat": { "title": "Chop", "body": "Buy the basket, order ready meal or cook the recipes." },
+      "track": { "title": "Track", "body": "Snap your food, record water and connect your watch." },
+      "support": { "title": "Get support", "body": "Experts and groups dey there when you need dem." },
+      "improve": { "title": "Improve", "body": "Monthly report go show wetin dey work." }
+    },
+    "budget": {
+      "eyebrow": "Nutrition for every pocket",
+      "title": "Chop well for any budget.",
+      "intro": "Tell us your target and who you dey feed. We go build one week of food from food wey you don sabi, like ofada rice, moi moi, ugu and unripe plantain.",
+      "note": "Registered dietitian dey check every plan",
+      "goalLabel": "Your target",
+      "householdLabel": "Who you dey feed",
+      "budgetLabel": "Food money for one week",
+      "optional": "(if you want)",
+      "budgetPlaceholder": "Any amount",
+      "perWeek": "for one week",
+      "goals": { "bloodSugar": "Control blood sugar", "heart": "Heart health", "weight": "Lose weight", "pregnancy": "Healthy pregnancy" },
+      "households": { "one": "Only me", "two": "Two adults", "family": "Two adults and two pikin" },
+      "previewTitle": "Small taste of your week",
+      "days": { "mon": "Mon", "tue": "Tue", "wed": "Wed" },
+      "sample": "Sample food. We go build your full plan for you after the free health check.",
+      "cta": "Get my free plan",
+      "menus": {
+        "bloodSugar": {
+          "mon": { "breakfast": "Moi moi and pap", "lunch": "Ofada rice with vegetable stew", "dinner": "Fish pepper soup" },
+          "tue": { "breakfast": "Oats with garden egg", "lunch": "Beans with unripe plantain", "dinner": "Vegetable salad with boiled egg" },
+          "wed": { "breakfast": "Boiled yam with egg sauce", "lunch": "Efo riro with small wheat swallow", "dinner": "Grilled fish and vegetable" }
+        },
+        "heart": {
+          "mon": { "breakfast": "Oat pap with groundnut", "lunch": "Brown rice with fish stew", "dinner": "Vegetable soup with fish" },
+          "tue": { "breakfast": "Boiled plantain and egg", "lunch": "Beans and vegetable stew", "dinner": "Grilled chicken salad" },
+          "wed": { "breakfast": "Fruit and plain yoghurt", "lunch": "Brown rice jollof with vegetable", "dinner": "Okro soup with fish" }
+        },
+        "weight": {
+          "mon": { "breakfast": "Boiled egg and garden egg", "lunch": "Grilled chicken and vegetable salad", "dinner": "Fish pepper soup" },
+          "tue": { "breakfast": "Moi moi", "lunch": "Efo riro with fish", "dinner": "Stir-fry vegetable with prawns" },
+          "wed": { "breakfast": "Oats with fruit", "lunch": "Beans and vegetable", "dinner": "Chicken pepper soup" }
+        },
+        "pregnancy": {
+          "mon": { "breakfast": "Pap with milk and akara", "lunch": "Rice and beans with ugu stew", "dinner": "Yam porridge with fish" },
+          "tue": { "breakfast": "Egg, wheat bread and fruit", "lunch": "Egusi soup with fish", "dinner": "Beans and plantain" },
+          "wed": { "breakfast": "Oats with milk and banana", "lunch": "Jollof rice with chicken and salad", "dinner": "Vegetable soup with fish" }
+        }
+      }
+    },
+    "diaspora": {
+      "eyebrow": "Diaspora Care",
+      "title": "Care for home, from anywhere.",
+      "intro": "Look after the food, check-ups and doctor meetings of your papa and mama from wherever you dey, and get monthly report of how dem dey.",
+      "placesLabel": "For families wey dey",
+      "places": { "uk": "United Kingdom", "us": "United States", "canada": "Canada", "europe": "Europe", "gulf": "The Gulf" },
+      "cta": "Set up care for your person",
+      "cardLabel": "Example: care for Mama for Ibadan",
+      "person": "Mama",
+      "where": "Ibadan, we dey care from London",
+      "status": "Everything dey okay",
+      "updates": {
+        "bp": { "title": "BP check", "when": "Done, Sat" },
+        "meals": { "title": "Meal pack wey good for heart", "when": "E don reach, Mon" },
+        "call": { "title": "Call with dietitian", "when": "Thu, 11:00 AM" }
+      },
+      "report": "Next monthly report: 1 October"
+    },
+    "trace": {
+      "eyebrow": "From farm reach your door",
+      "title": "Know exactly where your food come from.",
+      "intro": "Scan the code for any Living Dose product make you see the farm, the day dem harvest am and every step until e reach your kitchen.",
+      "cardLabel": "Example: how one bunch of ugu leaf take reach you",
+      "product": "Ugu leaf, 250 g",
+      "batch": "Dem harvest am yesterday",
+      "steps": {
+        "harvested": { "title": "Harvest", "where": "Partner farm, Ogun State" },
+        "checked": { "title": "Check and pack", "where": "Living Dose hub, Lagos" },
+        "delivered": { "title": "Delivered", "where": "Reach your door" }
+      },
+      "points": {
+        "fresh": "Food wey fresh pass, because e no dey spend long time for road.",
+        "farmers": "Local farmers dey get correct pay, on time.",
+        "safe": "We dey check every batch before e reach you."
+      }
+    },
+    "orgs": {
+      "title": "For companies, schools and NGOs",
+      "intro": "Bring healthy food and care to the people wey you dey look after.",
+      "cta": "Talk to our team",
+      "staff": {
+        "title": "Staff wellness",
+        "body": "Health checks, doctor meetings and team challenges, with private wellness reports wey no show anybody name."
+      },
+      "schools": { "title": "School feeding", "body": "Balanced menu, supply wey you fit trust, and tracking of how pikin dey grow." },
+      "community": {
+        "title": "Community programmes",
+        "body": "Sponsor food for children, old people and patients for hospital, with clear report for every food."
+      }
+    }
+  },
+  "plan": { "title": "Your meal plan", "empty": "Your plan go show here after the health check. E go take about five minutes." },
+  "scan": { "title": "Snap your plate", "empty": "Point your camera to food make you see estimate of the calories and nutrients." },
+  "shop": { "title": "Healthy food shop", "empty": "Fresh food, meal packs and food for special diet go show here." },
+  "care": { "title": "Talk to expert", "empty": "Book dietitian, doctor or psychologist by video, voice or chat." },
+  "community": { "title": "Community", "empty": "Groups for weight loss, sugar (diabetes), BP, pregnancy and fitness, with challenges wey go keep you going." },
+  "learn": { "title": "Learn", "empty": "Articles, videos, podcasts and recipes about nutrition, exercise, mind health and how to prevent sickness." },
+  "notFound": { "title": "This page no dey", "body": "The link fit don old or dem type am wrong.", "cta": "Go home" },
+  "common": { "loading": "E dey load", "joinFree": "Join free", "signIn": "Sign in", "clear": "Clear search" },
+  "footer": {
+    "label": "Footer",
+    "mission": "Healthy food, your own nutrition plan and care from experts, for one place for the whole family.",
+    "product": {
+      "title": "Product",
+      "shop": "Healthy food shop",
+      "plans": "Meal plans",
+      "care": "Doctor meetings",
+      "community": "Community",
+      "learn": "Learn",
+      "shuttleMeds": "Shuttle Meds (e dey come soon)"
+    },
+    "copyright": "© {{year}} Living Dose. All rights reserved.",
+    "made": "Dem make am for Lagos, for families everywhere.",
+    "help": { "title": "Help", "faq": "Questions people dey ask", "terms": "Terms of use", "privacy": "Privacy policy" },
+    "company": { "title": "Company", "about": "About us", "partners": "Partner with us", "contact": "Contact" }
+  },
+  "legalPage": {
+    "updated": "Last update: {{date}}",
+    "contents": "Contents",
+    "draftNote": "Working draft: qualified lawyer must review this document, and dem must fill the details for bracket, before launch."
+  },
+  "about": {
+    "docTitle": "About us",
+    "eyebrow": "About us",
+    "title": "We dey help families chop well and stay well.",
+    "intro": "Living Dose bring healthy food, your own nutrition plan and care from experts together, for price wey make sense for real families.",
+    "storyTitle": "Why we start",
+    "story": [
+      "Plenty families dey live with sickness like sugar (diabetes) and high BP, wey better food and early care for help prevent. But healthy food fit hard to find, advice no dey fit everybody, and to see expert fit be like say e far.",
+      "Living Dose put everything for one place: food wey you don sabi, plans wey dem build for your health and your pocket, and experts wey dey near you for phone. We dey work direct with local farmers, so good food go cost less and e go reach you fresh."
+    ],
+    "missionTitle": "Our mission",
+    "mission": "To bring healthy food wey no cost too much, nutrition support and care wey dey prevent sickness to every family, with technology, local food systems and the power of community.",
+    "visionTitle": "Our vision",
+    "vision": "World where every family, no matter how much dem dey earn or where dem dey live, fit chop well, understand their health and get care before sickness start.",
+    "valuesTitle": "Wetin we stand for",
+    "values": {
+      "food": { "title": "Food first", "body": "We dey start from wetin dey your plate, with local food wey you don like before." },
+      "honest": { "title": "Health wey no get lie", "body": "We dey label estimate as estimate, and registered dietitian dey check every plan for sickness." },
+      "affordable": { "title": "We build am make e no cost too much", "body": "Free to start, no card needed, and no surprise cost." },
+      "local": { "title": "Local roots, we dey reach everywhere", "body": "We build am for Lagos with local farmers, for families for home and abroad." }
+    },
+    "ctaTitle": "Start with free health check.",
+    "ctaBody": "Five minutes to your Living Score and meal plan wey dem build for you.",
+    "ctaPrimary": "Do the free health check",
+    "ctaSecondary": "Talk to us"
+  },
+  "contact": {
+    "docTitle": "Contact us",
+    "eyebrow": "Contact us",
+    "title": "We go like hear from you.",
+    "intro": "Questions about order, doctor meeting or to work with us? Send us message and our team go reply you.",
+    "formTitle": "Send us message",
+    "name": "Your name",
+    "email": "Email address",
+    "phone": "Phone number",
+    "optional": "(if you want)",
+    "topic": "Wetin e concern?",
+    "message": "Your message",
+    "messageHint": "Abeg no put medical details here. Share dem for doctor meeting, where dem go keep am private.",
+    "topics": {
+      "general": "General question",
+      "order": "Order or delivery",
+      "consultation": "Doctor meeting",
+      "account": "My account",
+      "partnership": "To partner with Living Dose",
+      "press": "Press and media",
+      "other": "Something else"
+    },
+    "send": "Send message",
+    "sending": "E dey send…",
+    "errors": {
+      "name": "Abeg put your name.",
+      "email": "Abeg put correct email address.",
+      "message": "Abeg write message wey reach at least 10 letters.",
+      "send": "We no fit send your message. Abeg try again, or email us direct."
+    },
+    "sentTitle": "Thank you, your message don go.",
+    "sentBody": "Our team go reply {{email}}.",
+    "mailTitle": "E remain small.",
+    "mailBody": "Your email app go open with your message ready. Press send for there make e reach us.",
+    "sendAnother": "Send another message",
+    "emergencyTitle": "Na medical emergency?",
+    "emergencyBody": "No wait for reply. Call {{number}} for Nigeria or your local emergency number, or go the nearest hospital.",
+    "reachTitle": "Other ways to reach us",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "whatsappLabel": "WhatsApp",
+    "whatsappCta": "Chat with us",
+    "officeLabel": "Office",
+    "hoursLabel": "Time wey we dey available",
+    "faqTitle": "You dey find quick answer?",
+    "faqBody": "We don answer plenty questions for our FAQ.",
+    "faqCta": "Read the FAQ"
+  },
+  "faqPage": {
+    "docTitle": "Questions people dey ask",
+    "eyebrow": "Help",
+    "title": "Questions people dey ask",
+    "intro": "Quick answers about food, plans, doctor meetings and your privacy.",
+    "search": "Search questions",
+    "searchPlaceholder": "Search, e.g. delivery, free, dietitian",
+    "all": "All",
+    "filter": "Choose topic",
+    "count_one": "{{count}} question",
+    "count_other": "{{count}} questions",
+    "empty": "No question match \"{{query}}\". Try another word, or ask us direct.",
+    "moreTitle": "You still get question?",
+    "moreBody": "Our team happy to help.",
+    "moreCta": "Contact us"
+  },
+  "partnersPage": {
+    "docTitle": "Partner with us",
+    "eyebrow": "Partners",
+    "title": "Grow with Living Dose.",
+    "intro": "We dey work with health workers, farmers, suppliers and organisations wey want help families live healthy.",
+    "tracks": {
+      "professionals": {
+        "title": "Health workers",
+        "for": "Registered doctors, dietitians, psychologists and fitness coaches",
+        "points": [
+          "Meet patients wey dey find your kind expertise",
+          "Scheduling, video calls and records for one place",
+          "Choose your own hours, from anywhere"
+        ],
+        "cta": "Apply as health worker"
+      },
+      "farmers": {
+        "title": "Farmers and suppliers",
+        "for": "Farms, food processors and people wey dey make healthy products",
+        "points": ["Steady demand for quality food", "Correct price, paid on time", "Records wey dey show how good your farm be"],
+        "cta": "Become supplier"
+      },
+      "organisations": {
+        "title": "Organisations",
+        "for": "Companies, schools, hospitals and NGOs",
+        "points": [
+          "Staff wellness with private reports wey no show anybody name",
+          "School feeding and tracking of how pikin dey grow",
+          "Sponsored food with clear report"
+        ],
+        "cta": "Talk to our team"
+      }
+    },
+    "stepsTitle": "How partnership dey work",
+    "steps": {
+      "tell": { "title": "Tell us about yourself", "body": "Send short message about wetin you dey do and where you dey." },
+      "meet": { "title": "We go check and meet", "body": "We go confirm your registration or quality standard and agree how we go work together." },
+      "start": { "title": "Make we start together", "body": "We go set you up for Living Dose and support you as you dey grow." }
+    }
+  },
+  "system": {
+    "offline": "Network no dey. Your changes dey save for this phone.",
+    "backOnline": "Network don come back.",
+    "errorTitle": "Something no work",
+    "errorBody": "Sorry, this page no load well. Your information dey safe. Abeg try again.",
+    "updateTitle": "Living Dose don update",
+    "updateBody": "New version don ready. Reload make you continue from where you stop.",
+    "retry": "Try again",
+    "home": "Go to home page",
+    "orTry": "Or try one of these:"
+  }
+}

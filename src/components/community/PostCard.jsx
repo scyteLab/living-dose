@@ -5,12 +5,21 @@ import clsx from 'clsx'
 import { PROFESSIONALS_BY_ID } from '@/data/professionals'
 import { timeAgo } from '@/lib/community/store'
 import styles from './Community.module.css'
+import { formatLocale } from '@/i18n'
 
 /** Who wrote it: a member, an anonymous member, you, or a verified professional. */
 export function Author({ item, when }) {
   const { t, i18n } = useTranslation('community')
   const pro = item.professionalId ? PROFESSIONALS_BY_ID[item.professionalId] : null
-  const name = pro ? pro.name : item.author ? (item.mine ? `${item.author} (${t('post.you')})` : item.author) : item.mine ? `${t('post.anonymous')} (${t('post.you')})` : t('post.anonymous')
+  const name = pro
+    ? pro.name
+    : item.author
+      ? item.mine
+        ? `${item.author} (${t('post.you')})`
+        : item.author
+      : item.mine
+        ? `${t('post.anonymous')} (${t('post.you')})`
+        : t('post.anonymous')
   const initial = pro ? pro.name.replace(/^Dr\s+/, '')[0] : item.author?.[0]
   return (
     <div className={styles.author}>
@@ -29,7 +38,7 @@ export function Author({ item, when }) {
         </span>
         <span className={styles.authorMeta}>
           {when}
-          {item.createdAt && <> · {timeAgo(item.createdAt, i18n.language)}</>}
+          {item.createdAt && <> · {timeAgo(item.createdAt, formatLocale(i18n.language))}</>}
         </span>
       </div>
     </div>
@@ -45,7 +54,12 @@ export default function PostCard({ post, onHelpful, onReport, full = false }) {
       <Author item={post} when={<Link to={`/community/groups/${post.group}`}>{t('post.in', { group: groupName })}</Link>} />
       <p className={full ? styles.bodyFull : styles.body}>{post.body}</p>
       <div className={styles.postActions}>
-        <button type="button" aria-pressed={post.helpfulByMe} className={clsx(styles.actionButton, post.helpfulByMe && styles.helpfulOn)} onClick={() => onHelpful(post.id)}>
+        <button
+          type="button"
+          aria-pressed={post.helpfulByMe}
+          className={clsx(styles.actionButton, post.helpfulByMe && styles.helpfulOn)}
+          onClick={() => onHelpful(post.id)}
+        >
           <Heart size={17} strokeWidth={2} aria-hidden="true" />
           {t('post.helpful')}
           {post.helpfulCount > 0 && <span className={styles.count}>{post.helpfulCount}</span>}

@@ -31,6 +31,8 @@ export function speakableText(text) {
 }
 
 export function speak(text, { lang = 'en', onEnd } = {}) {
+  // Pidgin and Nigerian English use the same English voices
+  if (String(lang).startsWith('pcm')) lang = 'en'
   if (!canSpeak()) return false
   const synth = window.speechSynthesis
   synth.cancel()

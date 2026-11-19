@@ -10,6 +10,7 @@ import Button from '@/components/ui/Button'
 import { ARTICLES_BY_SLUG } from '@/data/articles'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { LIBRARY, readingMinutes, relatedArticles } from '@/lib/learn/content'
+import { formatLocale } from '@/i18n'
 
 export default function ArticlePage() {
   const { slug } = useParams()
@@ -27,7 +28,7 @@ export default function ArticlePage() {
     )
   }
 
-  const fmt = (iso) => new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso))
+  const fmt = (iso) => new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso))
   const item = LIBRARY.find((i) => i.kind === 'article' && i.id === slug)
   const related = relatedArticles(slug).map((r) => LIBRARY.find((i) => i.kind === 'article' && i.id === r.slug))
 

@@ -9,6 +9,7 @@ import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { formatDay, formatTime } from '@/lib/care/format'
 import { lagosDay } from '@/lib/care/availability'
 import { proAppointments } from '@/lib/pro/service'
+import { formatLocale } from '@/i18n'
 
 /** "Dr Chinedu Okeke" → "Dr Okeke"; "Funmi Adeyemi" → "Funmi". */
 const greetingName = (name) => (name.startsWith('Dr ') ? `Dr ${name.split(' ').at(-1)}` : name.split(' ')[0])
@@ -60,7 +61,14 @@ export default function ProSchedule() {
       </ul>
       <div className={styles.filters} role="tablist">
         {['upcoming', 'past'].map((id) => (
-          <button key={id} type="button" role="tab" aria-selected={tab === id} className={clsx(styles.filter, tab === id && styles.filterOn)} onClick={() => setTab(id)}>
+          <button
+            key={id}
+            type="button"
+            role="tab"
+            aria-selected={tab === id}
+            className={clsx(styles.filter, tab === id && styles.filterOn)}
+            onClick={() => setTab(id)}
+          >
             {t(`schedule.${id}`)}
           </button>
         ))}
@@ -73,8 +81,8 @@ export default function ProSchedule() {
             <li key={a.id}>
               <Link to={`/pro/consultations/${a.id}`} className={styles.apptRow}>
                 <span className={styles.apptTime}>
-                  <strong>{formatTime(a.start, i18n.language)}</strong>
-                  <span className={styles.small}>{isToday(a) ? t('schedule.today') : formatDay(a.start, i18n.language)}</span>
+                  <strong>{formatTime(a.start, formatLocale(i18n.language))}</strong>
+                  <span className={styles.small}>{isToday(a) ? t('schedule.today') : formatDay(a.start, formatLocale(i18n.language))}</span>
                 </span>
                 <span className={styles.apptMain}>
                   <strong>{a.memberName || t('schedule.member')}</strong>
@@ -88,7 +96,17 @@ export default function ProSchedule() {
                       <Share2 size={12} strokeWidth={2.4} aria-hidden="true" /> {t('schedule.results')}
                     </Tag>
                   )}
-                  {ended(a) && a.status !== 'no_show' && (a.summary ? <Tag tone="leaf"><FileCheck2 size={12} strokeWidth={2.4} aria-hidden="true" /> {t('schedule.summaryDone')}</Tag> : <Tag tone="ember"><FilePen size={12} strokeWidth={2.4} aria-hidden="true" /> {t('schedule.summaryDue')}</Tag>)}
+                  {ended(a) &&
+                    a.status !== 'no_show' &&
+                    (a.summary ? (
+                      <Tag tone="leaf">
+                        <FileCheck2 size={12} strokeWidth={2.4} aria-hidden="true" /> {t('schedule.summaryDone')}
+                      </Tag>
+                    ) : (
+                      <Tag tone="ember">
+                        <FilePen size={12} strokeWidth={2.4} aria-hidden="true" /> {t('schedule.summaryDue')}
+                      </Tag>
+                    ))}
                 </span>
                 <ChevronRight size={20} strokeWidth={2} aria-hidden="true" />
               </Link>

@@ -1,7 +1,21 @@
 import { useState, useSyncExternalStore } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Ambulance, Camera, Check, Flame, Droplet, GlassWater, LayoutDashboard, PhoneCall, Siren, Stethoscope, UsersRound, Utensils } from 'lucide-react'
+import {
+  Ambulance,
+  Camera,
+  Check,
+  Flame,
+  Languages,
+  Droplet,
+  GlassWater,
+  LayoutDashboard,
+  PhoneCall,
+  Siren,
+  Stethoscope,
+  UsersRound,
+  Utensils,
+} from 'lucide-react'
 import clsx from 'clsx'
 import Dialog from '@/components/ui/Dialog'
 import FamilyDialog from './FamilyDialog'
@@ -11,6 +25,7 @@ import { WATER_GOAL } from '@/lib/dashboard/habits'
 import { partOfDay } from '@/lib/dashboard/insights'
 import { loadFamily } from '@/lib/simple/view'
 import useCheckins from '@/hooks/useCheckins'
+import useRegion from '@/hooks/useRegion'
 import styles from './Simple.module.css'
 
 const subscribe = (cb) => {
@@ -26,6 +41,7 @@ export default function SimpleHome({ userId, firstName, water = 0, onFullView })
   const family = JSON.parse(familyJson)
   const [dialog, setDialog] = useState(null) // 'help' | 'family' | null
   const { streak } = useCheckins(userId)
+  const { language, setLanguage } = useRegion()
   const tc = useTranslation('checkin').t
 
   const part = partOfDay()
@@ -128,6 +144,15 @@ export default function SimpleHome({ userId, firstName, water = 0, onFullView })
             {t('changeFamily')}
           </button>
         )}
+        <button
+          type="button"
+          className={styles.textBtn}
+          onClick={() => setLanguage(language === 'pcm' ? 'en' : 'pcm')}
+          lang={language === 'pcm' ? 'en' : 'pcm'}
+        >
+          <Languages size={20} strokeWidth={2} aria-hidden="true" />
+          {language === 'pcm' ? 'Read in English' : 'Read for Pidgin'}
+        </button>
         <Link to="/account/family" className={styles.textBtn}>
           <UsersRound size={20} strokeWidth={2} aria-hidden="true" />
           {t('familyHelpers')}

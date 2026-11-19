@@ -1,0 +1,124 @@
+{
+  "categories": {
+    "general": {
+      "label": "How to start",
+      "items": [
+        {
+          "id": "is-it-free",
+          "q": "Living Dose dey free?",
+          "a": [
+            "Yes. To open account, the health check, your Living Score, meal plan suggestions and our learning content dey free.",
+            "You go pay only when you choose to buy food or book doctor meeting wey get price, and you go always see the price before you confirm."
+          ]
+        },
+        { "id": "need-card", "q": "I need card to sign up?", "a": "No. You fit join with only your phone number." },
+        {
+          "id": "where-available",
+          "q": "Where Living Dose dey?",
+          "a": "We dey start city by city, from Nigeria. Choose your country for the top of the page make you see wetin dey available where you dey live."
+        },
+        { "id": "languages", "q": "Which languages I fit use?", "a": "English and Naija Pidgin today. French, Yorùbá, Hausa, Igbo and Kiswahili dey come." }
+      ]
+    },
+    "food": {
+      "label": "Food and delivery",
+      "items": [
+        {
+          "id": "delivery-areas",
+          "q": "Where una dey deliver?",
+          "a": "We dey deliver for the cities wey we don start, and we dey add more. Put your address when you order make you check if we dey deliver to your area."
+        },
+        {
+          "id": "pay-on-delivery",
+          "q": "I fit pay when e reach?",
+          "a": "Yes, for cities where e dey available. You fit also pay with card, transfer or USSD."
+        },
+        {
+          "id": "freshness",
+          "q": "How I go know say the food fresh?",
+          "a": "Every Living Dose product get code wey you fit scan make you see the farm, the day dem harvest am and every step until e reach your door. We dey check every batch for our hub before delivery."
+        },
+        {
+          "id": "order-problem",
+          "q": "Wetin I go do if my order spoil or dem bring wrong thing?",
+          "a": "Tell us for the app with picture and we go change am or return your money."
+        }
+      ]
+    },
+    "nutrition": {
+      "label": "Nutrition and plans",
+      "items": [
+        {
+          "id": "who-makes-plans",
+          "q": "Who dey make my meal plan?",
+          "a": "Dem dey build your plan from your health check, your targets and your pocket, with food wey you sabi. Registered dietitian dey review plans for sickness like sugar (diabetes), high BP or pregnancy."
+        },
+        {
+          "id": "snap-accuracy",
+          "q": "How correct Snap your plate be?",
+          "a": "E dey estimate calories and nutrients from picture. E be good guide to track your food, e no be exact measurement, and you fit change the portion if e no look correct."
+        },
+        {
+          "id": "living-score",
+          "q": "Wetin be Living Score?",
+          "a": "Number from 0 reach 100 wey dey sum up your food, how you dey move body, water, sleep and health readings. E dey move week by week so you fit see how you dey improve. Na guide, e no be diagnosis."
+        }
+      ]
+    },
+    "care": {
+      "label": "Care and doctor meetings",
+      "items": [
+        {
+          "id": "professionals",
+          "q": "Who be the health workers for Living Dose?",
+          "a": "Registered doctors, dietitians, psychologists and fitness coaches. We dey check every health worker registration before dem join and from time to time after."
+        },
+        {
+          "id": "consultations",
+          "q": "How doctor meetings dey work?",
+          "a": "Choose health worker, choose time and meet by video, voice or chat. Your notes and any document wey dem share go save for your records."
+        },
+        {
+          "id": "emergencies",
+          "q": "I fit use Living Dose for emergency?",
+          "a": "No. If you or another person need help sharp-sharp, call 112 for Nigeria or your local emergency number, or go the nearest hospital."
+        }
+      ]
+    },
+    "privacy": {
+      "label": "Privacy and safety",
+      "items": [
+        {
+          "id": "who-sees-data",
+          "q": "Who fit see my health information?",
+          "a": "Na only you and the health workers wey you choose to meet. We no dey ever sell your personal information."
+        },
+        {
+          "id": "delete-data",
+          "q": "I fit delete my information?",
+          "a": "Yes. You fit download or delete your information anytime from your settings, or if you contact us."
+        }
+      ]
+    },
+    "family": {
+      "label": "Family and organisations",
+      "items": [
+        {
+          "id": "household",
+          "q": "I fit manage my family health for one account?",
+          "a": "Yes. Add your husband or wife, pikin or papa and mama as people for your house. Each person get their own plan and records."
+        },
+        {
+          "id": "diaspora-care",
+          "q": "How Diaspora Care dey work?",
+          "a": "From abroad, you fit look after food, check-ups and doctor meetings for your person for home and get monthly update. The person wey you dey care for go decide wetin you fit see."
+        },
+        {
+          "id": "organisations",
+          "q": "My company or school fit use Living Dose?",
+          "a": "Yes. We dey work with companies for staff wellness, schools for feeding programmes and NGOs for community nutrition. Contact our team make we start."
+        }
+      ]
+    }
+  }
+}

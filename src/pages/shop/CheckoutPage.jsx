@@ -14,6 +14,7 @@ import { deliverySlots, placeOrder } from '@/lib/shop/orders'
 import { onlinePaymentAvailable, startPayment } from '@/lib/shop/payments'
 import { displayPhone } from '@/lib/phone'
 import { OrderSummary } from './BasketPage'
+import { formatLocale } from '@/i18n'
 
 const ADDRESS_KEY = 'ld.lastAddress'
 
@@ -52,7 +53,7 @@ export default function CheckoutPage() {
   const [status, setStatus] = useState('idle')
   const [attempts, setAttempts] = useState(0)
   const days = useMemo(() => deliverySlots({ days: shop.daysAhead, slots: shop.slots }), [])
-  const dayFmt = useMemo(() => new Intl.DateTimeFormat(i18n.language, { weekday: 'short', day: 'numeric', month: 'short' }), [i18n.language])
+  const dayFmt = useMemo(() => new Intl.DateTimeFormat(formatLocale(i18n.language), { weekday: 'short', day: 'numeric', month: 'short' }), [i18n.language])
 
   // After a failed submit, move to the first problem
   useEffect(() => {

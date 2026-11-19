@@ -5,6 +5,7 @@ import Button from '@/components/ui/Button'
 import Checkbox from '@/components/ui/Checkbox'
 import { joinWithCode, leave, myOrganisation } from '@/lib/org/service'
 import styles from './Account.module.css'
+import { formatLocale } from '@/i18n'
 
 /** Join a sponsoring organisation with its code, see what's shared, or leave. */
 export default function OrganisationSection({ user }) {
@@ -41,7 +42,13 @@ export default function OrganisationSection({ user }) {
           <Building2 size={22} strokeWidth={1.8} aria-hidden="true" />
           <div className={styles.calloutText}>
             <p className={styles.label}>{t('member.joined', { name: org.name })}</p>
-            <p className={styles.small}>{t('member.joinedOn', { date: new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(membership.joinedAt)) })}</p>
+            <p className={styles.small}>
+              {t('member.joinedOn', {
+                date: new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'long', year: 'numeric' }).format(
+                  new Date(membership.joinedAt),
+                ),
+              })}
+            </p>
           </div>
         </div>
         <div className={styles.card}>

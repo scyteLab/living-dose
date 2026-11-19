@@ -10,6 +10,7 @@ import Tag from '@/components/ui/Tag'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { timeAgo } from '@/lib/community/store'
 import { staffReports, staffResolveReport } from '@/lib/staff/service'
+import { formatLocale } from '@/i18n'
 
 export default function StaffModeration() {
   const { t, i18n } = useTranslation('staff')
@@ -47,7 +48,14 @@ export default function StaffModeration() {
       </p>
       <div className={styles.filters} role="tablist">
         {['open', 'resolved'].map((id) => (
-          <button key={id} type="button" role="tab" aria-selected={tab === id} className={clsx(styles.filter, tab === id && styles.filterOn)} onClick={() => setTab(id)}>
+          <button
+            key={id}
+            type="button"
+            role="tab"
+            aria-selected={tab === id}
+            className={clsx(styles.filter, tab === id && styles.filterOn)}
+            onClick={() => setTab(id)}
+          >
             {t(`moderation.${id}`)}
           </button>
         ))}
@@ -61,7 +69,8 @@ export default function StaffModeration() {
               <div className={styles.reportHead}>
                 <Tag tone="berry">{t('moderation.reports', { count: r.count })}</Tag>
                 <span className={styles.small}>
-                  {t(`moderation.kind.${r.kind}`)} {r.group && t('moderation.in', { group: tc(`groups.${r.group}.name`) })} · {timeAgo(r.createdAt, i18n.language)}
+                  {t(`moderation.kind.${r.kind}`)} {r.group && t('moderation.in', { group: tc(`groups.${r.group}.name`) })} ·{' '}
+                  {timeAgo(r.createdAt, formatLocale(i18n.language))}
                 </span>
               </div>
               <blockquote className={styles.quote}>{r.body}</blockquote>

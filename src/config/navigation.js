@@ -40,6 +40,7 @@ export const regions = [
 /** Language names stay in their own language so people can always find theirs. */
 export const languages = [
   { code: 'en', label: 'English', available: true },
+  { code: 'pcm', label: 'Naija Pidgin', available: true },
   { code: 'fr', label: 'Français' },
   { code: 'yo', label: 'Yorùbá' },
   { code: 'ha', label: 'Hausa' },

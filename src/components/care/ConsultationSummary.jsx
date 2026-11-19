@@ -2,11 +2,12 @@ import { useTranslation } from 'react-i18next'
 import { CalendarClock, Check, FileText } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import styles from './ConsultationSummary.module.css'
+import { formatLocale } from '@/i18n'
 
 /** The professional's written summary and next steps, shown to the member. */
 export default function ConsultationSummary({ summary, professional }) {
   const { t, i18n } = useTranslation('pro')
-  const date = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long' }).format(new Date(summary.writtenAt))
+  const date = new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'long' }).format(new Date(summary.writtenAt))
   return (
     <section className={styles.box} aria-labelledby="summary-h">
       <h2 id="summary-h" className={styles.title}>

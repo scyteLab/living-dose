@@ -17,6 +17,7 @@ import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import useMealPlan from '@/hooks/useMealPlan'
 import { dayTotals, varietyOf, weekCounts } from '@/lib/mealPlan/generate'
+import { formatLocale } from '@/i18n'
 
 export default function Plan() {
   const { t } = useTranslation('plan')
@@ -49,7 +50,7 @@ function PlanForUser({ user }) {
     }
   }, [user.id])
 
-  const locale = i18n.language
+  const locale = formatLocale(i18n.language)
   const fmt = useMemo(() => new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short' }), [locale])
   const fmtLong = useMemo(() => new Intl.DateTimeFormat(locale, { weekday: 'long' }), [locale])
   const parse = (iso) => {

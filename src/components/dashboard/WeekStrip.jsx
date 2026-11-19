@@ -3,13 +3,14 @@ import { Flame } from 'lucide-react'
 import clsx from 'clsx'
 import { mealStreak, weekDays, weekWaterAverage } from '@/lib/dashboard/insights'
 import styles from './Dashboard.module.css'
+import { formatLocale } from '@/i18n'
 
 export default function WeekStrip({ planStore, habits }) {
   const { t, i18n } = useTranslation('dashboard')
   const streak = mealStreak(planStore)
   const days = weekDays(planStore)
   const water = weekWaterAverage(habits)
-  const weekday = new Intl.DateTimeFormat(i18n.language, { weekday: 'short' })
+  const weekday = new Intl.DateTimeFormat(formatLocale(i18n.language), { weekday: 'short' })
 
   return (
     <section className={styles.week} aria-labelledby="week-h">

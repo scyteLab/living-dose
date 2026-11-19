@@ -9,6 +9,7 @@ import { buildExport, deleteLocalData, downloadJson } from '@/lib/account/data'
 import { syncApi } from '@/lib/sync/remote'
 import { isSupabaseConfigured } from '@/lib/supabase'
 import styles from './Account.module.css'
+import { formatLocale } from '@/i18n'
 
 export default function PrivacySection({ user }) {
   const { t, i18n } = useTranslation('account')
@@ -16,7 +17,7 @@ export default function PrivacySection({ user }) {
   const [notice, setNotice] = useState(null)
   const [confirming, setConfirming] = useState(false)
   const [typed, setTyped] = useState('')
-  const fmt = (iso) => new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso))
+  const fmt = (iso) => new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso))
   const today = new Date().toISOString().slice(0, 10)
   const mailto = `mailto:${site.privacyEmail}?subject=${encodeURIComponent(t('privacy.accountSubject'))}&body=${encodeURIComponent(`Account ID: ${user.id}`)}`
 
@@ -119,7 +120,10 @@ export default function PrivacySection({ user }) {
               disabled={typed.trim().toUpperCase() !== 'DELETE'}
               onClick={async () => {
                 // With sync on, remove the synced copy too, or it would come straight back
-                if (isSupabaseConfigured) await syncApi(user.id).removeAll().catch(() => {})
+                if (isSupabaseConfigured)
+                  await syncApi(user.id)
+                    .removeAll()
+                    .catch(() => {})
                 const count = deleteLocalData(user.id)
                 setConfirming(false)
                 setTyped('')

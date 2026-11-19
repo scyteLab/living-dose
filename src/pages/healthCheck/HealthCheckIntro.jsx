@@ -13,6 +13,7 @@ import { PILLAR_COLOUR } from '@/lib/healthCheck/display'
 import { SECTION_IDS, firstIncomplete } from '@/lib/healthCheck/sections'
 import { loadLatestResult } from '@/lib/healthCheck/storage'
 import styles from './HealthCheckIntro.module.css'
+import { formatLocale } from '@/i18n'
 
 const SECTION_ICONS = { about: User, body: Ruler, eating: Utensils, activity: Activity, habits: Wine, mind: Brain, history: HeartPulse }
 const EXAMPLE = { eating: 58, activity: 45, body: 72, sleep: 80, mind: 85, habits: 95 }
@@ -40,7 +41,7 @@ export default function HealthCheckIntro() {
     }
   }, [user.id])
 
-  const fmtDate = (iso) => new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso))
+  const fmtDate = (iso) => new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso))
   const resumeAt = firstIncomplete(answers) ?? 'history'
 
   const startFresh = () => {

@@ -12,6 +12,7 @@ import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { joinState, listAppointments } from '@/lib/care/appointments'
 import { relativeWhen } from '@/lib/care/format'
+import { formatLocale } from '@/i18n'
 
 export default function AppointmentsPage() {
   const { t, i18n } = useTranslation('care')
@@ -40,7 +41,14 @@ export default function AppointmentsPage() {
       <h1 className={styles.title}>{t('appts.title')}</h1>
       <div className={styles.apptTabs} role="tablist" aria-label={t('appts.title')}>
         {['upcoming', 'past'].map((id) => (
-          <button key={id} type="button" role="tab" aria-selected={tab === id} className={clsx(styles.tab, tab === id && styles.tabOn)} onClick={() => setTab(id)}>
+          <button
+            key={id}
+            type="button"
+            role="tab"
+            aria-selected={tab === id}
+            className={clsx(styles.tab, tab === id && styles.tabOn)}
+            onClick={() => setTab(id)}
+          >
             {t(`appts.${id}`)} ({id === 'upcoming' ? upcoming.length : past.length})
           </button>
         ))}
@@ -67,7 +75,7 @@ export default function AppointmentsPage() {
                   <Avatar professional={p} size="sm" />
                   <span className={styles.apptRowMain}>
                     <strong>{t('appt.with', { type: t(`typesLong.${a.type}`), name: p.name })}</strong>
-                    <span>{relativeWhen(a.start, i18n.language, t, now)} (WAT)</span>
+                    <span>{relativeWhen(a.start, formatLocale(i18n.language), t, now)} (WAT)</span>
                   </span>
                   <Tag tone={status === 'booked' ? 'sky' : status === 'cancelled' ? 'berry' : 'neutral'}>{t(`appts.status.${status}`)}</Tag>
                   <ChevronRight size={20} strokeWidth={2} aria-hidden="true" />

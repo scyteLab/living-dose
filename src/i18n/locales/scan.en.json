@@ -158,7 +158,7 @@
     "accepted": "Glass counted! Keep it up.",
     "demoAccepted": "Glass counted. (Demo: the selfie wasn't checked.)",
     "rejected": "We couldn't confirm that one. Make sure your face and your drink are both in the picture.",
-    "notSetUp": "Selfie checks aren't switched on yet, so this glass wasn't counted. You can still add it on your Home page.",
+    "notSetUp": "Selfie checks aren't switched on yet, so this glass wasn't counted. Please try again later.",
     "checkFailed": "We couldn't check your selfie just now. Please try again in a moment.",
     "tooSoon_one": "Nice! Give it {{count}} minute before your next glass.",
     "tooSoon_other": "Nice! Give it {{count}} minutes before your next glass.",

@@ -1,0 +1,166 @@
+{
+  "docTitle": "Your meal plan",
+  "guest": {
+    "eyebrow": "Meal plans",
+    "title": "One week of food wey dem build for you.",
+    "body": "Tell us about your health and your pocket, and we go plan breakfast, lunch, dinner and small chops from food wey you don sabi, with shopping list wey match am.",
+    "cta": "Open free account",
+    "signIn": "I get account before",
+    "points": ["Dem build am from your free health check", "Naija food, the size wey fit your body", "Shopping list for the whole house"]
+  },
+  "title": "Your meal plan",
+  "thisWeek": "This week",
+  "nextWeek": "Next week",
+  "weekRange": "{{from}} reach {{to}}",
+  "settingsButton": "Plan settings",
+  "weekLabel": "Choose week",
+  "basis": {
+    "healthCheck": "Dem build am from your health check of {{date}}",
+    "default": "Balanced plan to start",
+    "defaultCta": "Do the free health check make e fit you well",
+    "retake": "Update your health check"
+  },
+  "focus": { "diabetic": "Blood sugar wey steady", "heart": "Good for heart, less salt", "pregnancy": "Safe for pregnancy", "lose": "Lose weight gently" },
+  "dailyTarget": "{{kcal}} kcal every day",
+  "tabs": { "label": "Plan views", "meals": "Food", "shopping": "Shopping list" },
+  "days": { "label": "Days of the week", "eaten": "{{done}} out of {{total}} don chop", "today": "Today" },
+  "slots": { "breakfast": "Breakfast", "lunch": "Lunch", "dinner": "Dinner", "snack": "Small chop" },
+  "slotTimes": { "breakfast": "7 reach 9 AM", "lunch": "12 reach 2 PM", "dinner": "6 reach 8 PM", "snack": "Afternoon" },
+  "portion": { "0.75": "Small portion", "1": "1 portion", "1.25": "1¼ portions", "1.5": "1½ portions" },
+  "minutes": "{{count}} min",
+  "noCook": "No cooking",
+  "batch": "Cook once, chop twice",
+  "tags": {
+    "diabetic": "Good for blood sugar",
+    "heart": "Good for heart",
+    "protein": "Protein plenty",
+    "pregnancy": "Safe for pregnancy",
+    "lowCost": "E no cost much"
+  },
+  "actions": {
+    "eaten": "I don chop am",
+    "markEaten": "Mark say I don chop",
+    "swap": "Change am",
+    "recipe": "Recipe",
+    "undoSwap": "Go back to the food wey dem plan",
+    "swapped": "You don change am"
+  },
+  "emptySlot": "No recipe fit wetin you choose for this food time yet. Try remove one of the food wey you no dey chop.",
+  "summary": {
+    "title": "{{day}} for one look",
+    "energy": "Energy",
+    "ofTarget": "out of {{target}} kcal",
+    "protein": "Protein",
+    "fibre": "Fibre",
+    "salt": "Salt",
+    "veg": "Fruit and vegetable",
+    "water": "Water",
+    "portions": "{{count}} out of 5 portions",
+    "saltValue": "about {{value}} g",
+    "saltLimit": "less than 5 g",
+    "waterValue": "{{value}} litres",
+    "gramsOf": "{{value}} out of {{target}} g",
+    "eatenSoFar": "{{kcal}} kcal wey you don chop so far",
+    "estimates": "Nutrition numbers na estimate. Dem no add salt wey you add for table or drinks."
+  },
+  "tips": {
+    "title": "Advice for today",
+    "items": {
+      "water": "Keep bottle of water near you. Sometimes na thirst dey do you, you go think say na hunger.",
+      "plate": "Fill half of your plate with vegetable, quarter with protein and quarter with starch.",
+      "cubes": "Use one Maggi instead of two. Crayfish, onion and pepper go give am plenty taste.",
+      "batch": "Cook beans or moi moi plenty one time and keep portions for fridge for up to 3 days.",
+      "swallow": "Make your swallow reach the size of your fist and add one more spoon of vegetable soup.",
+      "fruit": "Fresh fruit better pass juice: you go get the fibre and less sugar.",
+      "walk": "Waka for 10 minutes after you chop, e dey help keep blood sugar steady."
+    }
+  },
+  "recipe": {
+    "close": "Close",
+    "per": "Nutrition for one serving",
+    "servings": "Servings",
+    "fewer": "Less servings",
+    "more": "More servings",
+    "ingredients": "Ingredients",
+    "method": "How to cook am",
+    "for": "For {{count}} serving",
+    "for_other": "For {{count}} servings",
+    "estimates": "Nutrition numbers na estimate, from normal portions.",
+    "units": { "kcal": "kcal", "g": "g" },
+    "nutrients": { "kcal": "Energy", "protein": "Protein", "carbs": "Carbohydrate", "fat": "Fat", "fibre": "Fibre", "salt": "Salt" },
+    "time": "{{count}} minutes",
+    "contains": "E get: {{list}}",
+    "containsNames": {
+      "pork": "pork",
+      "beef": "beef",
+      "chicken": "chicken",
+      "fish": "fish or crayfish",
+      "shellfish": "shellfish (like prawns)",
+      "egg": "egg",
+      "dairy": "milk products",
+      "nuts": "nuts"
+    }
+  },
+  "swap": {
+    "title": "Change {{meal}}",
+    "intro": "These ones fit your plan and the food wey you no dey chop.",
+    "current": "Wetin dem plan",
+    "choose": "Choose this one",
+    "none": "No other recipe fit wetin you choose for this food time.",
+    "newThisWeek": "New for this week",
+    "inWeek_one": "E don dey your week",
+    "inWeek_other": "E dey your week {{count}} times"
+  },
+  "shopping": {
+    "title": "Shopping list for the week",
+    "intro": "Everything wey you need for this week food, for {{count}} person.",
+    "intro_other": "Everything wey you need for this week food, for {{count}} people.",
+    "aisles": {
+      "produce": "Fruit and vegetable",
+      "protein": "Fish, meat and egg",
+      "grains": "Grains, beans and swallow",
+      "dairy": "Milk products",
+      "pantry": "Store cupboard"
+    },
+    "progress": "{{done}} out of {{total}} don tick",
+    "copy": "Copy list",
+    "copied": "Shopping list don copy.",
+    "reset": "Untick everything",
+    "shop": "Find these ones for Living Dose shop",
+    "copyTitle": "Living Dose shopping list, week of {{date}}"
+  },
+  "settings": {
+    "title": "Plan settings",
+    "intro": "If you change these, this week plan go change. Food wey you don mark say you chop go remain.",
+    "household": "How many people you dey cook for",
+    "fewer": "Less people",
+    "more": "More people",
+    "budget": "Budget",
+    "budgetOptions": { "low": "E no cost much", "balanced": "Balanced", "flexible": "Any price" },
+    "budgetHint": "Cheap option go use more beans, garri, yam and vegetable wey dey season.",
+    "avoid": "Food wey we go comot",
+    "avoidHint": "We no go ever put these ones.",
+    "avoidOptions": {
+      "pork": "Pork",
+      "beef": "Beef",
+      "chicken": "Chicken",
+      "fish": "Fish and crayfish",
+      "shellfish": "Shellfish",
+      "egg": "Egg",
+      "dairy": "Milk products",
+      "nuts": "Nuts"
+    },
+    "snacks": "Add small chop every day",
+    "save": "Save and make new plan",
+    "cancel": "Cancel",
+    "saved": "Your plan don change."
+  },
+  "review": "Recipes follow WHO healthy eating guidance and registered dietitian go review dem.",
+  "metaDescription": "Weekly meal plan wey dem build from your health check, local food and your pocket, with shopping list wey match am.",
+  "variety": {
+    "count_one": "1 different food this week",
+    "count_other": "{{count}} different food this week",
+    "shuffle": "Shuffle my week",
+    "shuffled": "See new week. Food wey you don chop go remain as e be."
+  }
+}

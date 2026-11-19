@@ -1,0 +1,97 @@
+{
+  "docTitle": "Daily check-in",
+  "title": "How you dey today?",
+  "lead": "One minute, four questions. Wetin you answer go help you and your doctor see how your body dey over time.",
+  "feelingQ": "How your body dey today?",
+  "feelings": { "great": "I dey kampe", "good": "I dey fine", "okay": "I dey manage", "unwell": "I no too well", "bad": "E bad well well" },
+  "sleepQ": "How you sleep last night?",
+  "sleepOptions": { "good": "I sleep well", "okay": "E dey okay", "poor": "I no sleep well" },
+  "symptomsQ": "Anything dey worry you?",
+  "symptomsHint": "Press all the ones wey dey worry you.",
+  "none": "Nothing",
+  "symptoms": {
+    "headache": "Headache",
+    "dizzy": "Head dey turn",
+    "tired": "I tire well well",
+    "fever": "Fever / body hot",
+    "cough": "Cough",
+    "stomach": "Belle dey worry me",
+    "bodyPain": "Body pain",
+    "chestPain": "Chest pain",
+    "breathless": "E hard to breathe"
+  },
+  "measureQ": "You check anything today?",
+  "measureHint": "E no compulsory. Na only if you get machine for house or you check for chemist.",
+  "bp": "Blood pressure (BP)",
+  "systolic": "Top number",
+  "diastolic": "Down number",
+  "sugar": "Blood sugar (mg/dL)",
+  "sugarPlaceholder": "e.g. 110",
+  "note": "Anything else? (if you want)",
+  "notePlaceholder": "e.g. I start new medicine, I no chop breakfast",
+  "save": "Save my check-in",
+  "saving": "E dey save…",
+  "needFeeling": "Abeg choose how your body dey today.",
+  "saveError": "We no fit save am. Abeg try again.",
+  "savedOffline": "E don save for this phone. E go reach your record when network come back.",
+  "done": {
+    "title": "You don check your health today",
+    "streak_one": "1 day straight",
+    "streak_other": "{{count}} days straight",
+    "streakStart": "Your streak start today. Come back tomorrow make e continue.",
+    "streakKeep": "Come back tomorrow make e continue.",
+    "best": "Your best: {{count}} days",
+    "thisWeek": "This week",
+    "edit": "Change wetin I answer today",
+    "home": "Go back home"
+  },
+  "days": { "done": "You check in", "missed": "You miss am", "today": "Today", "future": "E never reach" },
+  "urgent": {
+    "title": "Abeg find help now now",
+    "chestPain": "Chest pain fit be serious matter.",
+    "breathless": "If e hard to breathe, e fit be serious matter.",
+    "bpVeryHigh": "Your BP high well well (180/110 or pass am).",
+    "sugarLow": "Your blood sugar don low (e no reach 70). Take something wey sweet now now, like juice or 3 teaspoon of sugar inside water.",
+    "sugarVeryHigh": "Your blood sugar high well well (300 or pass am).",
+    "body": "If you dey feel like you wan faint, your head no dey correct, or the pain strong, call 112 now now. If e no reach that one, talk to doctor today.",
+    "call": "Call 112",
+    "doctor": "Talk to doctor"
+  },
+  "advice": {
+    "bpHigh": "Your BP high pass as e suppose be. Sit down quietly for 5 minutes, then check am again. If e still dey 140/90 or pass am, book doctor.",
+    "bpLow": "Low BP and your head dey turn: sit down or lie down, drink water, and stand up slowly slowly.",
+    "sugarHigh": "Your blood sugar high. Drink water, no drink sweet drink today, and talk to doctor if e still dey high.",
+    "fever": "For fever, rest and drink plenty water. If e pass 2 days, or you get malaria sign, see doctor.",
+    "unwell3": "Your body never well for 3 days now. E go good make you talk to doctor.",
+    "book": "Book doctor"
+  },
+  "fullCheck": {
+    "never": "Do your full health check make you get your Living Score.",
+    "due": "E don reach time for your monthly health check. E go take about 5 minutes and e go update your Living Score.",
+    "soon_one": "Your monthly health check go reach in {{count}} day.",
+    "soon_other": "Your monthly health check go reach in {{count}} days.",
+    "start": "Do the health check",
+    "title": "Monthly health check"
+  },
+  "scores": {
+    "title": "How your Living Score don dey move",
+    "change_up": "E don go up {{count}} points since {{date}}.",
+    "change_down": "E don come down {{count}} points since {{date}}.",
+    "change_same": "E still be like {{date}}.",
+    "one": "Na your first score be this. Do the check again next month make you see how you dey improve."
+  },
+  "recent": "Your last check-ins",
+  "card": {
+    "todo": "How you dey today?",
+    "todoBody": "1-minute check-in go keep your streak.",
+    "atRisk_one": "Check in today make you no lose your {{count}}-day streak.",
+    "atRisk_other": "Check in today make you no lose your {{count}}-day streak.",
+    "start": "Check in now",
+    "done": "You don check in today",
+    "view": "See my check-ins"
+  },
+  "simple": {
+    "todo": "How you dey today? Press here",
+    "done": "You don check your health today"
+  }
+}

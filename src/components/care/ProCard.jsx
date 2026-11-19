@@ -6,6 +6,7 @@ import { relativeWhen } from '@/lib/care/format'
 import Avatar from './Avatar'
 import { TYPE_ICON } from './typeIcons'
 import styles from './Care.module.css'
+import { formatLocale } from '@/i18n'
 
 export default function ProCard({ professional: p, next }) {
   const { t, i18n } = useTranslation('care')
@@ -48,7 +49,7 @@ export default function ProCard({ professional: p, next }) {
       </ul>
       <p className={styles.next}>
         <CalendarClock size={17} strokeWidth={2} aria-hidden="true" />
-        {next ? t('next', { time: relativeWhen(next, i18n.language, t) }) : t('noSlots')}
+        {next ? t('next', { time: relativeWhen(next, formatLocale(i18n.language), t) }) : t('noSlots')}
       </p>
       <span className={styles.cardCta} aria-hidden="true">
         {t('viewProfile')}

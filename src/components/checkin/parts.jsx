@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { Check, Flame } from 'lucide-react'
 import clsx from 'clsx'
 import styles from './Checkin.module.css'
+import { formatLocale } from '@/i18n'
 
 export const FEELING_EMOJI = { great: '😄', good: '🙂', okay: '😐', unwell: '🤒', bad: '😣' }
 export const SLEEP_EMOJI = { good: '😴', okay: '🥱', poor: '😫' }
@@ -19,8 +20,8 @@ export function StreakPill({ count }) {
 /** Monday-to-Sunday dots. */
 export function WeekDots({ dots }) {
   const { t, i18n } = useTranslation('checkin')
-  const fmt = new Intl.DateTimeFormat(i18n.language, { weekday: 'narrow' })
-  const long = new Intl.DateTimeFormat(i18n.language, { weekday: 'long' })
+  const fmt = new Intl.DateTimeFormat(formatLocale(i18n.language), { weekday: 'narrow' })
+  const long = new Intl.DateTimeFormat(formatLocale(i18n.language), { weekday: 'long' })
   return (
     <ol className={styles.week} aria-label={t('done.thisWeek')}>
       {dots.map((d) => {
@@ -47,7 +48,7 @@ export function ScoreChart({ points }) {
   const W = 320
   const H = 140
   const pad = { l: 28, r: 16, t: 30, b: 24 }
-  const fmt = new Intl.DateTimeFormat(i18n.language, { month: 'short' })
+  const fmt = new Intl.DateTimeFormat(formatLocale(i18n.language), { month: 'short' })
   const xs = points.map((_, i) => (points.length === 1 ? W / 2 : pad.l + (i * (W - pad.l - pad.r)) / (points.length - 1)))
   const y = (s) => pad.t + ((100 - s) * (H - pad.t - pad.b)) / 100
   const show = (i) => points.length <= 8 || i === 0 || i === points.length - 1

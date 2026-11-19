@@ -6,6 +6,7 @@ import ScoreRing from '@/components/ui/ScoreRing'
 import { BAND_COLOUR, PILLAR_COLOUR } from '@/lib/healthCheck/display'
 import { scoreBand } from '@/lib/healthCheck/scoring'
 import styles from './Results.module.css'
+import { formatLocale } from '@/i18n'
 
 const PILLARS = ['eating', 'activity', 'body', 'sleep', 'mind', 'habits']
 const BAND_ORDER = ['attention', 'grow', 'good', 'strong']
@@ -19,7 +20,7 @@ export default function ResultsHero({ results, answers, firstName, dateText, nex
   const lowest = [...scored].sort((a, b) => pillars[a] - pillars[b])[0]
   const [selected, setSelected] = useState(lowest)
 
-  const list = new Intl.ListFormat(i18n.language, { style: 'long', type: 'conjunction' })
+  const list = new Intl.ListFormat(formatLocale(i18n.language), { style: 'long', type: 'conjunction' })
   const names = (ids) => list.format(ids.map((id) => t(`pillars.${id}`)))
   const strong = scored.filter((p) => pillars[p] >= 70).sort((a, b) => pillars[b] - pillars[a])
   const weak = scored.filter((p) => pillars[p] < 60).sort((a, b) => pillars[a] - pillars[b])
@@ -128,7 +129,7 @@ export default function ResultsHero({ results, answers, firstName, dateText, nex
 /** The explanation shown for each area, built from the person's own answers. */
 function pillarDetail(id, results, answers, t) {
   const m = results.measures
-  const opt = (path, i) => (i == null ? '' : t(path, { returnObjects: true })[i]?.toLowerCase() ?? '')
+  const opt = (path, i) => (i == null ? '' : (t(path, { returnObjects: true })[i]?.toLowerCase() ?? ''))
   const bpPart = m.bpCategory ? `${m.systolic}/${m.diastolic} (${t(`categories.bp.${m.bpCategory}`).toLowerCase()})` : t('results.detail.bpNotKnown')
 
   switch (id) {

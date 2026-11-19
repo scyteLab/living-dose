@@ -11,6 +11,7 @@ import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { nextStatus } from '@/lib/staff/api'
 import { staffOrders, staffSetOrderStatus } from '@/lib/staff/service'
 import { formatPrice } from '@/lib/shop/money'
+import { formatLocale } from '@/i18n'
 
 const FILTERS = ['open', 'placed', 'packed', 'onTheWay', 'delivered', 'cancelled', 'all']
 const TONE = { placed: 'ember', packed: 'sky', onTheWay: 'plum', delivered: 'leaf', cancelled: 'berry' }
@@ -24,8 +25,8 @@ export default function StaffOrders() {
   const [filter, setFilter] = useState('open')
   const [q, setQ] = useState('')
   const [openId, setOpenId] = useState(null)
-  const dayFmt = new Intl.DateTimeFormat(i18n.language, { weekday: 'short', day: 'numeric', month: 'short' })
-  const timeFmt = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' })
+  const dayFmt = new Intl.DateTimeFormat(formatLocale(i18n.language), { weekday: 'short', day: 'numeric', month: 'short' })
+  const timeFmt = new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' })
 
   const words = q.toLowerCase().split(/\s+/).filter(Boolean)
   const shown = orders.filter((o) => {
@@ -66,7 +67,13 @@ export default function StaffOrders() {
       </div>
       <div className={styles.filters} role="group" aria-label={t('orders.title')}>
         {FILTERS.map((f) => (
-          <button key={f} type="button" aria-pressed={filter === f} className={clsx(styles.filter, filter === f && styles.filterOn)} onClick={() => setFilter(f)}>
+          <button
+            key={f}
+            type="button"
+            aria-pressed={filter === f}
+            className={clsx(styles.filter, filter === f && styles.filterOn)}
+            onClick={() => setFilter(f)}
+          >
             {t(`orders.filters.${f}`)}
           </button>
         ))}
@@ -137,7 +144,13 @@ export default function StaffOrders() {
         </div>
       )}
 
-      <Dialog open={Boolean(current)} onClose={() => setOpenId(null)} title={current ? t('orders.detail.title', { id: current.id }) : ''} closeLabel={t('orders.detail.close')} size="lg">
+      <Dialog
+        open={Boolean(current)}
+        onClose={() => setOpenId(null)}
+        title={current ? t('orders.detail.title', { id: current.id }) : ''}
+        closeLabel={t('orders.detail.close')}
+        size="lg"
+      >
         {current && (
           <div className={styles.detail}>
             <Tag tone={TONE[current.status]}>{t(`orders.status.${current.status}`)}</Tag>
@@ -188,9 +201,7 @@ export default function StaffOrders() {
             )}
             {!['delivered', 'cancelled'].includes(current.status) && (
               <div className={styles.detailActions}>
-                <Button onClick={() => move(current, nextStatus(current.status))}>
-                  {t(`orders.advance.${nextStatus(current.status)}`)}
-                </Button>
+                <Button onClick={() => move(current, nextStatus(current.status))}>{t(`orders.advance.${nextStatus(current.status)}`)}</Button>
                 <button
                   type="button"
                   className={styles.danger}

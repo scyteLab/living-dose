@@ -8,6 +8,7 @@ import { PROFESSIONALS_BY_ID } from '@/data/professionals'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { formatDay, formatTime } from '@/lib/care/format'
 import { staffAppointments, staffSetAppointmentStatus } from '@/lib/staff/service'
+import { formatLocale } from '@/i18n'
 
 const TONE = { booked: 'sky', completed: 'leaf', no_show: 'ember', cancelled: 'berry' }
 
@@ -32,7 +33,7 @@ export default function StaffAppointments() {
   // Group by day for a readable schedule
   const days = []
   for (const a of list) {
-    const day = formatDay(a.start, i18n.language)
+    const day = formatDay(a.start, formatLocale(i18n.language))
     if (!days.length || days.at(-1).day !== day) days.push({ day, items: [] })
     days.at(-1).items.push(a)
   }
@@ -42,7 +43,14 @@ export default function StaffAppointments() {
       <h1 className={styles.title}>{t('appointments.title')}</h1>
       <div className={styles.filters} role="tablist">
         {['upcoming', 'past'].map((id) => (
-          <button key={id} type="button" role="tab" aria-selected={tab === id} className={clsx(styles.filter, tab === id && styles.filterOn)} onClick={() => setTab(id)}>
+          <button
+            key={id}
+            type="button"
+            role="tab"
+            aria-selected={tab === id}
+            className={clsx(styles.filter, tab === id && styles.filterOn)}
+            onClick={() => setTab(id)}
+          >
             {t(`appointments.${id}`)}
           </button>
         ))}
@@ -71,7 +79,7 @@ export default function StaffAppointments() {
                     return (
                       <tr key={a.id}>
                         <th scope="row">
-                          {formatTime(a.start, i18n.language)}
+                          {formatTime(a.start, formatLocale(i18n.language))}
                           <span className={styles.small}>{a.id}</span>
                         </th>
                         <td>

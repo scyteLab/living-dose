@@ -1,0 +1,117 @@
+{
+  "docTitle": "Shuttle Meds",
+  "metaDescription": "Shuttle Meds by Living Dose: emergency help, live doctor calls and mobile clinics for people wey far from hospital. E dey come soon. Join the waitlist.",
+  "badge": "E dey come soon",
+  "title": "Shuttle Meds: care wey go come meet you",
+  "lead": "For families wey far from hospital: quick first aid and ambulance, live video call with doctor for few minutes, and mobile clinics wey go visit your area.",
+  "joinWaitlist": "Join the waitlist",
+  "talkNow": "Talk to expert today",
+  "emergencyTitle": "Emergency dey happen now?",
+  "emergencyBody": "Shuttle Meds never start. Call 112 or go the nearest hospital.",
+  "call112": "Call 112",
+  "whatTitle": "Wetin Shuttle Meds go do",
+  "services": {
+    "emergency": {
+      "title": "Emergency help",
+      "body": "Call for ambulance or person wey sabi first aid, and see dem as dem dey come. Doctor go join the call to guide you until help reach."
+    },
+    "doctorCall": {
+      "title": "Doctor for call",
+      "body": "Live video or voice call with doctor, even if network slow, from anywhere you dey. We build am for towns and villages wey far from clinic."
+    },
+    "mobileClinic": {
+      "title": "Mobile clinics",
+      "body": "Clinic bus wey dey visit communities on schedule: check-up, BP and blood sugar test, antenatal and pikin health."
+    },
+    "medicines": {
+      "title": "Medicine delivery",
+      "body": "Medicine wey doctor write for you, we go bring am reach your door or the next place wey mobile clinic go stop."
+    }
+  },
+  "howTitle": "How e go work",
+  "steps": [
+    { "t": "Ask for help", "b": "One press for the app, or call our line if you no get data." },
+    { "t": "Doctor go join", "b": "For few minutes, doctor go check you by video or voice and decide wetin you need." },
+    { "t": "Help go come meet you", "b": "We go send first-aid person, ambulance or mobile clinic, or we go deliver medicine." },
+    { "t": "Follow-up", "b": "Your Living Dose care team go check on you after, and everything go save for your records." }
+  ],
+  "waitlistTitle": "Be the first to know",
+  "waitlistBody": "We dey start with pilot communities for South-West Nigeria. Tell us where you dey, and we go let you know when Shuttle Meds reach you.",
+  "thanks": "Thank you, {{name}}! You don dey the waitlist. We go reach you when Shuttle Meds reach your area.",
+  "form": {
+    "name": "Your name",
+    "nameError": "Abeg put your name.",
+    "contact": "Phone number or email",
+    "contactPlaceholder": "0801 234 5678 or you@example.com",
+    "contactError": "Abeg put phone number or email address.",
+    "state": "State",
+    "community": "Town or community",
+    "optional": "(if you want)",
+    "communityPlaceholder": "e.g. Imeko, Ogun",
+    "interests": "Wetin go help you pass?",
+    "who": "Who e be for?",
+    "whoOptions": { "self": "Me", "family": "My family", "community": "My community", "organisation": "My organisation" },
+    "sending": "E dey join…",
+    "failed": "E no go. Abeg check your network and try again.",
+    "privacy": "We go use these details only to tell you about Shuttle Meds.",
+    "privacyLink": "Privacy policy"
+  },
+  "whereTitle": "Where Shuttle Meds go dey serve",
+  "whereBody": "We dey bring care to where people dey work, learn, gather and live. These ones dey come soon: tell us where you want make we start.",
+  "comingSoon": "E dey come soon",
+  "groups": {
+    "workplace": {
+      "title": "Workplaces",
+      "body": "Clinic days for the place, health check for staff, and first aid with ambulance wey dey ready for accident."
+    },
+    "education": { "title": "Schools and young people", "body": "School health days, first aid for games and competitions, and doctor for call for students." },
+    "community": { "title": "Communities", "body": "Mobile clinic for set days, free test, and doctor by phone for places wey far." },
+    "residential": {
+      "title": "Homes and people wey need extra care",
+      "body": "Regular visit for old people, check-up where e hard to reach clinic, and medicine delivery."
+    },
+    "events": { "title": "Big events", "body": "Ambulance and first-aid team for the place for the whole event." }
+  },
+  "settings": {
+    "offices": "Offices and company campuses",
+    "industrial": "Factories, farms and construction sites",
+    "camps": "Mining and oil & gas camps",
+    "primary": "Primary schools",
+    "secondary": "Secondary schools",
+    "universities": "Universities",
+    "sports": "Youth sports camps and competitions",
+    "villages": "Villages wey far and wey no get enough care",
+    "worship": "Churches, mosques and community halls",
+    "markets": "Markets and motor parks",
+    "seniors": "Homes for old people and estates",
+    "correctional": "Prisons (correctional centres) and shelters",
+    "disaster": "Disaster areas and IDP camps",
+    "concerts": "Concerts",
+    "festivals": "Festivals",
+    "marathons": "Marathons"
+  },
+  "bringCta": "Bring Shuttle Meds come your place",
+  "org": {
+    "title": "Bring Shuttle Meds come your place",
+    "body": "For companies, schools, churches and mosques, markets, estates and people wey dey organise events. Tell us about your place and we go contact you when Shuttle Meds ready for there.",
+    "orgName": "Name of your organisation, place or event",
+    "orgNameError": "Abeg put the name.",
+    "person": "Your name",
+    "personError": "Abeg put your name.",
+    "contact": "Phone number or email",
+    "contactError": "Abeg put phone number or email address.",
+    "setting": "Which kind place be am?",
+    "state": "State",
+    "town": "Town or area",
+    "townPlaceholder": "e.g. Ikeja, or Imeko",
+    "size": "About how many people?",
+    "sizes": { "under50": "Less than 50", "50to200": "50 reach 200", "200to1000": "200 reach 1,000", "over1000": "Pass 1,000" },
+    "needs": "Wetin you go need?",
+    "message": "Anything else wey we suppose know?",
+    "messagePlaceholder": "e.g. the event dates, how many staff for each shift, how far the nearest clinic be",
+    "submit": "Send our request",
+    "sending": "E dey send…",
+    "thanks": "Thank you. We don note {{org}} and we go contact you as soon as Shuttle Meds ready for your area.",
+    "failed": "E no go. Abeg check your network and try again."
+  }
+}

@@ -11,6 +11,7 @@ import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { callVision } from '@/lib/scan/vision'
 import { isSupabaseConfigured } from '@/lib/supabase'
 import { WATER_GOAL, canLog, loadSelfies, logGlass, todaysWater } from '@/lib/water/challenge'
+import { formatLocale } from '@/i18n'
 
 /** /challenges/water: a live selfie drinking water adds a verified glass. */
 export default function WaterChallenge() {
@@ -24,7 +25,7 @@ export default function WaterChallenge() {
   const [message, setMessage] = useState('')
   const [water, setWater] = useState(() => todaysWater(user.id))
   const [selfies, setSelfies] = useState(() => loadSelfies(user.id))
-  const time = new Intl.DateTimeFormat(i18n.language, { hour: 'numeric', minute: '2-digit' })
+  const time = new Intl.DateTimeFormat(formatLocale(i18n.language), { hour: 'numeric', minute: '2-digit' })
   const onState = useCallback((s) => setCameraState(s), [])
 
   const take = async () => {

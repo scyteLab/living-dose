@@ -7,6 +7,7 @@ import styles from '@/components/staff/Staff.module.css'
 import useStaffData from '@/components/staff/useStaffData'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { orgsToCsv, staffInbox, summarise, summariseOrgs, toCsv } from '@/lib/staff/waitlist'
+import { formatLocale } from '@/i18n'
 
 function Bars({ title, rows, label }) {
   const max = Math.max(1, ...rows.map((r) => r.count))
@@ -45,7 +46,10 @@ export default function StaffWaitlist() {
   const { data, error } = useStaffData(staffInbox)
   const [tab, setTab] = useState('waitlist')
   const [state, setState] = useState('all')
-  const fmt = useMemo(() => new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' }), [i18n.language])
+  const fmt = useMemo(
+    () => new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' }),
+    [i18n.language],
+  )
 
   if (error) return <p className={styles.empty}>{t('waitlist.loadError')}</p>
   if (!data) return <div className={styles.loading} role="status" />

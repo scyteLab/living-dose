@@ -7,6 +7,7 @@ import Button from '@/components/ui/Button'
 import useAuth from '@/hooks/useAuth'
 import { createInvite, inviteLink, listLinks, removeLink } from '@/lib/family/family'
 import styles from './Account.module.css'
+import { formatLocale } from '@/i18n'
 
 /** Account → Family helpers: invite someone to look after you, and see who can. */
 export default function FamilySection({ user }) {
@@ -23,7 +24,7 @@ export default function FamilySection({ user }) {
   }, [user.id])
   useEffect(() => load(), [load])
 
-  const fmt = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'short', year: 'numeric' })
+  const fmt = new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'short', year: 'numeric' })
   const link = invite ? inviteLink(invite) : null
 
   return (

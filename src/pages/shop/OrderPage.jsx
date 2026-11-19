@@ -12,6 +12,7 @@ import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { formatPrice } from '@/lib/shop/money'
 import { getOrder } from '@/lib/shop/orders'
+import { formatLocale } from '@/i18n'
 
 export default function OrderPage() {
   const { orderId } = useParams()
@@ -38,7 +39,10 @@ export default function OrderPage() {
     if (!returned || !order || order.paymentStatus !== 'pending' || checks > 10) return
     const timer = setTimeout(
       () => {
-        if (checks === 0) confirmPayment(orderId).catch(() => {}).finally(() => setChecks((n) => n + 1))
+        if (checks === 0)
+          confirmPayment(orderId)
+            .catch(() => {})
+            .finally(() => setChecks((n) => n + 1))
         else setChecks((n) => n + 1)
       },
       checks === 0 ? 0 : 3000,
@@ -69,8 +73,10 @@ export default function OrderPage() {
   const justPlaced = location.state?.justPlaced
   const [date, slotWindow] = order.slot.split('|')
   const [y, m, d] = date.split('-').map(Number)
-  const slotDate = new Intl.DateTimeFormat(i18n.language, { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(y, m - 1, d))
-  const placed = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(new Date(order.createdAt))
+  const slotDate = new Intl.DateTimeFormat(formatLocale(i18n.language), { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(y, m - 1, d))
+  const placed = new Intl.DateTimeFormat(formatLocale(i18n.language), { day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }).format(
+    new Date(order.createdAt),
+  )
   const a = order.address
 
   return (
@@ -95,7 +101,13 @@ export default function OrderPage() {
         <div className={styles.checkoutMain}>
           <section className={styles.panel}>
             {order.payment === 'paystack' && order.status !== 'cancelled' && (
-              <PaymentStatus order={order} confirming={returned && order.paymentStatus === 'pending' && checks <= 10} paying={paying} onPay={payNow} demoPaid={location.state?.demoPaid} />
+              <PaymentStatus
+                order={order}
+                confirming={returned && order.paymentStatus === 'pending' && checks <= 10}
+                paying={paying}
+                onPay={payNow}
+                demoPaid={location.state?.demoPaid}
+              />
             )}
             {order.status === 'cancelled' ? <p className={styles.errorText}>{t('order.cancelledNotice')}</p> : <OrderTimeline status={order.status} />}
           </section>

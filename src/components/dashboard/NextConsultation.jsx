@@ -8,6 +8,7 @@ import { joinState, toIcs } from '@/lib/care/appointments'
 import { formatTime, relativeWhen } from '@/lib/care/format'
 import CardHead from './CardHead'
 import styles from './Dashboard.module.css'
+import { formatLocale } from '@/i18n'
 
 const capitalise = (text) => text.charAt(0).toUpperCase() + text.slice(1)
 
@@ -60,7 +61,7 @@ export default function NextConsultation({ appt }) {
       <div className={styles.apptWhen}>
         <p className={styles.apptTime}>
           <Clock size={18} strokeWidth={2} aria-hidden="true" />
-          {capitalise(relativeWhen(appt.start, i18n.language, tc))} (WAT)
+          {capitalise(relativeWhen(appt.start, formatLocale(i18n.language), tc))} (WAT)
         </p>
         <p className={styles.apptHint}>{t('appt.joinFrom')}</p>
       </div>
@@ -72,7 +73,7 @@ export default function NextConsultation({ appt }) {
           </Button>
         ) : (
           <Button to={`/care/appointments/${appt.id}`} variant="outline" className={styles.grow}>
-            {t('appt.joinAt', { time: formatTime(opens, i18n.language) })}
+            {t('appt.joinAt', { time: formatTime(opens, formatLocale(i18n.language)) })}
           </Button>
         )}
         <button type="button" className={styles.roundButton} onClick={downloadIcs} aria-label={t('appt.calendar')}>

@@ -5,6 +5,7 @@ import { Square, Volume2 } from 'lucide-react'
 import clsx from 'clsx'
 import { canSpeak, speak, stopSpeaking } from '@/lib/simple/speak'
 import styles from './Simple.module.css'
+import { formatLocale } from '@/i18n'
 
 /**
  * "Read to me": reads the page (or the text given) aloud with the phone's voice.
@@ -30,7 +31,7 @@ export default function ReadAloud({ text, floating = false, className }) {
       return
     }
     const words = typeof text === 'function' ? text() : (text ?? document.getElementById('main')?.innerText ?? '')
-    if (speak(words, { lang: i18n.language, onEnd: () => setSpeaking(false) })) setSpeaking(true)
+    if (speak(words, { lang: formatLocale(i18n.language), onEnd: () => setSpeaking(false) })) setSpeaking(true)
   }
 
   const Icon = speaking ? Square : Volume2

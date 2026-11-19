@@ -1,0 +1,55 @@
+{
+  "docTitle": "Home",
+  "greeting": {
+    "morning": "Good morning, {{name}}",
+    "afternoon": "Good afternoon, {{name}}",
+    "evening": "Good evening, {{name}}",
+    "morningNoName": "Good morning",
+    "afternoonNoName": "Good afternoon",
+    "eveningNoName": "Good evening"
+  },
+  "water_zero": "You never drink water today. Try drink 8 glass.",
+  "water_one": "You don drink 1 glass of water today. Well done.",
+  "water_other": "You don drink {{count}} glass of water today. Well done.",
+  "waterDone": "You don drink all 8 glass of water today. You too much!",
+  "tapToStart": "Press one picture make you start.",
+  "tiles": {
+    "snap": { "title": "Snap my food", "hint": "Snap picture of wetin you chop" },
+    "water": { "title": "I don drink water", "hint": "Snap selfie with your water" },
+    "doctor": { "title": "Talk to doctor", "hint": "Video or voice call" },
+    "meals": { "title": "My food for today", "hint": "See wetin you go chop" },
+    "help": { "title": "I need help now", "hint": "Emergency" },
+    "family": { "title": "Call my family", "titleNamed": "Call {{name}}", "hint": "Put their number first", "hintNamed": "Press make you call" }
+  },
+  "readAloud": "Read am for me",
+  "stopReading": "Stop to read",
+  "noVoice": "This phone no fit read out.",
+  "fullView": "Change to full view",
+  "changeFamily": "Change family number",
+  "help": {
+    "title": "I need help now",
+    "body": "If person wound bad, e no fit breathe, or e don faint, call emergency now now.",
+    "call112": "Call 112 (emergency)",
+    "callFamily": "Call {{name}}",
+    "shuttle": "Shuttle Meds: ambulance and doctor wey go come house (e dey come soon)",
+    "close": "Close"
+  },
+  "family": {
+    "title": "Who we go call?",
+    "body": "Save the number of one person for your family. After that, the big button go call am one time.",
+    "name": "Their name",
+    "namePlaceholder": "e.g. Tunde",
+    "phone": "Their phone number",
+    "phonePlaceholder": "e.g. 0803 123 4567",
+    "phoneError": "Abeg put the full phone number.",
+    "save": "Save number",
+    "remove": "Remove number",
+    "cancel": "Cancel"
+  },
+  "prompt": {
+    "title": "You want bigger button?",
+    "body": "Simple view get six big picture button, bigger writing, and button wey go read am for you. E good for our papa and mama.",
+    "action": "Change to simple view"
+  },
+  "familyHelpers": "Make my family see how I dey"
+}

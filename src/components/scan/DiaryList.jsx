@@ -3,13 +3,14 @@ import { ImageOff, Trash2 } from 'lucide-react'
 import { lookup, totals } from '@/lib/scan/diary'
 import { toIso } from '@/lib/mealPlan/storage'
 import styles from './Scan.module.css'
+import { formatLocale } from '@/i18n'
 
 export default function DiaryList({ entries, onRemove }) {
   const { t, i18n } = useTranslation('scan')
   const today = toIso(new Date())
   const todays = entries.filter((e) => e.date === today)
   const dayTotal = todays.reduce((n, e) => n + totals(e.items).kcal, 0)
-  const time = new Intl.DateTimeFormat(i18n.language, { hour: 'numeric', minute: '2-digit' })
+  const time = new Intl.DateTimeFormat(formatLocale(i18n.language), { hour: 'numeric', minute: '2-digit' })
 
   return (
     <section className={styles.diary} aria-labelledby="diary-h">
@@ -34,7 +35,12 @@ export default function DiaryList({ entries, onRemove }) {
                 <strong>
                   {t(`review.slots.${e.slot}`)} · {time.format(new Date(e.time))}
                 </strong>
-                <span className={styles.small}>{e.items.map((it) => lookup(it)?.name).filter(Boolean).join(', ')}</span>
+                <span className={styles.small}>
+                  {e.items
+                    .map((it) => lookup(it)?.name)
+                    .filter(Boolean)
+                    .join(', ')}
+                </span>
                 <span className={styles.entryKcal}>{totals(e.items).kcal} kcal</span>
               </div>
               <button
