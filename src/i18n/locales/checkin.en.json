@@ -1,0 +1,97 @@
+{
+  "docTitle": "Daily check-in",
+  "title": "How are you today?",
+  "lead": "One minute, four questions. Your answers help you and your doctor see how you're doing over time.",
+  "feelingQ": "How do you feel today?",
+  "feelings": { "great": "Great", "good": "Good", "okay": "Okay", "unwell": "Unwell", "bad": "Very bad" },
+  "sleepQ": "How did you sleep last night?",
+  "sleepOptions": { "good": "Well", "okay": "Okay", "poor": "Badly" },
+  "symptomsQ": "Is anything bothering you?",
+  "symptomsHint": "Tap all that apply.",
+  "none": "Nothing",
+  "symptoms": {
+    "headache": "Headache",
+    "dizzy": "Dizzy",
+    "tired": "Very tired",
+    "fever": "Fever",
+    "cough": "Cough",
+    "stomach": "Stomach trouble",
+    "bodyPain": "Body pain",
+    "chestPain": "Chest pain",
+    "breathless": "Hard to breathe"
+  },
+  "measureQ": "Did you measure anything today?",
+  "measureHint": "Optional. Only if you have a machine at home or checked at a pharmacy.",
+  "bp": "Blood pressure",
+  "systolic": "Top number",
+  "diastolic": "Bottom number",
+  "sugar": "Blood sugar (mg/dL)",
+  "sugarPlaceholder": "e.g. 110",
+  "note": "Anything else? (optional)",
+  "notePlaceholder": "e.g. started new medicine, skipped breakfast",
+  "save": "Save my check-in",
+  "saving": "Saving…",
+  "needFeeling": "Please choose how you feel today.",
+  "saveError": "We couldn't save that. Please try again.",
+  "savedOffline": "Saved on this phone. It will reach your records when you're back online.",
+  "done": {
+    "title": "You've checked your health today",
+    "streak_one": "1-day streak",
+    "streak_other": "{{count}}-day streak",
+    "streakStart": "Your streak starts today. Come back tomorrow to keep it going.",
+    "streakKeep": "Come back tomorrow to keep it going.",
+    "best": "Best: {{count}} days",
+    "thisWeek": "This week",
+    "edit": "Change today's answers",
+    "home": "Back to home"
+  },
+  "days": { "done": "Checked in", "missed": "Missed", "today": "Today", "future": "Coming up" },
+  "urgent": {
+    "title": "Please get help now",
+    "chestPain": "Chest pain can be serious.",
+    "breathless": "Difficulty breathing can be serious.",
+    "bpVeryHigh": "Your blood pressure reading is very high (180/110 or more).",
+    "sugarLow": "Your blood sugar is low (under 70). Take something sweet now, like juice or 3 teaspoons of sugar in water.",
+    "sugarVeryHigh": "Your blood sugar is very high (300 or more).",
+    "body": "If you feel faint, confused, or the pain is strong, call 112 now. Otherwise, speak to a doctor today.",
+    "call": "Call 112",
+    "doctor": "Talk to a doctor"
+  },
+  "advice": {
+    "bpHigh": "Your blood pressure is higher than ideal. Sit quietly for 5 minutes and measure again. If it stays at 140/90 or above, book a doctor.",
+    "bpLow": "Low blood pressure with dizziness: sit or lie down, drink water, and stand up slowly.",
+    "sugarHigh": "Your blood sugar is high. Drink water, avoid sweet drinks today, and speak to a doctor if it stays high.",
+    "fever": "For a fever, rest and drink plenty of water. If it lasts more than 2 days, or you have malaria signs, see a doctor.",
+    "unwell3": "You've felt unwell for 3 days in a row. It's a good idea to speak to a doctor.",
+    "book": "Book a consultation"
+  },
+  "fullCheck": {
+    "never": "Take your full health check to get your Living Score.",
+    "due": "It's time for your monthly health check. It takes about 5 minutes and updates your Living Score.",
+    "soon_one": "Your monthly health check is due in {{count}} day.",
+    "soon_other": "Your monthly health check is due in {{count}} days.",
+    "start": "Take the health check",
+    "title": "Monthly health check"
+  },
+  "scores": {
+    "title": "Your Living Score over time",
+    "change_up": "Up {{count}} points since {{date}}.",
+    "change_down": "Down {{count}} points since {{date}}.",
+    "change_same": "The same as on {{date}}.",
+    "one": "This is your first score. Take the check again next month to see your progress."
+  },
+  "recent": "Recent check-ins",
+  "card": {
+    "todo": "How are you today?",
+    "todoBody": "A 1-minute check-in keeps your streak going.",
+    "atRisk_one": "Check in today to keep your {{count}}-day streak.",
+    "atRisk_other": "Check in today to keep your {{count}}-day streak.",
+    "start": "Check in now",
+    "done": "Checked in today",
+    "view": "See my check-ins"
+  },
+  "simple": {
+    "todo": "How are you today? Tap here",
+    "done": "You checked your health today"
+  }
+}

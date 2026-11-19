@@ -1,7 +1,7 @@
 import { useState, useSyncExternalStore } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Ambulance, Camera, Droplet, GlassWater, LayoutDashboard, PhoneCall, Siren, Stethoscope, UsersRound, Utensils } from 'lucide-react'
+import { Ambulance, Camera, Check, Flame, Droplet, GlassWater, LayoutDashboard, PhoneCall, Siren, Stethoscope, UsersRound, Utensils } from 'lucide-react'
 import clsx from 'clsx'
 import Dialog from '@/components/ui/Dialog'
 import FamilyDialog from './FamilyDialog'
@@ -10,6 +10,7 @@ import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { WATER_GOAL } from '@/lib/dashboard/habits'
 import { partOfDay } from '@/lib/dashboard/insights'
 import { loadFamily } from '@/lib/simple/view'
+import useCheckins from '@/hooks/useCheckins'
 import styles from './Simple.module.css'
 
 const subscribe = (cb) => {
@@ -24,6 +25,8 @@ export default function SimpleHome({ userId, firstName, water = 0, onFullView })
   const familyJson = useSyncExternalStore(subscribe, () => JSON.stringify(loadFamily(userId)))
   const family = JSON.parse(familyJson)
   const [dialog, setDialog] = useState(null) // 'help' | 'family' | null
+  const { streak } = useCheckins(userId)
+  const tc = useTranslation('checkin').t
 
   const part = partOfDay()
   const greeting = firstName ? t(`greeting.${part}`, { name: firstName }) : t(`greeting.${part}NoName`)
@@ -47,7 +50,14 @@ export default function SimpleHome({ userId, firstName, water = 0, onFullView })
       : { id: 'family', icon: UsersRound, tone: 'sun', onClick: () => setDialog('family') },
   ]
 
-  const spoken = () => [greeting, waterLine, t('tapToStart'), ...tiles.map((x) => x.title ?? t(`tiles.${x.id}.title`))].join('\n')
+  const spoken = () =>
+    [
+      greeting,
+      waterLine,
+      streak.doneToday ? tc('simple.done') : tc('simple.todo'),
+      t('tapToStart'),
+      ...tiles.map((x) => x.title ?? t(`tiles.${x.id}.title`)),
+    ].join('\n')
 
   return (
     <div className={styles.home}>
@@ -63,6 +73,21 @@ export default function SimpleHome({ userId, firstName, water = 0, onFullView })
         </p>
         <ReadAloud text={spoken} />
       </header>
+
+      <Link to="/check-in" className={clsx(styles.checkin, streak.doneToday && styles.checkinDone)}>
+        <span className={styles.checkinIcon} aria-hidden="true">
+          {streak.doneToday ? <Check size={34} strokeWidth={3} /> : '🙂'}
+        </span>
+        <span className={styles.checkinText}>
+          {streak.doneToday ? tc('simple.done') : tc('simple.todo')}
+          {streak.count > 0 && (
+            <span className={styles.checkinStreak}>
+              <Flame size={20} strokeWidth={2.4} aria-hidden="true" />
+              {tc('done.streak', { count: streak.count })}
+            </span>
+          )}
+        </span>
+      </Link>
 
       <p className={styles.tapHint}>{t('tapToStart')}</p>
       <ul className={styles.tiles}>

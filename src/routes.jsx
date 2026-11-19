@@ -11,6 +11,7 @@ import HealthCheckProvider from '@/providers/HealthCheckProvider'
 const Home = lazy(() => import('@/pages/Home'))
 const Plan = lazy(() => import('@/pages/Plan'))
 const Scan = lazy(() => import('@/pages/Scan'))
+const CheckIn = lazy(() => import('@/pages/CheckIn'))
 const WaterChallenge = lazy(() => import('@/pages/WaterChallenge'))
 const ShuttleMeds = lazy(() => import('@/pages/ShuttleMeds'))
 const Shop = lazy(() => import('@/pages/shop/ShopPage'))
@@ -75,19 +76,83 @@ export const routes = [
       { index: true, element: <Home /> },
       { path: 'plan', element: <Plan /> },
       { path: 'scan', element: <Scan /> },
-      { path: 'challenges/water', element: <RequireAuth><WaterChallenge /></RequireAuth> },
+      {
+        path: 'check-in',
+        element: (
+          <RequireAuth>
+            <CheckIn />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'challenges/water',
+        element: (
+          <RequireAuth>
+            <WaterChallenge />
+          </RequireAuth>
+        ),
+      },
       { path: 'shuttle-meds', element: <ShuttleMeds /> },
       { path: 'shop', element: <Shop /> },
       { path: 'shop/:productId', element: <Product /> },
       { path: 'basket', element: <Basket /> },
-      { path: 'checkout', element: <RequireAuth><Checkout /></RequireAuth> },
-      { path: 'orders', element: <RequireAuth><Orders /></RequireAuth> },
-      { path: 'account', element: <RequireAuth><Account /></RequireAuth> },
-      { path: 'account/:section', element: <RequireAuth><Account /></RequireAuth> },
-      { path: 'orders/:orderId', element: <RequireAuth><Order /></RequireAuth> },
+      {
+        path: 'checkout',
+        element: (
+          <RequireAuth>
+            <Checkout />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'orders',
+        element: (
+          <RequireAuth>
+            <Orders />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'account',
+        element: (
+          <RequireAuth>
+            <Account />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'account/:section',
+        element: (
+          <RequireAuth>
+            <Account />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'orders/:orderId',
+        element: (
+          <RequireAuth>
+            <Order />
+          </RequireAuth>
+        ),
+      },
       { path: 'care', element: <Care /> },
-      { path: 'care/appointments', element: <RequireAuth><Appointments /></RequireAuth> },
-      { path: 'care/appointments/:appointmentId', element: <RequireAuth><Appointment /></RequireAuth> },
+      {
+        path: 'care/appointments',
+        element: (
+          <RequireAuth>
+            <Appointments />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'care/appointments/:appointmentId',
+        element: (
+          <RequireAuth>
+            <Appointment />
+          </RequireAuth>
+        ),
+      },
       { path: 'care/:professionalId', element: <Professional /> },
       { path: 'community', element: <Community /> },
       { path: 'community/guidelines', element: <CommunityGuidelines /> },
@@ -111,15 +176,47 @@ export const routes = [
     element: <AuthShell />,
     errorElement: <RouteError />,
     children: [
-      { path: 'sign-in', element: <GuestOnly><SignIn /></GuestOnly> },
-      { path: 'join', element: <GuestOnly><SignUp /></GuestOnly> },
+      {
+        path: 'sign-in',
+        element: (
+          <GuestOnly>
+            <SignIn />
+          </GuestOnly>
+        ),
+      },
+      {
+        path: 'join',
+        element: (
+          <GuestOnly>
+            <SignUp />
+          </GuestOnly>
+        ),
+      },
       { path: 'verify', element: <Verify /> },
-      { path: 'onboarding', element: <RequireAuth><Onboarding /></RequireAuth> },
-      { path: 'welcome', element: <RequireAuth><Welcome /></RequireAuth> },
+      {
+        path: 'onboarding',
+        element: (
+          <RequireAuth>
+            <Onboarding />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'welcome',
+        element: (
+          <RequireAuth>
+            <Welcome />
+          </RequireAuth>
+        ),
+      },
       {
         // Staff console: sign-in required here, staff role checked inside StaffLayout
         path: 'staff',
-        element: <RequireAuth><StaffLayout /></RequireAuth>,
+        element: (
+          <RequireAuth>
+            <StaffLayout />
+          </RequireAuth>
+        ),
         children: [
           { index: true, element: <StaffOverview /> },
           { path: 'orders', element: <StaffOrders /> },
@@ -133,7 +230,11 @@ export const routes = [
       {
         // Professionals' portal: sign-in required here, professional role checked inside ProLayout
         path: 'pro',
-        element: <RequireAuth><ProLayout /></RequireAuth>,
+        element: (
+          <RequireAuth>
+            <ProLayout />
+          </RequireAuth>
+        ),
         children: [
           { index: true, element: <ProSchedule /> },
           { path: 'consultations/:appointmentId', element: <ProConsultation /> },
@@ -143,7 +244,11 @@ export const routes = [
       {
         // Organisation portal: anonymised totals only; admin role checked inside OrgLayout
         path: 'org',
-        element: <RequireAuth><OrgLayout /></RequireAuth>,
+        element: (
+          <RequireAuth>
+            <OrgLayout />
+          </RequireAuth>
+        ),
         children: [
           { index: true, element: <OrgOverview /> },
           { path: 'invite', element: <OrgInvite /> },
@@ -152,7 +257,11 @@ export const routes = [
       {
         // Health check: answers are shared across these pages and saved as a draft
         path: 'health-check',
-        element: <RequireAuth><HealthCheckProvider /></RequireAuth>,
+        element: (
+          <RequireAuth>
+            <HealthCheckProvider />
+          </RequireAuth>
+        ),
         children: [
           { index: true, element: <HealthCheckIntro /> },
           { path: 'calculating', element: <HealthCheckCalculating /> },

@@ -86,7 +86,10 @@
       "no_show": "No-show",
       "cancelled": "Cancelled"
     },
-    "failed": "That didn't save. Check your connection and try again."
+    "failed": "That didn't save. Check your connection and try again.",
+    "history": "Health over time",
+    "noCheckins": "No daily check-ins in the last 60 days.",
+    "checkinSummary": "{{count}} check-ins in the last 60 days · felt unwell on {{unwell}} · {{readings}} with BP or sugar readings."
   },
   "availability": {
     "title": "Availability",

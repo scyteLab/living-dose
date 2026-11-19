@@ -77,11 +77,32 @@ export async function loadLatestResult(userId) {
   return isComplete(record) ? record : null
 }
 
+/** Living Score over time, oldest first: [{ score, band, createdAt }]. */
+export async function loadScoreHistory(userId) {
+  if (isDemo) {
+    return (readJson(resultsKey(userId)) ?? [])
+      .filter(isComplete)
+      .map((r) => ({ score: r.results.score, band: r.results.band, createdAt: r.createdAt }))
+      .reverse()
+  }
+  const { data, error } = await supabase
+    .from('health_checks')
+    .select('score, results, created_at')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: true })
+    .limit(24)
+  if (error) throw error
+  return data.filter((r) => typeof r.score === 'number').map((r) => ({ score: r.score, band: r.results?.band ?? null, createdAt: r.created_at }))
+}
+
 /** Turn the 4-week reminder on or off for a saved check. */
 export async function setReminder(userId, id, remind) {
   if (isDemo) {
     const history = readJson(resultsKey(userId)) ?? []
-    writeJson(resultsKey(userId), history.map((r) => (r.id === id ? { ...r, remind } : r)))
+    writeJson(
+      resultsKey(userId),
+      history.map((r) => (r.id === id ? { ...r, remind } : r)),
+    )
     return
   }
   const { error } = await supabase.from('health_checks').update({ remind }).eq('id', id)

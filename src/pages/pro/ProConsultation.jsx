@@ -3,6 +3,7 @@ import { Link, useOutletContext, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ArrowLeft, Lock, Plus, ShieldAlert, Trash2, Video } from 'lucide-react'
 import styles from '@/components/staff/Staff.module.css'
+import ProHistory from '@/components/checkin/ProHistory'
 import Button from '@/components/ui/Button'
 import Field from '@/components/ui/Field'
 import Tag from '@/components/ui/Tag'
@@ -24,7 +25,7 @@ export default function ProConsultation() {
     let alive = true
     proConsultation(pro.id, appointmentId)
       .then((d) => alive && setLoaded(d))
-      .catch(() => alive && setLoaded({ appt: null, results: null, note: '' }))
+      .catch(() => alive && setLoaded({ appt: null, results: null, checkins: [], scores: [], note: '' }))
     return () => {
       alive = false
     }
@@ -113,7 +114,15 @@ function ConsultationView({ pro, data, reload }) {
                   <Video size={18} strokeWidth={2} aria-hidden="true" />
                   {t('consult.join')}
                 </Button>
-                <button type="button" className={styles.miniButton} onClick={() => proMark(appt, 'no_show').then(reload).catch(() => setFailed(true))}>
+                <button
+                  type="button"
+                  className={styles.miniButton}
+                  onClick={() =>
+                    proMark(appt, 'no_show')
+                      .then(reload)
+                      .catch(() => setFailed(true))
+                  }
+                >
                   {t('consult.noShow')}
                 </button>
               </div>
@@ -139,7 +148,12 @@ function ConsultationView({ pro, data, reload }) {
                     onChange={(e) => (setSteps(steps.map((x, j) => (j === i ? e.target.value : x))), setSent(false))}
                   />
                   {steps.length > 1 && (
-                    <button type="button" className={styles.iconButton} aria-label={t('consult.removeStep', { n: i + 1 })} onClick={() => setSteps(steps.filter((_, j) => j !== i))}>
+                    <button
+                      type="button"
+                      className={styles.iconButton}
+                      aria-label={t('consult.removeStep', { n: i + 1 })}
+                      onClick={() => setSteps(steps.filter((_, j) => j !== i))}
+                    >
                       <Trash2 size={16} strokeWidth={2} aria-hidden="true" />
                     </button>
                   )}
@@ -189,7 +203,11 @@ function ConsultationView({ pro, data, reload }) {
               rows={4}
               value={note}
               onChange={(e) => (setNote(e.target.value), setNoteSaved(false))}
-              onBlur={() => proSaveNote(pro.id, appt.id, note).then(() => setNoteSaved(true)).catch(() => setFailed(true))}
+              onBlur={() =>
+                proSaveNote(pro.id, appt.id, note)
+                  .then(() => setNoteSaved(true))
+                  .catch(() => setFailed(true))
+              }
             />
             {noteSaved && (
               <span className={styles.ok} role="status">
@@ -204,7 +222,11 @@ function ConsultationView({ pro, data, reload }) {
             <h2 className={styles.dayTitle}>{t('consult.results')}</h2>
             {results ? (
               <>
-                <p className={styles.small}>{t('consult.checkedOn', { date: new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long' }).format(new Date(results.createdAt)) })}</p>
+                <p className={styles.small}>
+                  {t('consult.checkedOn', {
+                    date: new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long' }).format(new Date(results.createdAt)),
+                  })}
+                </p>
                 <div className={styles.scoreLine}>
                   <span className={styles.statValue}>{results.score}</span>
                   <span>
@@ -241,6 +263,7 @@ function ConsultationView({ pro, data, reload }) {
               <p className={styles.muted}>{t('consult.resultsNotShared')}</p>
             )}
           </section>
+          {results && <ProHistory checkins={data.checkins} scores={data.scores} />}
           <p className={styles.guide}>
             <ShieldAlert size={18} strokeWidth={2} aria-hidden="true" />
             {t('consult.safety')}

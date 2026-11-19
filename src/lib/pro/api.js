@@ -45,6 +45,24 @@ export function sharedResults(storage, appt) {
   return { score: r.score, band: r.band, pillars: r.pillars, measures: r.measures, priorities: r.priorities, createdAt: latest.createdAt }
 }
 
+/** The member's daily check-ins from the 60 days before the consultation, only when shared. */
+export function sharedCheckins(storage, appt) {
+  if (!appt?.shareResults) return []
+  const start = new Date(new Date(appt.startsAt).getTime() - 60 * 86_400_000).toISOString().slice(0, 10)
+  return read(storage, `ld.checkins.${appt.userId}`, [])
+    .filter((c) => c.date >= start)
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+}
+
+/** Living Score over time (oldest first), only when shared. */
+export function sharedScores(storage, appt) {
+  if (!appt?.shareResults) return []
+  return read(storage, `ld.hc.results.${appt.userId}`, [])
+    .filter((r) => typeof r?.results?.score === 'number')
+    .map((r) => ({ score: r.results.score, band: r.results.band, createdAt: r.createdAt }))
+    .reverse()
+}
+
 /** Summary and next steps: saved on the appointment, so the member sees them. */
 export function saveSummary(storage, appt, { summary, nextSteps, followUp }) {
   const k = `ld.appointments.${appt.userId}`
@@ -54,7 +72,11 @@ export function saveSummary(storage, appt, { summary, nextSteps, followUp }) {
     followUp: followUp || null,
     writtenAt: new Date().toISOString(),
   }
-  write(storage, k, read(storage, k, []).map((a) => (a.id === appt.id ? { ...a, summary: clean, status: 'completed' } : a)))
+  write(
+    storage,
+    k,
+    read(storage, k, []).map((a) => (a.id === appt.id ? { ...a, summary: clean, status: 'completed' } : a)),
+  )
   return clean
 }
 
@@ -67,5 +89,9 @@ export function saveNote(storage, proId, apptId, text) {
 
 export function setStatus(storage, appt, status) {
   const k = `ld.appointments.${appt.userId}`
-  write(storage, k, read(storage, k, []).map((a) => (a.id === appt.id ? { ...a, status } : a)))
+  write(
+    storage,
+    k,
+    read(storage, k, []).map((a) => (a.id === appt.id ? { ...a, status } : a)),
+  )
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { GlassWater, ScanLine, Video } from 'lucide-react'
+import CheckinCard from '@/components/checkin/CheckinCard'
 import SimpleHome from '@/components/simple/SimpleHome'
 import SimplePrompt from '@/components/simple/SimplePrompt'
 import GettingStarted from '@/components/dashboard/GettingStarted'
@@ -95,6 +96,8 @@ export default function Dashboard() {
           </Button>
         </div>
       </header>
+
+      <CheckinCard userId={user.id} />
 
       <div className={styles.rowA}>
         <ScoreCard record={dash.record} now={now} />

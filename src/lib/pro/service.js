@@ -6,7 +6,8 @@
 import { appointmentFromRow } from '@/lib/care/appointments'
 import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 import { unwrap } from '@/lib/serverError'
-import { appointmentsFor, findAppointment, loadNote, saveNote, saveSummary, setStatus, sharedResults } from './api'
+import { appointmentsFor, findAppointment, loadNote, saveNote, saveSummary, setStatus, sharedCheckins, sharedResults, sharedScores } from './api'
+import { fromRow } from '@/lib/checkin/checkins'
 import { loadSchedule, saveSchedule } from './schedule'
 
 const remote = isSupabaseConfigured
@@ -14,25 +15,38 @@ const local = () => window.localStorage
 
 export async function proAppointments(proId) {
   if (!remote) return appointmentsFor(local(), proId)
-  return unwrap(await supabase.from('appointments').select('*, consultation_summaries(*)').eq('professional_id', proId).order('starts_at', { ascending: true })).map(appointmentFromRow)
+  return unwrap(
+    await supabase.from('appointments').select('*, consultation_summaries(*)').eq('professional_id', proId).order('starts_at', { ascending: true }),
+  ).map(appointmentFromRow)
 }
 
 /** The consultation, the member's shared results (if any) and the private note, together. */
 export async function proConsultation(proId, id) {
   if (!remote) {
     const appt = findAppointment(local(), proId, id)
-    return { appt, results: sharedResults(local(), appt), note: appt ? loadNote(local(), proId, id) : '' }
+    return {
+      appt,
+      results: sharedResults(local(), appt),
+      checkins: sharedCheckins(local(), appt),
+      scores: sharedScores(local(), appt),
+      note: appt ? loadNote(local(), proId, id) : '',
+    }
   }
   const row = unwrap(await supabase.from('appointments').select('*, consultation_summaries(*)').eq('id', id).eq('professional_id', proId).maybeSingle())
-  if (!row) return { appt: null, results: null, note: '' }
-  const [shared, note] = await Promise.all([
+  if (!row) return { appt: null, results: null, checkins: [], scores: [], note: '' }
+  const [shared, note, checkins, scores] = await Promise.all([
     supabase.from('shared_results').select('*').eq('appointment_id', id).maybeSingle(),
     supabase.from('professional_notes').select('note').eq('appointment_id', id).maybeSingle(),
+    // Before migration 0014 these views don't exist yet: the page still works without them
+    supabase.from('shared_checkins').select('*').eq('appointment_id', id).order('day', { ascending: false }),
+    supabase.from('shared_score_history').select('*').eq('appointment_id', id).order('created_at', { ascending: true }),
   ])
   const r = shared.data
   return {
     appt: appointmentFromRow(row),
     results: r ? { score: r.score, band: r.band, pillars: r.pillars, measures: r.measures, priorities: r.priorities, createdAt: r.created_at } : null,
+    checkins: (checkins.data ?? []).map(fromRow),
+    scores: (scores.data ?? []).map((x) => ({ score: x.score, band: x.band, createdAt: x.created_at })),
     note: note.data?.note ?? '',
   }
 }
@@ -60,7 +74,11 @@ export async function proLoadSchedule(pro) {
 
 export async function proSaveSchedule(proId, { hours, daysOff }) {
   if (!remote) return saveSchedule(proId, { hours, daysOff })
-  unwrap(await supabase.from('professional_schedules').upsert({ professional_id: proId, hours, days_off: [...new Set(daysOff)].sort(), updated_at: new Date().toISOString() }))
+  unwrap(
+    await supabase
+      .from('professional_schedules')
+      .upsert({ professional_id: proId, hours, days_off: [...new Set(daysOff)].sort(), updated_at: new Date().toISOString() }),
+  )
 }
 
 /** Everyone's saved hours and days off, for showing bookable times to members. */
