@@ -1,3 +1,4 @@
+import { RECIPES_BY_ID } from '@/data/recipes'
 import { describe, expect, it } from 'vitest'
 import { FOODS } from '@/data/foods'
 import { RECIPES } from '@/data/recipes'
@@ -21,8 +22,8 @@ describe('diary maths', () => {
       { source: 'food', id: 'grilled-chicken', portion: 1.5 },
       { source: 'recipe', id: 'orange-groundnuts', portion: 1 },
     ])
-    expect(t.kcal).toBe(Math.round(350 + 250 * 1.5 + 220))
-    expect(t.veg).toBe(1.5)
+    expect(t.kcal).toBe(Math.round(350 + 250 * 1.5 + RECIPES_BY_ID['orange-groundnuts'].kcal))
+    expect(t.veg).toBe(2) // jollof 0.5 + orange and groundnuts 1.5
   })
 
   it('ignores unknown items', () => {
@@ -45,7 +46,13 @@ describe('diary maths', () => {
 
   it('keeps photos for the newest 20 entries and drops old days', () => {
     const today = new Date(2026, 9, 1)
-    const entries = Array.from({ length: 25 }, (_, i) => ({ id: `e${i}`, date: '2026-10-01', time: `2026-10-01T${String(i).padStart(2, '0')}:00`, photo: 'x', items: [] }))
+    const entries = Array.from({ length: 25 }, (_, i) => ({
+      id: `e${i}`,
+      date: '2026-10-01',
+      time: `2026-10-01T${String(i).padStart(2, '0')}:00`,
+      photo: 'x',
+      items: [],
+    }))
     entries.push({ id: 'old', date: '2026-06-01', time: '2026-06-01T10:00', photo: 'x', items: [] })
     const trimmed = trimDiary(entries, today)
     expect(trimmed).toHaveLength(25)

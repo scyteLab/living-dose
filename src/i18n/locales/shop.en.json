@@ -69,7 +69,9 @@
     "notFound": "We couldn't find that product.",
     "perUnit": "per {{unit}}",
     "delivery": "Delivered chilled where needed. Pay on delivery available.",
-    "payOnDelivery": "Pay on delivery"
+    "payOnDelivery": "Pay on delivery",
+    "inside": "What's inside",
+    "insideMeta": "{{kcal}} kcal · {{region}}"
   },
   "basket": {
     "docTitle": "Your basket",

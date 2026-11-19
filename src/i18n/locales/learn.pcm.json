@@ -16,7 +16,11 @@
     "habits": "Habits",
     "pregnancy": "Pregnancy"
   },
-  "kinds": { "all": "Everything", "article": "Articles", "recipe": "Recipes" },
+  "kinds": {
+    "all": "Everything",
+    "article": "Articles",
+    "recipe": "Recipes"
+  },
   "kindLabel": "Show",
   "count_one": "{{count}} result",
   "count_other": "{{count}} results",
@@ -62,20 +66,42 @@
     "estimates": "Nutrition numbers na estimate for one serving.",
     "notFound": "We no see that recipe.",
     "contains": "E get: {{list}}",
-    "nutrients": { "kcal": "Energy", "protein": "Protein", "carbs": "Carbohydrate", "fat": "Fat", "fibre": "Fibre", "salt": "Salt" },
+    "nutrients": {
+      "kcal": "Energy",
+      "protein": "Protein",
+      "carbs": "Carbohydrate",
+      "fat": "Fat",
+      "fibre": "Fibre",
+      "salt": "Salt"
+    },
     "moreServings": "More servings",
     "fewerServings": "Less servings",
     "moreRecipes": "More recipes"
   },
-  "meals": { "breakfast": "Breakfast", "lunch": "Lunch", "dinner": "Dinner", "snack": "Small chop" },
+  "meals": {
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "snack": "Small chop"
+  },
   "save": "Save",
   "savedLabel": "E don save",
   "saveAria": "Save {{title}}",
   "unsaveAria": "Remove {{title}} from saved",
   "share": "Share",
   "copied": "Link don copy",
-  "helpful": { "question": "E help you?", "yes": "Yes", "no": "No", "thanks": "Thank you for telling us." },
-  "tags": { "diabetic": "Good for blood sugar", "heart": "Good for heart", "protein": "Protein plenty", "pregnancy": "Safe for pregnancy" },
+  "helpful": {
+    "question": "E help you?",
+    "yes": "Yes",
+    "no": "No",
+    "thanks": "Thank you for telling us."
+  },
+  "tags": {
+    "diabetic": "Good for blood sugar",
+    "heart": "Good for heart",
+    "protein": "Protein plenty",
+    "pregnancy": "Safe for pregnancy"
+  },
   "savedPage": {
     "docTitle": "Saved",
     "title": "Saved",
@@ -83,5 +109,15 @@
     "empty": "You never save anything. Press Save for any article or recipe make e stay here.",
     "browse": "Check Learn"
   },
-  "metaDescription": "Practical health guides and Naija recipes: less salt, more vegetable, better sleep, blood sugar, pregnancy and more."
+  "metaDescription": "Practical health guides and Naija recipes: less salt, more vegetable, better sleep, blood sugar, pregnancy and more.",
+  "regions": {
+    "south-west": "South-West",
+    "south-east": "South-East",
+    "south-south": "South-South",
+    "north": "North",
+    "nationwide": "Everywhere for Naija",
+    "modern": "Modern"
+  },
+  "regionLabel": "From",
+  "regionAll": "All regions"
 }

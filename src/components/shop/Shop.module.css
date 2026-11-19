@@ -89,18 +89,48 @@
   opacity: 0.35;
 }
 
-.tile_produce { background: var(--leaf-tint); color: var(--leaf-deep); }
-.tile_produce .tileShape { background: var(--leaf); }
-.tile_grains { background: #fdf5dd; color: #8a6400; }
-.tile_grains .tileShape { background: var(--sun); }
-.tile_protein { background: var(--sky-tint); color: var(--sky-deep); }
-.tile_protein .tileShape { background: var(--sky); }
-.tile_pantry { background: var(--ember-tint); color: var(--ember-deep); }
-.tile_pantry .tileShape { background: var(--ember); }
-.tile_dairy { background: var(--plum-tint); color: var(--plum); }
-.tile_dairy .tileShape { background: #a58fd3; }
-.tile_packs { background: var(--ink); color: var(--oat); }
-.tile_packs .tileShape { background: var(--leaf); }
+.tile_produce {
+  background: var(--leaf-tint);
+  color: var(--leaf-deep);
+}
+.tile_produce .tileShape {
+  background: var(--leaf);
+}
+.tile_grains {
+  background: #fdf5dd;
+  color: #8a6400;
+}
+.tile_grains .tileShape {
+  background: var(--sun);
+}
+.tile_protein {
+  background: var(--sky-tint);
+  color: var(--sky-deep);
+}
+.tile_protein .tileShape {
+  background: var(--sky);
+}
+.tile_pantry {
+  background: var(--ember-tint);
+  color: var(--ember-deep);
+}
+.tile_pantry .tileShape {
+  background: var(--ember);
+}
+.tile_dairy {
+  background: var(--plum-tint);
+  color: var(--plum);
+}
+.tile_dairy .tileShape {
+  background: #a58fd3;
+}
+.tile_packs {
+  background: var(--ink);
+  color: var(--oat);
+}
+.tile_packs .tileShape {
+  background: var(--leaf);
+}
 
 .tile_sm {
   width: 64px;
@@ -1170,4 +1200,31 @@
     position: sticky;
     top: calc(var(--nav-height) + var(--space-4));
   }
+}
+
+.insideList {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.insideList li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.insideList a {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.insideMeta {
+  font-size: var(--text-sm);
+  color: var(--moss);
 }

@@ -9,11 +9,20 @@ export function articleText(a) {
 /** Minutes to read at about 200 words a minute, never less than 1. */
 export const readingMinutes = (a) => Math.max(1, Math.round(articleText(a).split(/\s+/).length / 200))
 
-const RECIPE_TOPIC = (r) => (r.tags.includes('diabetic') ? 'diabetes' : r.tags.includes('heart') ? 'heart' : r.tags.includes('pregnancy') ? 'pregnancy' : 'eating')
+const RECIPE_TOPIC = (r) =>
+  r.tags.includes('diabetic') ? 'diabetes' : r.tags.includes('heart') ? 'heart' : r.tags.includes('pregnancy') ? 'pregnancy' : 'eating'
 
 /** One list of everything in Learn, articles and recipes, in a shared shape. */
 export const LIBRARY = [
-  ...ARTICLES.map((a) => ({ kind: 'article', id: a.slug, title: a.title, summary: a.summary, topic: a.topic, minutes: readingMinutes(a), text: articleText(a).toLowerCase() })),
+  ...ARTICLES.map((a) => ({
+    kind: 'article',
+    id: a.slug,
+    title: a.title,
+    summary: a.summary,
+    topic: a.topic,
+    minutes: readingMinutes(a),
+    text: articleText(a).toLowerCase(),
+  })),
   ...RECIPES.map((r) => ({
     kind: 'recipe',
     id: r.id,
@@ -24,15 +33,20 @@ export const LIBRARY = [
     minutes: r.minutes,
     kcal: r.kcal,
     tags: r.tags,
-    text: `${r.name} ${r.ingredients.map((i) => i.name).join(' ')} ${r.steps.join(' ')}`.toLowerCase(),
+    region: r.region,
+    text: `${r.name} ${r.region.replace('-', ' ')} ${r.ingredients.map((i) => i.name).join(' ')} ${r.steps.join(' ')}`.toLowerCase(),
   })),
 ]
 
 /** Search and filter the library. Every word must match somewhere. */
-export function searchLibrary({ query = '', topic = 'all', kind = 'all' } = {}) {
+export function searchLibrary({ query = '', topic = 'all', kind = 'all', region = 'all' } = {}) {
   const words = query.toLowerCase().split(/\s+/).filter(Boolean)
   return LIBRARY.filter(
-    (item) => (topic === 'all' || item.topic === topic) && (kind === 'all' || item.kind === kind) && words.every((w) => item.text.includes(w) || item.title.toLowerCase().includes(w)),
+    (item) =>
+      (topic === 'all' || item.topic === topic) &&
+      (kind === 'all' || item.kind === kind) &&
+      (region === 'all' || item.region === region) &&
+      words.every((w) => item.text.includes(w) || item.title.toLowerCase().includes(w)),
   )
 }
 

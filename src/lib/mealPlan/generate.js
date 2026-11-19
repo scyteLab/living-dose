@@ -145,7 +145,7 @@ export function varietyOf(days) {
  * Other recipes that could replace a meal, best first. With the week's counts,
  * meals not yet in the week come first, then a different base from the current one.
  */
-export function alternatives({ slot, currentId, settings, targets, counts = {}, limit = 5 }) {
+export function alternatives({ slot, currentId, settings, targets, counts = {}, limit = 8 }) {
   const currentBase = baseOf(RECIPES_BY_ID[currentId])
   return eligible(slot, settings, targets.focus)
     .filter((r) => r.id !== currentId)

@@ -22,7 +22,7 @@ describe('recipe library', () => {
       expect(ids.has(r.id)).toBe(false)
       ids.add(r.id)
       expect(['breakfast', 'lunch', 'dinner', 'snack']).toContain(r.meal)
-      expect(r.kcal).toBeGreaterThan(100)
+      expect(r.kcal).toBeGreaterThan(r.meal === 'snack' ? 40 : 190)
       // Energy from macros should roughly match the stated calories (within 20%)
       const fromMacros = r.protein * 4 + r.carbs * 4 + r.fat * 9
       expect(Math.abs(fromMacros - r.kcal) / r.kcal).toBeLessThan(0.2)

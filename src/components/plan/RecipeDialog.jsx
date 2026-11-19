@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Clock, Minus, Plus } from 'lucide-react'
+import { Clock, MapPin, Minus, Plus } from 'lucide-react'
 import Dialog from '@/components/ui/Dialog'
 import Tag from '@/components/ui/Tag'
 import { RECIPES_BY_ID } from '@/data/recipes'
@@ -20,6 +20,7 @@ const TAG_TONE = { diabetic: 'sky', heart: 'leaf', protein: 'ember', pregnancy: 
 /** Full recipe: nutrition for the planned portion, ingredients scaled to the number of servings, and the method. */
 export default function RecipeDialog({ meal, household, onClose }) {
   const { t } = useTranslation('plan')
+  const tl = useTranslation('learn').t
   const [servings, setServings] = useState(household)
   const r = meal ? RECIPES_BY_ID[meal.recipeId] : null
 
@@ -31,6 +32,10 @@ export default function RecipeDialog({ meal, household, onClose }) {
             <span className={styles.metaIcon}>
               <Clock size={16} strokeWidth={2} aria-hidden="true" />
               {r.minutes ? t('recipe.time', { count: r.minutes }) : t('noCook')}
+            </span>
+            <span className={styles.metaIcon}>
+              <MapPin size={16} strokeWidth={2} aria-hidden="true" />
+              {tl(`regions.${r.region}`)}
             </span>
             {r.tags.map((tag) => (
               <Tag key={tag} tone={TAG_TONE[tag]}>
@@ -84,9 +89,7 @@ export default function RecipeDialog({ meal, household, onClose }) {
               })}
             </ul>
             {r.contains.length > 0 && (
-              <p className={styles.contains}>
-                {t('recipe.contains', { list: r.contains.map((c) => t(`recipe.containsNames.${c}`)).join(', ') })}
-              </p>
+              <p className={styles.contains}>{t('recipe.contains', { list: r.contains.map((c) => t(`recipe.containsNames.${c}`)).join(', ') })}</p>
             )}
           </section>
 

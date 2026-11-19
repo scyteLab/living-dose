@@ -58,14 +58,20 @@
     "about": "About this product",
     "diet": "E good for",
     "trace": "From farm reach your door",
-    "traceSteps": { "farm": "Dem plant am and harvest am", "hub": "Dem check am and pack am", "door": "E reach your door" },
+    "traceSteps": {
+      "farm": "Dem plant am and harvest am",
+      "hub": "Dem check am and pack am",
+      "door": "E reach your door"
+    },
     "hub": "Living Dose hub, Lagos",
     "you": "The time wey you choose",
     "related": "You fit still need",
     "notFound": "We no see that product.",
     "perUnit": "for one {{unit}}",
     "delivery": "We dey deliver am cold where e need am. You fit pay when e reach.",
-    "payOnDelivery": "Pay when e reach"
+    "payOnDelivery": "Pay when e reach",
+    "inside": "Wetin dey inside",
+    "insideMeta": "{{kcal}} kcal · {{region}}"
   },
   "basket": {
     "docTitle": "Your basket",
@@ -107,7 +113,11 @@
     "deliveryNote": "We dey deliver for {{states}} for now. More states dey come.",
     "slotTitle": "Delivery time",
     "slotHint": "We dey pack fresh food for the morning of delivery.",
-    "windows": { "morning": "Morning, 9 AM reach 12 PM", "afternoon": "Afternoon, 12 reach 4 PM", "evening": "Evening, 4 reach 7 PM" },
+    "windows": {
+      "morning": "Morning, 9 AM reach 12 PM",
+      "afternoon": "Afternoon, 12 reach 4 PM",
+      "evening": "Evening, 4 reach 7 PM"
+    },
     "paymentTitle": "Payment",
     "payOnDelivery": "Pay when e reach",
     "payOnDeliveryBody": "Pay the rider with cash, transfer or card when your order reach. No payment now.",
@@ -138,7 +148,13 @@
     "number": "Order number",
     "placedOn": "You order am {{date}}",
     "deliveryOn": "Delivery: {{date}}, {{window}}",
-    "status": { "placed": "Order don enter", "packed": "Dem don pack am", "onTheWay": "E dey road", "delivered": "E don reach", "cancelled": "Dem cancel am" },
+    "status": {
+      "placed": "Order don enter",
+      "packed": "Dem don pack am",
+      "onTheWay": "E dey road",
+      "delivered": "E don reach",
+      "cancelled": "Dem cancel am"
+    },
     "statusHint": {
       "placed": "We don receive your order.",
       "packed": "We dey pack fresh food for the morning of delivery.",

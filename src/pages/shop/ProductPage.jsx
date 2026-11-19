@@ -8,6 +8,7 @@ import styles from '@/components/shop/Shop.module.css'
 import PageIntro from '@/components/page/PageIntro'
 import Tag from '@/components/ui/Tag'
 import { PRODUCTS, PRODUCTS_BY_ID } from '@/data/products'
+import { RECIPES_BY_ID } from '@/data/recipes'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { formatPrice } from '@/lib/shop/money'
 
@@ -16,6 +17,7 @@ const TAG_TONE = { diabetic: 'sky', heart: 'leaf', pregnancy: 'plum', protein: '
 export default function ProductPage() {
   const { productId } = useParams()
   const { t } = useTranslation('shop')
+  const tl = useTranslation('learn').t
   const product = PRODUCTS_BY_ID[productId]
   useDocumentTitle(product?.name ?? t('docTitle'), product ? `${product.name} (${product.unit}). ${product.description}` : undefined)
 
@@ -64,6 +66,25 @@ export default function ProductPage() {
             </h2>
             <p>{product.description}</p>
           </section>
+
+          {product.recipeIds?.length > 0 && (
+            <section className={styles.productSection} aria-labelledby="inside-title">
+              <h2 id="inside-title" className={styles.subTitle}>
+                {t('product.inside')}
+              </h2>
+              <ul className={styles.insideList}>
+                {product.recipeIds
+                  .map((id) => RECIPES_BY_ID[id])
+                  .filter(Boolean)
+                  .map((r) => (
+                    <li key={r.id}>
+                      <Link to={`/learn/recipes/${r.id}`}>{r.name}</Link>
+                      <span className={styles.insideMeta}>{t('product.insideMeta', { kcal: r.kcal, region: tl(`regions.${r.region}`) })}</span>
+                    </li>
+                  ))}
+              </ul>
+            </section>
+          )}
 
           {product.tags.length > 0 && (
             <section className={styles.productSection} aria-labelledby="diet-title">

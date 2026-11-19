@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ArrowLeft, Clock, Minus, Plus, ShoppingBasket } from 'lucide-react'
+import { ArrowLeft, Clock, MapPin, Minus, Plus, ShoppingBasket } from 'lucide-react'
 import { Helpful, SaveButton, ShareButton } from '@/components/learn/Actions'
 import Cover from '@/components/learn/Cover'
 import ItemCard from '@/components/learn/ItemCard'
@@ -31,7 +31,10 @@ export default function RecipePage() {
   const { t } = useTranslation('learn')
   const tp = useTranslation('plan').t
   const r = RECIPES_BY_ID[recipeId]
-  useDocumentTitle(r?.name ?? t('docTitle'), r ? `${r.name}: a ${r.minutes ? `${r.minutes}-minute ` : ''}recipe with about ${r.kcal} kcal per serving, from Living Dose.` : undefined)
+  useDocumentTitle(
+    r?.name ?? t('docTitle'),
+    r ? `${r.name}: a ${r.minutes ? `${r.minutes}-minute ` : ''}recipe with about ${r.kcal} kcal per serving, from Living Dose.` : undefined,
+  )
   const { addMany } = useCart()
   const [servings, setServings] = useState(2)
   const [added, setAdded] = useState(null)
@@ -66,6 +69,10 @@ export default function RecipePage() {
               <span className={styles.metaIcon}>
                 <Clock size={16} strokeWidth={2} aria-hidden="true" />
                 {r.minutes ? t('minutesCook', { count: r.minutes }) : t('noCook')}
+              </span>
+              <span className={styles.metaIcon}>
+                <MapPin size={16} strokeWidth={2} aria-hidden="true" />
+                {t(`regions.${r.region}`)}
               </span>
               {r.batch && <span>{tp('batch')}</span>}
             </div>

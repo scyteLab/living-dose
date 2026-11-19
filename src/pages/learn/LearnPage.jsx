@@ -9,6 +9,7 @@ import { TOPICS } from '@/data/articles'
 import useAuth from '@/hooks/useAuth'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { loadLatestResult } from '@/lib/healthCheck/storage'
+import { REGIONS } from '@/data/recipes'
 import { articlesForPriorities, LIBRARY, searchLibrary } from '@/lib/learn/content'
 import { loadSaved } from '@/lib/learn/saved'
 
@@ -26,6 +27,7 @@ export default function LearnPage() {
   const q = params.get('q') ?? ''
   const topic = TOPICS.includes(params.get('topic')) ? params.get('topic') : 'all'
   const kind = KINDS.includes(params.get('kind')) ? params.get('kind') : 'all'
+  const region = kind === 'recipe' && REGIONS.includes(params.get('region')) ? params.get('region') : 'all'
   const query = useDeferredValue(q)
 
   useEffect(() => {
@@ -52,8 +54,8 @@ export default function LearnPage() {
     setParams(next, { replace: true })
   }
 
-  const filtering = Boolean(q) || topic !== 'all' || kind !== 'all'
-  const results = searchLibrary({ query, topic, kind })
+  const filtering = Boolean(q) || topic !== 'all' || kind !== 'all' || region !== 'all'
+  const results = searchLibrary({ query, topic, kind, region })
   const featured = !filtering ? LIBRARY.find((i) => i.kind === 'article') : null
   const list = featured ? results.filter((i) => i !== featured && !forYou.includes(i)) : results
 
@@ -70,7 +72,14 @@ export default function LearnPage() {
               {t('searchLabel')}
             </label>
             <Search className={styles.searchIcon} size={20} strokeWidth={2} aria-hidden="true" />
-            <input id={searchId} type="search" placeholder={t('searchPlaceholder')} value={q} onChange={(e) => update({ q: e.target.value })} autoComplete="off" />
+            <input
+              id={searchId}
+              type="search"
+              placeholder={t('searchPlaceholder')}
+              value={q}
+              onChange={(e) => update({ q: e.target.value })}
+              autoComplete="off"
+            />
             {q && (
               <button type="button" className={styles.searchClear} onClick={() => update({ q: '' })} aria-label={t('clear')}>
                 <X size={18} strokeWidth={2} aria-hidden="true" />
@@ -86,7 +95,13 @@ export default function LearnPage() {
 
       <nav className={styles.topics} aria-label={t('topics.all')}>
         {['all', ...TOPICS].map((tp) => (
-          <button key={tp} type="button" aria-pressed={topic === tp} className={clsx(styles.topic, topic === tp && styles.topicOn)} onClick={() => update({ topic: tp })}>
+          <button
+            key={tp}
+            type="button"
+            aria-pressed={topic === tp}
+            className={clsx(styles.topic, topic === tp && styles.topicOn)}
+            onClick={() => update({ topic: tp })}
+          >
             {t(`topics.${tp}`)}
           </button>
         ))}
@@ -94,11 +109,33 @@ export default function LearnPage() {
 
       <div className={styles.kinds} role="group" aria-label={t('kindLabel')}>
         {KINDS.map((k) => (
-          <button key={k} type="button" aria-pressed={kind === k} className={clsx(styles.kindChip, kind === k && styles.kindOn)} onClick={() => update({ kind: k })}>
+          <button
+            key={k}
+            type="button"
+            aria-pressed={kind === k}
+            className={clsx(styles.kindChip, kind === k && styles.kindOn)}
+            onClick={() => update({ kind: k, region: k === 'recipe' ? region : null })}
+          >
             {t(`kinds.${k}`)}
           </button>
         ))}
       </div>
+
+      {kind === 'recipe' && (
+        <div className={styles.kinds} role="group" aria-label={t('regionLabel')}>
+          {['all', ...REGIONS].map((rg) => (
+            <button
+              key={rg}
+              type="button"
+              aria-pressed={region === rg}
+              className={clsx(styles.kindChip, region === rg && styles.kindOn)}
+              onClick={() => update({ region: rg })}
+            >
+              {rg === 'all' ? t('regionAll') : t(`regions.${rg}`)}
+            </button>
+          ))}
+        </div>
+      )}
 
       {!filtering && forYou.length > 0 && (
         <section className={styles.forYou} aria-labelledby="foryou-h">
