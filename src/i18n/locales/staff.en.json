@@ -203,10 +203,11 @@
   "actionError": "That change didn't go through. The list has been refreshed; please try again.",
   "waitlist": {
     "title": "Waitlist and messages",
-    "intro": "Everyone who joined the Shuttle Meds waitlist, and messages sent from the Contact page. Download the list to share demand by state with partners.",
+    "intro": "Everyone who joined the Shuttle Meds waitlist, organisations asking for Shuttle Meds at their place, and messages from the Contact page. Download the lists to show demand to partners.",
     "tabsLabel": "Show",
     "tabs": {
       "waitlist": "Shuttle Meds waitlist ({{count}})",
+      "orgs": "Requests from places ({{count}})",
       "messages": "Contact messages ({{count}})"
     },
     "download": "Download CSV",
@@ -232,7 +233,13 @@
       "interests": "Interested in",
       "who": "For",
       "topic": "Topic",
-      "message": "Message"
-    }
+      "message": "Message",
+      "org": "Organisation",
+      "place": "Type of place",
+      "size": "People",
+      "needs": "Needs"
+    },
+    "noOrgs": "No organisation has asked for Shuttle Meds yet.",
+    "byPlace": "Type of place"
   }
 }

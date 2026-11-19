@@ -6,7 +6,7 @@ import Button from '@/components/ui/Button'
 import styles from '@/components/staff/Staff.module.css'
 import useStaffData from '@/components/staff/useStaffData'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
-import { staffInbox, summarise, toCsv } from '@/lib/staff/waitlist'
+import { orgsToCsv, staffInbox, summarise, summariseOrgs, toCsv } from '@/lib/staff/waitlist'
 
 function Bars({ title, rows, label }) {
   const max = Math.max(1, ...rows.map((r) => r.count))
@@ -64,18 +64,35 @@ export default function StaffWaitlist() {
             {t('waitlist.download')}
           </Button>
         )}
+        {tab === 'orgs' && data.orgs.length > 0 && (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              download(
+                `shuttle-meds-requests-${new Date().toISOString().slice(0, 10)}.csv`,
+                orgsToCsv(data.orgs, (x) => tShuttle(`settings.${x}`, { defaultValue: x })),
+              )
+            }
+          >
+            <Download size={16} strokeWidth={2} aria-hidden="true" />
+            {t('waitlist.download')}
+          </Button>
+        )}
       </div>
       <p className={styles.muted}>{t('waitlist.intro')}</p>
 
       <div className={styles.filters} role="group" aria-label={t('waitlist.tabsLabel')}>
-        {['waitlist', 'messages'].map((id) => (
+        {['waitlist', 'orgs', 'messages'].map((id) => (
           <button key={id} type="button" className={clsx(styles.filter, tab === id && styles.filterOn)} aria-pressed={tab === id} onClick={() => setTab(id)}>
-            {t(`waitlist.tabs.${id}`, { count: id === 'waitlist' ? data.waitlist.length : data.messages.length })}
+            {t(`waitlist.tabs.${id}`, { count: data[id].length })}
           </button>
         ))}
       </div>
 
-      {tab === 'waitlist' ? (
+      {tab === 'orgs' ? (
+        <OrgRequests orgs={data.orgs} fmt={fmt} />
+      ) : tab === 'waitlist' ? (
         data.waitlist.length === 0 ? (
           <p className={styles.empty}>{t('waitlist.empty')}</p>
         ) : (
@@ -178,5 +195,55 @@ export default function StaffWaitlist() {
         </div>
       )}
     </div>
+  )
+}
+
+/** "Bring Shuttle Meds to your place" requests from organisations. */
+function OrgRequests({ orgs, fmt }) {
+  const { t } = useTranslation('staff')
+  const tShuttle = useTranslation('shuttle').t
+  if (orgs.length === 0) return <p className={styles.empty}>{t('waitlist.noOrgs')}</p>
+  const sum = summariseOrgs(orgs)
+  return (
+    <>
+      <div className={styles.orgGrid}>
+        <Bars title={t('waitlist.byPlace')} rows={sum.byGroup} label={(k) => tShuttle(`groups.${k}.title`, { defaultValue: k })} />
+        <Bars title={t('waitlist.byState')} rows={sum.byState.slice(0, 8)} label={(k) => k} />
+      </div>
+      <div className={styles.tableWrap}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th scope="col">{t('waitlist.cols.when')}</th>
+              <th scope="col">{t('waitlist.cols.org')}</th>
+              <th scope="col">{t('waitlist.cols.place')}</th>
+              <th scope="col">{t('waitlist.cols.where')}</th>
+              <th scope="col">{t('waitlist.cols.size')}</th>
+              <th scope="col">{t('waitlist.cols.needs')}</th>
+              <th scope="col">{t('waitlist.cols.message')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {orgs.map((e) => (
+              <tr key={e.id}>
+                <th scope="row">{fmt.format(new Date(e.at))}</th>
+                <td>
+                  <strong>{e.org}</strong>
+                  <br />
+                  <span className={styles.small}>
+                    {e.person} · {e.contact}
+                  </span>
+                </td>
+                <td>{tShuttle(`settings.${e.setting}`, { defaultValue: e.setting })}</td>
+                <td>{[e.state, e.town].filter(Boolean).join(', ')}</td>
+                <td>{e.size ? tShuttle(`org.sizes.${e.size}`, { defaultValue: e.size }) : ''}</td>
+                <td>{e.needs.length ? e.needs.map((n) => tShuttle(`services.${n}.title`)).join(', ') : t('waitlist.everything')}</td>
+                <td style={{ whiteSpace: 'pre-wrap', minWidth: '14rem' }}>{e.message.split('\n\n').slice(1).join('\n\n')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   )
 }

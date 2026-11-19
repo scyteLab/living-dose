@@ -69,3 +69,42 @@ describe('Shuttle Meds waitlist', () => {
     expect(row).toContain('everything')
   })
 })
+
+describe('requests from organisations', () => {
+  it('reads a request and counts by type of place', async () => {
+    const { orgEntry, summariseOrgs, orgsToCsv } = await import('./waitlist')
+    const a = orgEntry({
+      id: 1,
+      created_at: '2026-11-19T10:00:00Z',
+      name: 'Kemi',
+      email: 'kemi@school.ng',
+      message: 'x',
+      details: {
+        org: 'Grace High School',
+        setting: 'secondary',
+        group: 'education',
+        state: 'Ogun',
+        town: 'Abeokuta',
+        size: '200to1000',
+        needs: ['emergency', 'junk'],
+      },
+    })
+    const b = orgEntry({
+      id: 2,
+      created_at: '2026-11-19T11:00:00Z',
+      name: 'Musa',
+      phone: '0803',
+      email: '0803',
+      message: 'y',
+      details: { org: 'Oja Market', setting: 'markets', group: 'community', state: 'Lagos', needs: [] },
+    })
+    expect(a).toMatchObject({ org: 'Grace High School', person: 'Kemi', setting: 'secondary', group: 'education', needs: ['emergency'] })
+    expect(b.contact).toBe('0803')
+    expect(
+      summariseOrgs([a, b])
+        .byGroup.map((g) => g.key)
+        .sort(),
+    ).toEqual(['community', 'education'])
+    expect(orgsToCsv([a], (x) => x.toUpperCase()).split('\n')[1]).toContain('SECONDARY')
+  })
+})

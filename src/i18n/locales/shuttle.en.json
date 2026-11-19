@@ -72,5 +72,77 @@
     "failed": "That didn't go through. Please check your connection and try again.",
     "privacy": "We'll only use these details to tell you about Shuttle Meds.",
     "privacyLink": "Privacy policy"
+  },
+  "whereTitle": "Where Shuttle Meds will serve",
+  "whereBody": "We're bringing care to the places people work, learn, gather and live. These are coming soon: tell us where you'd like us first.",
+  "comingSoon": "Coming soon",
+  "groups": {
+    "workplace": {
+      "title": "Workplaces",
+      "body": "Clinic days on site, staff health checks, and first aid with an ambulance on standby for accidents."
+    },
+    "education": {
+      "title": "Schools and youth",
+      "body": "School health days, first aid at games and tournaments, and a doctor on call for students."
+    },
+    "community": {
+      "title": "Communities",
+      "body": "A mobile clinic on set days, free screenings, and a doctor by phone for remote areas."
+    },
+    "residential": {
+      "title": "Homes and vulnerable groups",
+      "body": "Regular visits for older people, check-ups where it’s hard to reach a clinic, and medicines delivered."
+    },
+    "events": {
+      "title": "Big events",
+      "body": "An ambulance and a first-aid team on site for the whole event."
+    }
+  },
+  "settings": {
+    "offices": "Offices and corporate campuses",
+    "industrial": "Factories, farms and construction sites",
+    "camps": "Mining and oil & gas camps",
+    "primary": "Primary schools",
+    "secondary": "Secondary schools",
+    "universities": "Universities",
+    "sports": "Youth sports camps and tournaments",
+    "villages": "Rural and underserved villages",
+    "worship": "Churches, mosques and community halls",
+    "markets": "Open-air markets and motor parks",
+    "seniors": "Senior living and residential estates",
+    "correctional": "Correctional facilities and shelters",
+    "disaster": "Disaster zones and displacement camps",
+    "concerts": "Concerts",
+    "festivals": "Festivals",
+    "marathons": "Marathons"
+  },
+  "bringCta": "Bring Shuttle Meds to your place",
+  "org": {
+    "title": "Bring Shuttle Meds to your place",
+    "body": "For companies, schools, churches and mosques, markets, estates and event organisers. Tell us about your place and we'll contact you when Shuttle Meds is ready there.",
+    "orgName": "Name of your organisation, place or event",
+    "orgNameError": "Please enter the name.",
+    "person": "Your name",
+    "personError": "Please enter your name.",
+    "contact": "Phone number or email",
+    "contactError": "Please enter a phone number or an email address.",
+    "setting": "What kind of place is it?",
+    "state": "State",
+    "town": "Town or area",
+    "townPlaceholder": "e.g. Ikeja, or Imeko",
+    "size": "Roughly how many people?",
+    "sizes": {
+      "under50": "Under 50",
+      "50to200": "50 to 200",
+      "200to1000": "200 to 1,000",
+      "over1000": "More than 1,000"
+    },
+    "needs": "What would you need?",
+    "message": "Anything else we should know?",
+    "messagePlaceholder": "e.g. dates of the event, number of staff on each shift, distance to the nearest clinic",
+    "submit": "Send our request",
+    "sending": "Sending…",
+    "thanks": "Thank you. We've noted {{org}} and will contact you as soon as Shuttle Meds is ready in your area.",
+    "failed": "That didn't go through. Please check your connection and try again."
   }
 }

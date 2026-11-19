@@ -7,6 +7,7 @@ import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 import { unwrap } from '@/lib/serverError'
 
 export const SHUTTLE_TOPIC = 'shuttle-meds'
+export const ORG_TOPIC = 'shuttle-meds-org'
 export const INTERESTS = ['emergency', 'doctorCall', 'mobileClinic', 'medicines']
 
 /** Older rows only have the message text; read the details back out of it. */
@@ -69,7 +70,36 @@ export function toCsv(entries) {
   return [head, ...rows].map((r) => r.map(csvCell).join(',')).join('\n')
 }
 
-/** { waitlist, messages } newest first. */
+/** One "Bring Shuttle Meds to your place" request. */
+export function orgEntry(row) {
+  const d = row.details ?? row
+  return {
+    id: String(row.id ?? row.at),
+    at: row.created_at ?? row.at,
+    org: d.org ?? '',
+    person: row.name ?? '',
+    contact: row.phone || row.email || row.contact || '',
+    setting: d.setting ?? 'other',
+    group: d.group ?? 'other',
+    state: d.state || 'Other',
+    town: d.town ?? '',
+    size: d.size ?? '',
+    needs: Array.isArray(d.needs) ? d.needs.filter((i) => INTERESTS.includes(i)) : [],
+    message: row.message ?? '',
+  }
+}
+
+export function summariseOrgs(entries) {
+  return { total: entries.length, byGroup: countBy(entries, (e) => e.group), byState: countBy(entries, (e) => e.state) }
+}
+
+export function orgsToCsv(entries, label = (x) => x) {
+  const head = ['Sent', 'Organisation', 'Contact person', 'Phone or email', 'Type of place', 'State', 'Town or area', 'People', 'Needs', 'Message']
+  const rows = entries.map((e) => [e.at, e.org, e.person, e.contact, label(e.setting), e.state, e.town, e.size, e.needs.join('; ') || 'everything', e.message])
+  return [head, ...rows].map((r) => r.map(csvCell).join(',')).join('\n')
+}
+
+/** { waitlist, orgs, messages } newest first. */
 export async function staffInbox() {
   if (!isSupabaseConfigured) {
     let list = []
@@ -78,13 +108,21 @@ export async function staffInbox() {
     } catch {
       /* ignore */
     }
-    return { waitlist: list.map(waitlistEntry).sort((a, b) => (a.at < b.at ? 1 : -1)), messages: [] }
+    let orgs = []
+    try {
+      orgs = JSON.parse(window.localStorage.getItem('ld.shuttle.orgs') ?? '[]')
+    } catch {
+      /* ignore */
+    }
+    const newest = (a, b) => (a.at < b.at ? 1 : -1)
+    return { waitlist: list.map(waitlistEntry).sort(newest), orgs: orgs.map(orgEntry).sort(newest), messages: [] }
   }
   const rows = unwrap(await supabase.from('contact_messages').select('*').order('created_at', { ascending: false }).limit(2000))
   return {
     waitlist: rows.filter((r) => r.topic === SHUTTLE_TOPIC).map(waitlistEntry),
+    orgs: rows.filter((r) => r.topic === ORG_TOPIC).map(orgEntry),
     messages: rows
-      .filter((r) => r.topic !== SHUTTLE_TOPIC)
+      .filter((r) => r.topic !== SHUTTLE_TOPIC && r.topic !== ORG_TOPIC)
       .map((r) => ({ id: String(r.id), at: r.created_at, name: r.name, email: r.email, phone: r.phone, topic: r.topic, message: r.message })),
   }
 }

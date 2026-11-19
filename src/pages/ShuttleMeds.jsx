@@ -1,11 +1,13 @@
 import { useId, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Ambulance, CheckCircle2, PhoneCall, Stethoscope, Truck, Video } from 'lucide-react'
+import { Ambulance, Building2, CheckCircle2, Church, GraduationCap, House, PartyPopper, PhoneCall, Stethoscope, Truck, Video } from 'lucide-react'
 import clsx from 'clsx'
 import styles from '@/components/shuttle/Shuttle.module.css'
 import Button from '@/components/ui/Button'
 import Checkbox from '@/components/ui/Checkbox'
+import OrgRequestForm from '@/components/shuttle/OrgRequestForm'
+import { SETTING_GROUPS } from '@/data/shuttleSettings'
 import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 
@@ -15,6 +17,7 @@ const SERVICES = [
   { id: 'mobileClinic', icon: Truck, tone: 'leaf' },
   { id: 'medicines', icon: Stethoscope, tone: 'ember' },
 ]
+const GROUP_ICONS = { Building2, GraduationCap, Church, House, PartyPopper }
 const STATES = ['Lagos', 'Ogun', 'Oyo', 'Osun', 'Ondo', 'Ekiti', 'FCT Abuja', 'Kwara', 'Rivers', 'Kano', 'Kaduna', 'Enugu', 'Anambra', 'Other']
 
 /** /shuttle-meds: coming soon, with a waitlist. */
@@ -26,6 +29,11 @@ export default function ShuttleMeds() {
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle') // idle | sending | done | error
   const set = (patch) => setForm((f) => ({ ...f, ...patch }))
+  const [orgSetting, setOrgSetting] = useState(null)
+  const bring = (setting) => {
+    if (setting) setOrgSetting(setting)
+    document.getElementById('bring')?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   const submit = async (e) => {
     e.preventDefault()
@@ -116,6 +124,40 @@ export default function ShuttleMeds() {
         </ol>
       </section>
 
+      <section aria-labelledby="where-h" className={styles.section}>
+        <h2 id="where-h" className={styles.sectionTitle}>
+          {t('whereTitle')}
+        </h2>
+        <p className={styles.muted}>{t('whereBody')}</p>
+        <ul className={styles.groups}>
+          {SETTING_GROUPS.map((g) => {
+            const Icon = GROUP_ICONS[g.icon]
+            return (
+              <li key={g.id} className={styles.group}>
+                <span className={styles.soon}>{t('comingSoon')}</span>
+                <span className={clsx(styles.serviceIcon, styles[`tone_${g.tone}`])} aria-hidden="true">
+                  <Icon size={24} strokeWidth={1.8} />
+                </span>
+                <h3>{t(`groups.${g.id}.title`)}</h3>
+                <p>{t(`groups.${g.id}.body`)}</p>
+                <ul className={styles.places}>
+                  {g.settings.map((sid) => (
+                    <li key={sid}>
+                      <button type="button" className={styles.place} onClick={() => bring(sid)}>
+                        {t(`settings.${sid}`)}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            )
+          })}
+        </ul>
+        <Button variant="outline" className={styles.whereCta} onClick={() => bring()}>
+          {t('bringCta')}
+        </Button>
+      </section>
+
       <section id="waitlist" aria-labelledby="waitlist-h" className={styles.waitlist}>
         <h2 id="waitlist-h" className={styles.sectionTitle}>
           {t('waitlistTitle')}
@@ -196,6 +238,14 @@ export default function ShuttleMeds() {
             </p>
           </form>
         )}
+      </section>
+
+      <section id="bring" aria-labelledby="bring-h" className={styles.waitlist}>
+        <h2 id="bring-h" className={styles.sectionTitle}>
+          {t('org.title')}
+        </h2>
+        <p className={styles.muted}>{t('org.body')}</p>
+        <OrgRequestForm key={orgSetting ?? 'none'} states={STATES} services={SERVICES.map((x) => x.id)} initialSetting={orgSetting ?? undefined} />
       </section>
     </div>
   )
